@@ -3,15 +3,11 @@
     "name": "Katy Saintin",
     "titleFr": "Experte Senior CEA • Ingénierie Logicielle et Données Scientifiques",
     "titleEn": "CEA Senior Expert • Scientific Software & Data Engineering",
-
     "taglineFr": "25+ ans d'expérience dans les systèmes de contrôle, les logiciels scientifiques et la valorisation des données expérimentales.",
     "taglineEn": "25+ years of experience in control systems, scientific software and experimental data engineering.",
-
     "summaryFr": "Ingénieure spécialisée dans les grands instruments scientifiques, les systèmes de contrôle-commande, les applications scientifiques et l'exploitation des données expérimentales. Créatrice de plusieurs logiciels utilisés dans les communautés synchrotron et accélérateurs, conférencière internationale et Experte Senior CEA.",
-
     "summaryEn": "Engineer specialized in large scientific facilities, control systems, scientific applications and experimental data engineering. Creator of several software tools used within synchrotron and accelerator communities, international conference speaker and CEA Senior Expert."
   },
-
   "highlights": [
     {
       "value": "25+",
@@ -34,13 +30,13 @@
       "labelEn": "Systems Supported"
     }
   ],
-
   "education": [
     {
       "year": 2001,
       "degreeFr": "Diplôme d'Ingénieur Informatique",
       "degreeEn": "Computer Engineering Degree",
       "institution": "CESI / CEFIPA",
+      "url": "https://www.cefipa.com",
       "detailsFr": "Formation par alternance réalisée au CEA",
       "detailsEn": "Work-study engineering program at CEA"
     },
@@ -49,6 +45,7 @@
       "degreeFr": "DUT Génie Électrique et Informatique Industrielle",
       "degreeEn": "Electrical Engineering and Industrial Computing",
       "institution": "IUT de Cachan",
+      "url": "https://www.iut-cachan.universite-paris-saclay.fr",
       "detailsFr": "Option Automatisme et Systèmes",
       "detailsEn": "Automation and Control Systems"
     },
@@ -57,11 +54,11 @@
       "degreeFr": "Baccalauréat Scientifique",
       "degreeEn": "Scientific High School Diploma",
       "institution": "Maison d'Éducation de la Légion d'Honneur",
+      "url": "https://www.legiondhonneur.fr/fr/les-maisons-deducation/la-maison-deducation-de-saint-denis-le-lycee",
       "detailsFr": "Option Physique-Chimie",
       "detailsEn": "Physics and Chemistry"
     }
   ],
-
   "certifications": [
     {
       "year": 2026,
@@ -74,7 +71,6 @@
       "status": "planned"
     }
   ],
-
   "recognition": [
     {
       "title": "Experte Senior CEA"
@@ -83,12 +79,10 @@
       "title": "Experte IRFU"
     }
   ],
-
   "careerStory": {
     "fr": "Premiers développements scientifiques au CEA dès 1998. Plus de 25 ans d'expérience dans les grands instruments scientifiques, du Laboratoire Léon Brillouin au Synchrotron SOLEIL puis au CEA IRFU.",
     "en": "First scientific software developments at CEA in 1998. More than 25 years of experience in large scientific facilities, from Laboratoire Léon Brillouin to Synchrotron SOLEIL and CEA IRFU."
   },
-
   "expertise": [
     {
       "title": "Control Systems",
@@ -137,7 +131,6 @@
       ]
     }
   ],
-
   "majorProjects": [
     {
       "name": "SOLEIL DataBrowser",
@@ -148,11 +141,13 @@
     {
       "name": "Scientific Data Retriever (SDR)",
       "role": "Creator & Lead Developer",
+      "url": "",
       "description": "Remote scientific data access platform for experimental users."
     },
     {
       "name": "MUSCADE",
       "role": "Product Owner",
+      "url": "",
       "description": "SCADA platform used at CEA IRFU."
     },
     {
@@ -170,14 +165,15 @@
     {
       "name": "COMETE Framework",
       "role": "Contributor",
+      "url": "",
       "description": "Multi data source graphical framework for scientific facilities."
     }
   ],
-
   "experience": [
     {
       "period": "2017 - Present",
       "organization": "CEA IRFU",
+      "url": "https://irfu.cea.fr",
       "position": "Senior Expert • Scientific Software Engineer",
       "details": [
         "Product Owner MUSCADE",
@@ -190,6 +186,7 @@
     {
       "period": "2004 - 2017",
       "organization": "Synchrotron SOLEIL",
+      "url": "https://www.synchrotron-soleil.fr/fr",
       "position": "Scientific Software Engineer",
       "details": [
         "Creator of DataBrowser",
@@ -202,6 +199,7 @@
     {
       "period": "2001 - 2004",
       "organization": "ALTEN",
+      "url": "https://www.alten.fr",
       "position": "Software Engineer",
       "details": [
         "Canal+ Technologies",
@@ -212,6 +210,7 @@
     {
       "period": "1998 - 2001",
       "organization": "CEA Laboratoire Léon Brillouin",
+      "url": "https://iramis.cea.fr/llb/",
       "position": "Software Engineer Apprentice",
       "details": [
         "Spectrometer control software",
@@ -220,7 +219,17 @@
       ]
     }
   ],
-
+  "experienceDetails": [
+    {
+      "organization": "Canal+ Technologies",
+      "url": "https://www.pappers.fr/entreprise/canal-technologies-341010957",
+      "note": "Radiée"
+    },
+    {
+      "organization": "Eurocontrol",
+      "url": "https://www.eurocontrol.int"
+    }
+  ],
   "publications": [
     {
       "year": 2023,
@@ -279,7 +288,6 @@
       "url": "https://proceedings.jacow.org/p05/PAPERS/ROPA005.PDF"
     }
   ],
-
   "talks": [
     {
       "year": 2025,
@@ -294,7 +302,6 @@
       "url": "https://indico.stfc.ac.uk/event/1233/contributions/8374/"
     }
   ],
-
   "communities": [
     "EPICS",
     "TANGO",
@@ -302,7 +309,6 @@
     "NOBUGS",
     "JACoW"
   ],
-
   "teaching": {
     "items": [
       "Java & Object-Oriented Programming",
@@ -313,7 +319,6 @@
       "Katy In Control Podcast"
     ]
   },
-
   "profiles": [
     {
       "name": "GitHub",
@@ -328,7 +333,6 @@
       "url": "https://github.com/katysaintin/KatyInControl"
     }
   ],
-
   "interests": [
     "Scientific Outreach",
     "Artificial Intelligence",
