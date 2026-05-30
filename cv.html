@@ -5,153 +5,243 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CV — Katy Saintin</title>
   <style>
-    /* ── Styles spécifiques cv.html ── */
+    /* ── CV — styles spécifiques ── */
 
-    .cv-header {
-      background: white;
+    /* HERO CV — impact immédiat */
+    .cv-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #3d4f8f 100%);
+      color: white;
       border-radius: 20px;
       padding: 2.5rem 2rem;
-      margin-bottom: 2rem;
-      text-align: center;
+      margin-bottom: 1.5rem;
     }
-    .cv-header h1 { font-size: clamp(1.8rem, 6vw, 2.8rem); font-weight: 800; margin-bottom: .4rem; }
-    .cv-header .title { color: var(--navy); font-weight: 700; font-size: 1.1rem; margin-bottom: .6rem; }
-    .cv-header .tagline { color: #666; font-size: .95rem; max-width: 700px; margin: 0 auto .8rem; line-height: 1.6; }
-    .cv-header .summary { color: #555; font-size: .9rem; max-width: 750px; margin: 0 auto; line-height: 1.7; }
+    .cv-hero h1 {
+      font-size: clamp(1.8rem, 6vw, 2.8rem);
+      font-weight: 800;
+      margin-bottom: .3rem;
+    }
+    .cv-hero .title {
+      color: var(--terracotta);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    .cv-hero .tagline {
+      color: rgba(255,255,255,.85);
+      font-size: .95rem;
+      line-height: 1.7;
+      max-width: 680px;
+    }
+    .cv-hero .summary {
+      color: rgba(255,255,255,.7);
+      font-size: .88rem;
+      line-height: 1.7;
+      max-width: 680px;
+      margin-top: .6rem;
+    }
 
     /* HIGHLIGHTS */
     .highlights {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 1rem; margin-bottom: 2rem;
+      gap: 1rem;
+      margin-bottom: 2rem;
     }
     .highlight {
-      background: white; border-radius: 16px; padding: 1.4rem;
+      background: white;
+      border-radius: 16px;
+      padding: 1.4rem 1rem;
       text-align: center;
+      border-top: 4px solid var(--terracotta);
     }
     .highlight-value { font-size: 2rem; font-weight: 800; color: var(--navy); }
-    .highlight-label { color: #666; font-size: .85rem; margin-top: .3rem; line-height: 1.3; }
+    .highlight-label { color: #666; font-size: .8rem; margin-top: .3rem; line-height: 1.3; }
 
-    /* GRILLE 2 COLONNES */
+    /* CARD générique */
+    .cv-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .cv-card h3 {
+      color: var(--navy);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      padding-bottom: .6rem;
+      border-bottom: 2px solid var(--terracotta);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    /* GRILLE 2 cols */
     .cv-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
     }
-    @media (max-width: 700px) { .cv-grid { grid-template-columns: 1fr; } }
-
     .cv-full { grid-column: 1 / -1; }
-
-    /* CARD */
-    .cv-card {
-      background: white; border-radius: 16px; padding: 1.5rem;
-    }
-    .cv-card h3 {
-      color: var(--navy); font-size: 1rem; font-weight: 700;
-      margin-bottom: 1rem; padding-bottom: .5rem;
-      border-bottom: 2px solid var(--terracotta);
-      display: flex; align-items: center; gap: .5rem;
+    @media (max-width: 680px) {
+      .cv-grid { grid-template-columns: 1fr; }
+      .cv-full { grid-column: 1; }
     }
 
-    /* TIMELINE */
+    /* EXPERTISE — visuel impactant */
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1rem;
+    }
+    .expertise-block {
+      background: #f8f9ff;
+      border-radius: 12px;
+      padding: 1rem;
+      border-left: 4px solid var(--navy);
+    }
+    .expertise-block h4 {
+      color: var(--navy);
+      font-size: .85rem;
+      font-weight: 700;
+      margin-bottom: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+    .tag {
+      background: white;
+      color: var(--navy);
+      border: 1px solid #dde;
+      padding: .2rem .6rem;
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 500;
+    }
+
+    /* TIMELINE expérience */
     .timeline { list-style: none; }
     .timeline li {
       position: relative;
-      padding: 0 0 1.4rem 1.2rem;
-      border-left: 2px solid #e8e8e8;
+      padding: 0 0 1.8rem 1.4rem;
+      border-left: 2px solid #e0e4f0;
     }
     .timeline li:last-child { padding-bottom: 0; border-left-color: transparent; }
     .timeline li::before {
       content: '';
-      position: absolute; left: -5px; top: 6px;
+      position: absolute; left: -5px; top: 7px;
       width: 8px; height: 8px;
       background: var(--terracotta); border-radius: 50%;
     }
-    .tl-period { font-size: .8rem; color: var(--terracotta); font-weight: 700; margin-bottom: .15rem; }
-    .tl-org { font-weight: 700; color: var(--navy); font-size: .95rem; }
-    .tl-pos { color: #555; font-size: .85rem; margin-bottom: .4rem; }
-    .tl-details { list-style: disc; padding-left: 1rem; }
-    .tl-details li { font-size: .82rem; color: #666; margin-bottom: .15rem; }
+    .tl-period {
+      font-size: .75rem; color: var(--terracotta);
+      font-weight: 700; margin-bottom: .1rem;
+    }
+    .tl-org { font-weight: 800; color: var(--navy); font-size: 1rem; }
+    .tl-pos { color: #666; font-size: .85rem; margin-bottom: .5rem; font-style: italic; }
+    .tl-details { list-style: none; }
+    .tl-details li {
+      font-size: .82rem; color: #555;
+      margin-bottom: .2rem; padding-left: .8rem; position: relative;
+    }
+    .tl-details li::before { content: '→'; position: absolute; left: 0; color: var(--terracotta); }
 
-    /* EXPERTISE GRID */
-    .expertise-grid {
+    /* PROJETS — cards visuelles */
+    .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1rem;
     }
-    .expertise-block h4 { color: var(--navy); font-size: .9rem; margin-bottom: .6rem; }
-    .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-    .tag {
-      background: #f0f2fa; color: var(--navy);
-      padding: .25rem .65rem; border-radius: 999px; font-size: .8rem; font-weight: 500;
+    .project-card {
+      background: #f8f9ff;
+      border-radius: 12px;
+      padding: 1.1rem;
+      border-top: 3px solid var(--navy);
     }
-
-    /* PROJETS */
-    .projects-list { display: flex; flex-direction: column; gap: .9rem; }
-    .project-item { border-left: 3px solid var(--terracotta); padding-left: .9rem; }
-    .project-name { font-weight: 700; color: var(--navy); font-size: .95rem; }
+    .project-name {
+      font-weight: 800; color: var(--navy); font-size: .95rem; margin-bottom: .2rem;
+    }
     .project-name a { color: var(--navy); text-decoration: none; }
     .project-name a:hover { text-decoration: underline; }
-    .project-role { font-size: .8rem; color: var(--terracotta); font-weight: 600; }
-    .project-desc { font-size: .82rem; color: #666; margin-top: .2rem; line-height: 1.5; }
+    .project-role {
+      display: inline-block;
+      background: var(--terracotta); color: white;
+      font-size: .72rem; font-weight: 700;
+      padding: .15rem .55rem; border-radius: 999px; margin-bottom: .5rem;
+    }
+    .project-desc { font-size: .82rem; color: #666; line-height: 1.5; }
 
     /* PUBLICATIONS */
-    .pub-list { display: flex; flex-direction: column; gap: .8rem; }
-    .pub-item { border-left: 3px solid #e0e0e0; padding-left: .9rem; }
-    .pub-year { font-size: .75rem; color: var(--terracotta); font-weight: 700; }
+    .pub-list { display: flex; flex-direction: column; gap: .7rem; }
+    .pub-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: .6rem 0; border-bottom: 1px solid #f0f0f0;
+    }
+    .pub-item:last-child { border-bottom: none; }
+    .pub-year {
+      min-width: 2.8rem; text-align: right;
+      font-size: .8rem; color: var(--terracotta); font-weight: 700; padding-top: .1rem;
+    }
+    .pub-body {}
     .pub-title { font-size: .88rem; color: var(--navy); font-weight: 600; line-height: 1.4; }
     .pub-title a { color: var(--navy); text-decoration: none; }
     .pub-title a:hover { text-decoration: underline; }
-    .pub-event { font-size: .78rem; color: #888; }
+    .pub-event { font-size: .78rem; color: #999; margin-top: .1rem; }
 
-    /* EDUCATION */
+    /* FORMATION */
     .edu-list { display: flex; flex-direction: column; gap: 1rem; }
-    .edu-item {}
-    .edu-year { font-size: .78rem; color: var(--terracotta); font-weight: 700; }
+    .edu-item { border-left: 3px solid var(--terracotta); padding-left: .9rem; }
+    .edu-year { font-size: .75rem; color: var(--terracotta); font-weight: 700; }
     .edu-degree { font-weight: 700; color: var(--navy); font-size: .9rem; }
     .edu-institution { font-size: .85rem; color: #555; }
-    .edu-details { font-size: .8rem; color: #888; }
+    .edu-details { font-size: .78rem; color: #999; }
 
-    /* RECOGNITION */
-    .recognition-list { display: flex; flex-direction: column; gap: .6rem; }
+    /* RECONNAISSANCE — mise en avant forte */
+    .recognition-list { display: flex; flex-direction: column; gap: .7rem; }
     .recognition-item {
+      display: flex; align-items: center; gap: .8rem;
       background: linear-gradient(135deg, var(--navy), #4a5fa0);
-      color: white; border-radius: 10px; padding: .7rem 1rem;
-      font-weight: 600; font-size: .9rem; text-align: center;
+      color: white; border-radius: 12px; padding: .9rem 1.2rem;
+      font-weight: 700; font-size: .95rem;
     }
 
     /* CERTIFICATIONS */
-    .cert-list { display: flex; flex-direction: column; gap: .6rem; }
-    .cert-item { display: flex; justify-content: space-between; align-items: center; }
+    .cert-list { display: flex; flex-direction: column; gap: .7rem; }
+    .cert-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: .5rem 0; border-bottom: 1px solid #f0f0f0;
+    }
+    .cert-item:last-child { border-bottom: none; }
     .cert-name { font-size: .85rem; color: var(--text); }
-    .cert-year { font-size: .78rem; color: var(--terracotta); font-weight: 700; }
-    .cert-status-planned {
-      font-size: .72rem; background: #fff3e0; color: #e65100;
-      padding: .15rem .5rem; border-radius: 999px; margin-left: .5rem;
+    .cert-year { font-size: .8rem; color: var(--terracotta); font-weight: 700; white-space: nowrap; margin-left: .5rem; }
+    .cert-planned {
+      font-size: .7rem; background: #fff3e0; color: #e65100;
+      padding: .1rem .45rem; border-radius: 999px; margin-left: .4rem;
     }
 
     /* COMMUNITIES */
-    .communities { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .5rem; }
+    .communities { display: flex; flex-wrap: wrap; gap: .5rem; }
     .community-tag {
       background: var(--navy); color: white;
       padding: .3rem .8rem; border-radius: 999px; font-size: .82rem; font-weight: 600;
     }
 
-    /* TEACHING */
+    /* ENSEIGNEMENT */
     .teaching-list { list-style: none; }
     .teaching-list li {
-      padding: .4rem 0; border-bottom: 1px solid #f0f0f0;
+      padding: .4rem 0; border-bottom: 1px solid #f5f5f5;
       font-size: .88rem; color: #555;
     }
     .teaching-list li:last-child { border-bottom: none; }
     .teaching-list li::before { content: '→ '; color: var(--terracotta); font-weight: 700; }
 
-    /* PROFILES */
-    .profiles-list { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .3rem; }
+    /* PROFILS */
+    .profiles-list { display: flex; flex-wrap: wrap; gap: .6rem; }
     .profile-link {
       background: #f0f2fa; color: var(--navy);
-      padding: .4rem .9rem; border-radius: 8px;
+      padding: .45rem 1rem; border-radius: 8px;
       text-decoration: none; font-size: .85rem; font-weight: 600;
+      transition: background .15s;
     }
     .profile-link:hover { background: var(--navy); color: white; }
   </style>
@@ -160,8 +250,8 @@
 
 <div class="container">
 
-  <!-- HEADER -->
-  <div class="cv-header" id="cv-header">
+  <!-- HERO -->
+  <div class="cv-hero">
     <h1 id="cv-name"></h1>
     <div class="title" id="cv-title"></div>
     <div class="tagline" id="cv-tagline"></div>
@@ -171,94 +261,95 @@
   <!-- HIGHLIGHTS -->
   <div class="highlights" id="cv-highlights"></div>
 
-  <!-- GRILLE PRINCIPALE -->
   <div class="cv-grid">
 
-    <!-- Expertise — pleine largeur -->
+    <!-- EXPERTISE — pleine largeur -->
     <div class="cv-card cv-full">
       <h3>⚙️ <span id="label-expertise"></span></h3>
       <div class="expertise-grid" id="cv-expertise"></div>
     </div>
 
-    <!-- Expérience — pleine largeur -->
+    <!-- EXPÉRIENCE — pleine largeur -->
     <div class="cv-card cv-full">
       <h3>💼 <span id="label-experience"></span></h3>
       <ul class="timeline" id="cv-experience"></ul>
     </div>
 
-    <!-- Projets majeurs — pleine largeur -->
+    <!-- PROJETS — pleine largeur -->
     <div class="cv-card cv-full">
       <h3>🚀 <span id="label-projects"></span></h3>
-      <div class="projects-list" id="cv-projects"></div>
+      <div class="projects-grid" id="cv-projects"></div>
     </div>
 
-    <!-- Publications -->
+    <!-- PUBLICATIONS — pleine largeur -->
     <div class="cv-card cv-full">
       <h3>📚 <span id="label-publications"></span></h3>
       <div class="pub-list" id="cv-publications"></div>
     </div>
 
-    <!-- Formation -->
+    <!-- FORMATION -->
     <div class="cv-card">
       <h3>🎓 <span id="label-education"></span></h3>
       <div class="edu-list" id="cv-education"></div>
     </div>
 
-    <!-- Reconnaissance + Certifications -->
+    <!-- RECONNAISSANCE + CERTIFICATIONS -->
     <div style="display:flex;flex-direction:column;gap:1.5rem;">
-      <div class="cv-card">
+      <div class="cv-card" style="margin-bottom:0">
         <h3>🏅 <span id="label-recognition"></span></h3>
         <div class="recognition-list" id="cv-recognition"></div>
       </div>
-      <div class="cv-card">
+      <div class="cv-card" style="margin-bottom:0">
         <h3>📋 <span id="label-certifications"></span></h3>
         <div class="cert-list" id="cv-certifications"></div>
       </div>
     </div>
 
-    <!-- Enseignement -->
+    <!-- ENSEIGNEMENT -->
     <div class="cv-card">
       <h3>🧑‍🏫 <span id="label-teaching"></span></h3>
       <ul class="teaching-list" id="cv-teaching"></ul>
     </div>
 
-    <!-- Communautés + Profils -->
+    <!-- COMMUNAUTÉS + PROFILS -->
     <div style="display:flex;flex-direction:column;gap:1.5rem;">
-      <div class="cv-card">
+      <div class="cv-card" style="margin-bottom:0">
         <h3>🌐 <span id="label-communities"></span></h3>
         <div class="communities" id="cv-communities"></div>
       </div>
-      <div class="cv-card">
+      <div class="cv-card" style="margin-bottom:0">
         <h3>🔗 <span id="label-profiles"></span></h3>
         <div class="profiles-list" id="cv-profiles"></div>
       </div>
     </div>
 
-  </div><!-- /cv-grid -->
+  </div>
 
   <footer id="footer"></footer>
 </div>
 
 <script src="js/site.js"></script>
 <script>
-  // Chargement du cv.json
+  // Charge cv.json et attend siteReady — robuste à l'ordre d'arrivée
+  let cvData = null;
+  let siteLang = null;
+
   fetch('data/cv.json')
     .then(r => r.json())
-    .then(cv => {
-      // On attend que site.js ait fini (siteReady), puis on rend le CV
-      document.addEventListener('siteReady', ({ detail: { lang } }) => renderCV(cv, lang));
-      // Si siteReady déjà passé (edge case), on rend quand même
-      if (window.__siteReady) renderCV(cv, localStorage.getItem('lang') || 'fr');
-
-      // Re-render si langue change
-      document.addEventListener('siteReady', ({ detail: { lang } }) => renderCV(cv, lang));
+    .then(data => {
+      cvData = data;
+      if (siteLang !== null) renderCV(cvData, siteLang);
     })
     .catch(err => console.error('Erreur cv.json :', err));
+
+  document.addEventListener('siteReady', ({ detail: { lang } }) => {
+    siteLang = lang;
+    if (cvData !== null) renderCV(cvData, siteLang);
+  });
 
   function renderCV(cv, lang) {
     const fr = lang === 'fr';
 
-    // Labels bilingues
     const labels = {
       expertise:      fr ? 'Expertise Technique' : 'Technical Expertise',
       experience:     fr ? 'Parcours Professionnel' : 'Professional Experience',
@@ -266,38 +357,34 @@
       publications:   fr ? 'Publications & Conférences' : 'Publications & Conferences',
       education:      fr ? 'Formation' : 'Education',
       recognition:    fr ? 'Reconnaissance' : 'Recognition',
-      certifications: fr ? 'Certifications' : 'Certifications',
+      certifications: 'Certifications',
       teaching:       fr ? 'Enseignement & Transmission' : 'Teaching & Knowledge Transfer',
       communities:    fr ? 'Communautés' : 'Communities',
       profiles:       fr ? 'Profils' : 'Online Profiles',
     };
-    Object.entries(labels).forEach(([k,v]) => {
+    Object.entries(labels).forEach(([k, v]) => {
       const el = document.getElementById('label-' + k);
       if (el) el.textContent = v;
     });
 
-    // HEADER
     const p = cv.profile;
     document.getElementById('cv-name').textContent    = p.name;
     document.getElementById('cv-title').textContent   = fr ? p.titleFr : p.titleEn;
     document.getElementById('cv-tagline').textContent = fr ? p.taglineFr : p.taglineEn;
     document.getElementById('cv-summary').textContent = fr ? p.summaryFr : p.summaryEn;
 
-    // HIGHLIGHTS
     document.getElementById('cv-highlights').innerHTML = cv.highlights.map(h =>
       `<div class="highlight">
         <div class="highlight-value">${h.value}</div>
         <div class="highlight-label">${fr ? h.labelFr : h.labelEn}</div>
       </div>`).join('');
 
-    // EXPERTISE
     document.getElementById('cv-expertise').innerHTML = cv.expertise.map(e =>
       `<div class="expertise-block">
         <h4>${e.title}</h4>
         <div class="tags">${e.items.map(i => `<span class="tag">${i}</span>`).join('')}</div>
       </div>`).join('');
 
-    // EXPÉRIENCE
     document.getElementById('cv-experience').innerHTML = cv.experience.map(e =>
       `<li>
         <div class="tl-period">${e.period}</div>
@@ -306,28 +393,31 @@
         <ul class="tl-details">${e.details.map(d => `<li>${d}</li>`).join('')}</ul>
       </li>`).join('');
 
-    // PROJETS
-    document.getElementById('cv-projects').innerHTML = cv.majorProjects.map(p =>
-      `<div class="project-item">
-        <div class="project-name">${p.url ? `<a href="${p.url}" target="_blank">${p.name}</a>` : p.name}</div>
-        <div class="project-role">${p.role}</div>
-        <div class="project-desc">${p.description}</div>
+    document.getElementById('cv-projects').innerHTML = cv.majorProjects.map(proj =>
+      `<div class="project-card">
+        <div class="project-name">${proj.url
+          ? `<a href="${proj.url}" target="_blank">${proj.name}</a>`
+          : proj.name}</div>
+        <span class="project-role">${proj.role}</span>
+        <div class="project-desc">${proj.description}</div>
       </div>`).join('');
 
-    // PUBLICATIONS + TALKS
     const allPubs = [
-      ...cv.publications.map(p => ({ ...p, type: 'paper' })),
+      ...cv.publications.map(pub => ({ ...pub, type: 'paper' })),
       ...cv.talks.map(t => ({ ...t, type: 'talk' }))
     ].sort((a, b) => b.year - a.year);
 
-    document.getElementById('cv-publications').innerHTML = allPubs.map(p =>
+    document.getElementById('cv-publications').innerHTML = allPubs.map(pub =>
       `<div class="pub-item">
-        <div class="pub-year">${p.year} ${p.type === 'talk' ? '🎤' : '📄'}</div>
-        <div class="pub-title">${p.url ? `<a href="${p.url}" target="_blank">${p.title}</a>` : p.title}</div>
-        <div class="pub-event">${p.event}${p.paperId ? ' · ' + p.paperId : ''}</div>
+        <div class="pub-year">${pub.year} ${pub.type === 'talk' ? '🎤' : '📄'}</div>
+        <div class="pub-body">
+          <div class="pub-title">${pub.url
+            ? `<a href="${pub.url}" target="_blank">${pub.title}</a>`
+            : pub.title}</div>
+          <div class="pub-event">${pub.event}${pub.paperId ? ' · ' + pub.paperId : ''}</div>
+        </div>
       </div>`).join('');
 
-    // FORMATION
     document.getElementById('cv-education').innerHTML = cv.education.map(e =>
       `<div class="edu-item">
         <div class="edu-year">${e.year}</div>
@@ -336,30 +426,25 @@
         <div class="edu-details">${fr ? e.detailsFr : e.detailsEn}</div>
       </div>`).join('');
 
-    // RECONNAISSANCE
     document.getElementById('cv-recognition').innerHTML = cv.recognition
       .map(r => `<div class="recognition-item">🏅 ${r.title}</div>`).join('');
 
-    // CERTIFICATIONS
     document.getElementById('cv-certifications').innerHTML = cv.certifications.map(c =>
       `<div class="cert-item">
         <span class="cert-name">${c.name}${c.status === 'planned'
-          ? `<span class="cert-status-planned">${fr ? 'prévu' : 'planned'}</span>` : ''}</span>
+          ? `<span class="cert-planned">${fr ? 'prévu' : 'planned'}</span>` : ''}</span>
         <span class="cert-year">${c.year}</span>
       </div>`).join('');
 
-    // ENSEIGNEMENT
     document.getElementById('cv-teaching').innerHTML = cv.teaching.items
       .map(i => `<li>${i}</li>`).join('');
 
-    // COMMUNAUTÉS
     document.getElementById('cv-communities').innerHTML = cv.communities
       .map(c => `<span class="community-tag">${c}</span>`).join('');
 
-    // PROFILS
     document.getElementById('cv-profiles').innerHTML = cv.profiles
-      .filter(p => p.url)
-      .map(p => `<a class="profile-link" href="${p.url}" target="_blank">${p.name}</a>`)
+      .filter(prof => prof.url)
+      .map(prof => `<a class="profile-link" href="${prof.url}" target="_blank">${prof.name}</a>`)
       .join('');
   }
 </script>
