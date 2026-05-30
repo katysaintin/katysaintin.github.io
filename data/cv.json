@@ -286,6 +286,13 @@
       "event": "ICALEPCS 2005",
       "paperId": "ROPA005",
       "url": "https://proceedings.jacow.org/p05/PAPERS/ROPA005.PDF"
+    },
+    {
+      "year": 2000,
+      "title": "A new generation of software to control spectrometers",
+      "event": "NOBUGS Daresbury Laboratory, Royaume Uni",
+      "paperId": "Laboratoire Léon Brillouin 1999-2000",
+      "url": "katy.saintin.free.fr/cea/publications/1999_NewGenerationOOSoftware_LLB.pdf"
     }
   ],
   "talks": [
