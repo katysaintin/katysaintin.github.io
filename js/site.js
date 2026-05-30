@@ -1,14 +1,27 @@
 (() => {
   let lang = localStorage.getItem('lang') || 'fr';
+  let menuOpen = false;
 
   fetch('data/site.json')
     .then(r => r.json())
     .then(data => {
       render(data);
+
       document.getElementById('langBtn').addEventListener('click', () => {
         lang = lang === 'fr' ? 'en' : 'fr';
         localStorage.setItem('lang', lang);
+        menuOpen = false;
         render(data);
+      });
+
+      document.addEventListener('click', e => {
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        if (burger && nav && !burger.contains(e.target) && !nav.contains(e.target)) {
+          menuOpen = false;
+          nav.classList.remove('open');
+          burger.setAttribute('aria-expanded', 'false');
+        }
       });
     })
     .catch(err => console.error('Erreur chargement site.json :', err));
@@ -16,9 +29,12 @@
   function render(data) {
     // --- MENU ---
     const menu = document.getElementById('menu');
-    menu.innerHTML = data.menu.map(item =>
-      `<a href="${item.url}">${item.emoji} ${item[lang]}</a>`
-    ).join('');
+    menu.innerHTML = `
+      <button id="burger" aria-expanded="false" aria-label="Menu" onclick="toggleMenu()">☰</button>
+      <div id="nav-links" class="nav-links">
+        ${data.menu.map(item => `<a href="${item.url}">${item.emoji} ${item[lang]}</a>`).join('')}
+      </div>
+    `;
 
     // --- HERO ---
     const h = data.hero[lang];
@@ -68,4 +84,12 @@
       (f.github ? ` · <a href="${f.github}" style="color:#666">GitHub</a>` : '') +
       (f.linkedin ? ` · <a href="${f.linkedin}" style="color:#666">LinkedIn</a>` : '');
   }
+
+  window.toggleMenu = function() {
+    menuOpen = !menuOpen;
+    const nav = document.getElementById('nav-links');
+    const burger = document.getElementById('burger');
+    nav.classList.toggle('open', menuOpen);
+    burger.setAttribute('aria-expanded', menuOpen);
+  };
 })();
