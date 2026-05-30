@@ -2,70 +2,241 @@
 <html lang="fr">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Katy Saintin</title>
 
 <style>
 
+:root {
+
+    --navy:#2f3b73;
+    --terracotta:#c96f4a;
+    --background:#f8f7f4;
+    --text:#202020;
+
+}
+
+*{
+    box-sizing:border-box;
+}
+
 body{
+
+    margin:0;
     font-family:system-ui,sans-serif;
+
+    background:var(--background);
+    color:var(--text);
+
+}
+
+.container{
+
     max-width:1200px;
     margin:auto;
     padding:2rem;
-    line-height:1.6;
+
 }
 
 header{
+
     display:flex;
     justify-content:space-between;
     align-items:center;
+    margin-bottom:3rem;
+
+}
+
+nav{
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:1rem;
+
 }
 
 nav a{
-    margin-right:1rem;
+
     text-decoration:none;
+    color:var(--navy);
+    font-weight:600;
+
+}
+
+.lang-btn{
+
+    border:none;
+    background:var(--navy);
+    color:white;
+    padding:.6rem 1rem;
+    border-radius:8px;
+    cursor:pointer;
+
 }
 
 .hero{
+
     text-align:center;
     padding:4rem 0;
+
 }
 
-.univers{
+.hero h1{
+
+    font-size:3rem;
+    margin-bottom:.5rem;
+
+}
+
+.hero h2{
+
+    color:var(--navy);
+    margin-bottom:.5rem;
+
+}
+
+.hero p{
+
+    color:#666;
+
+}
+
+.keywords{
+
+    display:flex;
+    justify-content:center;
+    gap:.5rem;
+    flex-wrap:wrap;
+    margin-top:1rem;
+
+}
+
+.badge{
+
+    background:var(--terracotta);
+    color:white;
+    padding:.4rem .8rem;
+    border-radius:999px;
+    font-size:.9rem;
+
+}
+
+.stats{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:1rem;
+    margin:3rem 0;
+
+}
+
+.stat{
+
+    background:white;
+    border-radius:16px;
+    padding:1.5rem;
+    text-align:center;
+
+}
+
+.stat-value{
+
+    font-size:2rem;
+    font-weight:bold;
+    color:var(--navy);
+
+}
+
+.section-title{
+
+    color:var(--navy);
+    margin-top:4rem;
+
+}
+
+.featured-card{
+
+    background:white;
+    border-left:8px solid var(--terracotta);
+
+    border-radius:16px;
+
+    padding:2rem;
+    margin:2rem 0;
+
+}
+
+.featured-card a{
+
+    color:var(--navy);
+    font-weight:bold;
+    text-decoration:none;
+
+}
+
+.achievements{
+
+    background:white;
+    border-radius:16px;
+    padding:2rem;
+
+}
+
+.achievements li{
+
+    margin-bottom:.8rem;
+
+}
+
+.universes{
+
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:1rem;
+
 }
 
 .card{
-    border:1px solid #ddd;
-    border-radius:12px;
-    padding:1rem;
+
+    background:white;
+    border-radius:16px;
+    padding:1.5rem;
+
+}
+
+.card a{
+
+    color:var(--navy);
+    text-decoration:none;
+    font-weight:bold;
+
 }
 
 footer{
-    margin-top:4rem;
-    border-top:1px solid #ddd;
-    padding-top:1rem;
-    text-align:center;
-}
 
-button{
-    cursor:pointer;
+    margin-top:4rem;
+    padding:2rem 0;
+    text-align:center;
+    color:#666;
+
 }
 
 </style>
+
 </head>
 
 <body>
+
+<div class="container">
 
 <header>
 
 <nav id="menu"></nav>
 
-<button id="langBtn">
+<button class="lang-btn" id="langBtn">
 FR / EN
 </button>
 
@@ -73,120 +244,36 @@ FR / EN
 
 <section class="hero">
 
-<h1 id="title"></h1>
+<h1 id="hero-name"></h1>
 
-<h2 id="subtitle"></h2>
+<h2 id="hero-title"></h2>
 
-<p id="description"></p>
+<p id="hero-subtitle"></p>
 
-</section>
-
-<section>
-
-<h2>Univers</h2>
-
-<div id="univers" class="univers"></div>
+<div id="keywords" class="keywords"></div>
 
 </section>
+
+<section id="stats" class="stats"></section>
+
+<h2 class="section-title">📄 Curriculum Vitae</h2>
+
+<div id="featured"></div>
+
+<h2 class="section-title">🏆 Key Achievements</h2>
+
+<div id="achievements"></div>
+
+<h2 class="section-title">🌍 Univers</h2>
+
+<div id="universes" class="universes"></div>
 
 <footer id="footer"></footer>
 
-<script>
-
-let currentLang="fr";
-
-fetch("data/site.json")
-.then(r=>r.json())
-.then(data=>{
-
-initAnalytics(data.googleAnalytics.measurementId);
-
-render(data);
-
-document
-.getElementById("langBtn")
-.addEventListener("click",()=>{
-
-currentLang=currentLang==="fr"?"en":"fr";
-
-render(data);
-
-});
-
-});
-
-function render(data){
-
-document.getElementById("title")
-.innerText=data.site["title_"+currentLang];
-
-document.getElementById("subtitle")
-.innerText=data.site["subtitle_"+currentLang];
-
-document.getElementById("description")
-.innerText=data.site["description_"+currentLang];
-
-const menu=document.getElementById("menu");
-
-menu.innerHTML=data.navigation.map(item=>`
-
-<a href="${item.url}">
-${item.emoji} ${item[currentLang]}
-</a>
-
-`).join("");
-
-const univers=document.getElementById("univers");
-
-univers.innerHTML=data.univers.map(item=>`
-
-<div class="card">
-
-<h3>${item.emoji} ${item.title}</h3>
-
-<p>${item["description_"+currentLang]}</p>
-
-<a href="${item.url}" target="_blank">
-Open →
-</a>
-
 </div>
 
-`).join("");
-
-document.getElementById("footer").innerHTML=`
-
-<p>${data.footer.copyright}</p>
-
-<p>${data.footer.owner}</p>
-
-`;
-
-}
-
-function initAnalytics(id){
-
-const script=document.createElement('script');
-
-script.async=true;
-
-script.src=`https://www.googletagmanager.com/gtag/js?id=${id}`;
-
-document.head.appendChild(script);
-
-window.dataLayer=window.dataLayer||[];
-
-function gtag(){dataLayer.push(arguments);}
-
-gtag('js',new Date());
-
-gtag('config',id,{
-anonymize_ip:true
-});
-
-}
-
-</script>
+<script src="js/site.js"></script>
 
 </body>
+
 </html>
