@@ -139,17 +139,15 @@
     }
     .tl-org { font-weight: 800; color: var(--navy); font-size: 1rem; }
     .tl-pos { color: #666; font-size: .85rem; margin-bottom: .5rem; font-style: italic; }
-    .tl-details { list-style: none !important; padding-left: 0 !important; }
-    .tl-details li {
-      list-style: none !important;
+    .tl-details { padding-left: 0; }
+    .tl-detail {
       font-size: .82rem; color: #555;
-      margin-bottom: .3rem; padding-left: 1.1rem; position: relative;
+      margin-bottom: .3rem;
     }
-    .tl-details li::marker { display: none; content: ''; }
-    .tl-details li::before {
-      content: '→'; position: absolute; left: 0;
-      color: var(--terracotta); font-weight: 700;
-    }
+
+
+
+
 
     /* PROJETS — cards visuelles */
     .projects-grid {
@@ -395,7 +393,7 @@
         <div class="tl-period">${e.period}</div>
         <div class="tl-org">${e.organization}</div>
         <div class="tl-pos">${e.position}</div>
-        <ul class="tl-details">${e.details.map(d => `<li>${d}</li>`).join('')}</ul>
+        <div class="tl-details">${e.details.map(d => `<div class="tl-detail"><span style="color:var(--terracotta);font-weight:700;margin-right:.4rem">→</span>${d}</div>`).join('')}</div>
       </li>`).join('');
 
     document.getElementById('cv-projects').innerHTML = cv.majorProjects.map(proj =>
