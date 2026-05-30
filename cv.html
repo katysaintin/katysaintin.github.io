@@ -139,12 +139,15 @@
     }
     .tl-org { font-weight: 800; color: var(--navy); font-size: 1rem; }
     .tl-pos { color: #666; font-size: .85rem; margin-bottom: .5rem; font-style: italic; }
-    .tl-details { list-style: none; }
+    .tl-details { list-style: none; padding-left: 0; }
     .tl-details li {
       font-size: .82rem; color: #555;
-      margin-bottom: .2rem; padding-left: .8rem; position: relative;
+      margin-bottom: .3rem; padding-left: 1.1rem; position: relative;
     }
-    .tl-details li::before { content: '→'; position: absolute; left: 0; color: var(--terracotta); }
+    .tl-details li::before {
+      content: '→'; position: absolute; left: 0;
+      color: var(--terracotta); font-weight: 700;
+    }
 
     /* PROJETS — cards visuelles */
     .projects-grid {
