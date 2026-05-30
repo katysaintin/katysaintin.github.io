@@ -1,0 +1,134 @@
+{
+  "site": {
+    "title_fr": "Katy Saintin",
+    "title_en": "Katy Saintin",
+    "subtitle_fr": "Experte Senior CEA • Ingénierie Logicielle Scientifique",
+    "subtitle_en": "CEA Senior Expert • Scientific Software Engineering",
+    "description_fr": "SCADA • EPICS • TANGO • IA • Transmission des connaissances",
+    "description_en": "SCADA • EPICS • TANGO • AI • Knowledge Sharing",
+    "photo": "assets/img/katy.jpg"
+  },
+
+  "googleAnalytics": {
+    "measurementId": "G-N1H0D33HE0"
+  },
+
+  "navigation": [
+    {
+      "emoji": "🏠",
+      "fr": "Accueil",
+      "en": "Home",
+      "url": "index.html"
+    },
+    {
+      "emoji": "📄",
+      "fr": "CV",
+      "en": "Resume",
+      "url": "cv.html"
+    },
+    {
+      "emoji": "💻",
+      "fr": "Portfolio",
+      "en": "Portfolio",
+      "url": "portfolio.html"
+    },
+    {
+      "emoji": "📚",
+      "fr": "Publications",
+      "en": "Publications",
+      "url": "publications.html"
+    },
+    {
+      "emoji": "🎤",
+      "fr": "Conférences",
+      "en": "Talks",
+      "url": "conferences.html"
+    },
+    {
+      "emoji": "🎓",
+      "fr": "Enseignement",
+      "en": "Teaching",
+      "url": "teaching.html"
+    },
+    {
+      "emoji": "⚙️",
+      "fr": "Katy In Control",
+      "en": "Katy In Control",
+      "url": "katyincontrol.html"
+    },
+    {
+      "emoji": "🧠",
+      "fr": "IA & Digital Twin",
+      "en": "AI & Digital Twin",
+      "url": "digitaltwin.html"
+    }
+  ],
+
+  "univers": [
+    {
+      "emoji": "⚙️",
+      "title": "Katy In Control",
+      "description_fr": "SCADA, EPICS, TANGO et contrôle-commande scientifique",
+      "description_en": "SCADA, EPICS, TANGO and scientific control systems",
+      "url": "https://github.com/katysaintin/KatyInControl"
+    },
+    {
+      "emoji": "🎓",
+      "title": "Hors Kadre",
+      "description_fr": "Orientation, Parcoursup et accompagnement des familles",
+      "description_en": "Education guidance and Parcoursup",
+      "url": "https://katy.ho.free.fr"
+    },
+    {
+      "emoji": "✍️",
+      "title": "Medium",
+      "description_fr": "Articles techniques et réflexions personnelles",
+      "description_en": "Technical articles and personal reflections",
+      "url": "https://medium.com/@katy.saintin"
+    },
+    {
+      "emoji": "📰",
+      "title": "Mediapart",
+      "description_fr": "Chroniques et billets d'humeur",
+      "description_en": "Articles and blog posts",
+      "url": "https://blogs.mediapart.fr/katy-ho/blog"
+    },
+    {
+      "emoji": "📸",
+      "title": "Photography",
+      "description_fr": "Photographie événementielle et artistique",
+      "description_en": "Event and artistic photography",
+      "url": "#"
+    },
+    {
+      "emoji": "🎵",
+      "title": "Music",
+      "description_fr": "Composition, concerts et chaîne YouTube",
+      "description_en": "Music, concerts and YouTube channel",
+      "url": "#"
+    }
+  ],
+
+  "social": [
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/katysaintin"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/katysaintin"
+    },
+    {
+      "name": "Medium",
+      "url": "https://medium.com/@katy.saintin"
+    }
+  ],
+
+  "footer": {
+    "owner": "Katy Saintin",
+    "email": "contact@katysaintin.fr",
+    "copyright": "© Katy Saintin",
+    "legal_fr": "Mentions légales",
+    "legal_en": "Legal notice"
+  }
+}
