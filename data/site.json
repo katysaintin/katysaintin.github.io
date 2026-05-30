@@ -1,19 +1,157 @@
 {
   "site": {
-    "title_fr": "Katy Saintin",
-    "title_en": "Katy Saintin",
-    "subtitle_fr": "Experte Senior CEA • Ingénierie Logicielle Scientifique",
-    "subtitle_en": "CEA Senior Expert • Scientific Software Engineering",
-    "description_fr": "SCADA • EPICS • TANGO • IA • Transmission des connaissances",
-    "description_en": "SCADA • EPICS • TANGO • AI • Knowledge Sharing",
-    "photo": "assets/img/katy.jpg"
+    "title": "Katy Saintin",
+    "url": "https://katysaintin.github.io",
+    "author": "Katy Saintin",
+    "defaultLanguage": "fr"
   },
 
-  "googleAnalytics": {
-    "measurementId": "G-N1H0D33HE0"
+  "analytics": {
+    "googleAnalyticsId": "G-N1H0D33HE0"
   },
 
-  "navigation": [
+  "theme": {
+    "primary": "#2f3b73",
+    "secondary": "#c96f4a",
+    "background": "#f8f7f4",
+    "text": "#202020"
+  },
+
+  "hero": {
+    "fr": {
+      "name": "Katy Saintin",
+      "title": "Experte Senior CEA",
+      "subtitle": "Scientific Software & Data Engineering",
+      "keywords": [
+        "SCADA",
+        "EPICS",
+        "TANGO",
+        "Scientific Data",
+        "IA"
+      ]
+    },
+    "en": {
+      "name": "Katy Saintin",
+      "title": "CEA Senior Expert",
+      "subtitle": "Scientific Software & Data Engineering",
+      "keywords": [
+        "SCADA",
+        "EPICS",
+        "TANGO",
+        "Scientific Data",
+        "AI"
+      ]
+    }
+  },
+
+  "stats": [
+    {
+      "value": "25+",
+      "fr": "Années d'expérience",
+      "en": "Years Experience"
+    },
+    {
+      "value": "20+",
+      "fr": "Publications internationales",
+      "en": "International Publications"
+    },
+    {
+      "value": "40+",
+      "fr": "Projets MUSCADE",
+      "en": "MUSCADE Projects"
+    },
+    {
+      "value": "90+",
+      "fr": "Systèmes supportés",
+      "en": "Systems Supported"
+    }
+  ],
+
+  "featured": [
+    {
+      "emoji": "📄",
+      "titleFr": "Curriculum Vitae",
+      "titleEn": "Curriculum Vitae",
+      "descriptionFr": "Experte Senior CEA • Scientific Software & Data Engineering",
+      "descriptionEn": "CEA Senior Expert • Scientific Software & Data Engineering",
+      "url": "cv.html"
+    }
+  ],
+
+  "achievements": [
+    {
+      "fr": "Créatrice du SOLEIL DataBrowser",
+      "en": "Creator of SOLEIL DataBrowser"
+    },
+    {
+      "fr": "Créatrice du Scientific Data Retriever (SDR)",
+      "en": "Creator of Scientific Data Retriever (SDR)"
+    },
+    {
+      "fr": "Responsable produit MUSCADE",
+      "en": "MUSCADE Product Owner"
+    },
+    {
+      "fr": "Experte Senior CEA",
+      "en": "CEA Senior Expert"
+    },
+    {
+      "fr": "Conférencière internationale depuis plus de 20 ans",
+      "en": "International Conference Speaker for 20+ years"
+    }
+  ],
+
+  "universes": [
+    {
+      "emoji": "⚙️",
+      "title": "Katy In Control",
+      "descriptionFr": "SCADA, EPICS, TANGO et contrôle-commande scientifique",
+      "descriptionEn": "SCADA, EPICS, TANGO and scientific control systems",
+      "url": "https://github.com/katysaintin/KatyInControl"
+    },
+
+    {
+      "emoji": "🎓",
+      "title": "Hors Kadre",
+      "descriptionFr": "Orientation, Parcoursup et accompagnement des familles",
+      "descriptionEn": "Student orientation and higher education guidance",
+      "url": "https://horskadre.github.io"
+    },
+
+    {
+      "emoji": "✍️",
+      "title": "Medium",
+      "descriptionFr": "Articles techniques et retours d'expérience",
+      "descriptionEn": "Technical articles and experience sharing",
+      "url": "https://medium.com/@katy.saintin"
+    },
+
+    {
+      "emoji": "🎙️",
+      "title": "Podcast",
+      "descriptionFr": "Vulgarisation scientifique et technique",
+      "descriptionEn": "Scientific and technical outreach",
+      "url": ""
+    },
+
+    {
+      "emoji": "📸",
+      "title": "Photography",
+      "descriptionFr": "Fashion, portraits et publications internationales",
+      "descriptionEn": "Fashion, portraits and international publications",
+      "url": ""
+    },
+
+    {
+      "emoji": "🎵",
+      "title": "Music",
+      "descriptionFr": "Composition, chant et concerts",
+      "descriptionEn": "Music composition, vocals and live performances",
+      "url": ""
+    }
+  ],
+
+  "menu": [
     {
       "emoji": "🏠",
       "fr": "Accueil",
@@ -23,7 +161,7 @@
     {
       "emoji": "📄",
       "fr": "CV",
-      "en": "Resume",
+      "en": "CV",
       "url": "cv.html"
     },
     {
@@ -41,7 +179,7 @@
     {
       "emoji": "🎤",
       "fr": "Conférences",
-      "en": "Talks",
+      "en": "Conferences",
       "url": "conferences.html"
     },
     {
@@ -54,81 +192,20 @@
       "emoji": "⚙️",
       "fr": "Katy In Control",
       "en": "Katy In Control",
-      "url": "katyincontrol.html"
+      "url": "community.html"
     },
     {
       "emoji": "🧠",
       "fr": "IA & Digital Twin",
       "en": "AI & Digital Twin",
-      "url": "digitaltwin.html"
-    }
-  ],
-
-  "univers": [
-    {
-      "emoji": "⚙️",
-      "title": "Katy In Control",
-      "description_fr": "SCADA, EPICS, TANGO et contrôle-commande scientifique",
-      "description_en": "SCADA, EPICS, TANGO and scientific control systems",
-      "url": "https://github.com/katysaintin/KatyInControl"
-    },
-    {
-      "emoji": "🎓",
-      "title": "Hors Kadre",
-      "description_fr": "Orientation, Parcoursup et accompagnement des familles",
-      "description_en": "Education guidance and Parcoursup",
-      "url": "https://katy.ho.free.fr"
-    },
-    {
-      "emoji": "✍️",
-      "title": "Medium",
-      "description_fr": "Articles techniques et réflexions personnelles",
-      "description_en": "Technical articles and personal reflections",
-      "url": "https://medium.com/@katy.saintin"
-    },
-    {
-      "emoji": "📰",
-      "title": "Mediapart",
-      "description_fr": "Chroniques et billets d'humeur",
-      "description_en": "Articles and blog posts",
-      "url": "https://blogs.mediapart.fr/katy-ho/blog"
-    },
-    {
-      "emoji": "📸",
-      "title": "Photography",
-      "description_fr": "Photographie événementielle et artistique",
-      "description_en": "Event and artistic photography",
-      "url": "#"
-    },
-    {
-      "emoji": "🎵",
-      "title": "Music",
-      "description_fr": "Composition, concerts et chaîne YouTube",
-      "description_en": "Music, concerts and YouTube channel",
-      "url": "#"
-    }
-  ],
-
-  "social": [
-    {
-      "name": "LinkedIn",
-      "url": "https://www.linkedin.com/in/katysaintin"
-    },
-    {
-      "name": "GitHub",
-      "url": "https://github.com/katysaintin"
-    },
-    {
-      "name": "Medium",
-      "url": "https://medium.com/@katy.saintin"
+      "url": "ai.html"
     }
   ],
 
   "footer": {
-    "owner": "Katy Saintin",
-    "email": "contact@katysaintin.fr",
-    "copyright": "© Katy Saintin",
-    "legal_fr": "Mentions légales",
-    "legal_en": "Legal notice"
+    "email": "",
+    "linkedin": "",
+    "github": "https://github.com/katysaintin",
+    "copyright": "© Katy Saintin"
   }
 }
