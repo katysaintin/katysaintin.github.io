@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Katy Saintin</title>
+
+<style>
+
+body{
+    font-family:system-ui,sans-serif;
+    max-width:1200px;
+    margin:auto;
+    padding:2rem;
+    line-height:1.6;
+}
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav a{
+    margin-right:1rem;
+    text-decoration:none;
+}
+
+.hero{
+    text-align:center;
+    padding:4rem 0;
+}
+
+.univers{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:1rem;
+}
+
+.card{
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:1rem;
+}
+
+footer{
+    margin-top:4rem;
+    border-top:1px solid #ddd;
+    padding-top:1rem;
+    text-align:center;
+}
+
+button{
+    cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<nav id="menu"></nav>
+
+<button id="langBtn">
+FR / EN
+</button>
+
+</header>
+
+<section class="hero">
+
+<h1 id="title"></h1>
+
+<h2 id="subtitle"></h2>
+
+<p id="description"></p>
+
+</section>
+
+<section>
+
+<h2>Univers</h2>
+
+<div id="univers" class="univers"></div>
+
+</section>
+
+<footer id="footer"></footer>
+
+<script>
+
+let currentLang="fr";
+
+fetch("data/site.json")
+.then(r=>r.json())
+.then(data=>{
+
+initAnalytics(data.googleAnalytics.measurementId);
+
+render(data);
+
+document
+.getElementById("langBtn")
+.addEventListener("click",()=>{
+
+currentLang=currentLang==="fr"?"en":"fr";
+
+render(data);
+
+});
+
+});
+
+function render(data){
+
+document.getElementById("title")
+.innerText=data.site["title_"+currentLang];
+
+document.getElementById("subtitle")
+.innerText=data.site["subtitle_"+currentLang];
+
+document.getElementById("description")
+.innerText=data.site["description_"+currentLang];
+
+const menu=document.getElementById("menu");
+
+menu.innerHTML=data.navigation.map(item=>`
+
+<a href="${item.url}">
+${item.emoji} ${item[currentLang]}
+</a>
+
+`).join("");
+
+const univers=document.getElementById("univers");
+
+univers.innerHTML=data.univers.map(item=>`
+
+<div class="card">
+
+<h3>${item.emoji} ${item.title}</h3>
+
+<p>${item["description_"+currentLang]}</p>
+
+<a href="${item.url}" target="_blank">
+Open →
+</a>
+
+</div>
+
+`).join("");
+
+document.getElementById("footer").innerHTML=`
+
+<p>${data.footer.copyright}</p>
+
+<p>${data.footer.owner}</p>
+
+`;
+
+}
+
+function initAnalytics(id){
+
+const script=document.createElement('script');
+
+script.async=true;
+
+script.src=`https://www.googletagmanager.com/gtag/js?id=${id}`;
+
+document.head.appendChild(script);
+
+window.dataLayer=window.dataLayer||[];
+
+function gtag(){dataLayer.push(arguments);}
+
+gtag('js',new Date());
+
+gtag('config',id,{
+anonymize_ip:true
+});
+
+}
+
+</script>
+
+</body>
+</html>
