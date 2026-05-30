@@ -391,7 +391,9 @@
     document.getElementById('cv-experience').innerHTML = cv.experience.map(e =>
       `<li>
         <div class="tl-period">${e.period}</div>
-        <div class="tl-org">${e.organization}</div>
+        <div class="tl-org">${e.url
+          ? `<a href="${e.url}" target="_blank" style="color:var(--navy);text-decoration:none;border-bottom:2px solid var(--terracotta)">${e.organization}</a>`
+          : e.organization}</div>
         <div class="tl-pos">${e.position}</div>
         <div class="tl-details">${e.details.map(d => `<div class="tl-detail"><span style="color:var(--terracotta);font-weight:700;margin-right:.4rem">→</span>${d}</div>`).join('')}</div>
       </li>`).join('');
@@ -425,7 +427,9 @@
       `<div class="edu-item">
         <div class="edu-year">${e.year}</div>
         <div class="edu-degree">${fr ? e.degreeFr : e.degreeEn}</div>
-        <div class="edu-institution">${e.institution}</div>
+        <div class="edu-institution">${e.url
+          ? `<a href="${e.url}" target="_blank" style="color:var(--navy);text-decoration:none;border-bottom:2px solid var(--terracotta)">${e.institution}</a>`
+          : e.institution}</div>
         <div class="edu-details">${fr ? e.detailsFr : e.detailsEn}</div>
       </div>`).join('');
 
