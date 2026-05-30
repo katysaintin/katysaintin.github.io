@@ -1,287 +1,72 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Katy Saintin</title>
-<style>
-:root {
-  --navy: #2f3b73;
-  --terracotta: #c96f4a;
-  --background: #f8f7f4;
-  --text: #202020;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Katy Saintin</title>
+  <style>
+    /* ── Styles spécifiques à index.html ── */
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 9vw, 3.5rem);
+      margin-bottom: .6rem;
+      font-weight: 800;
+    }
+    .hero h2 {
+      color: var(--navy);
+      margin-bottom: .4rem;
+      font-size: clamp(1.1rem, 4vw, 1.5rem);
+      font-weight: 700;
+    }
+    .hero .subtitle { color: #666; font-size: 1rem; margin-bottom: 1rem; }
 
-body {
-  font-family: system-ui, sans-serif;
-  background: var(--background);
-  color: var(--text);
-}
+    .skills-line {
+      color: #555; font-size: 1rem; margin: .5rem 0 1.5rem;
+      display: flex; justify-content: center; align-items: center;
+      gap: .4rem; flex-wrap: wrap;
+    }
+    .skills-line span { color: var(--terracotta); font-weight: 700; }
+    .skills-line .dot { color: #bbb; }
 
-/* ══ TOPBAR ══ */
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  background: var(--background);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  border-bottom: 1px solid rgba(0,0,0,.06);
-}
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem; margin: 2rem 0;
+    }
+    .stat { background: white; border-radius: 16px; padding: 1.4rem; text-align: center; }
+    .stat-value { font-size: 2rem; font-weight: bold; color: var(--navy); }
+    .stat-label { color: #666; font-size: .9rem; margin-top: .3rem; }
 
-.topbar-left {
-  display: flex;
-  align-items: center;
-  gap: .8rem;
-}
+    .featured-card {
+      background: white; border-left: 6px solid var(--terracotta);
+      border-radius: 16px; padding: 1.5rem 2rem; margin-bottom: 1rem;
+    }
+    .featured-card a { color: var(--navy); font-weight: bold; text-decoration: none; font-size: 1.1rem; }
+    .featured-card p { color: #666; margin-top: .4rem; }
 
-.site-name {
-  font-weight: 700;
-  color: var(--navy);
-  font-size: 1.05rem;
-  text-decoration: none;
-}
+    .achievements { background: white; border-radius: 16px; padding: 1.5rem 2rem; }
+    .achievements li { margin-bottom: .7rem; line-height: 1.5; }
 
-/* ══ BOUTONS ══ */
-.icon-btn {
-  border: none;
-  background: var(--navy);
-  color: white;
-  padding: .55rem .85rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  line-height: 1;
-  flex-shrink: 0;
-}
-
-.lang-btn {
-  border: none;
-  background: transparent;
-  color: var(--navy);
-  border: 2px solid var(--navy);
-  padding: .45rem .9rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: .85rem;
-  flex-shrink: 0;
-}
-
-/* ══ OVERLAY ══ */
-#overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.4);
-  z-index: 200;
-}
-#overlay.open { display: block; }
-
-/* ══ SIDE PANEL ══ */
-#side-panel {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 280px;
-  max-width: 85vw;
-  background: white;
-  z-index: 300;
-  transform: translateX(-100%);
-  transition: transform .28s ease;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 4px 0 24px rgba(0,0,0,.12);
-}
-#side-panel.open { transform: translateX(0); }
-
-.panel-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.2rem 1.5rem;
-  border-bottom: 1px solid #eee;
-}
-
-.panel-title {
-  font-weight: 700;
-  color: var(--navy);
-  font-size: 1rem;
-}
-
-.close-btn {
-  border: none;
-  background: none;
-  font-size: 1.4rem;
-  cursor: pointer;
-  color: #666;
-  padding: .2rem .4rem;
-}
-
-#side-nav {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 0;
-  overflow-y: auto;
-  flex: 1;
-}
-
-#side-nav a {
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 500;
-  padding: .9rem 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: .7rem;
-  font-size: 1rem;
-  transition: background .15s;
-}
-
-#side-nav a:hover,
-#side-nav a.active {
-  background: #f0f2fa;
-  color: var(--navy);
-}
-
-/* ══ CONTENU ══ */
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 2rem 1.5rem;
-}
-
-/* HERO */
-.hero {
-  text-align: center;
-  padding: 4rem 1rem;
-}
-.hero h1 {
-  font-size: clamp(2rem, 8vw, 3rem);
-  margin-bottom: .5rem;
-}
-.hero h2 {
-  color: var(--navy);
-  margin-bottom: .5rem;
-  font-size: clamp(1rem, 4vw, 1.4rem);
-}
-.hero p { color: #666; }
-
-.keywords {
-  display: flex;
-  justify-content: center;
-  gap: .5rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-}
-.badge {
-  background: var(--terracotta);
-  color: white;
-  padding: .4rem .8rem;
-  border-radius: 999px;
-  font-size: .85rem;
-}
-
-/* STATS */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1rem;
-  margin: 2rem 0;
-}
-.stat {
-  background: white;
-  border-radius: 16px;
-  padding: 1.4rem;
-  text-align: center;
-}
-.stat-value {
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--navy);
-}
-
-/* SECTIONS */
-.section-title {
-  color: var(--navy);
-  margin: 3rem 0 1rem;
-  font-size: 1.3rem;
-}
-
-.featured-card {
-  background: white;
-  border-left: 6px solid var(--terracotta);
-  border-radius: 16px;
-  padding: 1.5rem 2rem;
-  margin-bottom: 1rem;
-}
-.featured-card a { color: var(--navy); font-weight: bold; text-decoration: none; }
-
-.achievements {
-  background: white;
-  border-radius: 16px;
-  padding: 1.5rem 2rem;
-}
-.achievements li { margin-bottom: .7rem; line-height: 1.5; }
-
-.universes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
-.card {
-  background: white;
-  border-radius: 16px;
-  padding: 1.4rem;
-}
-.card strong { color: var(--navy); }
-.card p { color: #555; font-size: .95rem; margin: .4rem 0 .8rem; }
-.card a { color: var(--terracotta); text-decoration: none; font-weight: 600; font-size: .9rem; }
-
-footer {
-  margin-top: 4rem;
-  padding: 2rem 0;
-  text-align: center;
-  color: #888;
-  font-size: .9rem;
-}
-footer a { color: #888; }
-</style>
+    .universes { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+    .card { background: white; border-radius: 16px; padding: 1.4rem; }
+    .card .card-title { font-weight: 700; color: var(--navy); font-size: 1rem; }
+    .card p { color: #555; font-size: .9rem; margin: .4rem 0 .8rem; }
+    .card a { color: var(--terracotta); text-decoration: none; font-weight: 600; font-size: .9rem; }
+  </style>
 </head>
 <body>
 
-<!-- TOPBAR -->
-<div class="topbar">
-  <div class="topbar-left">
-    <button class="icon-btn" id="burger" aria-label="Menu">☰</button>
-    <a href="index.html" class="site-name">Katy Saintin</a>
-  </div>
-  <button class="lang-btn" id="langBtn">FR / EN</button>
-</div>
+<!-- La topbar et le panneau sont injectés par site.js -->
 
-<!-- OVERLAY -->
-<div id="overlay"></div>
-
-<!-- PANNEAU LATÉRAL -->
-<div id="side-panel" role="dialog" aria-modal="true" aria-label="Navigation">
-  <div class="panel-header">
-    <span class="panel-title">Navigation</span>
-    <button class="close-btn" id="closeBtn" aria-label="Fermer">✕</button>
-  </div>
-  <nav id="side-nav"></nav>
-</div>
-
-<!-- CONTENU -->
 <div class="container">
   <section class="hero">
     <h1 id="hero-name"></h1>
     <h2 id="hero-title"></h2>
-    <p id="hero-subtitle"></p>
-    <div id="keywords" class="keywords"></div>
+    <p class="subtitle" id="hero-subtitle"></p>
+    <div class="skills-line" id="skills-line"></div>
   </section>
 
   <section id="stats" class="stats"></section>
@@ -299,5 +84,42 @@ footer a { color: #888; }
 </div>
 
 <script src="js/site.js"></script>
+<script>
+  // Rendu spécifique à index.html
+  document.addEventListener('siteReady', ({ detail: { data, lang } }) => {
+    const h = data.hero[lang];
+    document.getElementById('hero-name').textContent      = h.name;
+    document.getElementById('hero-title').textContent     = h.title;
+    document.getElementById('hero-subtitle').textContent  = h.subtitle;
+
+    document.getElementById('skills-line').innerHTML = h.keywords
+      .map(k => `<span>${k}</span>`)
+      .join('<span class="dot"> • </span>');
+
+    document.getElementById('stats').innerHTML = data.stats.map(s =>
+      `<div class="stat">
+        <div class="stat-value">${s.value}</div>
+        <div class="stat-label">${s[lang]}</div>
+      </div>`).join('');
+
+    document.getElementById('featured').innerHTML = data.featured.map(f =>
+      `<div class="featured-card">
+        <a href="${f.url}">${f.emoji} ${lang === 'fr' ? f.titleFr : f.titleEn}</a>
+        <p>${lang === 'fr' ? f.descriptionFr : f.descriptionEn}</p>
+      </div>`).join('');
+
+    document.getElementById('achievements').innerHTML =
+      `<ul class="achievements">` +
+      data.achievements.map(a => `<li>${lang === 'fr' ? a.fr : a.en}</li>`).join('') +
+      `</ul>`;
+
+    document.getElementById('universes').innerHTML = data.universes.map(u =>
+      `<div class="card">
+        <div class="card-title">${u.emoji} ${u.title}</div>
+        <p>${lang === 'fr' ? u.descriptionFr : u.descriptionEn}</p>
+        ${u.url ? `<a href="${u.url}">Open →</a>` : ''}
+      </div>`).join('');
+  });
+</script>
 </body>
 </html>
