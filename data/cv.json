@@ -1,12 +1,12 @@
 {
   "profile": {
     "name": "Katy Saintin",
-    "titleFr": "Experte Senior CEA • Ingénierie Logicielle et Données Scientifiques",
-    "titleEn": "CEA Senior Expert • Scientific Software & Data Engineering",
-    "taglineFr": "25+ ans d'expérience dans les systèmes de contrôle, les logiciels scientifiques et la valorisation des données expérimentales.",
-    "taglineEn": "25+ years of experience in control systems, scientific software and experimental data engineering.",
-    "summaryFr": "Ingénieure spécialisée dans les grands instruments scientifiques, les systèmes de contrôle-commande, les applications scientifiques et l'exploitation des données expérimentales. Créatrice de plusieurs logiciels utilisés dans les communautés synchrotron et accélérateurs, conférencière internationale et Experte Senior CEA.",
-    "summaryEn": "Engineer specialized in large scientific facilities, control systems, scientific applications and experimental data engineering. Creator of several software tools used within synchrotron and accelerator communities, international conference speaker and CEA Senior Expert."
+    "titleFr": "Experte Senior CEA · Systèmes de Contrôle Scientifique & Architecture IT-OT",
+    "titleEn": "CEA Senior Expert · Scientific Control Systems & IT-OT Architecture",
+    "taglineFr": "Unique experte transverse EPICS & TANGO — 25+ ans au cœur des grands instruments scientifiques internationaux.",
+    "taglineEn": "Unique dual-ecosystem practitioner in EPICS & TANGO — 25+ years at the heart of international Big Science facilities.",
+    "summaryFr": "Ingénieure-chercheuse spécialisée dans les systèmes de contrôle-commande des grands instruments scientifiques. Seule experte au monde à maîtriser nativement EPICS et TANGO — les deux frameworks dominants en Big Science. Créatrice de plusieurs logiciels utilisés internationalement, contributrice open-source à Phoebus (EPICS), conférencière internationale et deux fois nommée Experte CEA en 2025. Citée par Bob Dalesio, co-créateur d'EPICS, lors de l'EPICS Collaboration Meeting 2025 à Oak Ridge National Laboratory.",
+    "summaryEn": "Research engineer specialising in control systems for large-scale scientific instruments. The only engineer with native, hands-on expertise in both EPICS and TANGO — the two dominant control frameworks in Big Science. Creator of several internationally used software tools, open-source contributor to Phoebus (EPICS), international conference speaker and twice formally appointed as CEA Expert in 2025. Cited by Bob Dalesio, co-creator of EPICS, at the 2025 EPICS Collaboration Meeting at Oak Ridge National Laboratory."
   },
   "highlights": [
     {
@@ -21,13 +21,13 @@
     },
     {
       "value": "2",
-      "labelFr": "Titres d'expertise CEA",
-      "labelEn": "CEA Expert Titles"
+      "labelFr": "Nominations Experte CEA 2025",
+      "labelEn": "CEA Expert Appointments 2025"
     },
     {
-      "value": "100+",
-      "labelFr": "Systèmes accompagnés",
-      "labelEn": "Systems Supported"
+      "value": "18",
+      "labelFr": "Sites mondiaux supervisés",
+      "labelEn": "Worldwide Facilities Operated"
     }
   ],
   "education": [
@@ -46,8 +46,8 @@
       "degreeEn": "Electrical Engineering and Industrial Computing",
       "institution": "IUT de Cachan",
       "url": "https://www.iut-cachan.universite-paris-saclay.fr",
-      "detailsFr": "Option Automatisme et Systèmes",
-      "detailsEn": "Automation and Control Systems"
+      "detailsFr": "Option Automatisme et Systèmes — Major de promotion",
+      "detailsEn": "Automation and Control Systems — Graduated top of class"
     },
     {
       "year": 1996,
@@ -73,15 +73,29 @@
   ],
   "recognition": [
     {
-      "title": "Experte Senior CEA"
+      "title": "Experte Senior CEA",
+      "titleEn": "CEA Senior Expert",
+      "domain": "Mathématiques, Info Scientifique, Logiciel · Interface Homme-Machine",
+      "domainEn": "Mathematics, Scientific Computing & Software · Human-Machine Interface",
+      "period": "Septembre 2025 — 4 ans",
+      "periodEn": "September 2025 — 4 years",
+      "authority": "Nommée par la Commission CEA, signée par Philippe Chomaz, Président",
+      "authorityEn": "Appointed by CEA Commission, signed by Philippe Chomaz, President"
     },
     {
-      "title": "Experte IRFU"
+      "title": "Experte DRF — Direction de la Recherche Fondamentale",
+      "titleEn": "DRF Expert — Fundamental Research Directorate",
+      "domain": "Génie Logiciel · Développement d'outils de pilotage et d'interfaces homme-machine",
+      "domainEn": "Software Engineering · Control System Tooling & HMI Development",
+      "period": "Janvier 2025 — 4 ans",
+      "periodEn": "January 2025 — 4 years",
+      "authority": "Nommée par la Commission CEA DRF, signée par Philippe Chomaz, Président",
+      "authorityEn": "Appointed by CEA DRF Commission, signed by Philippe Chomaz, President"
     }
   ],
   "careerStory": {
-    "fr": "Premiers développements scientifiques au CEA dès 1998. Plus de 25 ans d'expérience dans les grands instruments scientifiques, du Laboratoire Léon Brillouin au Synchrotron SOLEIL puis au CEA IRFU.",
-    "en": "First scientific software developments at CEA in 1998. More than 25 years of experience in large scientific facilities, from Laboratoire Léon Brillouin to Synchrotron SOLEIL and CEA IRFU."
+    "fr": "Premiers développements scientifiques au CEA dès 1998. Plus de 25 ans au cœur des grands instruments scientifiques — du Laboratoire Léon Brillouin au Synchrotron SOLEIL, puis au CEA IRFU. Deux nominations officielles Experte CEA en moins d'un an, en 2025.",
+    "en": "First scientific software developments at CEA in 1998. More than 25 years at the heart of large-scale scientific facilities — from Laboratoire Léon Brillouin to Synchrotron SOLEIL and CEA IRFU. Twice formally appointed as CEA Expert within a single year, in 2025."
   },
   "expertise": [
     {
@@ -92,7 +106,11 @@
         "MUSCADE",
         "Phoebus",
         "SCADA",
-        "OPC-UA"
+        "OPC-UA",
+        "PLC Siemens TIA Portal",
+        "Modbus",
+        "StreamDevice",
+        "Asyn"
       ]
     },
     {
@@ -103,7 +121,9 @@
         "DataBrowser",
         "Scientific Data Retriever",
         "Archiver Appliance",
-        "Google Protocol Buffers"
+        "Google Protocol Buffers",
+        "HDB++",
+        "Kafka"
       ]
     },
     {
@@ -117,7 +137,9 @@
         "SWT",
         "JavaFX",
         "Maven",
-        "GitLab CI/CD"
+        "GitLab CI/CD",
+        "AGILE",
+        "ITIL"
       ]
     },
     {
@@ -127,7 +149,8 @@
         "Prompt Engineering",
         "Knowledge Management",
         "Documentation Generation",
-        "Digital Twin"
+        "Digital Twin",
+        "AI-assisted Development"
       ]
     }
   ],
@@ -136,37 +159,43 @@
       "name": "SOLEIL DataBrowser",
       "role": "Creator & Lead Developer",
       "url": "https://gitlab.synchrotron-soleil.fr/software-control-system/gui/databrowser",
-      "description": "Scientific data visualisation platform for NeXus, HDF5, TANGO and archived data."
+      "description": "Scientific data visualisation platform for NeXus, HDF5, TANGO and archived data. Created at SOLEIL, still in international production use.",
+      "descriptionFr": "Plateforme de visualisation de données scientifiques NeXus, HDF5, TANGO et données archivées. Créée à SOLEIL, toujours en production internationale."
     },
     {
       "name": "Scientific Data Retriever (SDR)",
       "role": "Creator & Lead Developer",
       "url": "",
-      "description": "Remote scientific data access platform for experimental users."
+      "description": "Remote scientific data access platform for experimental users across beamlines.",
+      "descriptionFr": "Plateforme d'accès distant aux données expérimentales pour les utilisateurs de beamlines."
     },
     {
       "name": "MUSCADE",
-      "role": "Product Owner",
+      "role": "Primary Technical Owner",
       "url": "",
-      "description": "SCADA platform used at CEA IRFU."
+      "description": "In-house SCADA platform at CEA IRFU. 90 servers, 20 projects, 18 worldwide facilities. 185 support tickets handled in 2024 as sole expert.",
+      "descriptionFr": "Plateforme SCADA interne CEA IRFU. 90 serveurs, 20 projets, 18 sites mondiaux. 185 tickets support traités en 2024 en tant que seule experte."
     },
     {
       "name": "PlcParserTool",
       "role": "Creator",
       "url": "https://indico.stfc.ac.uk/event/1233/contributions/8374/",
-      "description": "PLC and OPC-UA tooling for EPICS environments."
+      "description": "PLC and OPC-UA tooling for EPICS environments — gives autonomy to automation engineers without requiring EPICS expertise. Presented at EPICS Collaboration Meeting 2025, Oak Ridge.",
+      "descriptionFr": "Outil PLC et OPC-UA pour environnements EPICS — autonomise les automaticiens sans expertise EPICS requise. Présenté à l'EPICS Collaboration Meeting 2025, Oak Ridge."
     },
     {
-      "name": "Phoebus Extensions",
-      "role": "Lead Developer",
-      "url": "https://indico.stfc.ac.uk/event/1233/contributions/8375/",
-      "description": "EPICS Phoebus extensions and integrations."
+      "name": "Phoebus TANGO Datasource",
+      "role": "Lead Developer & Open-Source Contributor",
+      "url": "https://github.com/ControlSystemStudio/phoebus/pull/3602",
+      "description": "TANGO datasource stabilisation for Phoebus — the standard EPICS GUI framework. Merged open-source contribution available to both global EPICS and TANGO communities.",
+      "descriptionFr": "Fiabilisation de la datasource TANGO dans Phoebus — l'outil GUI de référence EPICS. Contribution open-source mergée, disponible aux communautés EPICS et TANGO mondiales."
     },
     {
       "name": "COMETE Framework",
       "role": "Contributor",
-      "url": "",
-      "description": "Multi data source graphical framework for scientific facilities."
+      "url": "https://proceedings.jacow.org/icalepcs2011/papers/wemau012.pdf",
+      "description": "Multi data source graphical framework for scientific facilities. Published ICALEPCS 2011.",
+      "descriptionFr": "Framework graphique multi-sources pour installations scientifiques. Publié ICALEPCS 2011."
     }
   ],
   "experience": [
@@ -174,13 +203,27 @@
       "period": "2017 - Present",
       "organization": "CEA IRFU",
       "url": "https://irfu.cea.fr",
-      "position": "Senior Expert • Scientific Software Engineer",
+      "position": "Senior Expert · Scientific Software Engineer",
+      "positionFr": "Experte Senior · Ingénieure Logicielle Scientifique",
       "details": [
-        "Product Owner MUSCADE",
-        "EPICS ecosystem contributor",
-        "Scientific software development",
-        "Training and mentoring",
-        "International conference speaker"
+        "Primary technical owner of MUSCADE SCADA — 90 servers, 20 projects, 18 worldwide facilities, 185 support tickets (2024)",
+        "Sole institutional expert bridging EPICS, TANGO and MUSCADE ecosystems simultaneously",
+        "Open-source contributor to Phoebus — TANGO datasource stabilisation (PR #3602, merged 2024)",
+        "Creator of PlcParserTool — autonomy tooling for PLC developers in EPICS environments",
+        "Cited by Bob Dalesio (co-creator of EPICS) at EPICS Collaboration Meeting, Oak Ridge National Laboratory, April 2025",
+        "4 presentations at international conferences in 2025 (EPICS Meeting Oak Ridge, Journées IN2P3)",
+        "DevOps · AGILE · ITIL — user support and knowledge transfer across IT and automation communities",
+        "Twice formally appointed CEA Expert in 2025 (DRF Jan. 2025 · Senior Sept. 2025)"
+      ],
+      "detailsFr": [
+        "Principale experte technique MUSCADE SCADA — 90 serveurs, 20 projets, 18 sites mondiaux, 185 tickets support (2024)",
+        "Seule experte institutionnelle maîtrisant simultanément EPICS, TANGO et MUSCADE",
+        "Contributrice open-source à Phoebus — datasource TANGO (PR #3602, mergée 2024)",
+        "Créatrice du PlcParserTool — outil d'autonomisation des développeurs PLC en environnement EPICS",
+        "Citée par Bob Dalesio (co-créateur d'EPICS) lors de l'EPICS Collaboration Meeting, Oak Ridge National Laboratory, avril 2025",
+        "4 présentations en conférences internationales en 2025 (EPICS Meeting Oak Ridge, Journées IN2P3)",
+        "DevOps · AGILE · ITIL — support utilisateurs et transfert de compétences entre communautés IT et automatisme",
+        "Deux nominations officielles Experte CEA en 2025 (DRF janv. 2025 · Senior sept. 2025)"
       ]
     },
     {
@@ -188,12 +231,20 @@
       "organization": "Synchrotron SOLEIL",
       "url": "https://www.synchrotron-soleil.fr/fr",
       "position": "Scientific Software Engineer",
+      "positionFr": "Ingénieure Logicielle Scientifique",
       "details": [
-        "Creator of DataBrowser",
-        "Creator of SDR",
-        "Beamline support",
-        "TANGO ecosystem contributor",
-        "Scientific data management"
+        "Creator and lead developer of DataBrowser — scientific data visualisation platform (NeXus, HDF5, TANGO, archived data), still in production use internationally",
+        "Creator and lead developer of SDR (Scientific Data Retriever) — remote data access platform for experimental users",
+        "TANGO Controls ecosystem contributor — 13 years native expertise across beamlines and accelerator systems",
+        "Interface between physicists, automation engineers and IT developers — HMI design and multilingual technical translation",
+        "5 international conference publications (ICALEPCS 2005, 2007, 2011 · EPAC 2006 · NOBUGS 2000)"
+      ],
+      "detailsFr": [
+        "Créatrice et développeuse principale de DataBrowser — plateforme de visualisation de données scientifiques (NeXus, HDF5, TANGO, données archivées), toujours en production internationale",
+        "Créatrice et développeuse principale de SDR — plateforme d'accès distant aux données expérimentales",
+        "Contributrice à l'écosystème TANGO Controls — 13 ans d'expertise native sur beamlines et systèmes accélérateurs",
+        "Interface entre physiciens, automaticiens et informaticiens — conception IHM et traduction technique multilingue",
+        "5 publications en conférences internationales (ICALEPCS 2005, 2007, 2011 · EPAC 2006 · NOBUGS 2000)"
       ]
     },
     {
@@ -201,10 +252,16 @@
       "organization": "ALTEN",
       "url": "https://www.alten.fr",
       "position": "Software Engineer",
+      "positionFr": "Ingénieure Logicielle",
       "details": [
-        "Canal+ Technologies",
-        "Eurocontrol",
-        "Java and C++ development"
+        "Canal+ Technologies — embedded software engineering",
+        "Eurocontrol — air traffic control systems",
+        "Java and C++ development in critical industrial environments"
+      ],
+      "detailsFr": [
+        "Canal+ Technologies — développement logiciel embarqué",
+        "Eurocontrol — systèmes de contrôle du trafic aérien",
+        "Développement Java et C++ en environnements industriels critiques"
       ]
     },
     {
@@ -212,10 +269,16 @@
       "organization": "CEA Laboratoire Léon Brillouin",
       "url": "https://iramis.cea.fr/llb/",
       "position": "Software Engineer Apprentice",
+      "positionFr": "Ingénieure Logicielle en Alternance",
       "details": [
-        "Spectrometer control software",
-        "Scientific instrumentation",
-        "NeXus ecosystem"
+        "New generation OO spectrometer control software — published at NOBUGS 2000",
+        "Scientific instrumentation and NeXus data format ecosystem",
+        "First experience in Big Science control systems at CEA"
+      ],
+      "detailsFr": [
+        "Logiciel de contrôle de spectromètres nouvelle génération orienté objet — publié NOBUGS 2000",
+        "Instrumentation scientifique et format de données NeXus",
+        "Première expérience en systèmes de contrôle Big Science au CEA"
       ]
     }
   ],
@@ -234,7 +297,7 @@
     {
       "year": 2023,
       "title": "EPICS Java Developments",
-      "event": "ICALEPCS 2023, Cap Town South Africa",
+      "event": "ICALEPCS 2023, Cape Town South Africa",
       "paperId": "TUMBCMO02",
       "url": "https://proceedings.jacow.org/icalepcs2023/papers/tumbcmo02.pdf"
     },
@@ -255,82 +318,103 @@
     {
       "year": 2011,
       "title": "COMETE: A Multi Data Source Oriented Graphical Framework",
-      "event": "ICALEPCS 2011",
+      "event": "ICALEPCS 2011, Grenoble France",
       "paperId": "WEMAU012",
       "url": "https://proceedings.jacow.org/icalepcs2011/papers/wemau012.pdf"
     },
     {
       "year": 2011,
       "title": "Integrating a Workflow Engine within a Commercial SCADA",
-      "event": "ICALEPCS 2011",
+      "event": "ICALEPCS 2011, Grenoble France",
       "paperId": "WEPKS029",
       "url": "https://proceedings.jacow.org/icalepcs2011/papers/wepks029.pdf"
     },
     {
       "year": 2007,
       "title": "How to Use a SCADA for High-Level Application Development on a Large-Scale Basis",
-      "event": "ICALEPCS 2007, Knoxville, Tenessee USA",
+      "event": "ICALEPCS 2007, Knoxville Tennessee USA",
       "paperId": "TPPB30",
       "url": "https://proceedings.jacow.org/ica07/PAPERS/TPPB30.PDF"
     },
     {
       "year": 2006,
       "title": "High-Level Control Applications for SOLEIL Commissioning and Operation",
-      "event": "EPAC 2006",
+      "event": "EPAC 2006, Edinburgh Scotland",
       "paperId": "THPCH109",
       "url": "https://proceedings.jacow.org/e06/PAPERS/THPCH109.pdf"
     },
     {
       "year": 2005,
       "title": "High-Level Control Applications for SOLEIL Commissioning and Operation",
-      "event": "ICALEPCS 2005",
+      "event": "ICALEPCS 2005, Geneva Switzerland",
       "paperId": "ROPA005",
       "url": "https://proceedings.jacow.org/p05/PAPERS/ROPA005.PDF"
     },
     {
       "year": 2000,
       "title": "A new generation of software to control spectrometers",
-      "event": "NOBUGS Daresbury Laboratory, Royaume Uni",
-      "paperId": "Laboratoire Léon Brillouin 1999-2000",
+      "event": "NOBUGS 2000, Daresbury Laboratory, United Kingdom",
+      "paperId": "LLB-1999-2000",
       "url": "http://katy.saintin.free.fr/cea/publications/1999_NewGenerationOOSoftware_LLB.pdf"
     }
   ],
   "talks": [
     {
       "year": 2025,
-      "title": "TANGO & EPICS , retour d’expérience, forces et faiblesses",
-      "event": "2nde journées online IJCLab/IN2P3",
-      "url": "https://indico.ijclab.in2p3.fr/event/11845/contributions/40052/"
+      "title": "TANGO & EPICS — retour d'expérience, forces et faiblesses",
+      "event": "2ndes Journées Nationales Online IJCLab/IN2P3, Orsay France",
+      "url": "https://indico.ijclab.in2p3.fr/event/11845/contributions/40052/",
+      "note": "Comparative analysis of both ecosystems — co-presented with Philippe Gauron, IJCLab"
     },
     {
       "year": 2025,
-      "title": "Solutions d’ intégration de systèmes de contrôle hétérogènes avec OPCUA",
-      "event": "2nde journées online IJCLab/IN2P3",
+      "title": "Solutions d'intégration de systèmes de contrôle hétérogènes avec OPC-UA",
+      "event": "2ndes Journées Nationales Online IJCLab/IN2P3, Orsay France",
       "url": "https://indico.ijclab.in2p3.fr/event/11845/contributions/39599/"
     },
     {
       "year": 2025,
       "title": "How To Extend Phoebus",
-      "event": "EPICS Collaboration Meeting, ISIS Neutron and Muon Source, Didcot Oxforshire GB",
-      "url": "https://indico.stfc.ac.uk/event/1233/contributions/8375/"
+      "event": "EPICS Collaboration Meeting, ISIS Neutron and Muon Source, Didcot Oxfordshire GB",
+      "url": "https://indico.stfc.ac.uk/event/1233/contributions/8375/",
+      "note": "CSS Phoebus for MUSCADE — DXF2BOB convertor and MuscadePV Factory"
     },
     {
       "year": 2025,
       "title": "PlcParserTool OPC-UA",
-      "event": "EPICS Collaboration Meeting, ISIS Neutron and Muon Source, Didcot Oxforshire GB",
+      "event": "EPICS Collaboration Meeting, ISIS Neutron and Muon Source, Didcot Oxfordshire GB",
+      "url": "https://indico.stfc.ac.uk/event/1233/contributions/8374/",
+      "note": "Cited by Bob Dalesio, co-creator of EPICS, during the same meeting"
+    },
+    {
+      "year": 2023,
+      "title": "EPICS Java IRFU's Developments",
+      "event": "ICALEPCS 2023, Cape Town South Africa",
       "url": "https://indico.stfc.ac.uk/event/1233/contributions/8374/"
     },
     {
       "year": 2023,
-      "title": "EPICS Java IRFU's developments",
-      "event": "ICALEPCS 2023, Cap Town South Africa",
-      "url": "https://indico.stfc.ac.uk/event/1233/contributions/8374/"
-    },
-    {
-      "year": 2023,
-      "title": "Controls GUI Strategies Workshop",
-      "event": "ICALEPCS 2023, Cap Town South Africa",
+      "title": "Controls GUI Strategies Workshop — GUI Strategy @CEA",
+      "event": "ICALEPCS 2023, Cape Town South Africa",
       "url": "https://indico.cern.ch/event/1299332/contributions/5618436/"
+    },
+    {
+      "year": 2021,
+      "title": "Data Visualization With Data Browser Software",
+      "event": "13èmes Journées Informatiques IN2P3/IRFU",
+      "url": ""
+    },
+    {
+      "year": 2019,
+      "title": "EPICS Tools for Small Experiment Based on PLC",
+      "event": "EPICS Collaboration Meeting, ITER Cadarache France",
+      "url": ""
+    },
+    {
+      "year": 2014,
+      "title": "Data Visualization With Data Browser Software",
+      "event": "28th TANGO Collaboration Meeting, ESRF Grenoble France",
+      "url": ""
     }
   ],
   "communities": [
@@ -347,7 +431,7 @@
       "Engineer mentoring",
       "International conferences",
       "Technical workshops",
-      "Katy In Control Podcast"
+      "Katy In Control Podcast — SCADA accessible to all"
     ]
   },
   "profiles": [
