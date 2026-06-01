@@ -234,21 +234,21 @@
     {
       "year": 2023,
       "title": "EPICS Java Developments",
-      "event": "ICALEPCS 2023",
+      "event": "ICALEPCS 2023, Cap Town South Africa",
       "paperId": "TUMBCMO02",
       "url": "https://proceedings.jacow.org/icalepcs2023/papers/tumbcmo02.pdf"
     },
     {
       "year": 2019,
       "title": "Data Visualization With Data Browser Software",
-      "event": "ICALEPCS 2019",
+      "event": "ICALEPCS 2019, New York USA",
       "paperId": "MOMPR003",
       "url": "https://proceedings.jacow.org/icalepcs2019/papers/mompr003.pdf"
     },
     {
       "year": 2019,
       "title": "EPICS Tools for Small Experiment Based on PLC",
-      "event": "ICALEPCS 2019",
+      "event": "ICALEPCS 2019, New York USA",
       "paperId": "THAPP04",
       "url": "https://proceedings.jacow.org/icalepcs2019/papers/thapp04.pdf"
     },
@@ -269,7 +269,7 @@
     {
       "year": 2007,
       "title": "How to Use a SCADA for High-Level Application Development on a Large-Scale Basis",
-      "event": "ICALEPCS 2007",
+      "event": "ICALEPCS 2007, Knoxville, Tenessee USA",
       "paperId": "TPPB30",
       "url": "https://proceedings.jacow.org/ica07/PAPERS/TPPB30.PDF"
     },
@@ -298,15 +298,39 @@
   "talks": [
     {
       "year": 2025,
+      "title": "TANGO & EPICS , retour d’expérience, forces et faiblesses",
+      "event": "2nde journées online IJCLab/IN2P3",
+      "url": "https://indico.ijclab.in2p3.fr/event/11845/contributions/40052/"
+    },
+    {
+      "year": 2025,
+      "title": "Solutions d’ intégration de systèmes de contrôle hétérogènes avec OPCUA",
+      "event": "2nde journées online IJCLab/IN2P3",
+      "url": "https://indico.ijclab.in2p3.fr/event/11845/contributions/39599/"
+    },
+    {
+      "year": 2025,
       "title": "How To Extend Phoebus",
-      "event": "EPICS Collaboration Meeting",
+      "event": "EPICS Collaboration Meeting, ISIS Neutron and Muon Source, Didcot Oxforshire GB",
       "url": "https://indico.stfc.ac.uk/event/1233/contributions/8375/"
     },
     {
       "year": 2025,
       "title": "PlcParserTool OPC-UA",
-      "event": "EPICS Collaboration Meeting",
+      "event": "EPICS Collaboration Meeting, ISIS Neutron and Muon Source, Didcot Oxforshire GB",
       "url": "https://indico.stfc.ac.uk/event/1233/contributions/8374/"
+    },
+    {
+      "year": 2023,
+      "title": "EPICS Java IRFU's developments",
+      "event": "ICALEPCS 2023, Cap Town South Africa",
+      "url": "https://indico.stfc.ac.uk/event/1233/contributions/8374/"
+    },
+    {
+      "year": 2023,
+      "title": "Controls GUI Strategies Workshop",
+      "event": "ICALEPCS 2023, Cap Town South Africa",
+      "url": "https://indico.cern.ch/event/1299332/contributions/5618436/"
     }
   ],
   "communities": [
