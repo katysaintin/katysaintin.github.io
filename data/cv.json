@@ -164,7 +164,7 @@
     },
     {
       "name": "Scientific Data Retriever (SDR)",
-      "role": "Creator & Lead Developer",
+      "role": "Developer",
       "url": "",
       "description": "Remote scientific data access platform for experimental users across beamlines.",
       "descriptionFr": "Plateforme d'accès distant aux données expérimentales pour les utilisateurs de beamlines."
@@ -178,7 +178,7 @@
     },
     {
       "name": "PlcParserTool",
-      "role": "Creator",
+      "role": "Creator & Lead Developer",
       "url": "https://indico.stfc.ac.uk/event/1233/contributions/8374/",
       "description": "PLC and OPC-UA tooling for EPICS environments — gives autonomy to automation engineers without requiring EPICS expertise. Presented at EPICS Collaboration Meeting 2025, Oak Ridge.",
       "descriptionFr": "Outil PLC et OPC-UA pour environnements EPICS — autonomise les automaticiens sans expertise EPICS requise. Présenté à l'EPICS Collaboration Meeting 2025, Oak Ridge."
@@ -192,7 +192,7 @@
     },
     {
       "name": "COMETE Framework",
-      "role": "Contributor",
+      "role": "Creator & Lead Developer & Contributor",
       "url": "https://proceedings.jacow.org/icalepcs2011/papers/wemau012.pdf",
       "description": "Multi data source graphical framework for scientific facilities. Published ICALEPCS 2011.",
       "descriptionFr": "Framework graphique multi-sources pour installations scientifiques. Publié ICALEPCS 2011."
@@ -234,14 +234,14 @@
       "positionFr": "Ingénieure Logicielle Scientifique",
       "details": [
         "Creator and lead developer of DataBrowser — scientific data visualisation platform (NeXus, HDF5, TANGO, archived data), still in production use internationally",
-        "Creator and lead developer of SDR (Scientific Data Retriever) — remote data access platform for experimental users",
+        "Developer of SDR (Scientific Data Retriever) — remote data access platform for experimental users",
         "TANGO Controls ecosystem contributor — 13 years native expertise across beamlines and accelerator systems",
         "Interface between physicists, automation engineers and IT developers — HMI design and multilingual technical translation",
         "5 international conference publications (ICALEPCS 2005, 2007, 2011 · EPAC 2006 · NOBUGS 2000)"
       ],
       "detailsFr": [
         "Créatrice et développeuse principale de DataBrowser — plateforme de visualisation de données scientifiques (NeXus, HDF5, TANGO, données archivées), toujours en production internationale",
-        "Créatrice et développeuse principale de SDR — plateforme d'accès distant aux données expérimentales",
+        "Développeuse principale de SDR — plateforme d'accès distant aux données expérimentales",
         "Contributrice à l'écosystème TANGO Controls — 13 ans d'expertise native sur beamlines et systèmes accélérateurs",
         "Interface entre physiciens, automaticiens et informaticiens — conception IHM et traduction technique multilingue",
         "5 publications en conférences internationales (ICALEPCS 2005, 2007, 2011 · EPAC 2006 · NOBUGS 2000)"
@@ -402,19 +402,31 @@
       "year": 2021,
       "title": "Data Visualization With Data Browser Software",
       "event": "13èmes Journées Informatiques IN2P3/IRFU",
-      "url": ""
+      "url": "https://indico.in2p3.fr/event/25008/contributions/101207/"
+    },
+    {
+      "year": 2019,
+      "title": "Archiving Appliance plugin development for DataBrowser",
+      "event": "EPICS Collaboration Meeting, ITER Cadarache France",
+      "url": "https://indico.global/event/7046/timetable/?view=standard_numbered#63-epics-and-archiver-applianc"
     },
     {
       "year": 2019,
       "title": "EPICS Tools for Small Experiment Based on PLC",
       "event": "EPICS Collaboration Meeting, ITER Cadarache France",
-      "url": ""
+      "url": "https://indico.global/event/7046/timetable/?view=standard_numbered#8-epics-tools-for-small-experi"
     },
     {
       "year": 2014,
       "title": "Data Visualization With Data Browser Software",
       "event": "28th TANGO Collaboration Meeting, ESRF Grenoble France",
-      "url": ""
+      "url": "https://ftpext.esrf.fr/pub/cs/tango/meetings/2014_may_esrf/10-Soleil_DataBrowser.pdf"
+    },
+    {
+      "year": 2014,
+      "title": "Alarm Tool, Collaboration MAX-IV/SOLEIL ",
+      "event": "28th TANGO Collaboration Meeting, ESRF Grenoble France",
+      "url": "https://ftp.esrf.fr/pub/cs/tango/meetings/2014_may_esrf/6-AlarmTool.pdf"
     }
   ],
   "communities": [
