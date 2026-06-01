@@ -1,0 +1,376 @@
+{
+  "profile": {
+    "name": "Katy Saintin",
+    "titleFr": "Experte Senior CEA • Ingénierie Logicielle et Données Scientifiques",
+    "titleEn": "CEA Senior Expert • Scientific Software & Data Engineering",
+    "taglineFr": "25+ ans d'expérience dans les systèmes de contrôle, les logiciels scientifiques et la valorisation des données expérimentales.",
+    "taglineEn": "25+ years of experience in control systems, scientific software and experimental data engineering.",
+    "summaryFr": "Ingénieure spécialisée dans les grands instruments scientifiques, les systèmes de contrôle-commande, les applications scientifiques et l'exploitation des données expérimentales. Créatrice de plusieurs logiciels utilisés dans les communautés synchrotron et accélérateurs, conférencière internationale et Experte Senior CEA.",
+    "summaryEn": "Engineer specialized in large scientific facilities, control systems, scientific applications and experimental data engineering. Creator of several software tools used within synchrotron and accelerator communities, international conference speaker and CEA Senior Expert."
+  },
+  "highlights": [
+    {
+      "value": "25+",
+      "labelFr": "Années d'expérience",
+      "labelEn": "Years of Experience"
+    },
+    {
+      "value": "20+",
+      "labelFr": "Publications & conférences",
+      "labelEn": "Publications & Conferences"
+    },
+    {
+      "value": "2",
+      "labelFr": "Titres d'expertise CEA",
+      "labelEn": "CEA Expert Titles"
+    },
+    {
+      "value": "100+",
+      "labelFr": "Systèmes accompagnés",
+      "labelEn": "Systems Supported"
+    }
+  ],
+  "education": [
+    {
+      "year": 2001,
+      "degreeFr": "Diplôme d'Ingénieur Informatique",
+      "degreeEn": "Computer Engineering Degree",
+      "institution": "CESI / CEFIPA",
+      "url": "https://www.cefipa.com",
+      "detailsFr": "Formation par alternance réalisée au CEA",
+      "detailsEn": "Work-study engineering program at CEA"
+    },
+    {
+      "year": 1998,
+      "degreeFr": "DUT Génie Électrique et Informatique Industrielle",
+      "degreeEn": "Electrical Engineering and Industrial Computing",
+      "institution": "IUT de Cachan",
+      "url": "https://www.iut-cachan.universite-paris-saclay.fr",
+      "detailsFr": "Option Automatisme et Systèmes",
+      "detailsEn": "Automation and Control Systems"
+    },
+    {
+      "year": 1996,
+      "degreeFr": "Baccalauréat Scientifique",
+      "degreeEn": "Scientific High School Diploma",
+      "institution": "Maison d'Éducation de la Légion d'Honneur",
+      "url": "https://www.legiondhonneur.fr/fr/les-maisons-deducation/la-maison-deducation-de-saint-denis-le-lycee",
+      "detailsFr": "Option Physique-Chimie",
+      "detailsEn": "Physics and Chemistry"
+    }
+  ],
+  "certifications": [
+    {
+      "year": 2026,
+      "name": "Certification Création de Contenus avec l'IA Générative",
+      "status": "obtained"
+    },
+    {
+      "year": 2026,
+      "name": "Management d'Équipe Technique à Distance",
+      "status": "planned"
+    }
+  ],
+  "recognition": [
+    {
+      "title": "Experte Senior CEA"
+    },
+    {
+      "title": "Experte IRFU"
+    }
+  ],
+  "careerStory": {
+    "fr": "Premiers développements scientifiques au CEA dès 1998. Plus de 25 ans d'expérience dans les grands instruments scientifiques, du Laboratoire Léon Brillouin au Synchrotron SOLEIL puis au CEA IRFU.",
+    "en": "First scientific software developments at CEA in 1998. More than 25 years of experience in large scientific facilities, from Laboratoire Léon Brillouin to Synchrotron SOLEIL and CEA IRFU."
+  },
+  "expertise": [
+    {
+      "title": "Control Systems",
+      "items": [
+        "EPICS",
+        "TANGO",
+        "MUSCADE",
+        "Phoebus",
+        "SCADA",
+        "OPC-UA"
+      ]
+    },
+    {
+      "title": "Scientific Data",
+      "items": [
+        "NeXus",
+        "HDF5",
+        "DataBrowser",
+        "Scientific Data Retriever",
+        "Archiver Appliance",
+        "Google Protocol Buffers"
+      ]
+    },
+    {
+      "title": "Software Engineering",
+      "items": [
+        "Java",
+        "C++",
+        "Python",
+        "Eclipse RCP",
+        "Swing",
+        "SWT",
+        "JavaFX",
+        "Maven",
+        "GitLab CI/CD"
+      ]
+    },
+    {
+      "title": "Artificial Intelligence",
+      "items": [
+        "Generative AI",
+        "Prompt Engineering",
+        "Knowledge Management",
+        "Documentation Generation",
+        "Digital Twin"
+      ]
+    }
+  ],
+  "majorProjects": [
+    {
+      "name": "SOLEIL DataBrowser",
+      "role": "Creator & Lead Developer",
+      "url": "https://gitlab.synchrotron-soleil.fr/software-control-system/gui/databrowser",
+      "description": "Scientific data visualisation platform for NeXus, HDF5, TANGO and archived data."
+    },
+    {
+      "name": "Scientific Data Retriever (SDR)",
+      "role": "Creator & Lead Developer",
+      "url": "",
+      "description": "Remote scientific data access platform for experimental users."
+    },
+    {
+      "name": "MUSCADE",
+      "role": "Product Owner",
+      "url": "",
+      "description": "SCADA platform used at CEA IRFU."
+    },
+    {
+      "name": "PlcParserTool",
+      "role": "Creator",
+      "url": "https://indico.stfc.ac.uk/event/1233/contributions/8374/",
+      "description": "PLC and OPC-UA tooling for EPICS environments."
+    },
+    {
+      "name": "Phoebus Extensions",
+      "role": "Lead Developer",
+      "url": "https://indico.stfc.ac.uk/event/1233/contributions/8375/",
+      "description": "EPICS Phoebus extensions and integrations."
+    },
+    {
+      "name": "COMETE Framework",
+      "role": "Contributor",
+      "url": "",
+      "description": "Multi data source graphical framework for scientific facilities."
+    }
+  ],
+  "experience": [
+    {
+      "period": "2017 - Present",
+      "organization": "CEA IRFU",
+      "url": "https://irfu.cea.fr",
+      "position": "Senior Expert • Scientific Software Engineer",
+      "details": [
+        "Product Owner MUSCADE",
+        "EPICS ecosystem contributor",
+        "Scientific software development",
+        "Training and mentoring",
+        "International conference speaker"
+      ]
+    },
+    {
+      "period": "2004 - 2017",
+      "organization": "Synchrotron SOLEIL",
+      "url": "https://www.synchrotron-soleil.fr/fr",
+      "position": "Scientific Software Engineer",
+      "details": [
+        "Creator of DataBrowser",
+        "Creator of SDR",
+        "Beamline support",
+        "TANGO ecosystem contributor",
+        "Scientific data management"
+      ]
+    },
+    {
+      "period": "2001 - 2004",
+      "organization": "ALTEN",
+      "url": "https://www.alten.fr",
+      "position": "Software Engineer",
+      "details": [
+        "Canal+ Technologies",
+        "Eurocontrol",
+        "Java and C++ development"
+      ]
+    },
+    {
+      "period": "1998 - 2001",
+      "organization": "CEA Laboratoire Léon Brillouin",
+      "url": "https://iramis.cea.fr/llb/",
+      "position": "Software Engineer Apprentice",
+      "details": [
+        "Spectrometer control software",
+        "Scientific instrumentation",
+        "NeXus ecosystem"
+      ]
+    }
+  ],
+  "experienceDetails": [
+    {
+      "organization": "Canal+ Technologies",
+      "url": "https://www.pappers.fr/entreprise/canal-technologies-341010957",
+      "note": "Radiée"
+    },
+    {
+      "organization": "Eurocontrol",
+      "url": "https://www.eurocontrol.int"
+    }
+  ],
+  "publications": [
+    {
+      "year": 2023,
+      "title": "EPICS Java Developments",
+      "event": "ICALEPCS 2023, Cap Town South Africa",
+      "paperId": "TUMBCMO02",
+      "url": "https://proceedings.jacow.org/icalepcs2023/papers/tumbcmo02.pdf"
+    },
+    {
+      "year": 2019,
+      "title": "Data Visualization With Data Browser Software",
+      "event": "ICALEPCS 2019, New York USA",
+      "paperId": "MOMPR003",
+      "url": "https://proceedings.jacow.org/icalepcs2019/papers/mompr003.pdf"
+    },
+    {
+      "year": 2019,
+      "title": "EPICS Tools for Small Experiment Based on PLC",
+      "event": "ICALEPCS 2019, New York USA",
+      "paperId": "THAPP04",
+      "url": "https://proceedings.jacow.org/icalepcs2019/papers/thapp04.pdf"
+    },
+    {
+      "year": 2011,
+      "title": "COMETE: A Multi Data Source Oriented Graphical Framework",
+      "event": "ICALEPCS 2011",
+      "paperId": "WEMAU012",
+      "url": "https://proceedings.jacow.org/icalepcs2011/papers/wemau012.pdf"
+    },
+    {
+      "year": 2011,
+      "title": "Integrating a Workflow Engine within a Commercial SCADA",
+      "event": "ICALEPCS 2011",
+      "paperId": "WEPKS029",
+      "url": "https://proceedings.jacow.org/icalepcs2011/papers/wepks029.pdf"
+    },
+    {
+      "year": 2007,
+      "title": "How to Use a SCADA for High-Level Application Development on a Large-Scale Basis",
+      "event": "ICALEPCS 2007, Knoxville, Tenessee USA",
+      "paperId": "TPPB30",
+      "url": "https://proceedings.jacow.org/ica07/PAPERS/TPPB30.PDF"
+    },
+    {
+      "year": 2006,
+      "title": "High-Level Control Applications for SOLEIL Commissioning and Operation",
+      "event": "EPAC 2006",
+      "paperId": "THPCH109",
+      "url": "https://proceedings.jacow.org/e06/PAPERS/THPCH109.pdf"
+    },
+    {
+      "year": 2005,
+      "title": "High-Level Control Applications for SOLEIL Commissioning and Operation",
+      "event": "ICALEPCS 2005",
+      "paperId": "ROPA005",
+      "url": "https://proceedings.jacow.org/p05/PAPERS/ROPA005.PDF"
+    },
+    {
+      "year": 2000,
+      "title": "A new generation of software to control spectrometers",
+      "event": "NOBUGS Daresbury Laboratory, Royaume Uni",
+      "paperId": "Laboratoire Léon Brillouin 1999-2000",
+      "url": "http://katy.saintin.free.fr/cea/publications/1999_NewGenerationOOSoftware_LLB.pdf"
+    }
+  ],
+  "talks": [
+    {
+      "year": 2025,
+      "title": "TANGO & EPICS , retour d’expérience, forces et faiblesses",
+      "event": "2nde journées online IJCLab/IN2P3",
+      "url": "https://indico.ijclab.in2p3.fr/event/11845/contributions/40052/"
+    },
+    {
+      "year": 2025,
+      "title": "Solutions d’ intégration de systèmes de contrôle hétérogènes avec OPCUA",
+      "event": "2nde journées online IJCLab/IN2P3",
+      "url": "https://indico.ijclab.in2p3.fr/event/11845/contributions/39599/"
+    },
+    {
+      "year": 2025,
+      "title": "How To Extend Phoebus",
+      "event": "EPICS Collaboration Meeting, ISIS Neutron and Muon Source, Didcot Oxforshire GB",
+      "url": "https://indico.stfc.ac.uk/event/1233/contributions/8375/"
+    },
+    {
+      "year": 2025,
+      "title": "PlcParserTool OPC-UA",
+      "event": "EPICS Collaboration Meeting, ISIS Neutron and Muon Source, Didcot Oxforshire GB",
+      "url": "https://indico.stfc.ac.uk/event/1233/contributions/8374/"
+    },
+    {
+      "year": 2023,
+      "title": "EPICS Java IRFU's developments",
+      "event": "ICALEPCS 2023, Cap Town South Africa",
+      "url": "https://indico.stfc.ac.uk/event/1233/contributions/8374/"
+    },
+    {
+      "year": 2023,
+      "title": "Controls GUI Strategies Workshop",
+      "event": "ICALEPCS 2023, Cap Town South Africa",
+      "url": "https://indico.cern.ch/event/1299332/contributions/5618436/"
+    }
+  ],
+  "communities": [
+    "EPICS",
+    "TANGO",
+    "ICALEPCS",
+    "NOBUGS",
+    "JACoW"
+  ],
+  "teaching": {
+    "items": [
+      "Java & Object-Oriented Programming",
+      "Apprentice supervision",
+      "Engineer mentoring",
+      "International conferences",
+      "Technical workshops",
+      "Katy In Control Podcast"
+    ]
+  },
+  "profiles": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/katysaintin"
+    },
+    {
+      "name": "LinkedIn",
+      "url": ""
+    },
+    {
+      "name": "Katy In Control",
+      "url": "https://github.com/katysaintin/KatyInControl"
+    }
+  ],
+  "interests": [
+    "Scientific Outreach",
+    "Artificial Intelligence",
+    "Teaching",
+    "Photography",
+    "Music",
+    "Open Data",
+    "Student Orientation"
+  ]
+}
