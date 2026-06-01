@@ -286,8 +286,14 @@
 
     <!-- PUBLICATIONS — pleine largeur -->
     <div class="cv-card cv-full">
-      <h3>📚 <span id="label-publications"></span></h3>
+      <h3 id="publications">📚 <span id="label-publications"></span></h3>
       <div class="pub-list" id="cv-publications"></div>
+    </div>
+
+    <!-- TALKS — pleine largeur -->
+    <div class="cv-card cv-full">
+      <h3 id="talks">🎤 <span id="label-talks"></span></h3>
+      <div class="pub-list" id="cv-talks"></div>
     </div>
 
     <!-- FORMATION -->
@@ -357,7 +363,7 @@
       expertise:      fr ? 'Expertise Technique' : 'Technical Expertise',
       experience:     fr ? 'Parcours Professionnel' : 'Professional Experience',
       projects:       fr ? 'Projets Majeurs' : 'Major Projects',
-      publications:   fr ? 'Publications & Conférences' : 'Publications & Conferences',
+      // publications et talks gérés séparément
       education:      fr ? 'Formation' : 'Education',
       recognition:    fr ? 'Reconnaissance' : 'Recognition',
       certifications: 'Certifications',
@@ -407,21 +413,38 @@
         <div class="project-desc">${proj.description}</div>
       </div>`).join('');
 
-    const allPubs = [
-      ...cv.publications.map(pub => ({ ...pub, type: 'paper' })),
-      ...cv.talks.map(t => ({ ...t, type: 'talk' }))
-    ].sort((a, b) => b.year - a.year);
+    // PUBLICATIONS
+    const pubLabel = fr ? 'Publications' : 'Publications';
+    document.getElementById('label-publications').textContent = pubLabel;
 
-    document.getElementById('cv-publications').innerHTML = allPubs.map(pub =>
-      `<div class="pub-item">
-        <div class="pub-year">${pub.year} ${pub.type === 'talk' ? '🎤' : '📄'}</div>
-        <div class="pub-body">
-          <div class="pub-title">${pub.url
-            ? `<a href="${pub.url}" target="_blank">${pub.title}</a>`
-            : pub.title}</div>
-          <div class="pub-event">${pub.event}${pub.paperId ? ' · ' + pub.paperId : ''}</div>
-        </div>
-      </div>`).join('');
+    document.getElementById('cv-publications').innerHTML = cv.publications
+      .sort((a, b) => b.year - a.year)
+      .map(pub =>
+        `<div class="pub-item">
+          <div class="pub-year">${pub.year} 📄</div>
+          <div class="pub-body">
+            <div class="pub-title">${pub.url
+              ? `<a href="${pub.url}" target="_blank">${pub.title}</a>`
+              : pub.title}</div>
+            <div class="pub-event">${pub.event}${pub.paperId ? ' · ' + pub.paperId : ''}</div>
+          </div>
+        </div>`).join('');
+
+    // TALKS
+    document.getElementById('label-talks').textContent = fr ? 'Conférences & Talks' : 'Conferences & Talks';
+
+    document.getElementById('cv-talks').innerHTML = cv.talks
+      .sort((a, b) => b.year - a.year)
+      .map(t =>
+        `<div class="pub-item">
+          <div class="pub-year">${t.year} 🎤</div>
+          <div class="pub-body">
+            <div class="pub-title">${t.url
+              ? `<a href="${t.url}" target="_blank">${t.title}</a>`
+              : t.title}</div>
+            <div class="pub-event">${t.event}</div>
+          </div>
+        </div>`).join('');
 
     document.getElementById('cv-education').innerHTML = cv.education.map(e =>
       `<div class="edu-item">
