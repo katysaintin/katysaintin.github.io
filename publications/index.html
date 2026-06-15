@@ -4,15 +4,13 @@
 <meta charset="utf-8">
 <title>Galerie</title>
 <style>
-  table { border-collapse: collapse; }
-  td { padding: 8px; text-align: center; vertical-align: top; }
-  img { width: 100px; height: 100px; object-fit: cover; border: 0; }
-  .nom { font-size: 12px; word-break: break-all; max-width: 110px; }
+  body { font-family: sans-serif; }
+  #galerie a { display: block; padding: 2px 0; }
 </style>
 </head>
 <body>
 
-<table id="galerie"></table>
+<div id="galerie"></div>
 
 <script>
 // --- CONFIGURATION ---
@@ -36,9 +34,6 @@ let folder = location.pathname.split('/').filter(p => p.length).join('/'); // ex
 
 let branch = 'main';                                // changez en "master" si besoin
 
-// Extensions considérées comme "images" pour la miniature
-const extImg = ['jpg','jpeg','png','gif','webp','bmp','svg'];
-
 // --- RÉCUPÉRATION DE LA LISTE ---
 const url = `https://api.github.com/repos/${owner}/${repo}/contents/${folder}?ref=${branch}`;
 
@@ -50,42 +45,24 @@ fetch(url)
   .then(files => {
     files.sort((a, b) => a.name.localeCompare(b.name));
 
-    const table = document.getElementById('galerie');
+    const container = document.getElementById('galerie');
 
     files.forEach(f => {
       if (f.name === 'index.html' || f.name === '.git') return;
       if (f.type !== 'file') return;
 
-      const ext = f.name.split('.').pop().toLowerCase();
-      const tr = document.createElement('tr');
-
-      const tdImg = document.createElement('td');
       const a = document.createElement('a');
       a.href = f.name;
       a.target = '_blank';
-
-      if (extImg.includes(ext)) {
-        const img = document.createElement('img');
-        img.src = f.name;
-        a.appendChild(img);
-      } else {
-        a.textContent = '[fichier]';
-      }
-      tdImg.appendChild(a);
-
-      const tdNom = document.createElement('td');
-      tdNom.className = 'nom';
-      tdNom.textContent = f.name;
-
-      tr.appendChild(tdImg);
-      tr.appendChild(tdNom);
-      table.appendChild(tr);
+      a.textContent = f.name;
+      container.appendChild(a);
     });
   })
   .catch(err => {
     document.getElementById('galerie').outerHTML =
       '<p style="color:red">Impossible de charger la liste : ' + err.message + '</p>';
   });
+
 </script>
 
 </body>
