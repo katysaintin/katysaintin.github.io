@@ -62,12 +62,14 @@
   "certifications": [
     {
       "year": 2026,
-      "name": "Certification Création de Contenus avec l'IA Générative",
+      "name": "RS6776 Création de contenus rédactionnels et visuels par l'usage responsable de l'intelligence artificielle générative (96% à l'écrit)",
+      "url": "https://katysaintin.github.io/diplomes/2026_05_18_CertificationIA-RS6776-KatySAINTIN.pdf",
       "status": "obtained"
     },
     {
       "year": 2026,
-      "name": "Management d'Équipe Technique à Distance",
+      "name": "RS7424 Gérer et transformer les processus de travail des équipes avec l'aide de l'IA",
+      "url": "https://katysaintin.github.io/diplomes/2026_05_18_CertificationIA-RS7424-KatySAINTIN.pdf",
       "status": "planned"
     }
   ],
