@@ -385,3 +385,59 @@ Objectif V0 :
 -   PDF
 -   presse-papiers
 -   publication GitHub
+- 
+------------------------------------------------------------------------
+# 2026-07-12
+
+MODULE : Module 1 – Comprendre l’IA et ses enjeux pour le management des équipes
+Délimiter le périmètre d’usage IA
+
+| Niveau                                 | Cas d'usage MUSCADE                                                                                                                                                                                                                                                  |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🟢 IA autorisée                        | Synthèse d'activité, rédaction de procédures, préparation des formations, aide à la rédaction de documentation, synthèse de réunions, génération de FAQ, préparation de newsletters utilisateurs                                                                     |
+| 🟡 IA assistée avec validation humaine | Analyse des tickets GitLab, diagnostic de premier niveau, propositions de répartition des tâches, communication utilisateurs, analyse de KPI, propositions d'actions correctives                                                                                     |
+| 🔴 IA interdite ou hors périmètre      | Affectation automatique de tâches à un collaborateur, décision de priorité impactant une expérience, fermeture automatique d'un ticket sans validation humaine, interruption d'un système en production, décision d'exclusion d'un utilisateur ou d'arrêt de service |
+
+Afin de garantir la sécurité des expériences scientifiques et de maintenir la confiance des utilisateurs, toute décision ayant un impact sur une expérience, une infrastructure de production ou un utilisateur reste sous responsabilité humaine. L'IA est utilisée comme outil d'assistance à l'analyse, à la synthèse et à la préparation des actions, mais ne se substitue pas à la prise de décision.
+
+Principes de sobriété numérique retenus
+Utilisation de l'IA uniquement lorsqu'elle apporte une réelle valeur ajoutée.
+Limitation des requêtes répétitives ou redondantes.
+Utilisation prioritaire des outils IA validés par le CEA.
+Conservation des documents de référence dans les outils existants (GitLab, NetBox, documentation projet) afin d'éviter les duplications inutiles.
+Vérification humaine des contenus générés avant diffusion.
+
+Là tu coches d'un coup :
+
+sécurité ;
+éthique ;
+gouvernance ;
+sobriété ;
+responsabilité humaine.
+
+Définir pour chaque Tache un objectif SMART
+S : Spécifique 
+M : Mesurable
+A : Atteignable
+R : Réaliste 
+T : Temporel
+
+| Tâche                                                     | Objectif SMART                                                                                                                                                                                                                                                                                                                                                          |
+| --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Synthèse des activités hebdomadaires**                  | **S** : Utiliser une IA pour générer une synthèse hebdomadaire des activités MUSCADE.<br>**M** : Réduire de 50 % le temps de rédaction.<br>**A** : Tester sur un stand-up meeting par semaine.<br>**R** : Validation systématique par le coordinateur avant diffusion.<br>**T** : Expérimentation sur 3 mois.                                                           |
+| **Rédaction des procédures**                              | **S** : Utiliser l'IA pour produire une première version des procédures d'installation et de dépannage.<br>**M** : Réduire de 40 % le temps de rédaction.<br>**A** : Tester sur les nouvelles procédures créées pendant la période.<br>**R** : Validation technique obligatoire avant publication GitLab.<br>**T** : Déploiement progressif sur 3 mois.                 |
+| **Préparation des formations utilisateurs**               | **S** : Générer les supports de formation et FAQ avec l'IA.<br>**M** : Diminuer de 30 % le temps de préparation.<br>**A** : Utiliser pour chaque nouvelle formation MUSCADE.<br>**R** : Relecture par le formateur.<br>**T** : Évaluation après deux sessions de formation.                                                                                             |
+| **Analyse des tickets GitLab**                            | **S** : Utiliser l'IA pour classer les tickets et proposer un diagnostic de premier niveau.<br>**M** : Réduire de 30 % le temps de qualification.<br>**A** : Tester sur les nouveaux tickets entrants.<br>**R** : L'expert conserve la décision finale.<br>**T** : Expérimentation pendant 3 mois.                                                                      |
+| **Communication utilisateurs (TalkSpirit / Newsletters)** | **S** : Générer des brouillons de newsletters et d'annonces projet.<br>**M** : Réduire de 50 % le temps de rédaction.<br>**A** : Une newsletter par mois et les communications majeures.<br>**R** : Validation avant diffusion.<br>**T** : Bilan après 3 newsletters.                                                                                                   |
+| **Analyse des KPI du projet**                             | **S** : Utiliser l'IA pour produire un commentaire automatique des indicateurs GitLab, Grafana et NetBox.<br>**M** : Générer un tableau de bord hebdomadaire en moins de 15 minutes.<br>**A** : Tester sur les indicateurs existants.<br>**R** : Validation par le coordinateur du projet.<br>**T** : Évaluation après 3 mois.                                          |
+| **Diagnostic de premier niveau**                          | **S** : Utiliser l'IA pour proposer des pistes de diagnostic à partir des tickets et de la documentation.<br>**M** : Réduire le temps d'analyse initial de 30 %.<br>**A** : Utilisation uniquement pour l'assistance au diagnostic.<br>**R** : Aucune action en production sans validation humaine.<br>**T** : Phase pilote de 3 mois.                                  |
+| **Capitalisation des connaissances (RAG)**                | **S** : Construire une base documentaire interrogeable regroupant GitLab, procédures, NetBox et documentation MUSCADE.<br>**M** : Réduire de 50 % le temps de recherche d'information.<br>**A** : Tester avec une dizaine d'utilisateurs pilotes.<br>**R** : Les réponses sont vérifiées avant utilisation en production.<br>**T** : Prototype réalisé dans les 6 mois. |
+
+| Proposition                                               | Catégorie logique                                            |
+| --------------------------------------------------------- | ------------------------------------------------------------ |
+| Générer un brouillon de compte rendu                      | 🟢 Autorisée                                                 |
+| Préparer une synthèse de données d'activité               | 🟢 Autorisée                                                 |
+| Structurer un plan d'action pour l'équipe                 | 🟡 Assistée (car cela influence des décisions de management) |
+| Décider d'une sanction disciplinaire                      | 🔴 Interdite                                                 |
+| Évaluer automatiquement la performance d'un collaborateur | 🔴 Interdite                                                 |
+
