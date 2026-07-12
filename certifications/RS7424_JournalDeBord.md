@@ -6,10 +6,7 @@ Chaque entrée :
 
 ``` md
 Génère moi dans un bloc md à copier.
-Toutes les notes, observations, idées en rapport avec la certification RS7424 
-Tu ne modifies jamais mes idées.
-Tu les reformules uniquement pour améliorer leur lisibilité.
-Le style doit rester factuel, synthétique et facilement exploitable lors de la rédaction de mon rapport de certification
+Nos derniers échanges du jour en rapport avec la certification RS7424
 
 # Format attendu
 
@@ -60,21 +57,7 @@ Aucun.
 - Si plusieurs idées indépendantes apparaissent dans la conversation, créer plusieurs entrées de journal.
 - Le résultat doit être directement copiable dans un fichier Markdown.
 - Si les idées ont été décrites sous forme de tableau, générer le tableau au format md dans la note
-
----
-
-# Contexte
-
-Cette prise de notes servira à :
-
-- préparer mon rapport RS7424 ;
-- suivre mes réflexions pendant la formation ;
-- conserver les idées de projets ;
-- documenter les liens entre les modules de formation et le projet Muscade ;
-- conserver les idées de développement logiciel liées à l'IA.
-
-Ne produire que les entrées Markdown.
-
+- Ne produire que les entrées Markdown.
 
 ```
 
