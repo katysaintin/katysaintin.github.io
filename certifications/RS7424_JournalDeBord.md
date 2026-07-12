@@ -1,16 +1,81 @@
 # Journal de bord -- Certification RS7424
 
-## Format proposé
+## Prompt de sauvega
 
 Chaque entrée :
 
 ``` md
-# YYYY-MM-DD HH:MM
-Module : ... (optionnel)
+Génère moi dans un bloc md à copier.
+Toutes les notes, observations, idées en rapport avec la certification RS7424 
+Tu ne modifies jamais mes idées.
+Tu les reformules uniquement pour améliorer leur lisibilité.
+Le style doit rester factuel, synthétique et facilement exploitable lors de la rédaction de mon rapport de certification
 
-Observation
+# Format attendu
+
+# YYYY-MM-DD HH:MM
+
+Module : Nom du module (si identifiable, sinon "Non précisé")
+
+## Observation ou Note
+
+Résumé fidèle de l'idée, de la réflexion ou de l'observation.
+
+## Idée
+
+Décrire une idée, une amélioration, un outil, une réflexion ou une piste de travail qui est ressortie de la discussion.
+
+## Action
+
+Liste d'actions à réaliser.
+
+Exemple :
+
+- [ ] ...
+- [ ] ...
+
+Si aucune action n'est identifiée, écrire :
+
+Aucune.
+
+## Impact sur Muscade
+
+Décrire uniquement les impacts éventuels sur le projet Muscade.
+
+Si aucun lien n'existe, écrire :
+
+Aucun.
 
 ---
+
+# Règles
+
+- Utiliser la date et l'heure courante de la conversation lorsqu'elles sont connues.
+- Ne jamais inventer un module.
+- Ne remplir une section que si elle apporte une information utile.
+- Conserver un ton neutre.
+- Éviter les longs paragraphes.
+- Les actions doivent être concrètes.
+- Les idées doivent être séparées des observations.
+- Si plusieurs idées indépendantes apparaissent dans la conversation, créer plusieurs entrées de journal.
+- Le résultat doit être directement copiable dans un fichier Markdown.
+- Si les idées ont été décrites sous forme de tableau, générer le tableau au format md dans la note
+
+---
+
+# Contexte
+
+Cette prise de notes servira à :
+
+- préparer mon rapport RS7424 ;
+- suivre mes réflexions pendant la formation ;
+- conserver les idées de projets ;
+- documenter les liens entre les modules de formation et le projet Muscade ;
+- conserver les idées de développement logiciel liées à l'IA.
+
+Ne produire que les entrées Markdown.
+
+
 ```
 
 ## Journal existant (à restructurer)
