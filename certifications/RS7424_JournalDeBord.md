@@ -78,7 +78,157 @@ Ne produire que les entrées Markdown.
 
 ```
 
-## Journal existant (à restructurer)
+## Journal existant
+
+# 2026-07-12 22:48
+
+Module : Module 1 – Comprendre l’IA et ses enjeux pour le management des équipes
+
+## Observation ou Note
+
+Le périmètre d'usage de l'IA constitue un élément de gouvernance à définir avant toute mise en œuvre. Les usages peuvent être classés selon trois niveaux : IA autorisée, IA assistée avec validation humaine et IA interdite.
+
+Le projet Muscade se prête naturellement à cette approche en raison des impacts potentiels sur les utilisateurs et les expériences scientifiques.
+
+## Idée
+
+Définir un tableau de gouvernance des usages de l'IA dans Muscade.
+
+| Niveau | Cas d'usage Muscade |
+|--------|----------------------|
+| IA autorisée | Synthèse d'activité, rédaction de procédures, préparation des formations, génération de FAQ, préparation de newsletters utilisateurs |
+| IA assistée | Analyse des tickets GitLab, diagnostic de premier niveau, communication utilisateurs, analyse des KPI, propositions de répartition des tâches |
+| IA interdite | Affectation automatique de tâches sans validation humaine, interruption d'une expérience, fermeture automatique d'un ticket critique, décision impactant un utilisateur sans information préalable |
+
+## Action
+
+- [ ] Intégrer ce tableau dans le rapport (Compétence C2 – Partie 3).
+- [ ] Décrire la gouvernance retenue pour les usages de l'IA.
+
+## Impact sur Muscade
+
+Définition d'un cadre de gouvernance permettant de sécuriser l'utilisation de l'IA dans le projet.
+
+---
+
+# 2026-07-12 22:52
+
+Module : Module 1 – Comprendre l’IA et ses enjeux pour le management des équipes
+
+## Observation ou Note
+
+Les principes de sécurité, d'éthique et de sobriété peuvent être formalisés sous forme de règles de gouvernance applicables au projet Muscade.
+
+## Idée
+
+Ajouter un encadré "Principes de gouvernance de l'IA".
+
+Propositions :
+
+- Utiliser l'IA uniquement lorsqu'elle apporte une valeur ajoutée.
+- Limiter les requêtes répétitives.
+- Utiliser les outils IA validés par le CEA.
+- Conserver les documents de référence dans GitLab, NetBox et la documentation projet.
+- Vérifier systématiquement les contenus générés avant diffusion.
+- Maintenir une validation humaine pour toute décision impactant une expérience, une infrastructure ou un utilisateur.
+
+## Action
+
+- [ ] Ajouter cette partie dans le rapport (C2 – Partie 3).
+
+## Impact sur Muscade
+
+Formalisation des règles d'utilisation de l'IA au sein du projet.
+
+---
+
+# 2026-07-13 00:59
+
+Module : Module 1 – Comprendre l’IA et ses enjeux pour le management des équipes
+
+## Observation ou Note
+
+Le module introduit la définition d'objectifs SMART appliqués aux projets IA.
+
+Cette approche est directement transposable aux cas d'usage identifiés pour Muscade.
+
+## Idée
+
+Définir un objectif SMART pour chaque cas d'usage IA.
+
+| Cas d'usage | Objectif SMART |
+|-------------|----------------|
+| Synthèse des activités | Réduire de 50 % le temps de rédaction des synthèses hebdomadaires avec validation humaine pendant une expérimentation de 3 mois. |
+| Rédaction de procédures | Réduire de 40 % le temps de rédaction des procédures tout en conservant une validation technique avant publication. |
+| Préparation des formations | Réduire de 30 % le temps de préparation des supports et FAQ avec validation du formateur. |
+| Analyse des tickets GitLab | Réduire de 30 % le temps de qualification des tickets grâce à une assistance IA, sans automatiser la décision. |
+| Communication utilisateurs | Réduire de 50 % le temps de rédaction des newsletters et communications avec validation avant diffusion. |
+| Analyse des KPI | Générer automatiquement une synthèse hebdomadaire des indicateurs en moins de 15 minutes, avec validation du coordinateur. |
+| Diagnostic de premier niveau | Réduire de 30 % le temps d'analyse initiale en proposant des pistes de diagnostic issues de la documentation. |
+| Capitalisation des connaissances (RAG) | Réduire de 50 % le temps de recherche d'information grâce à une base documentaire interrogeable testée sur un groupe pilote. |
+
+## Action
+
+- [ ] Associer un objectif SMART à chaque cas d'usage retenu dans le rapport.
+
+## Impact sur Muscade
+
+Permet de mesurer objectivement les bénéfices attendus de chaque expérimentation.
+
+---
+
+# 2026-07-13 01:05
+
+Module : Module 1 – Comprendre l’IA et ses enjeux pour le management des équipes
+
+## Observation ou Note
+
+Une incohérence a été constatée dans le quiz du module.
+
+La proposition « Générer un brouillon de compte rendu de réunion » apparaît deux fois dans les réponses.
+
+Lors de la correction, les catégories « IA autorisée » et « IA assistée » semblent inversées entre :
+
+- Générer un brouillon de compte rendu de réunion ;
+- Préparer une synthèse de données d'activité.
+
+## Idée
+
+Signaler cette incohérence à la formatrice afin de vérifier le contenu du quiz et d'améliorer la qualité pédagogique de la formation.
+
+## Action
+
+- [ ] Envoyer un courriel à Mme Roche avec les captures d'écran du quiz.
+
+## Impact sur Muscade
+
+Aucun.
+
+---
+
+# 2026-07-13 01:10
+
+Module : Module 1 – Comprendre l’IA et ses enjeux pour le management des équipes
+
+## Observation ou Note
+
+Les cas d'usage étudiés dans le module confirment que l'IA constitue principalement un outil d'assistance à l'analyse, à la préparation des documents et à la capitalisation des connaissances.
+
+La responsabilité des décisions reste humaine.
+
+## Idée
+
+Faire apparaître dans le rapport le principe suivant :
+
+> L'IA assiste l'expertise du projet Muscade mais ne se substitue jamais à la responsabilité de l'expert ou à la validation des utilisateurs concernés.
+
+## Action
+
+- [ ] Intégrer ce principe dans la partie gouvernance du rapport.
+
+## Impact sur Muscade
+
+Clarifie le rôle de l'IA dans le projet et définit un cadre de confiance pour les utilisateurs.
 
 ### Observations initiales
 
