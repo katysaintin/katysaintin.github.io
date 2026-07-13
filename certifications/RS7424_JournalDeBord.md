@@ -512,3 +512,81 @@ Cette approche facilite :
 ## Impact sur Muscade
 
 Cette règle pourrait être appliquée à la documentation technique, aux procédures d'installation, aux rapports d'incidents et aux documents de formation afin de faciliter leur anonymisation et leur maintenance.
+
+# 2026-07-13 11:15
+
+Module : Module 2 – Cadre responsable : RGPD, éthique, conformité & relation salarié
+
+## Observation ou Note
+
+Le module présente trois piliers complémentaires de la conformité liés à l'utilisation de l'intelligence artificielle. Ils répondent à des problématiques différentes et ne doivent pas être confondus.
+
+| Pilier | Question à se poser | Exemple appliqué à Muscade |
+|---------|---------------------|----------------------------|
+| **AI Act** | Ai-je le droit d'utiliser une IA pour cette tâche ? | Utiliser une IA pour analyser les tickets GitLab et proposer une classification des incidents. Ce cas d'usage est une aide à la décision et nécessite une validation humaine. |
+| **RGPD** | Puis-je transmettre ces données à une IA ? | Avant d'analyser un ticket GitLab avec une IA, masquer les noms, adresses e-mail, numéros de téléphone ou toute autre donnée permettant d'identifier un utilisateur. |
+| **Obligations légales / Code du travail** | Comment utiliser l'IA vis-à-vis des collaborateurs ? | Ne jamais utiliser une IA pour attribuer automatiquement une évaluation annuelle, une sanction disciplinaire ou une prime. Ces décisions relèvent de la responsabilité du manager. |
+
+## Idée
+
+Le rapport pourrait distinguer ces trois axes dans les bonnes pratiques du projet Muscade :
+
+### 1. Protection des données (RGPD)
+
+Objectif :
+- protéger les données personnelles.
+
+Bonnes pratiques :
+- anonymiser les documents avant utilisation avec une IA ;
+- limiter les données transmises ;
+- concevoir des documents facilement anonymisables (variables documentaires).
+
+Exemple :
+
+Un ticket GitLab contenant le nom et l'adresse e-mail d'un utilisateur est anonymisé avant d'être transmis à une IA pour analyse.
+
+---
+
+### 2. Gouvernance des usages de l'IA (AI Act)
+
+Objectif :
+- définir les cas d'usage autorisés selon leur niveau de risque.
+
+Bonnes pratiques :
+- identifier les usages autorisés ;
+- conserver une validation humaine pour les usages sensibles ;
+- interdire les usages incompatibles avec la politique du projet.
+
+Exemple :
+
+L'IA peut proposer une synthèse des incidents de la semaine, mais ne décide jamais seule des priorités de développement.
+
+---
+
+### 3. Responsabilité et cadre légal
+
+Objectif :
+- préserver la responsabilité humaine dans les décisions impactant les collaborateurs et les utilisateurs.
+
+Bonnes pratiques :
+- informer lorsque l'IA est utilisée ;
+- conserver la décision finale à un responsable humain ;
+- garantir la traçabilité des décisions importantes.
+
+Exemple :
+
+L'IA peut proposer une répartition des tâches de l'équipe Muscade, mais la validation finale revient au chef de projet après échange avec les collaborateurs.
+
+## Action
+
+- [ ] Ajouter un chapitre "Cadre responsable de l'utilisation de l'IA" dans le rapport.
+- [ ] Structurer ce chapitre selon les trois piliers : AI Act, RGPD et obligations légales.
+- [ ] Associer à chaque pilier des exemples concrets issus du projet Muscade.
+
+## Impact sur Muscade
+
+Cette approche permet de définir une gouvernance claire de l'IA :
+
+- protéger les données personnelles des utilisateurs ;
+- encadrer les usages autorisés de l'IA ;
+- maintenir la responsabilité humaine sur toutes les décisions importantes.
