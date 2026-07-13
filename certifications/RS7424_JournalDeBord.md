@@ -620,4 +620,67 @@ Cette formulation met davantage en évidence le périmètre des données concern
 
 ## Impact sur Muscade
 
-Cette réflexion conforte l'idée de définir un guide de bonnes pratiques pour l'utilisation de l'IA dans le projet Muscade, avec des recommandations formulées dans un vocabulaire compréhensible par les équipes techniques.
+Cette réflexion conforte l'idée de 
+définir un guide de bonnes pratiques pour l'utilisation de l'IA dans le projet Muscade, avec des recommandations formulées dans un vocabulaire compréhensible par les équipes techniques.
+
+# Gouvernance de l'utilisation de l'IA dans le projet Muscade
+
+> Déclinaison des principes présentés dans le module RS7424 appliquée au projet Muscade.
+
+---
+
+# Synthèse
+
+| Principe du cours | Définition | Application au projet Muscade | Livrable associé |
+|-------------------|------------|-------------------------------|------------------|
+| **DPO (Data Protection Officer)** | Garantir la conformité au RGPD et la protection des données personnelles. | Définir une procédure d'anonymisation avant toute utilisation d'une IA. Concevoir des documents facilement anonymisables grâce à une table de variables. | Guide d'anonymisation ; Guide de rédaction de documents compatibles IA. |
+| **API sécurisées** | Limiter les échanges de données aux interfaces autorisées et sécurisées. | Utiliser uniquement les IA et services validés par le CEA. Vérifier les flux de données entre Muscade, GitLab, TalkSpirit et les outils IA. | Charte d'utilisation des outils IA. |
+| **Chiffrement des données** | Garantir la confidentialité des données lors du stockage et des échanges. | Ne transmettre que des documents autorisés. Utiliser les espaces sécurisés du CEA pour stocker les documents de travail et éviter les transferts inutiles vers des services externes. | Procédure de gestion documentaire. |
+| **Audit des algorithmes** | Vérifier le fonctionnement et les résultats produits par l'IA. | Conserver les prompts importants, documenter les décisions prises avec l'aide de l'IA et assurer une validation humaine des résultats avant diffusion. | Journal d'utilisation de l'IA ; Historique GitLab. |
+| **Gestion des accès** | Limiter l'accès aux données selon les rôles des utilisateurs. | Définir quels documents peuvent être utilisés avec une IA, par qui et dans quel contexte. Respecter les habilitations existantes du projet Muscade. | Politique d'accès aux documents IA. |
+| **Formation et sensibilisation** | Former les utilisateurs aux bonnes pratiques de l'IA. | Former les développeurs et utilisateurs Muscade aux règles d'utilisation de l'IA, à l'anonymisation des documents et aux limites des outils génératifs. | Guide de bonnes pratiques ; supports de formation. |
+
+---
+
+# Application concrète au projet Muscade
+
+## Protection des données
+
+- anonymiser les tickets GitLab ;
+- anonymiser les comptes rendus ;
+- anonymiser les mails avant utilisation avec une IA ;
+- utiliser une table de variables afin de faciliter l'anonymisation des documents.
+
+---
+
+## Utilisation des IA
+
+- utiliser uniquement les outils autorisés par le CEA ;
+- définir les cas d'usage autorisés, assistés et interdits ;
+- appliquer le principe de minimisation des données.
+
+---
+
+## Validation humaine
+
+Toutes les productions générées par une IA restent des propositions.
+
+Une validation humaine est systématiquement réalisée avant :
+
+- diffusion d'une documentation ;
+- communication aux utilisateurs ;
+- mise en production d'une procédure ;
+- prise de décision concernant un collaborateur ou un utilisateur.
+
+---
+
+## Capitalisation
+
+Les prompts, procédures et retours d'expérience validés sont conservés dans :
+
+- GitLab ;
+- TalkSpirit ;
+- Gamma ;
+- documentation du projet.
+
+Cette capitalisation permet d'améliorer progressivement les usages de l'IA au sein du projet Muscade.
