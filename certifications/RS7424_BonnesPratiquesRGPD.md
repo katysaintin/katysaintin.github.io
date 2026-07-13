@@ -2,7 +2,7 @@
 ## Concevoir une documentation compatible avec l'IA
 
 Guide de conception documentaire compatible IA
-
+Documentation IA-Ready
 Version : 0.1
 
 ---
