@@ -1,6 +1,8 @@
 # Guide de bonnes pratiques
 ## Concevoir une documentation compatible avec l'IA
 
+Guide de conception documentaire compatible IA
+
 Version : 0.1
 
 ---
