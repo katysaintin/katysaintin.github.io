@@ -590,3 +590,34 @@ Cette approche permet de définir une gouvernance claire de l'IA :
 - protéger les données personnelles des utilisateurs ;
 - encadrer les usages autorisés de l'IA ;
 - maintenir la responsabilité humaine sur toutes les décisions importantes.
+
+# 2026-07-13 17:50
+
+Module : Module 2 – Cadre responsable : RGPD, éthique, conformité & relation salarié
+
+## Observation ou Note
+
+Lors du module sur le principe de minimisation des données (RGPD), la formulation m'a interpellée.
+
+En tant qu'ingénieure en génie logiciel ayant travaillé sur des problématiques de traitement de données, j'ai spontanément interprété « minimisation des données » comme une opération de réduction ou de transformation des données (agrégation, compression, réduction de dimension, etc.).
+
+Après réflexion, j'ai compris que le RGPD utilise cette expression dans un sens juridique : il s'agit de limiter les **données personnelles collectées, traitées ou transmises** à ce qui est strictement nécessaire à la finalité poursuivie.
+
+Cette différence de vocabulaire entre les domaines juridique et informatique peut être source d'incompréhension pour un public technique.
+
+## Idée
+
+Dans un support de formation destiné à des profils techniques, une formulation plus explicite pourrait être :
+
+> « Ne collecter, utiliser ou transmettre que les données personnelles strictement nécessaires à la réalisation de la tâche. »
+
+Cette formulation met davantage en évidence le périmètre des données concernées et évite l'ambiguïté avec les techniques de réduction de données utilisées en informatique.
+
+## Action
+
+- [ ] Ajouter cette anecdote dans les notes de préparation de la soutenance comme exemple de différence de vocabulaire entre le monde juridique et le monde technique.
+- [ ] Être attentive, lors de la lecture des textes réglementaires, au sens juridique de certains termes pouvant différer de leur usage en informatique.
+
+## Impact sur Muscade
+
+Cette réflexion conforte l'idée de définir un guide de bonnes pratiques pour l'utilisation de l'IA dans le projet Muscade, avec des recommandations formulées dans un vocabulaire compréhensible par les équipes techniques.
