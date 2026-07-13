@@ -424,3 +424,39 @@ T : Temporel
 | Décider d'une sanction disciplinaire                      | 🔴 Interdite                                                 |
 | Évaluer automatiquement la performance d'un collaborateur | 🔴 Interdite                                                 |
 
+# 2026-07-13 09:45
+
+Module : Module 2 – Confidentialité et anonymisation (nom à confirmer)
+
+## Observation ou Note
+
+L'anonymisation peut représenter une tâche fastidieuse lorsque les données sensibles sont dispersées dans un document.
+
+Selon le type de document, il est souvent plus efficace de concevoir un modèle facilitant l'anonymisation que d'effectuer une recherche exhaustive des données personnelles.
+
+## Idée
+
+Adapter les recommandations d'anonymisation au type de document.
+
+Exemples :
+
+| Type de document | Recommandation |
+|------------------|----------------|
+| CV | Regrouper les informations nominatives (nom, adresse, téléphone, e-mail) dans un en-tête facilement masquable. |
+| Entretien annuel | Séparer les informations d'identification de l'évaluation afin de faciliter l'anonymisation. |
+| Mail | Ne copier que le corps du message. Exclure systématiquement l'expéditeur, les destinataires et la signature. |
+| Contrat | Utiliser un outil d'anonymisation automatique lorsque les données sensibles sont présentes à de nombreux endroits. |
+| Documentation technique | Utiliser un outil d'anonymisation si des noms de projets, clients ou personnes apparaissent de manière répétée. |
+
+Une bonne conception documentaire peut réduire fortement le temps consacré à l'anonymisation.
+
+Autre constat : l'anonymisation est beaucoup plus simple sur un ordinateur que sur un smartphone. Le risque d'oublier des informations personnelles est plus élevé sur mobile.
+
+## Action
+
+- [ ] Ajouter une recommandation sur le choix du support (ordinateur plutôt que smartphone) lors des opérations d'anonymisation.
+- [ ] Proposer, dans le rapport, une approche adaptée au type de document plutôt qu'une méthode unique.
+
+## Impact sur Muscade
+
+Les procédures, tickets GitLab et documentations techniques pourraient être structurés dès leur création afin de faciliter leur anonymisation en cas d'utilisation avec une IA.
