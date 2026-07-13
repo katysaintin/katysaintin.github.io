@@ -460,3 +460,55 @@ Autre constat : l'anonymisation est beaucoup plus simple sur un ordinateur que s
 ## Impact sur Muscade
 
 Les procédures, tickets GitLab et documentations techniques pourraient être structurés dès leur création afin de faciliter leur anonymisation en cas d'utilisation avec une IA.
+
+# 2026-07-13 10:30
+
+Module : Module 2 – Confidentialité et anonymisation (nom à confirmer)
+
+## Observation ou Note
+
+L'utilisation de l'IA nécessite souvent une anonymisation préalable des documents.
+
+Les outils d'anonymisation sont utiles lorsque les données sensibles sont dispersées dans un document (contrats, documents techniques, spécifications...).
+
+En revanche, certains documents peuvent être conçus dès leur rédaction afin de faciliter leur anonymisation.
+
+Cette approche permet également d'améliorer la maintenabilité des documents.
+
+## Idée
+
+Définir une règle documentaire consistant à centraliser toutes les données sensibles dans une table de variables placée au début du document.
+
+Exemple :
+
+| Variable | Valeur |
+|----------|--------|
+| [PROJECT] | ISEULT |
+| [PROJECT_MANAGER] | Katy Saintin |
+| [SERVER] | iseult.cea.fr |
+| [SERVER_IP] | 10.0.25.18 |
+
+Puis utiliser uniquement les variables dans le corps du document.
+
+Exemple :
+
+Le projet **[PROJECT]** est supervisé par **[PROJECT_MANAGER]**.
+
+Le serveur **[SERVER]** est accessible à l'adresse **[SERVER_IP]**.
+
+Cette approche facilite :
+
+- l'anonymisation ;
+- la maintenance documentaire ;
+- les changements de contexte (chef de projet, serveur, IP...) ;
+- la réutilisation des documents.
+
+## Action
+
+- [ ] Rédiger un guide de bonnes pratiques documentaires pour l'utilisation de l'IA.
+- [ ] Intégrer cette recommandation dans le rapport RS7424.
+- [ ] Ajouter ce guide dans le dépôt GitHub des livrables.
+
+## Impact sur Muscade
+
+Cette règle pourrait être appliquée à la documentation technique, aux procédures d'installation, aux rapports d'incidents et aux documents de formation afin de faciliter leur anonymisation et leur maintenance.
