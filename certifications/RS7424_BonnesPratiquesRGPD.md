@@ -115,3 +115,242 @@ Cette méthode ne remplace pas :
 - un outil d'anonymisation lorsque les données sont nombreuses et dispersées.
 
 Elle constitue une bonne pratique documentaire permettant de faciliter l'utilisation responsable de l'IA.
+
+# Charte d'utilisation responsable de l'Intelligence Artificielle
+## Projet MUSCADE
+
+**Version :** 0.1 (Document de travail)
+
+---
+
+# 1. Objet
+
+Cette charte définit les règles d'utilisation de l'intelligence artificielle dans le cadre du projet **Muscade**.
+
+Elle a pour objectif de :
+
+- accompagner l'intégration de l'IA dans les activités du projet ;
+- améliorer la qualité des livrables et des processus ;
+- protéger les données du CEA ;
+- garantir une utilisation responsable et éthique de l'IA ;
+- conserver la responsabilité humaine dans les décisions.
+
+Cette charte s'inscrit dans une démarche d'amélioration continue et pourra évoluer en fonction des retours d'expérience, des évolutions réglementaires et des outils disponibles.
+
+---
+
+# 2. Les cinq principes de la charte
+
+## 2.1 Responsabilité
+
+L'IA est un outil d'assistance.
+
+Chaque membre de l'équipe reste responsable des décisions, analyses, développements et documents produits.
+
+Aucune décision importante ne peut être prise uniquement sur la base d'une réponse générée par une IA.
+
+---
+
+## 2.2 Protection des données
+
+Toute utilisation de l'IA doit respecter :
+
+- le RGPD ;
+- les règles de sécurité du CEA ;
+- les exigences de confidentialité des projets.
+
+Le principe de **minimisation des données** s'applique systématiquement.
+
+Seules les informations strictement nécessaires sont transmises à l'IA.
+
+---
+
+## 2.3 Esprit critique
+
+Les réponses générées par l'IA doivent être :
+
+- vérifiées ;
+- confrontées à l'expertise métier ;
+- adaptées au contexte du projet.
+
+Une réponse IA ne constitue jamais une preuve.
+
+---
+
+## 2.4 Transparence
+
+L'utilisation de l'IA doit pouvoir être identifiée lorsque cela apporte une valeur ajoutée à la compréhension du document ou de la décision.
+
+Les prompts importants et les décisions prises avec l'aide de l'IA peuvent être conservés afin de faciliter la traçabilité.
+
+---
+
+## 2.5 Sobriété
+
+L'IA est utilisée lorsqu'elle apporte un bénéfice réel.
+
+Les requêtes inutiles sont évitées afin de limiter :
+
+- la consommation énergétique ;
+- le temps de traitement ;
+- le coût des services IA.
+
+---
+
+# 3. Usages autorisés
+
+L'IA peut être utilisée pour :
+
+- rédiger une documentation technique ;
+- reformuler un document ;
+- préparer une formation ;
+- produire une FAQ ;
+- synthétiser des tickets GitLab anonymisés ;
+- proposer une architecture logicielle ;
+- assister le développement logiciel ;
+- générer des scripts ;
+- préparer une communication utilisateurs ;
+- analyser des indicateurs d'activité anonymisés.
+
+---
+
+# 4. Usages autorisés sous validation humaine
+
+Une validation humaine est obligatoire pour :
+
+- un diagnostic d'incident ;
+- une proposition de priorisation ;
+- une proposition de répartition des tâches ;
+- une analyse des KPI ;
+- une communication officielle ;
+- une documentation diffusée aux utilisateurs.
+
+---
+
+# 5. Usages interdits
+
+Il est interdit d'utiliser l'IA pour :
+
+- transmettre des données personnelles non anonymisées ;
+- transmettre des informations classifiées ou confidentielles ;
+- prendre automatiquement une décision ayant un impact sur un collaborateur ;
+- évaluer individuellement un collaborateur à partir des tickets GitLab ;
+- classer les collaborateurs selon leur nombre de tickets résolus ;
+- mesurer la performance individuelle à partir d'indicateurs produits automatiquement ;
+- décider seul d'une intervention sur une installation.
+
+L'IA ne doit jamais être utilisée comme outil d'évaluation des personnes.
+
+---
+
+# 6. Utilisation des KPI
+
+Les indicateurs issus de GitLab ont pour objectif :
+
+- d'améliorer le fonctionnement du projet ;
+- d'identifier les goulots d'étranglement ;
+- de mesurer l'évolution de la charge ;
+- d'identifier les besoins en ressources humaines ;
+- de suivre les projets.
+
+Ils ne doivent pas être utilisés pour établir un classement individuel.
+
+Les analyses privilégient :
+
+- les projets ;
+- les composants logiciels ;
+- les catégories d'incidents ;
+- les délais moyens ;
+- les tendances.
+
+Les noms des auteurs ou des personnes assignées ne sont pas nécessaires à cette analyse.
+
+Lorsque cela est possible, les données sont anonymisées ou agrégées.
+
+---
+
+# 7. Principe « IA Ready »
+
+Les documents produits dans le cadre du projet sont conçus pour faciliter leur utilisation responsable avec une IA.
+
+## Objectifs
+
+- faciliter l'anonymisation ;
+- faciliter la maintenance documentaire ;
+- favoriser la réutilisation des documents ;
+- limiter les risques de divulgation.
+
+## Recommandations
+
+Les informations sensibles sont regroupées dans une table de variables située au début du document.
+
+Exemple :
+
+| Variable | Valeur |
+|----------|--------|
+| [PROJECT] | Muscade |
+| [PROJECT_MANAGER] | Katy Saintin |
+| [SERVER] | muscade.cea.fr |
+| [SERVER_IP] | 10.0.xxx.xxx |
+| [CLIENT] | CEA |
+
+Le corps du document utilise uniquement les variables.
+
+Exemple :
+
+> Le serveur **[SERVER]** héberge le projet **[PROJECT]**.
+
+Cette approche facilite :
+
+- l'anonymisation automatique ;
+- les changements de contexte ;
+- la maintenance documentaire ;
+- la génération de documents.
+
+---
+
+# 8. Bonnes pratiques
+
+Avant d'utiliser une IA :
+
+- vérifier que l'outil est autorisé ;
+- supprimer les données inutiles ;
+- anonymiser les informations personnelles ;
+- vérifier que les informations sensibles ont été retirées ;
+- transmettre uniquement les informations nécessaires ;
+- prévoir une validation humaine.
+
+---
+
+# 9. Capitalisation
+
+Les bonnes pratiques sont progressivement capitalisées dans :
+
+- le Wiki GitLab ;
+- la documentation du projet ;
+- les guides internes ;
+- une bibliothèque de prompts validés.
+
+---
+
+# 10. Engagement
+
+Chaque membre de l'équipe s'engage à :
+
+- utiliser l'IA de manière responsable ;
+- respecter la confidentialité des données ;
+- exercer son esprit critique ;
+- conserver la responsabilité de ses décisions ;
+- partager les bonnes pratiques afin d'améliorer collectivement les usages de l'IA.
+
+---
+
+# Documents associés
+
+- Guide d'anonymisation
+- Guide documentaire « IA Ready »
+- Checklist avant utilisation d'une IA
+- Catalogue des cas d'usage IA
+- Bibliothèque de prompts
+- Guide des KPI du projet Muscade
+
