@@ -684,3 +684,56 @@ Les prompts, procédures et retours d'expérience validés sont conservés dans 
 - documentation du projet.
 
 Cette capitalisation permet d'améliorer progressivement les usages de l'IA au sein du projet Muscade.
+
+# 2026-07-13 18:15
+
+Module : Module 2 – Cadre responsable : RGPD, éthique, conformité & relation salarié
+
+## Observation ou Note
+
+Le module présente la **charte d'usage responsable de l'IA** comme un document de référence permettant de structurer les pratiques au sein d'une équipe. La charte vise à harmoniser les usages, clarifier les pratiques autorisées ou interdites, réduire les risques et instaurer une gouvernance de l'IA. Mettre en place une charte d’usage responsable de l’IA en tant que manager.pdf
+
+En analysant ce module, je constate que plusieurs éléments avaient déjà été identifiés au cours de ma réflexion sur le projet Muscade (classification des usages, anonymisation, validation humaine, outils autorisés, documentation compatible IA). Le module apporte une structure cohérente permettant de les regrouper dans un document unique.
+
+## Idée
+
+Produire comme livrable du projet :
+
+**Charte d'utilisation responsable de l'IA dans le projet Muscade**
+
+Cette charte pourrait regrouper les éléments suivants :
+
+- objectifs et périmètre d'utilisation de l'IA ;
+- usages autorisés, assistés et interdits ;
+- règles d'anonymisation et de minimisation des données ;
+- outils IA autorisés dans le contexte du CEA ;
+- principe de validation humaine systématique ;
+- principes éthiques (transparence, esprit critique, vigilance face aux biais) ;
+- rôles et responsabilités (chef de projet, collaborateurs, fonctions support) ;
+- amélioration continue de la charte.
+
+Cette charte servirait de document de référence et s'appuierait sur plusieurs documents complémentaires :
+
+- Guide d'anonymisation ;
+- Guide de rédaction de documents compatibles IA ("IA Ready") ;
+- Checklist avant utilisation d'une IA ;
+- Catalogue des cas d'usage IA du projet Muscade ;
+- Base de connaissances des prompts validés.
+
+## Action
+
+- [ ] Intégrer la charte comme livrable dans le rapport RS7424.
+- [ ] Détailler chaque chapitre au fur et à mesure de l'avancement de la formation.
+- [ ] Déposer la première version sur le dépôt GitHub dédié aux livrables.
+- [ ] Vérifier si une charte IA existe déjà au CEA afin de s'en inspirer et d'assurer la cohérence avec les règles internes.
+
+## Impact sur Muscade
+
+La charte constituerait un cadre commun pour l'équipe projet afin de :
+
+- harmoniser les usages de l'IA ;
+- sécuriser les échanges avec les outils d'IA ;
+- faciliter l'intégration de nouveaux collaborateurs ;
+- capitaliser les bonnes pratiques ;
+- accompagner l'évolution progressive des usages de l'IA dans le projet Muscade.
+
