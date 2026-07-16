@@ -355,9 +355,22 @@ Chaque membre de l'équipe s'engage à :
 - Guide des KPI du projet Muscade
 
 ---
-#exercices IA Charte
+## Exercice IA Charte
 
-1. Secret des affaires / Sécurité des systèmes d’information
+# Objectif
+ 1️⃣ Identifiez au minimum deux références légales applicables à l’utilisation de l’IA dans votre activité
+(ex : RGPD, Code du travail, non-discrimination, propriété intellectuelle, secret des affaires, AI Act…)
+
+2️⃣ Pour chacune d’elles, expliquez :
+ ⚫︎ Pourquoi cette réglementation s’applique à vos usages de l’IA
+ ⚫︎ Quels risques elle vise à encadrer
+ ⚫︎ Quelles obligations elle impose à votre organisation
+
+3️⃣ Concluez
+Expliquez comment ces éléments juridiques devront être pris en compte dans la définition future de votre périmètre d’utilisation de l’IA (ce qui sera autorisé, encadré ou interdit).
+
+
+# 1. Secret des affaires / Sécurité des systèmes d’information
 
 Cette réglementation s’applique au projet Muscade car les outils d’IA pourraient être utilisés pour analyser de la documentation technique, des tickets GitLab ou des procédures internes contenant des informations sensibles.
 
@@ -376,7 +389,7 @@ L’utilisation de l’IA doit donc respecter le principe de confidentialité. L
 
 ⸻
 
-2. Code du travail / AI Act
+# 2. Code du travail / AI Act
 
 L’utilisation de l’IA pour analyser les données GitLab peut être utile afin d’améliorer le fonctionnement du projet.
 
@@ -409,7 +422,7 @@ Les noms des auteurs des tickets ou des personnes assignées ne sont pas nécess
 
 ⸻
 
-Conclusion
+# Conclusion
 
 Dans le projet Muscade, l’intégration de l’IA devra s’appuyer sur un cadre d’utilisation clairement défini.
 
