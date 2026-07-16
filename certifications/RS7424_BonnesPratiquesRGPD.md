@@ -354,3 +354,70 @@ Chaque membre de l'équipe s'engage à :
 - Bibliothèque de prompts
 - Guide des KPI du projet Muscade
 
+---
+#exercices IA Charte
+
+1. Secret des affaires / Sécurité des systèmes d’information
+
+Cette réglementation s’applique au projet Muscade car les outils d’IA pourraient être utilisés pour analyser de la documentation technique, des tickets GitLab ou des procédures internes contenant des informations sensibles.
+
+Exemples :
+
+* adresses IP ;
+* noms des serveurs ;
+* ports sécurisés ;
+* architecture réseau ;
+* configurations système ;
+* informations sur les infrastructures du CEA.
+
+La divulgation de ces informations pourrait faciliter une attaque informatique ou révéler des éléments stratégiques sur l’infrastructure.
+
+L’utilisation de l’IA doit donc respecter le principe de confidentialité. Les informations techniques sensibles doivent être supprimées, anonymisées ou remplacées par des variables avant toute transmission à un outil d’IA.
+
+⸻
+
+2. Code du travail / AI Act
+
+L’utilisation de l’IA pour analyser les données GitLab peut être utile afin d’améliorer le fonctionnement du projet.
+
+En revanche, ces analyses ne doivent jamais servir à évaluer individuellement les collaborateurs.
+
+Par exemple, il serait inapproprié de :
+
+* classer les collaborateurs selon le nombre de tickets résolus ;
+* comparer automatiquement les performances individuelles ;
+* utiliser ces indicateurs pour justifier une sanction ou une évaluation.
+
+L’objectif des KPI est d’améliorer le projet et non d’évaluer les personnes.
+
+Les analyses doivent permettre :
+
+* d’identifier les incidents récurrents ;
+* de détecter les goulots d’étranglement ;
+* de mettre en évidence des besoins en ressources humaines ;
+* d’améliorer les processus ;
+* d’aider à la planification du projet.
+
+Lorsque cela est possible, les rapports doivent être agrégés par :
+
+* projet ;
+* composant logiciel ;
+* catégorie d’incident ;
+* période.
+
+Les noms des auteurs des tickets ou des personnes assignées ne sont pas nécessaires pour atteindre ces objectifs et ne doivent pas apparaître dans les analyses destinées à l’IA.
+
+⸻
+
+Conclusion
+
+Dans le projet Muscade, l’intégration de l’IA devra s’appuyer sur un cadre d’utilisation clairement défini.
+
+Ce cadre devra garantir :
+
+* la protection des informations sensibles du CEA ;
+* le respect de la confidentialité des données ;
+* une utilisation des KPI orientée vers l’amélioration des processus plutôt que vers l’évaluation individuelle des collaborateurs ;
+* le maintien d’une validation humaine pour toute décision ayant un impact sur les personnes ou sur le fonctionnement du proje
+
+
