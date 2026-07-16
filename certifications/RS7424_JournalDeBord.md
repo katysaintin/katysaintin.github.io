@@ -737,3 +737,41 @@ La charte constituerait un cadre commun pour l'équipe projet afin de :
 - capitaliser les bonnes pratiques ;
 - accompagner l'évolution progressive des usages de l'IA dans le projet Muscade.
 
+# 2026-07-16 11:45
+
+Module : Non précisé
+
+## Observation ou Note
+
+La progression pédagogique de la certification est particulièrement efficace grâce aux livrables intermédiaires demandés tout au long du parcours.
+
+Chaque activité produit un document directement réutilisable dans le rapport final (charte d'usage de l'IA, analyse réglementaire, cartographie, cas d'usage, etc.). Cette approche évite d'avoir à rédiger l'ensemble du rapport en fin de formation et favorise une rédaction progressive.
+
+Le rapport devient un assemblage cohérent de livrables déjà produits, complétés et enrichis au fil des modules.
+
+Cette méthode réduit la charge cognitive et facilite la consolidation des connaissances.
+
+## Idée
+
+Point à valoriser lors de l'évaluation à chaud.
+
+L'approche par livrables intermédiaires est un véritable point fort de la formation. Elle permet :
+
+- d'ancrer les apprentissages dans des réalisations concrètes ;
+- de limiter l'effet "rapport à rédiger à la fin" ;
+- de construire progressivement un dossier de certification ;
+- de maintenir une cohérence entre les enseignements et les attendus de la certification.
+
+Cette organisation favorise également l'utilisation de méthodes de travail modernes (journal de bord, Markdown, IA générative, gestion documentaire) et rend le travail plus itératif.
+
+## Action
+
+- [ ] Mentionner ce point comme un point fort dans l'évaluation à chaud.
+- [ ] Le rappeler lors de la soutenance comme élément facilitant la montée en compétences.
+
+## Impact sur Muscade
+
+Cette approche est directement transposable au projet Muscade.
+
+Le principe de produire des livrables intermédiaires validés au fil de l'avancement (charte, procédures, guides, tableaux de bord, documentation technique) permettrait de limiter les gros travaux de documentation réalisés en fin de projet, d'améliorer la qualité documentaire et de faciliter les revues techniques.
+
