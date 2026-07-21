@@ -775,3 +775,74 @@ Cette approche est directement transposable au projet Muscade.
 
 Le principe de produire des livrables intermédiaires validés au fil de l'avancement (charte, procédures, guides, tableaux de bord, documentation technique) permettrait de limiter les gros travaux de documentation réalisés en fin de projet, d'améliorer la qualité documentaire et de faciliter les revues techniques.
 
+---
+
+# 2026-07-21 20:25
+
+# Module 3 - Cartographier et analyser les processus de travail sur Muscade 
+
+4 grands processus sont identifiés dans le projet Muscade :
+
+### 1. Exploiter les incidents
+
+Objectif : assurer le traitement complet des incidents techniques, depuis leur déclaration jusqu'à leur résolution.
+
+- Réception de l'incident
+- Diagnostic
+- Résolution
+- Clôture
+
+---
+
+### 2. Capitaliser les connaissances
+
+Objectif : transformer l'expérience acquise en connaissances réutilisables afin d'améliorer la qualité du support.
+
+- Documentation
+- RETEX (Retour d'expérience)
+- Procédures
+- Formation
+
+---
+
+### 3. Piloter l'activité
+
+Objectif : mesurer l'activité, identifier les tendances et faciliter la prise de décision.
+
+- KPI GitLab
+- Tableaux de bord
+- Analyse des tendances
+- Communication des résultats
+
+---
+
+### 4. Déployer l'IA de manière responsable
+
+Objectif : intégrer l'intelligence artificielle dans les processus de travail tout en garantissant la conformité, la sécurité et l'éthique.
+
+- Anonymisation des données
+- Contrôle RGPD / AI Act
+- Validation humaine des résultats
+- Charte d'usage de l'IA
+- Sensibilisation et accompagnement des équipes
+
+| Processus | Activité | Tâches | Acteurs | Outils | Opportunité IA |
+|-----------|----------|---------|----------|---------|----------------|
+| Gestion des incidents | Réception d'un incident | Lire le ticket, vérifier les informations, qualifier la demande | Utilisateur, Support | GitLab | Synthèse automatique du ticket, proposition de catégorie |
+| Gestion des incidents | Diagnostic | Rechercher des incidents similaires, consulter la documentation, analyser les journaux | Support | GitLab, Documentation, Grafana | Recherche sémantique, aide au diagnostic |
+| Gestion des incidents | Traitement | Corriger l'incident, tester, documenter la résolution | Support | GitLab | Génération d'un brouillon de procédure ou de compte rendu |
+| Gestion des incidents | Clôture | Informer l'utilisateur, fermer le ticket, mettre à jour la documentation | Support | GitLab | Génération du message de clôture et de la documentation |
+| Capitalisation des connaissances | Création de documentation | Rédiger une procédure, illustrer avec captures d'écran, publier | Support | Markdown, GitLab Wiki | Aide à la rédaction, reformulation, contrôle qualité |
+| Capitalisation des connaissances | Mise à jour documentaire | Vérifier l'obsolescence, corriger les procédures | Support | GitLab Wiki | Détection des documents obsolètes |
+| Pilotage de l'activité | Collecte des indicateurs | Extraire les KPI GitLab | Support | GitLab | Extraction et synthèse automatique |
+| Pilotage de l'activité | Analyse des indicateurs | Identifier les incidents récurrents, les goulots d'étranglement, les besoins en ressources | Support, Chef de projet | GitLab, Grafana | Détection de tendances, synthèse des anomalies |
+| Pilotage de l'activité | Communication | Préparer une synthèse d'activité, présenter les résultats | Chef de projet | PowerPoint, Markdown | Génération de synthèses et graphiques commentés |
+| Gestion des changements | Préparation d'une intervention | Définir le périmètre, identifier les risques, préparer la communication | Support | GitLab | Check-list automatique, analyse de risques |
+| Gestion des changements | Réalisation | Exécuter les opérations, contrôler les résultats | Support | Scripts, Outils d'administration | Assistance procédurale |
+| Gestion des changements | Retour d'expérience | Documenter les difficultés, proposer des améliorations | Support | Markdown | Génération du RETEX |
+| Développement Muscade | Conception | Identifier un besoin, rédiger les spécifications | Chef de projet | Markdown | Structuration des idées, rédaction |
+| Développement Muscade | Développement | Concevoir l'outil, coder, tester | Développeur | VS Code, GitLab | Assistance au développement |
+| Développement Muscade | Validation | Tester, corriger, documenter | Développeur | GitLab CI | Génération de rapports de tests |
+| Gouvernance IA | Vérification de conformité | Contrôler l'anonymisation, vérifier la charte IA, appliquer les règles de sécurité | Tous | Charte IA, Guide Muscade | Check-list automatique avant utilisation d'une IA |
+
+---
