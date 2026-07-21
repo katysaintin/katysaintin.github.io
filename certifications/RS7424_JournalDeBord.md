@@ -845,4 +845,30 @@ Objectif : intégrer l'intelligence artificielle dans les processus de travail t
 | Développement Muscade | Validation | Tester, corriger, documenter | Développeur | GitLab CI | Génération de rapports de tests |
 | Gouvernance IA | Vérification de conformité | Contrôler l'anonymisation, vérifier la charte IA, appliquer les règles de sécurité | Tous | Charte IA, Guide Muscade | Check-list automatique avant utilisation d'une IA |
 
+### Quelles tâches sont automatisables avec l'IA
+
+## Potentiel d'automatisation des processus du projet Muscade
+
+| Processus | Automatisable | Cas d'usage IA | Validation humaine |
+|-----------|---------------|----------------|--------------------|
+| Exploiter les incidents | Oui (fort potentiel) | Extraction des tickets GitLab, synthèse des incidents, regroupement des incidents similaires, proposition de diagnostic, génération d'un rapport d'activité | Validation du diagnostic et des actions correctives |
+| Capitaliser les connaissances | Oui (fort potentiel) | Génération de procédures à partir d'un modèle, rédaction d'un RETEX, synthèse des commentaires GitLab, création de supports de formation (Gamma, PowerPoint), reformulation documentaire | Relecture technique avant diffusion |
+| Piloter l'activité | Oui (fort potentiel) | Extraction automatique des KPI GitLab, génération de tableaux de bord, analyse des tendances, détection d'incidents récurrents, synthèse hebdomadaire ou mensuelle | Validation de l'interprétation des indicateurs et des décisions |
+| Déployer l'IA de manière responsable | Oui (potentiel moyen) | Vérification de l'anonymisation, contrôle du respect de la charte IA, check-list de conformité RGPD / AI Act, détection d'informations sensibles avant envoi à une IA | Validation finale par le responsable du projet |
+
+## Observations
+
+Les processus identifiés sont principalement automatisables sur les tâches répétitives à faible valeur ajoutée.
+
+L'IA intervient principalement pour :
+
+- rechercher des informations ;
+- synthétiser des données ;
+- générer une première version d'un document ;
+- produire des indicateurs ;
+- assister la prise de décision.
+
+La décision finale, la validation technique et les arbitrages restent sous la responsabilité de l'équipe projet.
+
+Le projet Muscade présente un fort potentiel d'automatisation grâce à l'utilisation d'outils déjà structurés (GitLab, Grafana, documentation Markdown, tableaux de bord). Les données étant déjà organisées, l'IA peut être intégrée progressivement sans modifier profondément les processus existants.
 ---
