@@ -63,17 +63,34 @@
      {
       "year": 2026,
       "name": "RS6776 Création de contenus rédactionnels et visuels par l'usage responsable de l'intelligence artificielle générative (96% à l'écrit)",
-      "url": "https://katysaintin.github.io/diplomes/2026_05_18_CertificationIA-RS6776-KatySAINTIN.pdf",
+      "url": "https://katysaintin.github.io/certifications/2026_05_18_CertificationIA-RS6776-KatySAINTIN.pdf",
       "status": "obtained"
     },
     {
       "year": 2026,
       "name": "RS7424 Gérer et transformer les processus de travail des équipes avec l'aide de l'IA",
-      "url": "https://katysaintin.github.io/diplomes/2026_05_18_CertificationIA-RS7424-KatySAINTIN.pdf",
+      "url": "https://katysaintin.github.io/certifications/2026_05_18_CertificationIA-RS7424-KatySAINTIN.pdf",
       "status": "in_progress"
+    },
+    {
+      "year": 2021,
+      "name": "Action nationale de formation IN2P3/INSU — La qualité logicielle dans les projets (prérequis Python)",
+      "url": "https://www.in2p3.cnrs.fr/fr/evenement/action-nationale-de-formation-in2p3insu-la-qualite-logicielle-dans-les-projets",
+      "status": "obtained"
     }
   ],
   "recognition": [
+    {
+      "title": "Cheffe de Produit MUSCADE",
+      "titleEn": "MUSCADE Product Owner",
+      "domain": "Responsabilité produit — développement, architecture et coordination de l'écosystème MUSCADE",
+      "domainEn": "Product ownership — development, architecture and coordination of the MUSCADE ecosystem",
+      "period": "Octobre 2025 — 4 ans",
+      "periodEn": "October 2025 — 4 years",
+      "authority": "Nommée par Pierre Manil, Chef du Département d'Ingénierie des Systèmes (DIS), IRFU",
+      "authorityEn": "Appointed by Pierre Manil, Head of the Systems Engineering Department (DIS), IRFU",
+      "url": "https://katysaintin.github.io/diplomes/2025_10_01_Note%20nomination%20Katy%20SAINTIN%20MUSCADE.pdf"
+    },
     {
       "title": "Experte Senior CEA",
       "titleEn": "CEA Senior Expert",
@@ -82,7 +99,8 @@
       "period": "Septembre 2025 — 4 ans",
       "periodEn": "September 2025 — 4 years",
       "authority": "Nommée par la Commission CEA, signée par Philippe Chomaz, Président",
-      "authorityEn": "Appointed by CEA Commission, signed by Philippe Chomaz, President"
+      "authorityEn": "Appointed by CEA Commission, signed by Philippe Chomaz, President",
+      "url": "https://katysaintin.github.io/diplomes/2025_11_13ExpertSenior_KatySAINTIN.pdf"
     },
     {
       "title": "Experte DRF — Direction de la Recherche Fondamentale",
@@ -92,7 +110,8 @@
       "period": "Janvier 2025 — 4 ans",
       "periodEn": "January 2025 — 4 years",
       "authority": "Nommée par la Commission CEA DRF, signée par Philippe Chomaz, Président",
-      "authorityEn": "Appointed by CEA DRF Commission, signed by Philippe Chomaz, President"
+      "authorityEn": "Appointed by CEA DRF Commission, signed by Philippe Chomaz, President",
+      "url": "https://katysaintin.github.io/diplomes/Expert%20DRF_Irfu_KatySaintin.pdf"
     }
   ],
   "careerStory": {
