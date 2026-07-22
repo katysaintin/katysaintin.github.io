@@ -872,3 +872,97 @@ La décision finale, la validation technique et les arbitrages restent sous la r
 
 Le projet Muscade présente un fort potentiel d'automatisation grâce à l'utilisation d'outils déjà structurés (GitLab, Grafana, documentation Markdown, tableaux de bord). Les données étant déjà organisées, l'IA peut être intégrée progressivement sans modifier profondément les processus existants.
 ---
+
+# 2026-07-22 — Module 3 : Évaluer la valeur ajoutée réelle de l'IA sur un processus
+
+**Module :** RS7424 – Compétence 2 – Module 3  
+**Thème :** Évaluer la valeur ajoutée de l'IA avant d'automatiser un processus.
+
+---
+
+## Synthèse du module
+
+L'objectif du module n'est pas d'identifier ce qui est automatisable, mais ce qui mérite réellement de l'être.
+
+Une automatisation n'a de valeur que si elle résout un problème concret identifié dans le fonctionnement de l'équipe.
+
+Le rôle du manager n'est donc pas d'introduire l'IA pour "faire moderne", mais d'améliorer un processus existant en apportant un bénéfice mesurable.
+
+Le module insiste également sur un point important :
+
+> Automatiser un mauvais processus revient simplement à accélérer un dysfonctionnement existant.
+
+Avant toute automatisation, il est donc indispensable de cartographier, comprendre puis analyser le processus.
+
+---
+
+## Les cinq dimensions d'évaluation
+
+| Dimension | Question à se poser | Application au projet Muscade |
+|------------|---------------------|-------------------------------|
+| **Gain de temps** | Les tâches sont-elles répétitives et chronophages ? | **Fort** : génération automatique du rapport hebdomadaire d'incidents, statistiques, synthèse des tickets GitLab. |
+| **Fiabilité** | L'automatisation réduit-elle les erreurs ou les oublis ? | **Élevée** : suppression des erreurs de comptage, homogénéisation des rapports, réduction des oublis. |
+| **Fluidité** | Le processus devient-il plus rapide ou plus lisible ? | **Moyenne** : la préparation est accélérée mais les validations et arbitrages restent humains. |
+| **Expérience collaborateur** | Les utilisateurs bénéficient-ils directement de l'automatisation ? | **Faible** : l'amélioration est principalement interne au support ; les utilisateurs en bénéficient indirectement via une meilleure qualité de service. |
+| **Alignement organisationnel** | Le processus contribue-t-il aux objectifs du service ? | **Fort** : amélioration du pilotage, aide à la décision, meilleure priorisation des incidents et meilleure allocation des ressources. |
+
+---
+
+## Application au processus "Exploitation des incidents GitLab"
+
+Le processus sélectionné est particulièrement pertinent pour une automatisation par l'IA car il repose principalement sur des données factuelles :
+
+- extraction des tickets GitLab ;
+- calcul des indicateurs ;
+- détection des tendances ;
+- génération d'un rapport hebdomadaire ;
+- préparation du point projet Muscade.
+
+L'IA permet d'assister la cheffe de projet dans toutes les tâches répétitives de collecte et de synthèse.
+
+En revanche, plusieurs activités doivent impérativement rester humaines :
+
+- validation des résultats ;
+- interprétation du contexte métier ;
+- arbitrage des priorités ;
+- communication avec les équipes ;
+- décision managériale.
+
+L'IA devient ainsi un outil d'aide à la décision et non un outil de décision.
+
+---
+
+## Réflexion personnelle
+
+Ce module confirme une intuition que j'avais déjà en pilotant Muscade.
+
+L'objectif n'est pas de remplacer le travail d'un chef de projet mais de lui retirer la partie la plus répétitive et la moins créatrice de valeur.
+
+Dans mon cas, la production des rapports d'activité représente une charge importante alors qu'elle repose essentiellement sur des données déjà présentes dans GitLab.
+
+L'IA peut automatiser la collecte, les statistiques et la rédaction d'un premier rapport, tandis que l'expertise humaine reste indispensable pour interpréter les résultats et décider des actions à mener.
+
+Cette distinction entre **automatiser une analyse** et **automatiser une décision** constitue, selon moi, l'un des enseignements les plus importants de ce module.
+
+---
+
+## Impact sur le projet Muscade
+
+- Confirmation du choix du processus prioritaire : **Exploitation des incidents GitLab**.
+- Validation que ce processus apporte une forte valeur ajoutée lorsqu'il est assisté par l'IA.
+- Justification argumentée de l'intégration de ChatGPT, Claude et Gamma dans le futur fonctionnement du support Muscade.
+- Renforcement de l'idée que l'IA est un **assistant d'analyse**, tandis que les décisions stratégiques et opérationnelles demeurent sous responsabilité humaine.
+
+---
+
+## Idées à approfondir
+
+- Automatiser l'extraction des tickets GitLab via CI/CD ou API.
+- Générer automatiquement un rapport hebdomadaire Markdown.
+- Produire une présentation Gamma directement à partir du rapport.
+- Générer automatiquement une liste des actions prioritaires à proposer au manager.
+- Étudier la possibilité de détecter automatiquement les incidents récurrents ou les signaux faibles à partir de l'historique GitLab.
+
+> **Citation personnelle :**
+>
+> *« Une bonne IA ne remplace pas le manager. Elle lui évite surtout de perdre son temps à compter, trier et reformuler ce que les données savent déjà dire. »*
