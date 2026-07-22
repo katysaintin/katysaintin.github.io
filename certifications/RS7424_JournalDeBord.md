@@ -1002,3 +1002,63 @@ Cette expérience rappelle l'importance de concevoir des interfaces qui prennent
 Pour le projet Muscade, cela conforte l'idée que les outils développés doivent permettre de corriger facilement une action involontaire (annulation, remplacement, validation avant publication), afin d'améliorer l'expérience utilisateur et de limiter les erreurs opérationnelles.
 
 ---
+
+# 2026-07-22
+
+Module : RS7424 – Compétence 2 – Module 3 (Cartographie et analyse des processus)
+
+## Observation ou Note
+
+En préparant le livrable de cartographie du processus « Exploitation des incidents GitLab », je me suis aperçue que l'étape d'extraction des données constituait un point faible du processus actuel.
+
+Pour réaliser les statistiques de mon étude, j'ai dû effectuer un comptage manuel à partir de captures d'écran GitLab, la fonctionnalité d'export CSV n'étant pas disponible sur mon instance.
+
+Cette contrainte m'a amenée à réfléchir à une amélioration technique indépendante de l'IA, qui viendrait compléter naturellement le processus.
+
+## Idée
+
+Ajouter une nouvelle étape technique en amont du processus :
+
+**Extraction automatisée des données GitLab via l'API GitLab et un pipeline CI/CD.**
+
+Principe proposé :
+
+1. Déclenchement automatique d'un pipeline GitLab (planifié ou manuel).
+2. Appel de l'API REST GitLab.
+3. Extraction des Issues, labels, milestones, projets, états, dates et affectations.
+4. Génération automatique d'un fichier CSV, JSON ou Markdown.
+5. Utilisation de ces données comme entrée des outils d'IA (ChatGPT ou Claude) afin de produire le rapport hebdomadaire.
+
+Cette automatisation permettrait de fiabiliser les données d'entrée avant leur exploitation par l'IA.
+
+## Réflexion
+
+Cette idée est née directement au cours de la réalisation du livrable de certification.
+
+Le travail demandé m'a conduit à analyser mon propre processus de production des rapports d'activité et à identifier une étape répétitive, chronophage et peu fiable.
+
+J'ai ainsi réalisé que l'IA n'était pas le premier levier d'amélioration.
+
+L'automatisation de la collecte des données constitue un prérequis indispensable avant toute génération de rapports par IA.
+
+Cette réflexion illustre la complémentarité entre :
+
+- l'automatisation classique (API, CI/CD, scripts Python) ;
+- l'intelligence artificielle générative (analyse, synthèse, rédaction).
+
+## Action
+
+- [ ] Mettre à jour le schéma du processus en ajoutant une étape « Extraction automatisée via API GitLab ».
+- [ ] Décrire ce principe dans le rapport RS7424 comme une piste d'amélioration identifiée.
+- [ ] Ne pas développer cette automatisation dans le cadre de la certification, mais en présenter l'architecture et les bénéfices attendus.
+- [ ] Étudier ultérieurement la faisabilité technique d'un pipeline GitLab CI générant automatiquement les exports destinés aux rapports d'activité.
+
+## Impact sur Muscade
+
+Cette évolution renforcerait la fiabilité du processus de pilotage du support Muscade.
+
+Elle permettrait de produire des indicateurs homogènes, reproductibles et exploitables automatiquement par les outils d'IA, tout en réduisant le temps consacré aux tâches de collecte manuelle.
+
+Cette idée constitue une évolution naturelle du projet Muscade et pourrait faire l'objet d'un futur développement indépendant de la certification.
+
+---
