@@ -215,6 +215,8 @@
       color: white; border-radius: 12px; padding: .9rem 1.2rem;
       font-weight: 700; font-size: .95rem;
     }
+    .recognition-item a { color: white; text-decoration: none; border-bottom: 2px solid rgba(255,255,255,.5); }
+    .recognition-item a:hover { border-bottom-color: white; }
 
     /* CERTIFICATIONS */
     .cert-list { display: flex; flex-direction: column; gap: .7rem; }
@@ -224,9 +226,15 @@
     }
     .cert-item:last-child { border-bottom: none; }
     .cert-name { font-size: .85rem; color: var(--text); }
+    .cert-name a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--terracotta); }
+    .cert-name a:hover { color: var(--terracotta); }
     .cert-year { font-size: .8rem; color: var(--terracotta); font-weight: 700; white-space: nowrap; margin-left: .5rem; }
     .cert-planned {
       font-size: .7rem; background: #fff3e0; color: #e65100;
+      padding: .1rem .45rem; border-radius: 999px; margin-left: .4rem;
+    }
+    .cert-inprogress {
+      font-size: .7rem; background: #e3f2fd; color: #0d47a1;
       padding: .1rem .45rem; border-radius: 999px; margin-left: .4rem;
     }
 
@@ -465,12 +473,17 @@
       </div>`).join('');
 
     document.getElementById('cv-recognition').innerHTML = cv.recognition
-      .map(r => `<div class="recognition-item">🏅 ${r.title}</div>`).join('');
+      .map(r => `<div class="recognition-item">🏅 ${r.url
+        ? `<a href="${r.url}" target="_blank">${r.title}</a>`
+        : r.title}</div>`).join('');
 
     document.getElementById('cv-certifications').innerHTML = cv.certifications.map(c =>
       `<div class="cert-item">
-        <span class="cert-name">${c.name}${c.status === 'planned'
-          ? `<span class="cert-planned">${fr ? 'prévu' : 'planned'}</span>` : ''}</span>
+        <span class="cert-name">${c.url
+          ? `<a href="${c.url}" target="_blank">${c.name}</a>`
+          : c.name}${c.status === 'planned'
+          ? `<span class="cert-planned">${fr ? 'prévu' : 'planned'}</span>` : ''}${c.status === 'in_progress'
+          ? `<span class="cert-inprogress">${fr ? 'en cours' : 'in progress'}</span>` : ''}</span>
         <span class="cert-year">${c.year}</span>
       </div>`).join('');
 
