@@ -966,3 +966,39 @@ Cette distinction entre **automatiser une analyse** et **automatiser une décisi
 > **Citation personnelle :**
 >
 > *« Une bonne IA ne remplace pas le manager. Elle lui évite surtout de perdre son temps à compter, trier et reformuler ce que les données savent déjà dire. »*
+
+# 2026-07-22
+
+Module : RS7424 – Compétence 2 – Module 3 (Évaluation à chaud)
+
+## Observation ou Note
+
+Lors du dépôt du livrable « Cartographier vos processus automatisables », j'ai publié par erreur le modèle vierge au lieu du document complété.
+
+La plateforme ne permet pas de supprimer ou de remplacer une pièce jointe après son dépôt. J'ai donc transmis le bon document directement à Mme Roche par courriel.
+
+Cet incident m'a conduit à réfléchir à l'expérience utilisateur de la plateforme et aux possibilités d'amélioration.
+
+## Idée
+
+Proposer une amélioration ergonomique de la plateforme de formation :
+
+- autoriser la suppression ou le remplacement d'une pièce jointe avant ou après validation du dépôt ;
+- afficher un aperçu du document déposé afin de limiter les erreurs ;
+- éventuellement ajouter une confirmation avant l'envoi définitif.
+
+Cette fonctionnalité réduirait les erreurs de manipulation et éviterait des échanges complémentaires avec les formateurs.
+
+## Action
+
+- [x] Envoyer le livrable correct à Mme Roche par courriel.
+- [x] Lui transmettre une suggestion d'amélioration de la plateforme.
+- [ ] Intégrer cette observation dans l'évaluation à chaud de la formation.
+
+## Impact sur Muscade
+
+Cette expérience rappelle l'importance de concevoir des interfaces qui prennent en compte les erreurs humaines.
+
+Pour le projet Muscade, cela conforte l'idée que les outils développés doivent permettre de corriger facilement une action involontaire (annulation, remplacement, validation avant publication), afin d'améliorer l'expérience utilisateur et de limiter les erreurs opérationnelles.
+
+---
