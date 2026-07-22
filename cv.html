@@ -22,6 +22,29 @@
       border-radius: 20px;
       padding: 2.5rem 2rem;
       margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .cv-hero-photo {
+      flex: 0 0 auto;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid rgba(255,255,255,.5);
+      box-shadow: 0 6px 20px rgba(0,0,0,.25);
+    }
+    .cv-hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .cv-hero-text { flex: 1 1 auto; min-width: 0; }
+    @media (max-width: 560px) {
+      .cv-hero { flex-direction: column; text-align: center; gap: 1.2rem; }
+      .cv-hero-photo { width: 110px; height: 110px; }
     }
     .cv-hero h1 {
       font-size: clamp(1.8rem, 6vw, 2.8rem);
@@ -271,10 +294,15 @@
 
   <!-- HERO -->
   <div class="cv-hero">
-    <h1 id="cv-name"></h1>
-    <div class="title" id="cv-title"></div>
-    <div class="tagline" id="cv-tagline"></div>
-    <div class="summary" id="cv-summary"></div>
+    <div class="cv-hero-photo" id="cv-photo-wrap" style="display:none">
+      <img id="cv-photo" src="" alt="Katy Saintin">
+    </div>
+    <div class="cv-hero-text">
+      <h1 id="cv-name"></h1>
+      <div class="title" id="cv-title"></div>
+      <div class="tagline" id="cv-tagline"></div>
+      <div class="summary" id="cv-summary"></div>
+    </div>
   </div>
 
   <!-- HIGHLIGHTS -->
@@ -397,6 +425,16 @@
     document.getElementById('cv-title').textContent   = fr ? p.titleFr : p.titleEn;
     document.getElementById('cv-tagline').textContent = fr ? p.taglineFr : p.taglineEn;
     document.getElementById('cv-summary').textContent = fr ? p.summaryFr : p.summaryEn;
+
+    const photoWrap = document.getElementById('cv-photo-wrap');
+    const photoImg = document.getElementById('cv-photo');
+    if (p.photoUrl) {
+      photoImg.src = p.photoUrl;
+      photoImg.onerror = () => { photoWrap.style.display = 'none'; };
+      photoWrap.style.display = 'block';
+    } else {
+      photoWrap.style.display = 'none';
+    }
 
     document.getElementById('cv-highlights').innerHTML = cv.highlights.map(h =>
       `<div class="highlight">
