@@ -1071,4 +1071,9 @@ Module : Évaluation à chaud de la plateforme de formation
 
 Au cours de la formation RS7424, plusieurs difficultés d'utilisation de la plateforme ont été identifiées. Elles ne concernent pas le contenu pédagogique, mais l'ergonomie et la navigation entre les différents outils mis à disposition des apprenants.
 
-Ces points ne sont pas bloquants, mais leur amélioration simplifierait l'expérience utilisateur, notamment lors
+Ces points ne sont pas bloquants, mais leur amélioration simplifierait l'expérience utilisateur :
+- L'url de l'elearning n'est pas évident à retrouver sans le mail d'inscription de Beforma. https://mixlearning.beforma.fr/ ,
+il faudrait que les liens vers les différents sites soient référencés sur le site d'accueil de Beforma https://beforma.digiforma.net/ 
+- Ainsi que le calendrier de prise de rendez-vous sur Google calendar Enfin sur la page d'accueil,
+- il n'y a pas de bouton Aller au menu d'accueil. La seule solution que j'ai pour avoir accès au sommaire de la formation, c'est de reprendre l'URL et de faire F5 ..
+
