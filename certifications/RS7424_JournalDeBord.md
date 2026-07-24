@@ -1108,5 +1108,43 @@ Pour le projet MUSCADE, au lieu d'utiliser des prompts manuels chaque semaine, l
 
 Passage d'un prompt hebdomadaire rédigé à la main à un assistant dédié "Support & Documentation MUSCADE", garantissant une parfaite homogénéité des comptes rendus, des FAQ et des procédures rédigées, tout en réduisant le temps de saisie de l'experte.
 
+# 2026-07-25 08:30
+
+Module : Module 04 - Choix d'outils et transformation des processus avec l'IA
+
+## Observation ou Note
+
+L'utilisation directe de LLM conversationnels (ChatGPT, Claude) sur de longs fils de discussion présente des limites opérationnelles et économiques marquées :
+- **ChatGPT** devient verbeux, ralentit au fil des échanges et s'enferme dans une boucle d'améliorations continues au lieu de livrer un document final.
+- **Claude** offre une excellente ergonomie d'itération (Artifacts v1, v2) et une qualité de code supérieure, mais consomme très rapidement le quota de tokens lorsque de gros volumes de textes ou de tickets (comme les exports PDF) sont injectés.
+
+L'absence d'export direct au format CSV/Excel sur la forge GitLab DRF impose actuellement une extraction manuelle (impression PDF), non structurée et très énergivore en tokens.
+
+### Stratégie technique et choix d'outils :
+1. **Conseil technique & développement de scripts** : Privilégier des conversations courtes et dédiées dans Claude 3.5/3.7 Sonnet ou des modèles de raisonnement (DeepSeek-R1, o3-mini) pour concevoir les scripts d'automatisation.
+2. **Extraction structurée via API REST GitLab** : L'utilisation d'un Personal Access Token (PAT) GitLab et de l'API REST (`/api/v4/projects/:id/issues`) permet d'extraire automatiquement les tickets modifiés sous forme de fichier structuré (JSON ou Markdown brut).
+3. **Optimisation de la sobriété numérique** : Un fichier JSON/Markdown natif réduit de près de 90 % le volume de tokens consommés par rapport à un import PDF ou copier-coller Web.
+
+## Idée
+
+Reconfigurer le processus d'exploitation des incidents vers un **workflow hybride** :
+1. Un script Python léger (exécutable localement ou via GitLab CI) extrait les métadonnées et résolutions des tickets sous forme de Markdown compact (`incidents_semaine.md`).
+2. Ce fichier est transmis à l'assistant IA (Claude/Custom GPT) avec une consigne stricte de cadrage : *"Génère directement le bilan hebdomadaire sans proposer de révisions supplémentaires."*
+
+## Action
+
+- [ ] Créer un Personal Access Token (PAT) sur GitLab DRF avec le scope `read_api`.
+- [ ] Écrire et tester le script Python d'extraction API GitLab pour générer le fichier `incidents_semaine.md`.
+- [ ] Ajuster le prompt du bilan pour bloquer les boucles de suggestions interactives de l'IA.
+
+## Impact sur Muscade
+
+- Suppression de la tâche manuelle d'impression PDF et de mise en forme des tickets.
+- Réduction massive du coût en tokens et déblocage de la contrainte des limites de requêtes sur Claude.
+- Traitement sécurisé en flux fermé (données structurées hébergées sur l'environnement CEA).
+- Inscription directe de cette reconfiguration dans le rapport RS7424 (valorisation des compétences C2 et C3).
+
+
+
 
 
