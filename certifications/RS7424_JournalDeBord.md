@@ -1077,3 +1077,36 @@ il faudrait que les liens vers les différents sites soient référencés sur le
 - Ainsi que le calendrier de prise de rendez-vous sur Google calendar Enfin sur la page d'accueil,
 - il n'y a pas de bouton Aller au menu d'accueil. La seule solution que j'ai pour avoir accès au sommaire de la formation, c'est de reprendre l'URL et de faire F5 ..
 
+# 2026-07-24 17:40
+
+Module : Module 04 - Choix d'outils et transformation des processus avec l'IA
+
+## Observation ou Note
+
+L'IA générative évolue de l'utilisation ponctuelle d'outils conversationnels vers le déploiement d'assistants sur-mesure (GPTs, Gems, Super Agents) capables d'intégrer un cadre métier strict, de stabiliser les consignes et d'automatiser les processus récurrents.
+
+### Tableau comparatif des IA génératives et de leurs assistants personnalisés
+
+| Outil IA | Éditeur / Écosystème | Fonctionnalité d'Assistant Personnalisé | Forces principales | Limites / Points de vigilance |
+| :--- | :--- | :--- | :--- | :--- |
+| **ChatGPT** | OpenAI | **Custom GPTs** | • Polyvalence et haut niveau de raisonnement<br>• RAG simple via intégration de fichiers<br>• Ingestion de consignes/rôles complexes | • Nécessite un abonnement Plus/Team<br>• Hébergement de données hébergé hors CEA (si non souverain) |
+| **Claude** | Anthropic | **Projects / Artifacts** | • Excellence en rédaction, structuration et code<br>• Très grande fenêtre de contexte (fichiers longs)<br>• Rendu propre de documents Markdown/HTML | • Moins de fonctionnalités multi-outils/plugins que ChatGPT<br>• Fonctionnalités d'assistant intégrées plus récentes |
+| **Gemini** | Google | **Gems** | • Intégration native avec l'écosystème Google Workspace<br>• Capacité multimodale native (texte, image, audio, vidéo)<br>• Rapidité de traitement | • Gestion parfois stricte du refus de réponse selon les filtres<br>• Dépendance au stockage Cloud Google |
+| **Microsoft Copilot** | Microsoft | **Copilot Studio / Custom Copilots** | • Intégration native dans l'environnement Microsoft 365 (Word, Excel, Teams)<br>• Sécurité d'entreprise et gouvernance | • Moins souple pour de l'expérimentation rapide hors écosystème MS<br>• Coût de licence entreprise |
+| **Genspark** | Genspark AI | **Super Agents / Custom Agents** | • Orientation résultats et recherche autonome de données<br>• Structuration orientée automatisation de workflows métiers | • Outil plus récent, écosystème en construction<br>• Confidentialité des données à valider rigoureusement |
+
+## Idée
+
+Pour le projet MUSCADE, au lieu d'utiliser des prompts manuels chaque semaine, la solution idéale est de configurer un assistant sur-mesure (de type Custom GPT, Gem ou projet Claude) alimenté par nos gabarits Markdown (modèle de procédure, structure de rapport d'incidents) et nos règles de qualification.
+
+## Action
+
+- [ ] Tester la création d'un Custom GPT / Gem prototype contenant le modèle de fiche procédure Markdown de MUSCADE.
+- [ ] Valider l'anonymisation des données de tickets GitLab avant injection dans l'assistant.
+
+## Impact sur Muscade
+
+Passage d'un prompt hebdomadaire rédigé à la main à un assistant dédié "Support & Documentation MUSCADE", garantissant une parfaite homogénéité des comptes rendus, des FAQ et des procédures rédigées, tout en réduisant le temps de saisie de l'experte.
+
+
+
