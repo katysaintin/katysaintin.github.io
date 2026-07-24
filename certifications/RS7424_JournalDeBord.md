@@ -1062,3 +1062,13 @@ Elle permettrait de produire des indicateurs homogènes, reproductibles et explo
 Cette idée constitue une évolution naturelle du projet Muscade et pourrait faire l'objet d'un futur développement indépendant de la certification.
 
 ---
+
+# 2026-07-22
+
+Module : Évaluation à chaud de la plateforme de formation
+
+## Observation ou Note
+
+Au cours de la formation RS7424, plusieurs difficultés d'utilisation de la plateforme ont été identifiées. Elles ne concernent pas le contenu pédagogique, mais l'ergonomie et la navigation entre les différents outils mis à disposition des apprenants.
+
+Ces points ne sont pas bloquants, mais leur amélioration simplifierait l'expérience utilisateur, notamment lors
