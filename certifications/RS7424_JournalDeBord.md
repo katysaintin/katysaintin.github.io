@@ -1355,6 +1355,7 @@ Si on les classe par fonction
 - Drive
 - Gmail
 
+```text
                      GitLab
                         │
                         ▼
@@ -1369,7 +1370,7 @@ Si on les classe par fonction
     Airtable                        Markdown
         │                                │
         ▼                                ▼
- KPI / Camemberts                   Gamma
+      KPI / Camemberts                   Gamma
         │                                │
         └───────────────┬────────────────┘
                         ▼
@@ -1378,6 +1379,7 @@ Si on les classe par fonction
                         │
                         ▼
                      Gmail
+```
 
   
 Ce schéma est intéressant parce qu'il met en évidence un point essentiel : le JSON devient ton langage commun. Peu importe que tu utilises Claude, ChatGPT, Make ou Airtable, ils savent tous produire ou consommer du JSON. Tu peux donc concevoir tes traitements autour de ce format pivot.
