@@ -1299,6 +1299,88 @@ Cette approche est cohérente avec les recommandations des supports de formation
 Cette étude m'a permis de confirmer que l'automatisation constitue un levier complémentaire à l'intelligence artificielle générative. Là où l'IA produit du contenu et assiste l'analyse, les outils de workflow assurent la circulation fiable des données entre les différentes applications.
 
 Pour le projet MUSCADE, cette complémentarité ouvre la perspective d'un processus largement automatisé, depuis l'extraction des incidents jusqu'à la production des livrables. Cette réflexion renforce la pertinence de la démarche proposée dans mon dossier RS7424, en démontrant ma capacité à identifier les tâches automatisables, à sélectionner les outils adaptés et à concevoir une architecture de traitement cohérente répondant aux besoins métiers.
+---
+| Outil            | Rôle principal                | Niveau technique | Format sous-jacent               | Forces                                                                                        | Limites                                        | Cas d'usage MUSCADE                           |
+| ---------------- | ----------------------------- | ---------------- | -------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------- | --------------------------------------------- |
+| **Claude**       | IA conversationnelle          | ⭐                | Texte / JSON / Markdown / Code   | Très bon raisonnement, excellent pour structurer un PDF en JSON, produire de la documentation | Pas d'orchestration native                     | PDF GitLab → JSON → Markdown                  |
+| **ChatGPT**      | IA conversationnelle          | ⭐                | Texte / JSON / Markdown / Python | Polyvalent, code, analyse, génération de documents                                            | Nécessite des outils externes pour automatiser | Analyse des incidents, génération de rapports |
+| **Gemini**       | IA Google                     | ⭐                | Texte / JSON                     | Très intégré à Google Workspace                                                               | Plus orienté écosystème Google                 | Gmail, Drive, Docs                            |
+| **Genspark**     | Agent IA                      | ⭐⭐               | Prompt + configuration interne   | Génère des workflows complets à partir du langage naturel                                     | Moins standardisé, moins exportable            | Prototype rapide d'un processus               |
+| **Make**         | Orchestrateur no-code         | ⭐⭐               | **Blueprint JSON**               | Très visuel, énormément de connecteurs, export/import de scénarios                            | Peut devenir complexe sur de gros workflows    | Orchestrer tout le pipeline MUSCADE           |
+| **n8n**          | Orchestrateur open source     | ⭐⭐⭐              | **Workflow JSON**                | Très puissant, auto-hébergeable, logique proche du développement                              | Courbe d'apprentissage un peu plus élevée      | Automatisation industrielle                   |
+| **Zapier**       | Orchestrateur SaaS            | ⭐                | Configuration cloud              | Très simple à prendre en main                                                                 | Peu flexible, peu exportable                   | Automatisations simples                       |
+| **Airtable**     | Base de données collaborative | ⭐                | Données tabulaires + API JSON    | Tableaux de bord, filtres, vues, graphiques, Kanban                                           | Pas une vraie base relationnelle complexe      | Historique des incidents, KPI                 |
+| **Gamma**        | Présentations IA              | ⭐                | Markdown / Texte                 | Présentations très rapides et esthétiques                                                     | Personnalisation limitée                       | Restitution automatique des KPI               |
+| **GitLab**       | Gestion de projet + DevOps    | ⭐⭐⭐              | YAML (CI), JSON (API), Markdown  | Source de vérité des tickets, API très riche                                                  | Plus orienté développement                     | Source des incidents                          |
+| **GitLab CI/CD** | Orchestration technique       | ⭐⭐⭐⭐             | **.gitlab-ci.yml**               | Automatisation des pipelines logiciels                                                        | Pas conçu pour les workflows métier            | Industrialisation future                      |
+| **Kubernetes**   | Orchestrateur de conteneurs   | ⭐⭐⭐⭐⭐            | YAML                             | Déploiement, montée en charge, haute disponibilité                                            | Très complexe                                  | Héberger un service IA                        |
+
+## Les formats intéressants
+
+C'est probablement ce tableau que tu vas utiliser le plus.
+
+| Format         | Lisible | Utilisé par                             |
+| -------------- | ------- | --------------------------------------- |
+| Markdown (.md) | ⭐⭐⭐⭐⭐   | Documentation, Gamma, GitLab Wiki       |
+| JSON           | ⭐⭐⭐⭐    | Claude, Make, n8n, API GitLab, Airtable |
+| YAML           | ⭐⭐⭐⭐    | GitLab CI, Kubernetes                   |
+| CSV            | ⭐⭐⭐⭐⭐   | Excel, Airtable, Pandas                 |
+| XLSX           | ⭐⭐⭐⭐⭐   | Excel                                   |
+| PDF            | ⭐       | Entrée des traitements IA               |
+
+Si on les classe par fonction
+1. Les IA, elles réfléchissent
+- Claude
+- ChatGPT
+- Gemini
+- Genspark
+
+2.  Les orchestrateurs , Ils décident qui fait quoi.
+- Make
+- n8n
+
+3. Les bases de données , Elles stockent.
+- Airtable
+- Excel
+- Google Sheets
+
+4. Les outils de restitution , Ils présentent.
+- Markdown
+- Gamma
+- PowerPoint
+
+5. Les sources de données , Ils alimentent le workflow.
+- GitLab
+- SharePoint
+- Drive
+- Gmail
+
+                     GitLab
+                        │
+                        ▼
+                Claude / ChatGPT
+                 (Extraction IA)
+                        │
+                        ▼
+                    JSON standard
+                        │
+        ┌───────────────┴────────────────┐
+        ▼                                ▼
+    Airtable                        Markdown
+        │                                │
+        ▼                                ▼
+ KPI / Camemberts                   Gamma
+        │                                │
+        └───────────────┬────────────────┘
+                        ▼
+                  Make / n8n
+                 (Orchestration)
+                        │
+                        ▼
+                     Gmail
+
+  
+Ce schéma est intéressant parce qu'il met en évidence un point essentiel : le JSON devient ton langage commun. Peu importe que tu utilises Claude, ChatGPT, Make ou Airtable, ils savent tous produire ou consommer du JSON. Tu peux donc concevoir tes traitements autour de ce format pivot.
 
 
 
