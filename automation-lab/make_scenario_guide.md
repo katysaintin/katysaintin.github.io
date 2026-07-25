@@ -56,7 +56,7 @@ réponse par défaut :
 
 1. Ajoute **Webhooks > Webhook response** à la fin du scénario.
 2. Status : `200`
-3. Body : `{"status":"ok","incidentId":"{{1.incidentId}}"}`
+3. Body : `{"status":"ok","incidentId":"{{2.incidentId}}"}`
 4. Content-Type : `application/json`
 
 Sans ce module, Make répond automatiquement `Accepted` (HTTP 200), ce qui
