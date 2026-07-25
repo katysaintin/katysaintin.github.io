@@ -1144,6 +1144,88 @@ Reconfigurer le processus d'exploitation des incidents vers un **workflow hybrid
 - Traitement sécurisé en flux fermé (données structurées hébergées sur l'environnement CEA).
 - Inscription directe de cette reconfiguration dans le rapport RS7424 (valorisation des compétences C2 et C3).
 
+---
+
+| Processus                                   | Tâches opérationnelles                                                                                                  | IA utilisée                                   | Justification métier & technique                                                                                                                                                         | Coût associé                                       |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| **1. Exploiter les incidents**              | **Tâche 1.1 :** Extraction automatique des incidents GitLab (script Python / API REST via PAT).                         | Claude (Claude 3.5/3.7 Sonnet)                | Excellence en génération de code, itération fluide via les Artifacts (v1, v2). Évite l'export PDF manuel. **Conformité :** exclusion de DeepSeek/Grok non conformes IA Act / Charte CEA. | Inclus dans l'abonnement Claude Pro / Enterprise   |
+|                                             | **Tâche 1.2 :** Synthèse hebdomadaire, regroupement des incidents similaires et comptage des occurrences.               | Claude (ou Genspark pour la note finale)      | Claude conçoit le prompt structuré et analyse le JSON/Markdown d'incidents. Genspark peut générer directement une note d'incident formalisée.                                            | Inclus dans Claude Pro (Genspark gratuit/freemium) |
+|                                             | **Tâche 1.3 :** Présentation du bilan d'incidents en réunion hebdomadaire / arbitrage manager.                          | Gamma                                         | Génération rapide de supports visuels interactifs et synthétiques à partir du bilan Markdown.                                                                                            | Freemium / Gamma Pro si usage intensif             |
+| **2. Piloter l'activité**                   | **Tâche 2.1 :** Consolidation des KPI GitLab (taux de résolution, délai moyen, répartition par projet/module).          | Claude (Analyse / Code Interpreter) ou Gemini | Analyse de données JSON/CSV agrégées sans traitement de données personnelles nominatives (conformité RGPD / CEA).                                                                        | Inclus dans Claude Pro / Gemini                    |
+|                                             | **Tâche 2.2 :** Rédaction de la note de synthèse stratégique et proposition de mise à jour de la feuille de route.      | Claude                                        | Maintien de la cohérence rédactionnelle et intégration du contexte technique complexe de MUSCADE.                                                                                        | Inclus dans Claude Pro / Enterprise                |
+|                                             | **Tâche 2.3 :** Support visuel pour le suivi de la feuille de route et des comités de pilotage.                         | Gamma                                         | Transformation du rapport texte/KPI en présentation claire et dynamique.                                                                                                                 | Inclus dans l'offre Gamma                          |
+| **3. Capitaliser les connaissances**        | **Tâche 3.1 :** Transformation d'un ticket d'incident résolu en fiche de procédure technique Markdown.                  | Claude (Project / Assistant) ou Gemini Gem    | Assistant préconfiguré intégrant le template Markdown officiel MUSCADE afin de garantir l'homogénéité documentaire.                                                                      | Inclus dans Claude Pro ou Gemini                   |
+|                                             | **Tâche 3.2 :** Structuration de la documentation technique et de la FAQ pour GitLab/Wiki.                              | Genspark (ou Claude)                          | Genspark est particulièrement adapté à la formalisation de procédures et fiches de connaissances prêtes à diffuser.                                                                      | Freemium / Inclus dans Claude Pro                  |
+| **4. Déployer l'IA de manière responsable** | **Tâche 4.1 :** Rédaction de la charte d'usage de l'IA (cadre souverain, anonymisation, interdictions).                 | Claude                                        | Rédaction de documents de gouvernance conformes aux exigences RS7424 et au contexte CEA.                                                                                                 | Inclus dans Claude Pro / Enterprise                |
+|                                             | **Tâche 4.2 :** Sensibilisation de l'équipe et présentation des bonnes pratiques (prompting, souveraineté des données). | Gamma                                         | Création d'un support pédagogique destiné à l'équipe MUSCADE.                                                                                                                            | Inclus dans l'offre Gamma                          |
+
+
+Voici la conversion en **Markdown** du tableau Excel, suivie des **Points clés** de Gemini également au format Markdown.
+
+Référence : tableau issu de votre fichier Excel. 
+
+---
+
+## Proposition de stratégie d'outillage IA
+
+| Processus                                   | Tâches opérationnelles                                                                                                  | IA utilisée                                   | Justification métier & technique                                                                                                                                                         | Coût associé                                       |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| **1. Exploiter les incidents**              | **Tâche 1.1 :** Extraction automatique des incidents GitLab (script Python / API REST via PAT).                         | Claude (Claude 3.5/3.7 Sonnet)                | Excellence en génération de code, itération fluide via les Artifacts (v1, v2). Évite l'export PDF manuel. **Conformité :** exclusion de DeepSeek/Grok non conformes IA Act / Charte CEA. | Inclus dans l'abonnement Claude Pro / Enterprise   |
+|                                             | **Tâche 1.2 :** Synthèse hebdomadaire, regroupement des incidents similaires et comptage des occurrences.               | Claude (ou Genspark pour la note finale)      | Claude conçoit le prompt structuré et analyse le JSON/Markdown d'incidents. Genspark peut générer directement une note d'incident formalisée.                                            | Inclus dans Claude Pro (Genspark gratuit/freemium) |
+|                                             | **Tâche 1.3 :** Présentation du bilan d'incidents en réunion hebdomadaire / arbitrage manager.                          | Gamma                                         | Génération rapide de supports visuels interactifs et synthétiques à partir du bilan Markdown.                                                                                            | Freemium / Gamma Pro si usage intensif             |
+| **2. Piloter l'activité**                   | **Tâche 2.1 :** Consolidation des KPI GitLab (taux de résolution, délai moyen, répartition par projet/module).          | Claude (Analyse / Code Interpreter) ou Gemini | Analyse de données JSON/CSV agrégées sans traitement de données personnelles nominatives (conformité RGPD / CEA).                                                                        | Inclus dans Claude Pro / Gemini                    |
+|                                             | **Tâche 2.2 :** Rédaction de la note de synthèse stratégique et proposition de mise à jour de la feuille de route.      | Claude                                        | Maintien de la cohérence rédactionnelle et intégration du contexte technique complexe de MUSCADE.                                                                                        | Inclus dans Claude Pro / Enterprise                |
+|                                             | **Tâche 2.3 :** Support visuel pour le suivi de la feuille de route et des comités de pilotage.                         | Gamma                                         | Transformation du rapport texte/KPI en présentation claire et dynamique.                                                                                                                 | Inclus dans l'offre Gamma                          |
+| **3. Capitaliser les connaissances**        | **Tâche 3.1 :** Transformation d'un ticket d'incident résolu en fiche de procédure technique Markdown.                  | Claude (Project / Assistant) ou Gemini Gem    | Assistant préconfiguré intégrant le template Markdown officiel MUSCADE afin de garantir l'homogénéité documentaire.                                                                      | Inclus dans Claude Pro ou Gemini                   |
+|                                             | **Tâche 3.2 :** Structuration de la documentation technique et de la FAQ pour GitLab/Wiki.                              | Genspark (ou Claude)                          | Genspark est particulièrement adapté à la formalisation de procédures et fiches de connaissances prêtes à diffuser.                                                                      | Freemium / Inclus dans Claude Pro                  |
+| **4. Déployer l'IA de manière responsable** | **Tâche 4.1 :** Rédaction de la charte d'usage de l'IA (cadre souverain, anonymisation, interdictions).                 | Claude                                        | Rédaction de documents de gouvernance conformes aux exigences RS7424 et au contexte CEA.                                                                                                 | Inclus dans Claude Pro / Enterprise                |
+|                                             | **Tâche 4.2 :** Sensibilisation de l'équipe et présentation des bonnes pratiques (prompting, souveraineté des données). | Gamma                                         | Création d'un support pédagogique destiné à l'équipe MUSCADE.                                                                                                                            | Inclus dans l'offre Gamma                          |
+
+---
+
+# Points clés de cette stratégie d'outillage pour le rapport RS7424
+
+### 1. Rationalisation budgétaire et réduction du coût cognitif
+
+* **Claude Pro / Enterprise** constitue le cœur du dispositif :
+
+  * développement des scripts Python ;
+  * ingénierie de prompts ;
+  * analyse technique ;
+  * rédaction des documents de fond.
+
+* **Gamma** et **Genspark** sont utilisés uniquement comme outils spécialisés de restitution :
+
+  * **Gamma** pour les présentations visuelles et les supports de communication ;
+  * **Genspark** pour la formalisation documentaire lorsque cela apporte une valeur ajoutée.
+
+Cette approche limite la multiplication des abonnements payants tout en exploitant les points forts de chaque outil.
+
+---
+
+### 2. Gouvernance, sécurité et conformité CEA (Compétences C2 et C3)
+
+* Le tableau formalise explicitement l'interdiction des solutions non conformes au cadre CEA ou à l'**AI Act** (par exemple **DeepSeek** ou **Grok** pour des données sensibles).
+
+* Les données GitLab sont extraites via un **script Python local** utilisant l'API GitLab avant toute interaction avec une IA.
+
+* Les traitements sont réalisés sur des données **structurées, filtrées et, si nécessaire, anonymisées**, afin de respecter les exigences de sécurité et de confidentialité.
+
+---
+
+### 3. Cohérence avec les compétences RS7424
+
+Cette stratégie couvre directement plusieurs compétences du référentiel :
+
+| Compétence | Apport de la stratégie                                                                                         |
+| ---------- | -------------------------------------------------------------------------------------------------------------- |
+| **C2**     | Reconfiguration des processus par automatisation (GitLab → Python → IA → livrables).                           |
+| **C3**     | Choix raisonné des outils, prompt engineering, scripts Python, gouvernance des données.                        |
+| **C4**     | Production automatisée de documents, procédures, synthèses et présentations.                                   |
+| **C5**     | Capitalisation des connaissances et amélioration continue grâce aux analyses récurrentes des incidents et KPI. |
+
+Cette section est directement intégrable dans la partie **« Proposition d'une nouvelle organisation et choix des outils »** de votre rapport RS7424.
+
 
 
 
