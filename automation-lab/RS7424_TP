@@ -1,0 +1,20 @@
+Automation-Lab/
+│
+├── workflow.md
+├── workflow.yaml
+│
+├── prompts/
+│     extract_pdf.md
+│     analyse.md
+│
+├── make/
+│     workflow.blueprint.json
+│
+├── n8n/
+│     workflow.json
+│
+├── zapier/
+│     guide.md
+│
+└── genspark/
+      agent.md
