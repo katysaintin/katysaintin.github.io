@@ -78,7 +78,7 @@ suffit pour un PoC.
 Depuis un terminal ou un outil comme Postman/curl :
 
 ```bash
-curl -X POST https://hook.eu2.make.com/VOTRE_WEBHOOK_ID \
+curl -X POST https://hook.eu2.make.com/gaqi2si49qb2hw3ozj4j8z26avm5elww@hook.eu1.make.com \
   -H "Content-Type: application/json" \
   -d '{
     "incidentId": "MUSCADE-2026-0001",
