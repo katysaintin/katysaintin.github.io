@@ -1441,6 +1441,94 @@ Cette approche constitue une **mise en abyme** : le workflow présenté pendant 
 ---
 
 Je pense que le fait que tu disposes d'environ **20 minutes** est un avantage ici. Les candidats qui n'ont que 10 minutes devront souvent aller directement au contenu technique. Toi, tu peux consacrer les **2 à 3 premières minutes** à expliquer cette démarche méthodologique. Cela donne immédiatement une cohérence à toute la présentation et prépare naturellement la démonstration du workflow, sans donner l'impression d'ajouter un gadget à la fin. C'est une manière de montrer que tu maîtrises non seulement les outils, mais aussi la logique de transformation des processus qui est au cœur de la certification.
+---
+
+## Objectif de l'exercice RS7424 - Creer un GPT Module 5
+
+Pour valider rapidement l'exercice, je retiens une solution
+volontairement **Low Code**.
+
+L'objectif n'est pas de démontrer une intégration complexe, mais la
+capacité à concevoir un assistant IA capable de qualifier un incident et
+de structurer une demande.
+
+## MVP proposé
+
+Architecture :
+
+``` text
+Utilisateur
+    ↓
+GPT Support MUSCADE
+    ↓
+Questions guidées
+    ↓
+Génération du ticket
+    ↓
+Google Forms (ou formulaire équivalent)
+```
+
+Le GPT collecte : - Manip concernée - Machine / IP - Date et heure -
+Symptômes - Message d'erreur - Capture d'écran - Scénario de
+reproduction - Interventions récentes
+
+Le résultat est un ticket complet prêt à être envoyé.
+
+------------------------------------------------------------------------
+
+# Réflexion d'industrialisation
+
+## Niveau 1
+
+Assistant documentaire (README, FAQ, procédures, Roadmap).
+
+## Niveau 2
+
+Assistant support guidant la qualification d'un incident.
+
+## Niveau 3
+
+Agent capable de créer automatiquement une Issue GitLab via API ou un
+workflow Make / n8n.
+
+``` text
+GPT
+  ↓
+JSON
+  ↓
+Make / n8n
+  ↓
+GitLab
+  ↓
+Notification
+```
+
+## Evolutions
+
+-   Création automatique d'Issues GitLab
+-   Connexion GitHub
+-   Google Forms / Google Sheets
+-   Notifications Teams
+-   Archivage
+
+## Vision long terme
+
+Créer un véritable copilote MUSCADE proposant : - déclaration d'incident
+; - installation d'un client ; - recherche dans la FAQ ; - diagnostic
+guidé ; - génération de procédures ; - aide au choix EPICS / MUSCADE ; -
+génération de squelettes TANGO, EPICS et Phoebus.
+
+## Projet Stargate
+
+Cette architecture pourra être réutilisée pour Stargate afin de
+centraliser la documentation EPICS, TANGO et MUSCADE et proposer un
+point d'entrée intelligent vers les ressources techniques.
+
+## Conclusion
+
+Le livrable présenté pour la certification est volontairement simple
+(MVP), tandis que la réflexion montre une trajectoire crédible vers un
+agent métier connecté aux outils de support et de gestion de projet.
 
 
 
