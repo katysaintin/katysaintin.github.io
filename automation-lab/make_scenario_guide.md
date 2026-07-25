@@ -78,7 +78,7 @@ suffit pour un PoC.
 Depuis un terminal ou un outil comme Postman/curl :
 
 ```bash
-curl -X POST curl -X POST https://hook.eu2.make.com/gaqi2si49qb2hw3ozj4j8z26avm5elww@hook.eu1.make.com \
+curl -X POST curl -X POST https://hook.eu1.make.com/5atxvbvnjt7umw9z8xtehm5ymcideps3 \
   -H "Content-Type: application/json" \
   -d '{
     "incidentId": "MUSCADE-2026-0001",
@@ -90,23 +90,9 @@ curl -X POST curl -X POST https://hook.eu2.make.com/gaqi2si49qb2hw3ozj4j8z26avm5
     "messageErreur": "Connection timeout",
     "stackTrace": "Aucune stack trace disponible",
     "reproduction": "Redémarrage du service à 22h35 puis perte de connexion",
-    "contexte": "Intervention réseau 5 minutes avant l'incident",
+    "contexte": "Intervention réseau 5 minutes avant l incident",
     "ticketMarkdown": "### [MUSCADE-2026-0001] [ISEULT] Serveur Cryo inaccessible\n\n**Système concerné :** Serveur Cryogénie Principal\n..."
-  }' \
-  -H "Content-Type: application/json" \
-  -d '{
-    "incidentId": "MUSCADE-2026-0001",
-    "manipulation": "ISEULT",
-    "systeme": "Serveur Cryogénie Principal",
-    "ip": "10.2.139.25",
-    "date": "24/07/2026 22h40",
-    "symptomes": "Alarme supervision, serveur inaccessible",
-    "messageErreur": "Connection timeout",
-    "stackTrace": "Aucune stack trace disponible",
-    "reproduction": "Redémarrage du service à 22h35 puis perte de connexion",
-    "contexte": "Intervention réseau 5 minutes avant l'incident",
-    "ticketMarkdown": "### [MUSCADE-2026-0001] [ISEULT] Serveur Cryo inaccessible\n\n**Système concerné :** Serveur Cryogénie Principal\n..."
-  }'
+  }' 
 ```
 
 Vérifie que l'e-mail arrive bien sur `katy.saintin@gmail.com`, puis
