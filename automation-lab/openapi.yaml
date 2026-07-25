@@ -1,0 +1,109 @@
+openapi: 3.1.0
+info:
+  title: Muscade Incident Webhook
+  description: >
+    Action permettant au GPT "Muscade Incident Assistant" d'envoyer un
+    incident qualifié vers un scénario Make, qui se charge ensuite de
+    notifier l'équipe support par e-mail (Gmail).
+  version: 1.0.0
+
+servers:
+  - url: "https://hook.eu2.make.com/{webhookId}"
+    description: Webhook Make (URL générée lors de la création du scénario)
+    variables:
+      webhookId:
+        default: "REMPLACER_PAR_VOTRE_ID_WEBHOOK"
+        description: >
+          Identifiant unique du webhook Make. À copier depuis le module
+          "Webhooks > Custom webhook" du scénario Make (ex: 3x7k9dfabc123...).
+          C'est la SEULE valeur à modifier pour connecter l'Action à votre
+          propre scénario Make.
+
+paths:
+  /:
+    post:
+      operationId: envoyerIncidentMuscade
+      summary: Envoie un incident MUSCADE qualifié vers le webhook Make
+      description: >
+        Appelée automatiquement par le GPT une fois que toutes les
+        informations de l'incident ont été collectées, le ticket Markdown
+        généré, et la confirmation de l'utilisateur obtenue.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/IncidentMuscade"
+      responses:
+        "200":
+          description: Incident transmis avec succès à Make.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "ok"
+        "400":
+          description: Requête invalide (champ manquant ou mal formé).
+
+components:
+  schemas:
+    IncidentMuscade:
+      type: object
+      required:
+        - incidentId
+        - manipulation
+        - systeme
+        - ip
+        - date
+        - symptomes
+        - messageErreur
+        - stackTrace
+        - reproduction
+        - contexte
+        - ticketMarkdown
+      properties:
+        incidentId:
+          type: string
+          description: >
+            Identifiant unique de l'incident généré par le GPT au format
+            MUSCADE-AAAA-NNNN (ex: MUSCADE-2026-0001).
+          example: "MUSCADE-2026-0001"
+        manipulation:
+          type: string
+          description: Nom de la manipulation ou du projet concerné.
+          example: "ISEULT"
+        systeme:
+          type: string
+          description: Nom du système ou équipement concerné.
+          example: "Serveur Cryogénie Principal"
+        ip:
+          type: string
+          description: Adresse IP ou nom d'hôte de la machine concernée.
+          example: "10.2.139.25"
+        date:
+          type: string
+          description: Date et heure d'apparition de l'incident.
+          example: "24/07/2026 22h40"
+        symptomes:
+          type: string
+          description: Description des symptômes observés (alarmes, impact...).
+        messageErreur:
+          type: string
+          description: Message d'erreur rencontré (ou "Aucun" si non applicable).
+        stackTrace:
+          type: string
+          description: Stack trace ou logs pertinents (ou "Aucune" si non applicable).
+        reproduction:
+          type: string
+          description: Scénario permettant de reproduire le problème.
+        contexte:
+          type: string
+          description: >
+            Informations complémentaires (intervention récente, mise à jour,
+            capture d'écran mentionnée, etc.).
+        ticketMarkdown:
+          type: string
+          description: Ticket GitLab complet généré par le GPT au format Markdown.

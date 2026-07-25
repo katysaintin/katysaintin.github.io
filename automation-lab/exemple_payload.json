@@ -1,0 +1,13 @@
+{
+  "incidentId": "MUSCADE-2026-0001",
+  "manipulation": "ISEULT",
+  "systeme": "Serveur Cryogénie Principal",
+  "ip": "10.2.139.25",
+  "date": "24/07/2026 22h40",
+  "symptomes": "Alarme de supervision Cryogénie déclenchée, serveur principal inaccessible depuis le client Muscade.",
+  "messageErreur": "Connection timeout on port 10001",
+  "stackTrace": "Aucune stack trace disponible",
+  "reproduction": "L'incident survient systématiquement après le redémarrage du service Muscade sur le serveur principal.",
+  "contexte": "Une intervention réseau a eu lieu 5 minutes avant l'apparition de l'incident (modification VLAN signalée par l'équipe réseau).",
+  "ticketMarkdown": "### [MUSCADE-2026-0001] [ISEULT] Alarme supervision Cryogénie - Serveur principal inaccessible\n\n**Système concerné :** Serveur Cryogénie Principal\n**Adresse IP / hôte :** 10.2.139.25\n**Date et heure d'apparition :** 24/07/2026 22h40\n\n**Symptômes**\nAlarme de supervision Cryogénie déclenchée, serveur principal inaccessible depuis le client Muscade.\n\n**Message d'erreur**\nConnection timeout on port 10001\n\n**Stack Trace / Logs**\nAucune stack trace disponible\n\n**Scénario de reproduction**\nL'incident survient systématiquement après le redémarrage du service Muscade sur le serveur principal.\n\n**Informations complémentaires**\nUne intervention réseau a eu lieu 5 minutes avant l'apparition de l'incident (modification VLAN signalée par l'équipe réseau).\n\n**Labels proposés :** bug, supervision, muscade, cryo, iseult\n**Priorité proposée :** Haute — perte de supervision sur un système critique en cours d'exploitation"
+}
