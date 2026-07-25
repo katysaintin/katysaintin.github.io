@@ -1530,6 +1530,138 @@ Le livrable présenté pour la certification est volontairement simple
 (MVP), tandis que la réflexion montre une trajectoire crédible vers un
 agent métier connecté aux outils de support et de gestion de projet.
 
+---
+# Journal de bord – Développement d'un assistant IA métier MUSCADE
+
+## Date
+25/07/2026
+
+## Objectif de la journée
+
+L'objectif de cette séance était de mettre en pratique les notions abordées dans le module consacré aux assistants IA personnalisés (GPTs/Gems) et aux Actions GPT.
+
+Plutôt que de reproduire l'exemple RH proposé par la formation, j'ai choisi de transposer les concepts à mon environnement professionnel en développant un assistant spécialisé pour le support de la plateforme MUSCADE.
+
+---
+
+## Réalisations
+
+### Création d'un GPT personnalisé
+
+J'ai développé un assistant nommé **Muscade Incident Assistant** dont les principales fonctionnalités sont :
+
+- consultation de la FAQ MUSCADE ;
+- assistance à l'installation de MUSCADE ;
+- déclaration guidée d'un incident.
+
+Le GPT s'appuie sur plusieurs documents de référence que j'ai intégrés dans sa base documentaire.
+
+---
+
+### Qualification guidée des incidents
+
+J'ai conçu un dialogue structuré permettant de qualifier un incident avant son enregistrement.
+
+Le GPT collecte successivement :
+
+- la manipulation concernée ;
+- le système impacté ;
+- l'adresse IP ;
+- la date et l'heure d'apparition ;
+- les symptômes observés ;
+- le message d'erreur ;
+- la stack trace ;
+- le scénario de reproduction ;
+- les informations complémentaires.
+
+Cette approche garantit une homogénéité des tickets et limite les oublis fréquemment rencontrés lors des déclarations d'incidents.
+
+---
+
+### Génération automatique d'un ticket
+
+À partir des informations collectées, le GPT génère automatiquement un ticket d'incident au format Markdown comprenant :
+
+- un résumé ;
+- les informations techniques ;
+- une analyse préliminaire ;
+- une proposition de priorité ;
+- des labels ;
+- un identifiant d'incident.
+
+Le ticket est présenté à l'utilisateur pour validation avant toute transmission.
+
+---
+
+### Découverte des GPT Actions
+
+Cette séance m'a permis de découvrir le fonctionnement des **GPT Actions**.
+
+J'ai créé une première Action reposant sur un schéma **OpenAPI (YAML)**.
+
+Cette Action transmet les informations collectées par le GPT vers un **Webhook Make**, illustrant concrètement la communication entre une IA conversationnelle et un service externe.
+
+---
+
+### Mise en œuvre d'une automatisation Low Code
+
+Le Webhook est connecté à un scénario **Make** réalisant automatiquement :
+
+- la réception des données ;
+- la mise en forme ;
+- l'envoi d'un courrier électronique via Gmail.
+
+Ce Proof of Concept démontre qu'il est possible de relier un GPT à un processus automatisé sans développement logiciel complexe.
+
+---
+
+## Résultats obtenus
+
+Le prototype permet aujourd'hui de :
+
+- consulter la documentation MUSCADE ;
+- guider un utilisateur dans la qualification d'un incident ;
+- générer automatiquement un ticket structuré ;
+- demander une validation utilisateur ;
+- transmettre le ticket automatiquement par e-mail grâce à Make.
+
+Le démonstrateur est pleinement fonctionnel.
+
+---
+
+## Réflexions
+
+Cette expérimentation m'a permis de mieux comprendre la différence entre :
+
+- un simple assistant conversationnel ;
+- un GPT personnalisé ;
+- un GPT enrichi d'Actions capables d'interagir avec des services externes.
+
+J'ai également pris conscience que les GPT Actions constituent une porte d'entrée vers la création d'agents IA capables non seulement de produire de l'information, mais également d'agir sur un système d'information.
+
+Cette approche ouvre des perspectives intéressantes pour l'automatisation des processus métiers, notamment dans le domaine du support technique.
+
+---
+
+## Perspectives
+
+À plus long terme, ce prototype pourrait évoluer vers un véritable copilote MUSCADE capable de :
+
+- créer directement des tickets GitLab ;
+- rechercher automatiquement dans la documentation ;
+- proposer des procédures de résolution ;
+- assister les développeurs et les exploitants dans leurs diagnostics ;
+- s'intégrer au projet **Stargate**, destiné à centraliser les connaissances autour des technologies SCADA (MUSCADE, EPICS, TANGO...).
+
+---
+
+## Bilan personnel
+
+Cette journée a constitué un véritable déclic.
+
+Jusqu'à présent, j'utilisais principalement les IA génératives pour produire du contenu ou structurer des informations. Cette mise en pratique m'a permis de comprendre qu'il est désormais possible de concevoir de véritables assistants métiers capables de dialoguer avec des outils externes et de participer activement à un processus de travail.
+
+Au-delà de la validation de la certification RS7424, ce Proof of Concept représente une première brique réutilisable dans mes futurs projets autour de l'IA appliquée aux systèmes de contrôle-commande.
 
 
 
