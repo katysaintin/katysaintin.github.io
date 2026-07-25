@@ -1226,6 +1226,81 @@ Cette stratégie couvre directement plusieurs compétences du référentiel :
 
 Cette section est directement intégrable dans la partie **« Proposition d'une nouvelle organisation et choix des outils »** de votre rapport RS7424.
 
+# Journal de bord RS7424
+
+## Étude de l'apport des outils d'automatisation dans le projet MUSCADE
+
+### Contexte
+
+Dans le cadre de ma préparation à la certification RS7424, j'ai approfondi les notions relatives aux outils d'automatisation (workflows) afin d'évaluer leur intérêt dans le projet MUSCADE. Bien que les supports de formation soient orientés vers le domaine des Ressources Humaines, les principes présentés sont transposables à tout processus métier reposant sur des tâches répétitives et des échanges entre plusieurs outils.  
+
+L'analyse de ces supports m'a permis de confirmer que les activités réalisées dans le cadre de MUSCADE répondent aux principaux critères justifiant la mise en œuvre d'une automatisation :
+
+* processus répétitifs ;
+* règles de traitement stables ;
+* utilisation de plusieurs applications (GitLab, scripts Python, IA génératives, outils de présentation) ;
+* volonté de fiabiliser et de standardiser les productions. 
+
+### Analyse
+
+Aujourd'hui, une partie importante du temps consacré à l'exploitation des incidents est dédiée à des tâches à faible valeur ajoutée :
+
+* extraction des données depuis GitLab ;
+* préparation et nettoyage des données ;
+* génération de synthèses ;
+* production de tableaux de bord ;
+* création de supports de présentation.
+
+Ces opérations suivent des règles relativement constantes et sont donc de bons candidats à une automatisation.
+
+Les supports de formation indiquent qu'un outil de workflow permet principalement de relier plusieurs applications et d'orchestrer automatiquement une succession d'actions, tandis que l'IA générative intervient ensuite pour analyser, résumer ou produire des contenus. Cette complémentarité correspond précisément à l'organisation envisagée dans le projet MUSCADE. 
+
+L'objectif n'est pas de remplacer l'expertise des ingénieurs, mais de supprimer les opérations répétitives afin qu'ils puissent consacrer davantage de temps à l'analyse des incidents et à la prise de décision.
+
+### Tableau des tâches automatisables
+
+| Processus RS7424              | Tâche automatisable                              | Outil pressenti             | Justification                                                       |
+| ----------------------------- | ------------------------------------------------ | --------------------------- | ------------------------------------------------------------------- |
+| Exploiter les incidents       | Extraction des tickets GitLab                    | Python + API GitLab         | Collecte automatique des données selon des filtres définis          |
+| Exploiter les incidents       | Nettoyage et mise en forme des données           | Python (Pandas)             | Standardisation des données avant analyse                           |
+| Exploiter les incidents       | Analyse des incidents                            | Claude / ChatGPT / Gemini   | Génération automatique de synthèses et identification des tendances |
+| Exploiter les incidents       | Génération des rapports Markdown                 | IA générative               | Uniformisation des comptes rendus techniques                        |
+| Piloter l'activité            | Calcul des KPI                                   | Python                      | Production automatique des indicateurs de pilotage                  |
+| Piloter l'activité            | Création des tableaux de bord                    | Gamma ou Genspark AI Slides | Génération de supports de restitution                               |
+| Capitaliser les connaissances | Transformation des tickets résolus en procédures | Claude                      | Production de documentation technique normalisée                    |
+| Capitaliser les connaissances | Génération de FAQ ou fiches de bonnes pratiques  | Claude                      | Valorisation du retour d'expérience                                 |
+| Déployer une IA responsable   | Vérification des données sensibles               | Python + revue humaine      | Contrôle avant transmission aux IA génératives                      |
+| Déployer une IA responsable   | Orchestration complète du workflow               | Make ou n8n                 | Enchaînement automatique des différentes étapes du processus        |
+
+### Perspectives
+
+À moyen terme, l'objectif serait de passer d'une utilisation ponctuelle de l'IA à une véritable chaîne de traitement automatisée :
+
+```text
+GitLab
+   │
+Extraction automatique (API Python)
+   │
+Préparation des données
+   │
+Analyse par IA générative
+   │
+Production du rapport Markdown
+   │
+Génération du support Gamma / Genspark
+   │
+Publication sur SharePoint
+```
+
+Cette approche est cohérente avec les recommandations des supports de formation, qui mettent en avant l'utilisation d'outils de workflow pour automatiser les échanges entre applications tout en laissant à l'IA générative les activités d'analyse et de production documentaire.  
+
+### Réflexion personnelle
+
+Cette étude m'a permis de confirmer que l'automatisation constitue un levier complémentaire à l'intelligence artificielle générative. Là où l'IA produit du contenu et assiste l'analyse, les outils de workflow assurent la circulation fiable des données entre les différentes applications.
+
+Pour le projet MUSCADE, cette complémentarité ouvre la perspective d'un processus largement automatisé, depuis l'extraction des incidents jusqu'à la production des livrables. Cette réflexion renforce la pertinence de la démarche proposée dans mon dossier RS7424, en démontrant ma capacité à identifier les tâches automatisables, à sélectionner les outils adaptés et à concevoir une architecture de traitement cohérente répondant aux besoins métiers.
+
+
 
 
 
