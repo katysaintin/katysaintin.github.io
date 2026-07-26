@@ -8,6 +8,7 @@ Le site ne doit pas être un document technique, mais un guide pratique destiné
 
 Le ton doit être rassurant, pédagogique et illustré.
 
+lien GPT : https://chatgpt.com/g/g-6a64ed2dea4881918ad4b81b6b362b0c-muscade-incident-assistant
 ---
 
 # Public visé
