@@ -9,19 +9,19 @@
 ## Champ "Content" (Text simple — recommandé pour un PoC)
 
 ```
-Nouvel incident MUSCADE signalé via l'assistant GPT.
-
-Identifiant : {{2.incidentId}}
-Manipulation : {{2.manipulation}}
-Système : {{2.systeme}}
-Adresse IP / hôte : {{2.ip}}
-Date d'apparition : {{2.date}}
-
----
-
-{{2.ticketMarkdown}}
-
----
+Nouvel incident MUSCADE signalé via l'assistant GPT.<br>
+<br>
+Identifiant : {{2.incidentId}} <br>
+Manipulation : {{2.manipulation}} <br>
+Système : {{2.systeme}} <br>
+Adresse IP / hôte : {{2.ip}} <br>
+Date d'apparition : {{2.date}} <br>
+<br>
+--- <br>
+<br>
+{{2.ticketMarkdown}} <br>
+<br>
+---<br>
 
 Cet e-mail a été généré automatiquement par le scénario Make
 "muscade-incident" à partir d'un signalement effectué via le GPT
