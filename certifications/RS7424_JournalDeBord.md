@@ -1671,6 +1671,68 @@ ou avoir accès au portail plus longtemps
 - Peut on avoir les liens vers les videos demo sur les outils
 GenSpark Make , GPT ..  
 
+---
+# 2026-07-26
+
+## Module RS7424
+
+Dernier module : mesure d'impact et pilotage.
+
+Je me suis rendu compte que j'utilisais déjà des KPI dans mon activité de cheffe de projet avant même d'aborder ce module.
+
+L'IA m'a surtout permis de réfléchir à la manière de mesurer objectivement les gains obtenus après le déploiement du futur assistant MUSCADE.
+
+## Avancement du projet
+
+Aujourd'hui, j'ai terminé le débogage du workflow Make.
+
+Le GPT Muscade m'a aidée à identifier plusieurs erreurs de configuration et à améliorer progressivement le scénario.
+
+Le workflow est désormais capable de :
+
+- qualifier un incident ;
+- générer un rapport structuré ;
+- créer un identifiant unique ;
+- envoyer automatiquement un e-mail de notification.
+
+Voir les captures d'écran du premier e-mail généré automatiquement.
+
+## Réflexion
+
+Je ne souhaite pas mesurer uniquement un gain de temps.
+
+Je veux surtout mesurer :
+
+- l'autonomie des utilisateurs ;
+- leur compréhension de MUSCADE ;
+- la qualité des échanges avec le support ;
+- la diminution des questions répétitives ;
+- la montée en compétence de l'équipe support.
+
+Pour cela, je prévois :
+
+- un questionnaire Google Forms avant déploiement ;
+- un second questionnaire trois mois après ;
+- un suivi GitLab ;
+- un tableau de bord regroupant les indicateurs.
+
+## Ce que j'ai appris
+
+Au départ, je pensais construire un assistant.
+
+Aujourd'hui, je construis un véritable dispositif :
+
+GPT
+→ Make
+→ GitLab
+→ Documentation
+→ Tableau de bord
+→ Amélioration continue
+
+Je comprends maintenant que la valeur d'un assistant ne réside pas uniquement dans la qualité de ses réponses, mais dans sa capacité à s'intégrer dans un processus complet et à produire des données exploitables pour le pilotage.
+
+
+
 
 
 
