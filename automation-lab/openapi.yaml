@@ -8,11 +8,11 @@ info:
   version: 1.0.0
 
 servers:
-  - url: "https://hook.eu2.make.com/{webhookId}"
+  - url: "https://hook.eu1.make.com/5atxvbvnjt7umw9z8xtehm5ymcideps3"
     description: Webhook Make (URL générée lors de la création du scénario)
     variables:
       webhookId:
-        default: "REMPLACER_PAR_VOTRE_ID_WEBHOOK"
+        default: "5atxvbvnjt7umw9z8xtehm5ymcideps3"
         description: >
           Identifiant unique du webhook Make. À copier depuis le module
           "Webhooks > Custom webhook" du scénario Make (ex: 3x7k9dfabc123...).
