@@ -1731,6 +1731,33 @@ GPT
 
 Je comprends maintenant que la valeur d'un assistant ne réside pas uniquement dans la qualité de ses réponses, mais dans sa capacité à s'intégrer dans un processus complet et à produire des données exploitables pour le pilotage.
 
+## Tableau de synthèse – Dispositif de suivi du projet MUSCADE
+
+| KPI | Collecte | Fréquence | Objectif |
+|------|----------|-----------|-----------|
+| Satisfaction des utilisateurs | Google Forms | Avant déploiement / 3 mois | Mesurer l'adhésion (>80 % visé) |
+| Autonomie des utilisateurs | Google Forms | Avant déploiement / 3 mois | Augmenter l'autonomie |
+| Utilisation du GPT MUSCADE | Google Forms + statistiques GPT | Mensuel | Suivre l'adoption |
+| Temps de qualification des incidents | GitLab | Mensuel | Réduction de 30 % |
+| Temps moyen de résolution | GitLab | Mensuel | Réduction continue |
+| Nombre de tickets clôturés | GitLab | Mensuel | Augmentation |
+| Temps consacré aux questions répétitives | Retours de l'équipe support | Mensuel | Réduction |
+| Temps consacré au développement et aux formations | Retours de l'équipe support | Mensuel | Augmentation |
+| Qualité des tickets (complétude des informations) | GitLab + revue de l'équipe support | Mensuel | Amélioration continue |
+
+### Sources de collecte
+
+- Google Forms (questionnaire avant déploiement puis à 3 mois)
+- GitLab (suivi des tickets et indicateurs techniques)
+- Statistiques d'utilisation du GPT MUSCADE
+- Retours de l'équipe support
+
+### Finalité
+
+L'objectif de ce dispositif est de mesurer objectivement l'impact du déploiement de l'assistant IA MUSCADE, d'évaluer son adoption par les utilisateurs, d'identifier les axes d'amélioration et d'accompagner une démarche d'amélioration continue fondée sur des données quantitatives et qualitatives.
+
+
+
 
 
 
