@@ -1663,6 +1663,14 @@ Jusqu'à présent, j'utilisais principalement les IA génératives pour produire
 
 Au-delà de la validation de la certification RS7424, ce Proof of Concept représente une première brique réutilisable dans mes futurs projets autour de l'IA appliquée aux systèmes de contrôle-commande.
 
+# Module 7 , Mes GPTs et Gem
+
+- Developpement d'un workflow complet
+- question Beforma , peut on avoir le pdf total du cours
+ou avoir accès au portail plus longtemps
+- Peut on avoir les liens vers les videos demo sur les outils
+GenSpark Make , GPT ..  
+
 
 
 
