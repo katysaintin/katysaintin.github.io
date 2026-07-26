@@ -3,7 +3,7 @@
 ## Champ "Subject" (à coller dans Make, avec la variable insérée via la bulle)
 
 ```
-[MUSCADE] Incident - {{manipulation}}
+[MUSCADE] Incident - {{2.manipulation}}
 ```
 
 ## Champ "Content" (Text simple — recommandé pour un PoC)
@@ -11,15 +11,15 @@
 ```
 Nouvel incident MUSCADE signalé via l'assistant GPT.
 
-Identifiant : {{incidentId}}
-Manipulation : {{manipulation}}
-Système : {{systeme}}
-Adresse IP / hôte : {{ip}}
-Date d'apparition : {{date}}
+Identifiant : {{2.incidentId}}
+Manipulation : {{2.manipulation}}
+Système : {{2.systeme}}
+Adresse IP / hôte : {{2.ip}}
+Date d'apparition : {{2.date}}
 
 ---
 
-{{ticketMarkdown}}
+{{2.ticketMarkdown}}
 
 ---
 
