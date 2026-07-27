@@ -1,7 +1,7 @@
 # Rapport RS7424
 ## Gérer et transformer les processus de travail des équipes avec l'aide de l'IA
 
-**Version :** V1.7 (Cr4.3 : mesure d'accessibilité appliquée sur la Production n°2, §9)
+**Version :** V1.8 (Cr5.2 : comparatif avec/sans IA rapatrié dans le corps du rapport, §10)
 
 ---
 
@@ -26,6 +26,7 @@
 |1.5|2026-07-27|Katy Saintin|Traitement de Cr2.3 : ajout en §6 d'un paragraphe dédié sécurité/protection des données de la reconfiguration (token GitLab restreint à terme, cloisonnement des données entre outils, restriction du domaine e-mail @cea.fr, configuration ChatGPT sans mémorisation, cible d'alignement sur la liste des IA autorisées CEA), avec mention transparente de la limite actuelle du POC (lien public de l'action GPT, sans authentification).|
 |1.6|2026-07-27|Katy Saintin|Traitement de Cr3.3 : ajout en §8 d'un exemple concret de test et correction (bug de mapping de variable dans Make, diagnostic croisé Claude/ChatGPT, décision de format JSON indépendant de l'outil d'orchestration) ; justification de la méthode de vérification d'accessibilité prévue par l'expertise IHM déjà établie et l'exemple des sondages UNAAPE (réduction des frictions, taux de réponse).|
 |1.7|2026-07-27|Katy Saintin|Traitement de Cr4.3 : correction de l'accessibilité de la Production n°2 (§9) — la consigne FALC explicite dans le prompt, ciblée sur le public non-expert, et sa validation avant diffusion sont désormais présentées comme une mesure appliquée, distincte de la vérification formelle des contrastes/lecteur d'écran qui reste à faire.|
+|1.8|2026-07-27|Katy Saintin|Traitement de Cr5.2 : rapatriement du comparatif avec/sans IA dans le corps du rapport (§10, nouvelle sous-section), à partir du contenu réel de l'annexe RS7424_Comparatif_Avec_Sans_IA_MUSCADE.docx, avec points de vigilance et ajustements retenus explicités ; correction des références croisées vers ce comparatif (précédemment un renvoi erroné vers §7-8).|
 
 ---
 
@@ -607,7 +608,26 @@ Le scénario Make reçoit, via un webhook, les données qualifiées transmises p
 
 Cette certification s'adresse à des managers, dont le rôle est de définir la stratégie d'intégration de l'IA et la gouvernance associée, en déléguant le plus souvent la mise en œuvre technique concrète à des experts IA ou informatiques. Ce chapitre présente donc **le dispositif d'évaluation tel qu'il est prévu d'être déployé**, et non les résultats d'un déploiement déjà généralisé.
 
-À ce jour, le projet MUSCADE n'a pas encore intégré l'assistant IA en production : j'ai développé un **POC (Proof of Concept)** fonctionnel sur le processus de gestion des incidents (qualification assistée par le Muscade Incident Assistant + envoi automatique d'un ticket par e-mail via Make), qui démontre la faisabilité technique et sert de base à la généralisation prévue. Les indicateurs et objectifs chiffrés ci-dessous sont donc des **cibles prévisionnelles**, cohérentes avec l'analyse comparative avec/sans IA (§7-8), qui seront mesurées une fois le déploiement engagé. Étant moi-même experte technique, j'ai pu, en parallèle de cet exercice managérial, tester plusieurs outils et configurations qui iront au-delà du strict périmètre attendu pour la certification, et qui seront présentés en soutenance.
+À ce jour, le projet MUSCADE n'a pas encore intégré l'assistant IA en production : j'ai développé un **POC (Proof of Concept)** fonctionnel sur le processus de gestion des incidents (qualification assistée par le Muscade Incident Assistant + envoi automatique d'un ticket par e-mail via Make), qui démontre la faisabilité technique et sert de base à la généralisation prévue. Les indicateurs et objectifs chiffrés ci-dessous sont donc des **cibles prévisionnelles**, cohérentes avec le comparatif avec/sans IA détaillé ci-après, qui seront mesurées une fois le déploiement engagé. Étant moi-même experte technique, j'ai pu, en parallèle de cet exercice managérial, tester plusieurs outils et configurations qui iront au-delà du strict périmètre attendu pour la certification, et qui seront présentés en soutenance.
+
+## Comparatif avec / sans IA
+
+Conformément à Cr5.2, une analyse comparative du processus « Exploiter les incidents » a été réalisée entre la situation sans IA et la situation cible avec IA. Comme pour les KPI ci-dessus, il s'agit de résultats **prévisionnels**, cohérents avec les objectifs SMART du projet (§3) et non de mesures effectivement observées, le déploiement n'ayant pas encore eu lieu.
+
+| Critère | Sans IA | Avec IA | Impact attendu |
+| --- | --- | --- | --- |
+| Temps de qualification | Analyse manuelle des demandes | Préqualification par le GPT MUSCADE | -30 % |
+| Temps de rédaction | Rédaction manuelle des rapports | Rapport généré automatiquement puis relu | -40 à -50 % |
+| Qualité des tickets | Informations parfois incomplètes | Formulaire guidé et rapport structuré | Amélioration |
+| Recherche documentaire | Recherche dans plusieurs documents | Interrogation de la base documentaire (RAG) | -50 % |
+| Questions répétitives | Sollicitations fréquentes du support | Autonomie via le GPT | Réduction |
+| Expérience utilisateur | Support dépendant des disponibilités | Accès 24/7 à un assistant | Amélioration |
+| Capitalisation | Documentation dispersée | Base documentaire enrichie | Amélioration continue |
+| Charge de l'équipe | Forte sollicitation sur le support N1 | Temps réalloué au développement et aux formations | Gain qualitatif |
+
+**Points de vigilance identifiés par cette comparaison** : l'IA ne remplace pas l'expertise humaine — les réponses doivent être validées pour les situations critiques —, la base documentaire doit être maintenue à jour, et les données sensibles doivent rester protégées à chaque étape (cf. §5, §6).
+
+**Ajustements retenus à l'issue de cette comparaison** : poursuivre le déploiement de façon progressive plutôt que généralisée d'emblée, enrichir régulièrement la base documentaire de l'assistant au fil des retours, suivre les indicateurs du dispositif ci-dessous, recueillir systématiquement les retours utilisateurs via Google Forms, et faire évoluer le prompt du GPT de manière continue plutôt que de le figer après la première mise en production.
 
 ## KPI
 
