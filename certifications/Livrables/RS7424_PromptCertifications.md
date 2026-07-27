@@ -167,3 +167,57 @@ La priorité est toujours :
 - la valeur ajoutée réelle.
 
 Le rapport doit rester crédible, professionnel et refléter mon travail personnel.
+
+--
+#Prompt correctif
+
+# Prompt : Audit de complétude RS7424 — Rapport de certification
+
+## Contexte
+Je prépare la certification RS7424 "Gérer et transformer les processus de travail des
+équipes avec l'aide de l'IA" (Classe Digitale). Je te fournis :
+1. Mon rapport de certification actuel (V0.4, format Markdown).
+2. Le référentiel de compétences et de critères d'évaluation officiel (C1 à C5, Cr1.1 à Cr5.3).
+3. Un diagnostic déjà réalisé par un autre assistant IA, qui estime mon niveau actuel à
+   environ 75-80 % des attendus, avec deux lacunes identifiées : absence de mesure
+   d'accessibilité/handicap explicite (Cr2.3 et Cr4.3).
+
+## Objectif
+Mon objectif est d'atteindre au moins 90 % de couverture sur CHACUNE des 5 compétences
+(C1 à C5). Je veux identifier tout ce qui, dans le référentiel, n'est pas encore couvert
+ou insuffisamment explicité dans mon rapport actuel.
+
+## Ce que je te demande de faire
+
+1. **Relis le référentiel critère par critère** (Cr1.1, Cr1.2, Cr1.3, Cr2.1, Cr2.2, Cr2.3,
+   Cr3.1, Cr3.2, Cr3.3, Cr4.1, Cr4.2, Cr4.3, Cr5.1, Cr5.2, Cr5.3) et confronte chacun
+   au contenu réel de mon rapport (pas à ce que tu supposes que j'ai pu faire ailleurs).
+
+2. **Pour chaque critère**, indique :
+   - Statut : ✅ couvert / 🟡 partiellement couvert / ❌ non couvert
+   - La preuve exacte dans mon rapport (section, phrase) si couvert
+   - Ce qui manque précisément si partiel ou non couvert
+
+3. **Ne fabrique aucun fait sur mon activité professionnelle.** Si combler un critère
+   nécessite une information factuelle que tu n'as pas (ex. : "avez-vous mis en place une
+   mesure d'accessibilité handicap sur tel document ?"), **pose-moi la question** plutôt
+   que de l'inventer ou de la présumer. Le rapport doit rester strictement fidèle à la
+   réalité de mon activité chez CEA Irfu/DIS/LDISC.
+
+4. **Priorise tes recommandations** : classe-les par (a) impact sur le score, et
+   (b) facilité de mise en œuvre (une simple phrase factuelle vs. un livrable à produire).
+
+5. **Propose, pour chaque lacune, une formulation concrète prête à insérer**
+   dans le rapport (2-5 phrases maximum), que je pourrai valider ou corriger, plutôt
+   qu'une simple description du problème.
+
+6. **Signale les redites ou incohérences** éventuelles entre les sections du rapport
+   (par exemple si un même chiffre ou une même affirmation varie d'un endroit à l'autre).
+
+## Format de sortie attendu
+
+Un tableau : Critère | Statut | Preuve / Manque | Suggestion de texte à insérer | Question
+posée si info manquante
+
+Puis une synthèse en 5 lignes : un score estimé par compétence (C1 à C5) et les 2-3
+actions prioritaires pour passer de mon niveau actuel à 90 % sur chacune.
