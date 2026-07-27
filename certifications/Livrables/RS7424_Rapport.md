@@ -1,7 +1,7 @@
 # Rapport RS7424
 ## Gérer et transformer les processus de travail des équipes avec l'aide de l'IA
 
-**Version :** V0.3 (accent managérial + clarification du niveau d'avancement)
+**Version :** V0.4 (ajout du bilan de compétences RS7424)
 
 ---
 
@@ -12,6 +12,7 @@
 |0.1|2026-07-27|Katy Saintin|Création de la structure|
 |0.2|2026-07-27|Katy Saintin|Rédaction consolidée à partir des livrables intermédiaires (diagnostic, cartographies, charte IA, dispositif de suivi, journal de bord)|
 |0.3|2026-07-27|Katy Saintin|Mise en avant de l'angle managérial (coordination/autonomisation de l'équipe et des utilisateurs), suppression des références EPICS/départs en retraite, clarification du statut réel (POC) des KPI, ajout d'emplacements réservés pour visuels et captures d'écran|
+|0.4|2026-07-27|Katy Saintin|Ajout du bilan des compétences RS7424 (niveau atteint par compétence, points de vigilance identifiés vs référentiel de certification)|
 
 ---
 
@@ -462,6 +463,22 @@ Cette certification s'inscrit plus largement dans une trajectoire personnelle de
 - Le format du modèle de rapport fourni (PowerPoint) est utile pour donner une trame commune, mais un format DOCX ou Markdown, plus adapté à la rédaction longue, aux relectures et au suivi des versions, aurait facilité davantage le travail collaboratif et itératif.
 - Le positionnement, dès le début du parcours, du questionnaire d'évaluation « à chaud » (qui ne devrait être rempli qu'en fin de formation) a pu créer une ambiguïté pour les nouveaux participants.
 - Le prérequis d'expérience en management de proximité gagnerait à être élargi explicitement aux chefs de projet, coordinateurs et experts techniques pilotant des processus de travail sans exercer nécessairement un management hiérarchique — profil pourtant pleinement bénéficiaire des compétences travaillées durant la certification.
+
+---
+
+# Bilan des compétences RS7424
+
+Au début de cette formation, j'avais réalisé un glossaire personnel pour traduire le vocabulaire « manager/certification » dans mes propres concepts métier (SCADA, support, IHM), afin de vérifier que mon profil correspondait bien au référentiel. Ce tableau fait le chemin inverse : il évalue, compétence par compétence, le niveau atteint à l'issue de la formation, à partir du contenu réel de ce rapport et des livrables produits.
+
+| Compétence | Description (référentiel) | Niveau atteint | Preuves dans ce rapport | Point de vigilance restant |
+| --- | --- | --- | --- | --- |
+| **C1** | Élaborer une stratégie d'intégration responsable de l'IA | **Fort** | Diagnostic AS IS (§4), charte IA (§5), objectifs métier/IA mesurables (§3), risques juridiques/éthiques/sécuritaires/écologiques couverts par la charte | Objectifs chiffrés encore prévisionnels (pas de mesure post-déploiement) |
+| **C2** | Reconfigurer l'organisation des activités et processus avec l'IA | **Moyen à fort** | Cartographie TO BE (§6), nouveaux rôles, redistribution des compétences dans l'équipe | Adaptation « personnel en situation de handicap » non explicitée (attendue par le référentiel en Cr2.3) |
+| **C3** | Élaborer des requêtes et configurations opérationnelles | **Fort** | Prompt principal du Muscade Incident Assistant documenté (§8), méthodologie itérative, difficultés explicitées | Justification des paramètres/choix d'outil IA (Custom GPT vs prompt ponctuel) à approfondir |
+| **C4** | Créer ou améliorer des contenus professionnels avec l'IA | **Moyen** | Deux productions identifiées et alignées à un objectif (§9), enjeu RSE traité (anonymisation) | Mesure d'accessibilité handicap non explicitée (attendue par le référentiel en Cr4.3) |
+| **C5** | Inscrire ses pratiques dans une démarche d'amélioration continue | **Très fort** | Dispositif de suivi (§10), comparatif avec/sans IA, veille IA à 3 sources distinctes et modalités précises | Aucun — c'est la compétence la mieux couverte du dossier |
+
+**Estimation globale du niveau atteint : de l'ordre de 75 à 80 %** des attendus du référentiel. Les deux points de vigilance identifiés (C2 et C4) portent tous deux sur le même sujet — l'absence d'un volet accessibilité/handicap explicite — et constituent, à mon sens, la priorité de finalisation avant la soutenance, davantage que le fond du dossier lui-même, qui va au-delà des attendus grâce au POC fonctionnel déjà réalisé.
 
 ---
 
