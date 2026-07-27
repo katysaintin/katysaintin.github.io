@@ -1,7 +1,7 @@
 # Rapport RS7424
 ## Gérer et transformer les processus de travail des équipes avec l'aide de l'IA
 
-**Version :** V0.2 (rédaction consolidée à partir des livrables intermédiaires)
+**Version :** V0.3 (accent managérial + clarification du niveau d'avancement)
 
 ---
 
@@ -11,18 +11,23 @@
 |----------|------|---------|-------------|
 |0.1|2026-07-27|Katy Saintin|Création de la structure|
 |0.2|2026-07-27|Katy Saintin|Rédaction consolidée à partir des livrables intermédiaires (diagnostic, cartographies, charte IA, dispositif de suivi, journal de bord)|
+|0.3|2026-07-27|Katy Saintin|Mise en avant de l'angle managérial (coordination/autonomisation de l'équipe et des utilisateurs), suppression des références EPICS/départs en retraite, clarification du statut réel (POC) des KPI, ajout d'emplacements réservés pour visuels et captures d'écran|
 
 ---
 
 # Résumé exécutif
 
-Experte Senior en génie logiciel au CEA Irfu/DIS/LDISC et Cheffe de produit MUSCADE, j'assure depuis plus de vingt-cinq ans la conception, le développement et le support d'un système de supervision (SCADA) utilisé sur 32 installations scientifiques en France et à l'international. Une part importante de cette activité — qualification des incidents, production d'indicateurs, rédaction de comptes rendus et de procédures — repose encore sur des traitements manuels, chronophages et peu capitalisés, alors même que l'expertise disponible sur le sujet se raréfie au sein du laboratoire.
+Experte Senior en génie logiciel au CEA Irfu/DIS/LDISC et Cheffe de produit MUSCADE depuis octobre 2025, j'assure depuis plus de vingt-cinq ans la conception, le développement et la coordination d'un système de supervision (SCADA) utilisé sur 32 installations scientifiques en France et à l'international. Au-delà de l'expertise technique, ma mission de Cheffe de produit est avant tout une **mission managériale de coordination d'équipe** : organiser, structurer et faire monter en compétence une équipe support (ingénieurs logiciel, automaticiens, automaticien partenaire) aujourd'hui encore trop dépendante d'une expertise individuelle concentrée sur une seule personne.
 
-Ce dossier RS7424 présente la transformation de ce processus de support grâce à l'intelligence artificielle générative : diagnostic du processus existant, reconfiguration intégrant un assistant IA dédié (« Muscade Incident Assistant ») et un workflow d'automatisation (Make), élaboration d'une charte d'usage responsable de l'IA propre au projet, réalisation de plusieurs livrables concrets (assistant, FAQ, guides, supports de présentation) et mise en place d'un dispositif de suivi et de veille.
+Une part importante de l'activité de support — qualification des incidents, production d'indicateurs, rédaction de comptes rendus et de procédures — repose encore sur des traitements manuels, chronophages et peu capitalisés. Ce dossier RS7424 présente la transformation de ce processus grâce à l'intelligence artificielle générative, avec un objectif managérial explicite : **autonomiser les utilisateurs et l'équipe support**, afin de sortir d'un fonctionnement centré sur une expertise unique et de me permettre, en tant que cheffe de produit, de me recentrer sur l'architecture, le développement et la correction durable des anomalies plutôt que sur le support de premier niveau.
 
-La démarche poursuit deux objectifs indissociables : améliorer la qualité et la rapidité du support apporté aux utilisateurs de MUSCADE, et garantir un usage de l'IA conforme aux exigences de confidentialité et de gouvernance du CEA — l'IA restant un outil d'assistance, la décision et la validation demeurant toujours humaines.
+La démarche s'appuie sur : un diagnostic du processus existant, une reconfiguration intégrant un assistant IA dédié (« Muscade Incident Assistant ») capable d'apporter des réponses de premier niveau via une FAQ (à terme synchronisée avec GitLab), un workflow d'automatisation (Make), une charte d'usage responsable de l'IA propre au projet, plusieurs livrables concrets (assistant, FAQ, guides, supports de présentation) et un dispositif de suivi et de veille.
 
-Au-delà de l'exercice de certification, ce projet constitue une base réutilisable pour le projet MUSCADE : les livrables produits (charte, assistant, guides, dispositif de KPI) ont vocation à être maintenus et enrichis indépendamment de la certification elle-même.
+Conformément au positionnement de cette certification — destinée aux managers, qui délèguent la mise en œuvre technique concrète à des experts IA ou informatiques — ce rapport présente la stratégie de transformation prévue et sa gouvernance, et non un déploiement déjà généralisé : à ce stade, seul un **POC (Proof of Concept)** a été réalisé sur la gestion des incidents MUSCADE (qualification assistée + envoi automatique de ticket par e-mail via Make). Mon profil d'experte technique me permet toutefois d'aller au-delà du seul exercice managérial et de présenter, en soutenance, une implémentation déjà fonctionnelle testée en parallèle sur plusieurs outils.
+
+Ce projet s'inscrit enfin dans une ambition plus large : contribuer à faire émerger, au CEA, un véritable pôle de compétence sur les systèmes de contrôle-commande (SCADA, IHM) et l'IA appliquée à ces domaines, ambition que je porte déjà à travers un podcast de vulgarisation scientifique, *Katy In Control*, dédié aux SCADA (EPICS, TANGO) et à l'IA.
+
+*CV complet : [katysaintin.github.io/cv.html](https://katysaintin.github.io/cv.html)*
 
 ---
 
@@ -38,31 +43,33 @@ Le projet MUSCADE est aujourd'hui installé sur **32 projets** (20 sur le site d
 
 - le support utilisateurs ;
 - les développements logiciels ;
-- la maintenance ;
-- la migration progressive et raisonnée vers EPICS, framework alternatif plus largement partagé par la communauté scientifique internationale (ESS en Suède, SARAF en Israël), pour les nouveaux projets, tout en conservant MUSCADE sur les installations où il apporte un niveau de service qu'EPICS ne propose pas encore (faible empreinte mémoire, mode replay, notification SMS, sécurisation des accès distants, autonomie des automaticiens pour la fabrication des applications).
+- la maintenance et l'industrialisation progressive de la solution.
 
 ### Objectifs du projet
 
-Avec le départ des deux principaux experts historiques de MUSCADE (2021 et 2024), la totalité de la responsabilité technique du produit repose désormais sur une seule experte, alors que la solution doit continuer à être maintenue, industrialisée et déployée sur nombre croissant de projets. Les objectifs du projet MUSCADE sont donc :
+L'organisation actuelle du projet présente une **criticité forte sur l'expertise technique** : la responsabilité de l'ensemble de la solution MUSCADE (architecture, développement, support) repose aujourd'hui sur une seule ressource experte au laboratoire, moi-même. Cette situation, bien qu'elle ait permis d'assurer la continuité du projet, n'est pas soutenable à moyen terme et constitue le point de départ de la démarche managériale présentée dans ce dossier. Les objectifs du projet MUSCADE sont donc :
 
-- garantir la continuité de service et la fiabilité de la solution sur l'ensemble des installations existantes (feuille de route à horizon 2032) ;
-- réduire la dette technique en remplaçant progressivement des développements spécifiques historiques par des solutions standardisées et pérennes (packaging multiplateforme, client Phoebus, passerelle EPICS4Muscade) ;
-- organiser une équipe support pérenne et former de nouveaux contributeurs (automaticiens, développeurs) afin de réduire la dépendance à une expertise unique ;
-- explorer, dans le cadre de cette certification, l'apport de l'IA générative pour fiabiliser et accélérer les activités de suivi opérationnel, d'analyse d'incidents et de pilotage.
+- garantir la continuité de service et la fiabilité de la solution sur l'ensemble des installations existantes ;
+- réduire la dette technique en remplaçant progressivement des développements spécifiques historiques par des solutions standardisées et pérennes ;
+- **répartir les compétences au sein de l'équipe support** et réduire la dépendance à une expertise unique, notamment en autonomisant l'équipe et les utilisateurs grâce à l'IA ;
+- explorer, dans le cadre de cette certification, l'apport de l'IA générative pour fiabiliser et accélérer les activités de suivi opérationnel, d'analyse d'incidents et de pilotage, afin de dégager du temps pour le développement, la correction durable des anomalies et la formation des collègues.
 
 ---
 
 ## 1.2 Mon rôle
 
-Depuis le 1er octobre 2025, je suis **Cheffe de produit MUSCADE** pour une durée de quatre ans, en plus de mon rôle d'Experte Senior en génie logiciel (promotion DRF puis Senior en 2025) et de référente sur les développements Java du département. Mes missions couvrent :
+Depuis le 1er octobre 2025, je suis **Cheffe de produit MUSCADE** pour une durée de quatre ans, en plus de mon rôle d'Experte Senior en génie logiciel (nommée Experte DRF en janvier 2025 puis Experte Senior en septembre 2025, soit une promotion en 8 mois) et de référente sur les développements Java du département. Si mon expertise technique reste un pilier de ce rôle, la mission de Cheffe de produit est avant tout une **mission de management et de coordination d'équipe** : je suis responsable de l'organisation du support, de la répartition des activités entre les membres de l'équipe (ingénieur logiciel, ingénieur automaticien, automaticien partenaire du DACM) et de la montée en compétence collective sur MUSCADE. Mes missions couvrent :
 
-- le développement et l'architecture du produit MUSCADE ;
-- la coordination du support utilisateurs (équipe composée d'ingénieurs logiciel, automaticiens et d'un automaticien partenaire du DACM) ;
-- le développement d'un assistant IA dédié au support MUSCADE, objet central de ce dossier ;
+- le pilotage de l'architecture et du développement du produit MUSCADE ;
+- la **coordination managériale de l'équipe support** : organisation, répartition des rôles, suivi de l'activité ;
+- le déploiement d'un assistant IA dédié au support MUSCADE, objet central de ce dossier, conçu comme un levier d'autonomisation de l'équipe et des utilisateurs plutôt que comme un simple outil technique ;
 - le suivi GitLab des tickets et de la feuille de route ;
-- l'amélioration continue des processus, de la documentation et des pratiques de l'équipe.
+- l'amélioration continue des processus, de la documentation et des pratiques de l'équipe ;
+- à moyen terme, l'animation d'un centre de compétence et d'une offre de formation interne sur MUSCADE.
 
-Cette responsabilité de produit, associée à mon rôle d'experte Java référente pour le laboratoire, a par ailleurs mis en évidence un périmètre d'activité en forte expansion, documenté factuellement par une cartographie des tickets GitLab qui m'sont assignés (227 tickets ouverts, toutes familles de projets confondues) et qui fait l'objet d'une démarche de clarification avec ma hiérarchie, indépendante du présent dossier mais qui éclaire le contexte de charge dans lequel s'inscrit cette transformation par l'IA.
+Cette responsabilité de produit, associée à mon rôle d'experte Java référente pour le laboratoire, a par ailleurs mis en évidence un périmètre d'activité en forte expansion, documenté factuellement par une cartographie des tickets GitLab qui me sont assignés (227 tickets ouverts, toutes familles de projets confondues). C'est précisément ce constat qui motive, dans le cadre de cette certification, un **projet de réorganisation du support et de l'équipe** : ma feuille de route MUSCADE et son volet « compétences RH » associé identifient déjà le manque d'autonomie des utilisateurs finaux et la faible redondance des compétences comme des risques majeurs pour la pérennité du projet. L'intégration de l'IA présentée dans ce dossier constitue un des leviers concrets de cette réorganisation : elle vise à transférer une partie du support de premier niveau vers un assistant IA et à redistribuer les compétences expertes au sein de l'équipe, afin que je ne reste plus un point de passage obligé sur l'ensemble des sujets MUSCADE.
+
+*[Emplacement réservé : organigramme actuel de l'équipe support MUSCADE / capture d'écran de la cartographie des tickets GitLab]*
 
 ---
 
@@ -76,7 +83,10 @@ Le support et le suivi opérationnel de MUSCADE reposent aujourd'hui largement s
 - **hétérogénéité des tickets** : les informations transmises par les utilisateurs sont de qualité inégale (contexte incomplet, absence de captures ou de journaux), ce qui allonge le diagnostic ;
 - **capitalisation limitée** : les résolutions ne sont pas systématiquement transformées en procédures ou en entrées de FAQ, ce qui conduit à retraiter plusieurs fois des incidents similaires ;
 - **temps consacré au reporting** : la production des indicateurs d'activité (KPI GitLab) et des comptes rendus de feuille de route est réalisée manuellement, ce qui limite la fréquence et la réactivité du pilotage ;
-- **dépendance aux experts** : la quasi-totalité de l'expertise technique (Java, architecture MUSCADE) repose sur une seule personne, ce qui constitue un risque pour la continuité du support.
+- **dépendance aux experts** : la quasi-totalité de l'expertise technique (Java, architecture MUSCADE) repose sur une seule personne, ce qui constitue un risque pour la continuité du support ;
+- **autonomie des utilisateurs finaux quasi inexistante** sans la sollicitation directe de l'équipe support : les utilisateurs n'ont aujourd'hui pas de moyen de trouver seuls une réponse à une question courante ou une procédure, ce qui génère un flux constant de sollicitations de premier niveau vers l'équipe, et in fine vers moi-même en tant qu'unique experte.
+
+Cette double dépendance — support concentré sur une expertise rare, et utilisateurs peu autonomes — constitue le cœur de la problématique managériale traitée dans ce dossier : il ne s'agit pas seulement d'outiller le support avec de l'IA, mais de m'en servir comme **levier de réorganisation** pour redistribuer les compétences dans l'équipe et redonner de l'autonomie aux utilisateurs.
 
 ### Difficultés identifiées
 
@@ -88,10 +98,13 @@ Le diagnostic du processus (cf. § 4) a permis de mettre en évidence que les ac
 
 ## Objectifs métier
 
+- **autonomiser les utilisateurs de MUSCADE** en leur donnant un premier niveau de réponse disponible en continu (FAQ assistée par IA), sans solliciter systématiquement l'équipe support ;
+- **autonomiser et responsabiliser l'équipe support** en répartissant les compétences aujourd'hui concentrées sur une seule experte, afin de réduire le point de dépendance critique que je représente pour le laboratoire ;
+- me permettre, en tant que cheffe de produit, de **réallouer mon temps** vers l'architecture, le développement et la correction durable des anomalies plutôt que vers le traitement au quotidien du support de premier niveau ;
 - améliorer la qualité des tickets d'incidents transmis par les utilisateurs ;
 - réduire le temps consacré à la qualification et au reporting ;
 - homogénéiser les pratiques de traitement des incidents au sein de l'équipe support ;
-- faciliter la transmission des connaissances vers de nouveaux contributeurs (automaticiens, stagiaires, apprentis).
+- faciliter la transmission des connaissances vers de nouveaux contributeurs (automaticiens, stagiaires, apprentis), notamment via la création d'un portail central MUSCADE regroupant documentation, assistant et supports de formation.
 
 ## Objectifs IA
 
@@ -121,6 +134,8 @@ Clôture (information utilisateur, mise à jour documentaire)
 ```
 
 Ce même schéma s'applique, en parallèle, à l'activité « Capitaliser les connaissances » (rédaction et mise à jour de procédures) et à l'activité « Piloter l'activité » (collecte des KPI GitLab, tableaux de bord, communication des résultats).
+
+*[Emplacement réservé : schéma AS IS (diagramme visuel du processus actuel, à insérer dans la version DOCX finale)]*
 
 | Processus | Volume | Temps passé | Irritants identifiés | Risques (erreur/conformité) | Potentiel d'automatisation | Priorité |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -207,7 +222,7 @@ Cette charte n'est pas une charte officielle du CEA : il s'agit d'une applicatio
 
 ## Cartographie TO BE
 
-Insérer schéma.
+*[Emplacement réservé : schéma TO BE (diagramme visuel du processus cible, à insérer dans la version DOCX finale)]*
 
 Workflow cible :
 
@@ -231,13 +246,15 @@ FAQ / Base documentaire (capitalisation)
 
 Ce même schéma cible s'applique de façon transverse aux quatre processus identifiés dans le diagnostic (exploiter les incidents, piloter l'activité, capitaliser les connaissances, déployer l'IA de manière responsable), chacun étant reconfiguré selon le même principe : une étape d'assistance IA suivie d'une validation humaine systématique avant toute diffusion ou décision.
 
+Un point clé de cette reconfiguration concerne la **FAQ de l'assistant**, qui apporte les réponses de premier niveau aux questions courantes des utilisateurs. À terme, cette FAQ ne sera plus maintenue manuellement : elle sera **directement connectée à GitLab**, de sorte que toute mise à jour des documents de référence du projet (procédures, wiki, résolutions capitalisées) soit automatiquement répercutée dans les réponses de l'assistant, sans double saisie ni risque de désynchronisation entre la documentation « officielle » et celle utilisée par l'IA.
+
 ## Nouveaux rôles
 
-La reconfiguration du processus fait émerger, sans créer de nouveaux postes, une évolution des responsabilités existantes :
+La reconfiguration du processus fait émerger, sans créer de nouveaux postes, une évolution des responsabilités existantes, dont l'objectif managérial est de sortir d'une organisation centrée sur une expertise unique :
 
-- **Cheffe de projet / Product Owner** : pilote désormais également la configuration et l'amélioration continue de l'assistant IA, valide les contenus générés avant diffusion, et supervise l'usage conforme à la charte.
-- **Équipe support (ingénieurs, automaticiens)** : passe d'un rôle de qualification manuelle à un rôle de validation et d'expertise sur les cas remontés par l'assistant, avec davantage de temps disponible pour le développement et la formation.
-- **Utilisateurs finaux** : gagnent en autonomie grâce à un assistant disponible en continu pour les questions courantes, la recherche de procédures et la déclaration guidée d'un incident.
+- **Cheffe de produit** : pilote la configuration et l'amélioration continue de l'assistant IA, valide les contenus générés avant diffusion, et supervise l'usage conforme à la charte. Sa charge de support de premier niveau diminue progressivement, ce qui lui permet de réallouer du temps à l'architecture, au développement, à la correction durable des anomalies, à la création d'un portail central MUSCADE (documentation, assistant, ressources) et à la formation des collègues.
+- **Équipe support (ingénieurs, automaticiens)** : passe d'un rôle de qualification manuelle à un rôle de validation et d'expertise sur les cas remontés par l'assistant, avec une répartition plus explicite des compétences entre ses membres et davantage de temps disponible pour le développement et la formation — réduisant ainsi la dépendance du laboratoire à une seule ressource experte.
+- **Utilisateurs finaux** : gagnent en autonomie grâce à un assistant disponible en continu pour les questions courantes (FAQ), la recherche de procédures et la déclaration guidée d'un incident, réduisant d'autant les sollicitations directes de l'équipe support.
 
 ## Comparaison avant / après
 
@@ -316,17 +333,25 @@ Le prompt utilisé pour la génération du support de présentation Gamma illust
 
 Le **Muscade Incident Assistant** est un Custom GPT (ChatGPT) qui consulte la documentation MUSCADE, guide la qualification d'un incident par une série de questions, génère un ticket au format Markdown, puis — après validation explicite de l'utilisateur — déclenche une GPT Action appelant un scénario Make qui envoie automatiquement un e-mail de notification au support. Trois amorces de conversation sont proposées (signaler un incident, poser une question, consulter la FAQ), s'appuyant sur les documents de référence du projet.
 
+*[Emplacement réservé : capture d'écran de l'interface du Muscade Incident Assistant]*
+
 ## Workflow Make
 
 Le scénario Make reçoit, via un webhook, les données qualifiées transmises par l'assistant et orchestre l'envoi automatique du ticket d'incident (par e-mail) vers l'équipe support, démontrant une automatisation de bout en bout en Low Code, du signalement initial jusqu'à la notification.
+
+*[Emplacement réservé : capture d'écran du scénario Make et de l'e-mail généré]*
 
 ## Production n°1
 
 **Support utilisateur** : un mini-site d'aide (help-muscade.md) présentant le déroulement d'un signalement (« vous décrivez le problème → l'assistant pose quelques questions → il vérifie les informations → vous validez → le support reçoit un ticket complet »), des exemples de prompts par catégorie (incidents, questions, procédures) et une FAQ destinée aux utilisateurs non experts en IA ni en MUSCADE.
 
+*[Emplacement réservé : capture d'écran du site d'aide]*
+
 ## Production n°2
 
 **Présentation Gamma** : support de présentation de l'organisation du support MUSCADE (missions, organisation de l'équipe, répartition des responsabilités, processus de traitement d'un incident, rôle de l'assistant IA, bénéfices attendus), destiné aux nouveaux collaborateurs.
+
+*[Emplacement réservé : captures d'écran des diapositives clés de la présentation Gamma]*
 
 ## Autres productions
 
@@ -338,6 +363,12 @@ Le scénario Make reçoit, via un webhook, les données qualifiées transmises p
 ---
 
 # 10. Évaluation (C5)
+
+## Précision sur le niveau d'avancement
+
+Cette certification s'adresse à des managers, dont le rôle est de définir la stratégie d'intégration de l'IA et la gouvernance associée, en déléguant le plus souvent la mise en œuvre technique concrète à des experts IA ou informatiques. Ce chapitre présente donc **le dispositif d'évaluation tel qu'il est prévu d'être déployé**, et non les résultats d'un déploiement déjà généralisé.
+
+À ce jour, le projet MUSCADE n'a pas encore intégré l'assistant IA en production : j'ai développé un **POC (Proof of Concept)** fonctionnel sur le processus de gestion des incidents (qualification assistée par le Muscade Incident Assistant + envoi automatique d'un ticket par e-mail via Make), qui démontre la faisabilité technique et sert de base à la généralisation prévue. Les indicateurs et objectifs chiffrés ci-dessous sont donc des **cibles prévisionnelles**, cohérentes avec l'analyse comparative avec/sans IA (§7-8), qui seront mesurées une fois le déploiement engagé. Étant moi-même experte technique, j'ai pu, en parallèle de cet exercice managérial, tester plusieurs outils et configurations qui iront au-delà du strict périmètre attendu pour la certification, et qui seront présentés en soutenance.
 
 ## KPI
 
@@ -391,14 +422,15 @@ La veille technologique combine une veille automatisée et une veille par expér
 
 - L'anonymisation préalable de documents internes (feuille de route contenant des noms de collaborateurs) avant transmission à une IA a demandé un travail de reformulation manuelle non négligeable.
 - Le calibrage du niveau de questionnement de l'assistant (ni trop, ni trop peu) a nécessité plusieurs itérations de prompt.
-- Le passage de la théorie (identification d'un cas d'usage) à la mise en œuvre opérationnelle concrète (script Python, intégration API, agent IA) a confirmé la nécessité d'une expertise technique, au-delà des seules compétences managériales visées par le référentiel.
-- L'arbitrage encore non tranché entre les deux SCADA (MUSCADE / EPICS) sur certains projets partagés (ex. protocole OPCUA sur PIP II) illustre les limites organisationnelles dans lesquelles s'inscrit cette transformation, indépendamment de l'IA elle-même.
+- Le passage de la théorie (identification d'un cas d'usage) à la mise en œuvre opérationnelle concrète (script Python, intégration API, agent IA) a confirmé la nécessité d'une expertise technique, au-delà des seules compétences managériales visées par le référentiel — expertise que je possède, ce qui m'a permis de pousser l'expérimentation au-delà du strict exercice demandé.
+- La criticité de l'expertise unique, déjà identifiée dans ma feuille de route MUSCADE, rappelle que la réussite de cette transformation dépend autant de la réorganisation managériale de l'équipe que des outils IA eux-mêmes.
 
 ## Limites
 
-- Le dispositif d'évaluation présenté (KPI, dispositif de suivi) est à ce stade **prévisionnel** : le déploiement complet de l'assistant auprès de l'ensemble des utilisateurs de MUSCADE n'a pas encore donné lieu à une mesure « après déploiement » à 3 mois.
-- L'assistant reste dépendant de la qualité et de la mise à jour de la documentation MUSCADE qui l'alimente (absence de RAG documentaire complet à ce stade).
+- Le dispositif présenté n'est à ce stade qu'un **POC** (gestion des incidents + notification par e-mail via Make) : le déploiement généralisé de l'assistant auprès de l'ensemble des utilisateurs et de l'équipe support n'a pas encore eu lieu, et les KPI restent donc des cibles prévisionnelles plutôt que des résultats mesurés.
+- L'assistant reste dépendant de la qualité et de la mise à jour de la documentation MUSCADE qui l'alimente ; la connexion directe de la FAQ à GitLab, prévue pour garantir la synchronisation des contenus, n'est pas encore réalisée.
 - La gouvernance IA reste, pour l'instant, un document de travail propre au projet MUSCADE et non une charte officielle validée au niveau du CEA.
+- La réorganisation de l'équipe et la redistribution des compétences restent, à ce stade, à l'état de projet ; leur mise en œuvre effective dépendra également d'arbitrages managériaux avec ma hiérarchie, indépendants de la seule dimension technique de ce dossier.
 
 ## Perspectives
 
@@ -422,6 +454,8 @@ Un des apports les plus marquants a été la prise de conscience que la valeur d
 - Une méthode pédagogique fondée sur des livrables intermédiaires réguliers, qui a permis une rédaction progressive du rapport plutôt qu'une rédaction finale de zéro, réduisant la charge cognitive et facilitant la consolidation des connaissances au fil des modules.
 - Un accompagnement individualisé compatible avec une reprise d'activité nécessitant un rythme mesuré.
 - Une application directe et concrète des principes étudiés à un projet réel (MUSCADE), qui donne au dossier une valeur qui dépasse le seul exercice de certification.
+
+Cette certification s'inscrit plus largement dans une trajectoire personnelle de vulgarisation et de structuration d'une expertise : nommée Experte du CEA en génie logiciel puis Experte Senior en IHM et SCADA, je porte l'ambition de contribuer à faire émerger un véritable pôle de compétence au CEA sur ces thématiques. J'ai amorcé cette démarche à travers *Katy In Control*, un podcast de vulgarisation scientifique consacré aux SCADA (EPICS, TANGO) et, de plus en plus, à l'IA appliquée à ces domaines — la présente certification RS7424 en constituant un prolongement naturel, tant sur le fond (gouvernance de l'IA appliquée à un cas réel) que sur la forme (une nouvelle occasion de rendre accessibles des sujets techniques à un public plus large).
 
 ## Points à améliorer
 
@@ -457,3 +491,4 @@ Le projet MUSCADE constitue désormais une base concrète pouvant être poursuiv
 - Questionnaire Google Forms
 - Prompts
 - Journal de bord (RS7424_JournalDeBord.md)
+- CV (katysaintin.github.io/cv.html)
