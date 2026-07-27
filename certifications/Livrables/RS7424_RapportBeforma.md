@@ -56,6 +56,8 @@ Le choix de ces deux processus n'est pas arbitraire : il s'appuie sur une grille
 | Expérience collaborateur | Les utilisateurs en bénéficient-ils directement ? | Directe pour la capitalisation (FAQ), indirecte pour le traitement des incidents |
 | Alignement organisationnel | Le processus sert-il les objectifs du service ? | Fort — meilleur pilotage et meilleure allocation des ressources |
 
+*[DIAGRAMME 1 — voir prompt Gamma en fin de document]*
+
 **Impacts attendus**
 
 - Sur mon rôle de manager : moins de temps passé sur le support de premier niveau, plus de temps consacré à l'architecture, au développement et à la formation de l'équipe.
@@ -113,7 +115,11 @@ Ces objectifs restent volontairement modestes en ressources (un assistant, un ou
 | Transmission au support | Le support reformule et complète la demande | Le support reçoit directement un ticket structuré, transmis automatiquement |
 | Capitalisation | Rédaction manuelle d'une procédure, souvent repoussée | L'IA propose une première version de procédure à partir du ticket résolu |
 
+*[IMAGE 1 — schéma AS IS / TO BE déjà réalisé (Gamma), à insérer depuis ta présentation « Schématisation de 2 processus du projet MUSCADE »]*
+
 Pour la mise en œuvre technique, deux solutions d'automatisation sans code ont été comparées (Make et un équivalent plus avancé mais plus technique, n8n) ; Make a été retenu pour ce POC en raison de sa simplicité de prise en main et de la rapidité de mise en œuvre, l'option plus technique restant une perspective d'évolution si les besoins d'industrialisation augmentent.
+
+*[IMAGE 2 — capture d'écran du scénario Make (POC)]*
 
 ### Partie 2 — Nouvelle organisation proposée
 
@@ -148,6 +154,8 @@ Le prompt de l'assistant a été conçu et affiné par itérations successives, 
 - **Absence d'ambiguïté** : interdiction explicite pour l'assistant de conclure à une cause sans preuve suffisante, ou d'inventer une information manquante.
 - **Tests et amélioration progressive** : chaque version du prompt a été comparée à la précédente selon un critère simple — produit-elle un ticket plus complet dès le premier échange, avec moins de questions de relance ?
 
+*[IMAGE 3 — capture d'écran d'une conversation avec le Muscade Incident Assistant (qualification guidée d'un incident)]*
+
 ### Partie 2 — Paramétrage et accessibilité
 
 | Choix | Justification |
@@ -181,6 +189,8 @@ La démarche garantit :
 | **Outil utilisé** | ChatGPT (assistant personnalisé) |
 | **Analyse du résultat** | Le contenu est directement utilisable, rédigé en langage clair ; il reste à l'enrichir d'exemples supplémentaires au fil des retours utilisateurs |
 
+*[IMAGE 4 — capture d'écran du guide utilisateur (help-muscade.md)]*
+
 ### Dépôt n°2 — Production réalisée avec l'IA
 
 | | |
@@ -189,6 +199,8 @@ La démarche garantit :
 | **Objectif** | Présenter le fonctionnement de l'équipe et le rôle de l'assistant lors de l'arrivée d'un nouveau collaborateur |
 | **Outil utilisé** | Gamma (génération de présentations) |
 | **Analyse du résultat** | Support rapide à produire et visuellement homogène ; une relecture humaine reste nécessaire avant diffusion |
+
+*[IMAGE 5 — capture d'une diapositive clé de la présentation Gamma]*
 
 ### Intégration des enjeux RSE
 
@@ -216,6 +228,8 @@ Le dispositif s'organise autour de trois familles d'indicateurs distinctes :
 | 🤝 Satisfaction | Autonomie perçue des utilisateurs | Amélioration | Enquête avant/après déploiement |
 | 🛡️ RSE | Conformité à la charte (anonymisation avant transmission) | 100 % | Auto-contrôle mensuel |
 
+*[DIAGRAMME 2 — voir prompt Gamma en fin de document]*
+
 ### Partie 2 — Comparatif avant / après (résultats prévisionnels)
 
 | Processus analysé | Avant IA | Après IA (cible) | Écart attendu |
@@ -225,6 +239,8 @@ Le dispositif s'organise autour de trois familles d'indicateurs distinctes :
 | Recherche documentaire | Recherche dans plusieurs documents dispersés | Interrogation d'une base documentaire unique | -50 % de temps |
 | Autonomie des utilisateurs | Dépendante des disponibilités du support | Accès à un assistant en continu | Amélioration |
 | Charge de l'équipe support | Forte sollicitation sur les questions répétitives | Temps réalloué au développement et à la formation | Gain qualitatif |
+
+*[DIAGRAMME 3 — voir prompt Gamma en fin de document]*
 
 Ce comparatif reste prévisionnel : le dispositif est aujourd'hui au stade d'un test (POC fonctionnel : assistant + automatisation par e-mail), pas encore déployé à l'ensemble de l'équipe. Il conduit néanmoins à des ajustements déjà retenus : un déploiement progressif plutôt qu'immédiat, une validation humaine systématique pour toute situation critique, et une mise à jour continue du contenu de l'assistant à partir des retours obtenus.
 
@@ -251,3 +267,69 @@ Chaque nouveauté jugée pertinente fait l'objet d'un petit test avant d'être �
 - Connexion directe de l'assistant à la documentation du projet, pour qu'elle reste à jour automatiquement.
 - Formation des collègues à l'utilisation et à l'évolution du dispositif, dans le cadre plus large d'un portail de documentation centralisé pour le projet.
 - Approfondissement du processus de pilotage de l'activité (KPI), identifié mais non développé à ce stade faute de temps.
+
+---
+
+## Visuels à insérer — table de correspondance
+
+| # | Emplacement dans le rapport | Type | Source / Prompt Gamma |
+|---|---|---|---|
+| IMAGE 1 | C2, Partie 1 | Capture existante | Schéma AS IS / TO BE déjà réalisé (présentation Gamma « Schématisation de 2 processus du projet MUSCADE ») |
+| IMAGE 2 | C2, Partie 1 | Capture existante | Capture du scénario Make (POC) |
+| IMAGE 3 | C3, Partie 1 | Capture existante | Capture d'une conversation avec le Muscade Incident Assistant |
+| IMAGE 4 | C4, Dépôt n°1 | Capture existante | Capture du guide utilisateur (help-muscade.md) |
+| IMAGE 5 | C4, Dépôt n°2 | Capture existante | Capture d'une diapositive de la présentation Gamma existante |
+| DIAGRAMME 1 | C1, Partie 1 | À générer (Gamma) | Voir prompt ci-dessous |
+| DIAGRAMME 2 | C5, Partie 1 | À générer (Gamma) | Voir prompt ci-dessous |
+| DIAGRAMME 3 | C5, Partie 2 | À générer (Gamma) | Voir prompt ci-dessous |
+
+### Prompt Gamma — DIAGRAMME 1 : grille d'évaluation à 5 dimensions
+
+```
+Crée un visuel de synthèse (infographie ou diagramme en étoile/radar) présentant
+5 dimensions d'évaluation d'un processus métier avant automatisation par l'IA :
+- Gain de temps : Fort
+- Fiabilité : Élevée
+- Fluidité : Moyenne
+- Expérience collaborateur : Directe à indirecte
+- Alignement organisationnel : Fort
+
+Pour chaque dimension, affiche une icône représentative et un niveau visuel
+(jauge ou pastille de couleur : vert = fort/élevé, orange = moyen, gris = faible).
+Titre du visuel : "Pourquoi automatiser le traitement des incidents MUSCADE ?"
+Style sobre et professionnel, palette bleu et blanc, sans logo, sans texte
+superflu, format paysage adapté à l'insertion dans un rapport Word.
+```
+
+### Prompt Gamma — DIAGRAMME 2 : tableau de bord des indicateurs de suivi
+
+```
+Crée un tableau de bord visuel synthétique avec 3 blocs côte à côte, un par
+famille d'indicateur :
+- 🎯 Performance : temps de qualification -30 %, temps de rédaction -40 à -50 %
+- 🤝 Satisfaction : satisfaction utilisateurs > 80 %, autonomie en amélioration
+- 🛡️ RSE : conformité à la charte d'anonymisation 100 %
+
+Chaque bloc a une icône, un titre, et les indicateurs listés avec leur objectif
+chiffré en gros caractères, façon carte de dashboard. Style moderne et épuré,
+fond clair, une couleur distincte par bloc (bleu / vert / violet), format
+paysage, sans texte superflu.
+```
+
+### Prompt Gamma — DIAGRAMME 3 : comparatif avant/après chiffré
+
+```
+Crée un graphique en barres horizontales comparant "avant IA" et "après IA"
+pour 5 processus du support MUSCADE :
+- Qualification d'un incident : -30 % de temps
+- Rédaction du compte rendu : -40 à -50 % de temps
+- Recherche documentaire : -50 % de temps
+- Autonomie des utilisateurs : amélioration qualitative
+- Charge de l'équipe support : gain qualitatif
+
+Utilise des barres plus courtes pour "après IA" afin d'illustrer visuellement
+le gain de temps, avec une légende claire distinguant les deux barres.
+Titre : "Impact attendu de l'IA sur le support MUSCADE (résultats prévisionnels)".
+Mention en petit texte : "Résultats prévisionnels — POC en cours de généralisation".
+Style sobre et professionnel, couleurs bleu et gris, format paysage.
+```
