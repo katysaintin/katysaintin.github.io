@@ -1,7 +1,7 @@
 # Rapport RS7424
 ## Gérer et transformer les processus de travail des équipes avec l'aide de l'IA
 
-**Version :** V1.5 (Cr2.3 : mesure de sécurité/données dédiée dans la reconfiguration, §6)
+**Version :** V1.6 (Cr3.3 : exemple concret de test/correction + méthode d'accessibilité justifiée, §8)
 
 ---
 
@@ -24,6 +24,7 @@
 |1.3|2026-07-27|Katy Saintin|Ajout en tête de §6 d'un paragraphe explicitant la reconfiguration du processus métier (Cr2.2) : schémas avant/après du parcours utilisateur↔support, montrant la bascule du rôle du support de la qualification vers l'expertise/résolution.|
 |1.4|2026-07-27|Katy Saintin|Traitement de Cr1.3 : ajout en §1.2 d'une phrase sur le passé de support opérationnel à SOLEIL et la formation ITIL ; complétion de §3 Objectifs métier avec le bénéfice utilisateur explicite (point d'entrée unique, guidé, rassurant) et citation de la feuille de route MUSCADE comme preuve que cet objectif préexistait à la certification.|
 |1.5|2026-07-27|Katy Saintin|Traitement de Cr2.3 : ajout en §6 d'un paragraphe dédié sécurité/protection des données de la reconfiguration (token GitLab restreint à terme, cloisonnement des données entre outils, restriction du domaine e-mail @cea.fr, configuration ChatGPT sans mémorisation, cible d'alignement sur la liste des IA autorisées CEA), avec mention transparente de la limite actuelle du POC (lien public de l'action GPT, sans authentification).|
+|1.6|2026-07-27|Katy Saintin|Traitement de Cr3.3 : ajout en §8 d'un exemple concret de test et correction (bug de mapping de variable dans Make, diagnostic croisé Claude/ChatGPT, décision de format JSON indépendant de l'outil d'orchestration) ; justification de la méthode de vérification d'accessibilité prévue par l'expertise IHM déjà établie et l'exemple des sondages UNAAPE (réduction des frictions, taux de réponse).|
 
 ---
 
@@ -551,7 +552,8 @@ Le prompt utilisé pour la génération du support de présentation Gamma illust
 - Trouver le bon niveau de granularité des questions posées par l'assistant : trop peu de questions produit un ticket incomplet, trop de questions décourage l'utilisateur.
 - Garantir que l'assistant ne « conclue » jamais à une cause sans preuve, ce qui a nécessité d'expliciter clairement cette interdiction dans le prompt.
 - Anonymiser en amont les documents de référence (feuille de route contenant des noms de collaborateurs) avant de les transmettre à l'IA pour la génération de supports, ce qui a demandé une reformulation manuelle préalable plutôt qu'un simple copier-coller.
-- Les tests successifs du prompt ont également porté sur la lisibilité des réponses générées (formulation simple, structuration claire par étapes), bien qu'aucune vérification formelle d'accessibilité (test avec un lecteur d'écran) n'ait encore été réalisée à ce stade du POC — c'est un axe d'amélioration identifié pour la suite du projet.
+- Les tests successifs du prompt ont également porté sur la lisibilité des réponses générées (formulation simple, structuration claire par étapes), bien qu'aucune vérification formelle d'accessibilité (test avec un lecteur d'écran) n'ait encore été réalisée à ce stade du POC — c'est un axe d'amélioration identifié pour la suite du projet. Cette vérification, bien que non encore réalisée, ne part pas d'une méthode improvisée : elle s'appuie sur une expertise IHM déjà établie (cf. §12) et sur une pratique récurrente de simplification de dispositifs de collecte pour des publics non experts — par exemple les sondages que je conçois et fais évoluer depuis trois ans en tant que représentante de parents d'élèves, où la réduction des frictions d'accès (questions fermées, absence d'authentification) s'est traduite par une amélioration mesurable du taux de réponse au fil des années.
+- Un exemple concret illustre cette démarche de test et d'ajustement, au-delà du seul prompt : lors de la configuration du scénario Make, les premiers essais envoyaient bien un e-mail, mais avec des champs vides. Le diagnostic, croisé entre deux IA (Claude, à l'origine de la syntaxe fautive, et ChatGPT, qui a identifié l'erreur), a révélé une référence de variable incorrecte dans le module Gmail (`{{incidentId}}` au lieu de `{{2.incidentId}}`, qui doit inclure le numéro du module source dans Make). La correction a permis de valider l'envoi correct des données. Cet épisode a également confirmé une limite consciente des outils no-code interrogés en prompt « one-shot » : au-delà d'un certain niveau de complexité (mapping de variables, structure d'un workflow), un prompt itératif et incrémental reste nécessaire — ce qui m'a conduite à définir un format JSON standard pour les données collectées, indépendant de l'outil d'orchestration retenu (Make, n8n ou Zapier), plutôt que de dépendre d'une syntaxe propriétaire. Cette approche de modélisation indépendante de l'implémentation est directement héritée de mon expertise en architecture logicielle.
 
 ---
 
