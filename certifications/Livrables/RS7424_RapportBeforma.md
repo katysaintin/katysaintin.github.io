@@ -286,19 +286,30 @@ Chaque nouveauté jugée pertinente fait l'objet d'un petit test avant d'être �
 ### Prompt Gamma — DIAGRAMME 1 : grille d'évaluation à 5 dimensions
 
 ```
-Crée un visuel de synthèse (infographie ou diagramme en étoile/radar) présentant
-5 dimensions d'évaluation d'un processus métier avant automatisation par l'IA :
+Crée un visuel de synthèse (infographie) présentant 5 dimensions d'évaluation
+d'un processus métier avant automatisation par l'IA. Pour CHAQUE dimension,
+utilise UNIQUEMENT un niveau qualitatif (Fort / Moyen / Faible ou équivalent),
+jamais de note chiffrée ni d'échelle numérique (pas de "score sur 3", pas de
+graphique en barres avec un axe de valeurs) :
+
 - Gain de temps : Fort
 - Fiabilité : Élevée
 - Fluidité : Moyenne
-- Expérience collaborateur : Directe à indirecte
+- Expérience collaborateur : Directe pour la capitalisation, indirecte pour
+  le traitement des incidents
 - Alignement organisationnel : Fort
 
-Pour chaque dimension, affiche une icône représentative et un niveau visuel
-(jauge ou pastille de couleur : vert = fort/élevé, orange = moyen, gris = faible).
+Pour chaque dimension, affiche une icône représentative, le niveau écrit en
+toutes lettres, ET une pastille de couleur (vert = fort/élevé, orange = moyen,
+gris = faible) — la couleur ne doit jamais être le seul moyen de distinguer les
+niveaux, le texte doit toujours être présent à côté.
+
+IMPORTANT : n'invente aucune valeur numérique, pourcentage ou score qui
+n'est pas fourni ci-dessus. Reste strictement qualitatif.
+
 Titre du visuel : "Pourquoi automatiser le traitement des incidents MUSCADE ?"
-Style sobre et professionnel, palette bleu et blanc, sans logo, sans texte
-superflu, format paysage adapté à l'insertion dans un rapport Word.
+Style sobre et professionnel, palette bleu et blanc, sans logo, format
+paysage adapté à l'insertion dans un rapport Word.
 ```
 
 ### Prompt Gamma — DIAGRAMME 2 : tableau de bord des indicateurs de suivi
@@ -319,17 +330,30 @@ paysage, sans texte superflu.
 ### Prompt Gamma — DIAGRAMME 3 : comparatif avant/après chiffré
 
 ```
-Crée un graphique en barres horizontales comparant "avant IA" et "après IA"
-pour 5 processus du support MUSCADE :
+Crée un graphique en barres horizontales comparant "avant IA" et "après IA",
+UNIQUEMENT pour les 3 processus où un pourcentage chiffré existe réellement :
+
 - Qualification d'un incident : -30 % de temps
 - Rédaction du compte rendu : -40 à -50 % de temps
 - Recherche documentaire : -50 % de temps
-- Autonomie des utilisateurs : amélioration qualitative
-- Charge de l'équipe support : gain qualitatif
 
 Utilise des barres plus courtes pour "après IA" afin d'illustrer visuellement
-le gain de temps, avec une légende claire distinguant les deux barres.
-Titre : "Impact attendu de l'IA sur le support MUSCADE (résultats prévisionnels)".
-Mention en petit texte : "Résultats prévisionnels — POC en cours de généralisation".
+le gain de temps, avec le pourcentage exact affiché sur chaque barre (pas de
+valeur inventée du type "70" ou "100" sans unité). Légende claire distinguant
+les deux barres.
+
+En dessous du graphique, ajoute une zone séparée (texte ou badges, PAS de
+barres ni de valeur chiffrée) listant 2 bénéfices supplémentaires, présentés
+explicitement comme qualitatifs et non mesurés :
+- Autonomie des utilisateurs : amélioration qualitative (non quantifiée)
+- Charge de l'équipe support : gain qualitatif (non quantifié)
+
+IMPORTANT : n'attribue aucun pourcentage, score ou valeur numérique à ces
+deux derniers points — ils doivent visuellement rester distincts du
+graphique chiffré, pour ne pas laisser croire à une mesure qui n'existe pas.
+
+Titre : "Impact attendu de l'IA sur le support MUSCADE (résultats prévisionnels)"
+Mention en petit texte, bien visible : "Résultats prévisionnels — POC en cours
+de généralisation".
 Style sobre et professionnel, couleurs bleu et gris, format paysage.
 ```
