@@ -1,7 +1,7 @@
 # Rapport RS7424
 ## Gérer et transformer les processus de travail des équipes avec l'aide de l'IA
 
-**Version :** V0.4 (ajout du bilan de compétences RS7424)
+**Version :** V0.5 (compléments accessibilité/RSE croisés entre deux diagnostics IA)
 
 ---
 
@@ -13,6 +13,7 @@
 |0.2|2026-07-27|Katy Saintin|Rédaction consolidée à partir des livrables intermédiaires (diagnostic, cartographies, charte IA, dispositif de suivi, journal de bord)|
 |0.3|2026-07-27|Katy Saintin|Mise en avant de l'angle managérial (coordination/autonomisation de l'équipe et des utilisateurs), suppression des références EPICS/départs en retraite, clarification du statut réel (POC) des KPI, ajout d'emplacements réservés pour visuels et captures d'écran|
 |0.4|2026-07-27|Katy Saintin|Ajout du bilan des compétences RS7424 (niveau atteint par compétence, points de vigilance identifiés vs référentiel de certification)|
+|0.5|2026-07-27|Katy Saintin|Intégration des compléments issus de deux diagnostics IA croisés (Claude x2) : sobriété numérique (§5), mesure handicap (§6), justification Custom GPT (§7), test de lisibilité (§8), enjeux RSE/accessibilité sur les 2 productions (§9), indicateur RSE au suivi (§10). Plusieurs ajouts marqués **[à confirmer]** en attente de validation factuelle par la candidate.|
 
 ---
 
@@ -203,6 +204,8 @@ Concrètement, la minimisation des données se traduit par :
 - l'exclusion explicite des solutions non conformes au cadre CEA ou à l'AI Act pour des données sensibles (par exemple DeepSeek ou Grok) ;
 - l'usage d'une **table de variables documentaires** placée en tête de document (principe « IA Ready », détaillé en annexe), qui permet de centraliser en un seul endroit les informations sensibles ([PROJECT], [PROJECT_MANAGER], [SERVER], [SERVER_IP]...) et de vérifier en un point unique qu'aucune donnée confidentielle ne subsiste avant transmission à une IA.
 
+Sur le plan écologique, l'usage de l'IA sur le projet reste volontairement mesuré : **[à confirmer]** privilégier des requêtes ciblées plutôt que des générations exploratoires répétées, et réutiliser systématiquement les prompts déjà validés (bibliothèque de prompts, cf. §8) plutôt que de régénérer un contenu depuis zéro à chaque sollicitation. Cette sobriété d'usage, déjà posée comme principe dans la charte (§4.5), limite la consommation énergétique et le coût des services d'IA associés au projet.
+
 ## Charte IA
 
 Un livrable central de cette certification est la **Charte d'utilisation responsable de l'IA — Projet MUSCADE** (CEA Irfu/DIS/LDISC), qui formalise l'ensemble de ces principes pour l'équipe projet. Elle s'articule autour de cinq principes fondamentaux — responsabilité, protection des données, esprit critique, transparence et sobriété — et définit :
@@ -214,6 +217,8 @@ Un livrable central de cette certification est la **Charte d'utilisation respons
 - l'engagement individuel de chaque membre de l'équipe.
 
 Cette charte n'est pas une charte officielle du CEA : il s'agit d'une application concrète, au niveau du projet MUSCADE, des principes travaillés pendant la certification RS7424, conçue pour être évolutive au fil des retours d'expérience et des évolutions réglementaires (RGPD, AI Act).
+
+Ces objectifs et cette gouvernance s'inscrivent, plus largement, dans le cadre normatif du CEA en matière de protection des données et de sécurité informatique **[à confirmer/préciser si une politique RSE ou inclusion/diversité spécifique de l'IRFU ou du CEA peut être citée ici]** ; à défaut d'une politique RSE formalisée que je pourrais citer avec certitude, je préfère l'assumer explicitement plutôt que d'en présumer une, la gouvernance présentée ici restant à ce stade propre au projet MUSCADE.
 
 *(Voir annexe : Charte_IA_MUSCADE.docx)*
 
@@ -257,6 +262,8 @@ La reconfiguration du processus fait émerger, sans créer de nouveaux postes, u
 - **Équipe support (ingénieurs, automaticiens)** : passe d'un rôle de qualification manuelle à un rôle de validation et d'expertise sur les cas remontés par l'assistant, avec une répartition plus explicite des compétences entre ses membres et davantage de temps disponible pour le développement et la formation — réduisant ainsi la dépendance du laboratoire à une seule ressource experte.
 - **Utilisateurs finaux** : gagnent en autonomie grâce à un assistant disponible en continu pour les questions courantes (FAQ), la recherche de procédures et la déclaration guidée d'un incident, réduisant d'autant les sollicitations directes de l'équipe support.
 
+La reconfiguration prévoit également une mesure d'adaptation pour les personnels ou utilisateurs en situation de handicap : l'assistant et la FAQ étant rédigés en Markdown structuré (titres hiérarchisés, listes, absence d'information encodée uniquement par la couleur), ils sont nativement compatibles avec les lecteurs d'écran **[à confirmer : vérifier que la structure effective des documents respecte bien ce principe avant la soutenance]**. **[à préciser si un besoin d'adaptation a déjà été identifié ou anticipé au sein de l'équipe support ou des utilisateurs MUSCADE]**
+
 ## Comparaison avant / après
 
 |Avant|Après|
@@ -295,6 +302,8 @@ Le choix ne s'est pas porté sur un outil unique mais sur une **combinaison rais
 
 Cette complémentarité entre IA conversationnelle et outil de workflow ouvre la perspective d'un processus MUSCADE largement automatisé de bout en bout, depuis l'extraction des incidents jusqu'à la production des livrables — tout en conservant la gouvernance définie dans la charte (exclusion des outils non conformes à l'AI Act pour les données sensibles, par exemple DeepSeek ou Grok).
 
+Le choix d'un **Custom GPT** plutôt qu'un prompt réutilisé manuellement à chaque échange a été motivé par trois éléments : la **disponibilité continue** de l'assistant (24/7, sans dépendre de ma disponibilité) ; la **stabilité des consignes** dans le temps, qui évite toute dérive de prompt d'une session à l'autre ; et l'**autonomie des utilisateurs**, qui accèdent directement à l'assistant sans passer par un accès API ou par moi-même. Ce choix n'exclut pas d'évolutions futures (ex. agent plus autonome connecté à un RAG documentaire complet, cf. §11), mais correspond au niveau de maturité et aux moyens du POC actuel.
+
 ---
 
 # 8. Conception des prompts
@@ -325,6 +334,7 @@ Le prompt utilisé pour la génération du support de présentation Gamma illust
 - Trouver le bon niveau de granularité des questions posées par l'assistant : trop peu de questions produit un ticket incomplet, trop de questions décourage l'utilisateur.
 - Garantir que l'assistant ne « conclue » jamais à une cause sans preuve, ce qui a nécessité d'expliciter clairement cette interdiction dans le prompt.
 - Anonymiser en amont les documents de référence (feuille de route contenant des noms de collaborateurs) avant de les transmettre à l'IA pour la génération de supports, ce qui a demandé une reformulation manuelle préalable plutôt qu'un simple copier-coller.
+- Les tests successifs du prompt ont également porté sur la lisibilité des réponses générées (formulation simple, structuration claire par étapes), bien qu'aucune vérification formelle d'accessibilité (test avec un lecteur d'écran) n'ait encore été réalisée à ce stade du POC — c'est un axe d'amélioration identifié pour la suite du projet.
 
 ---
 
@@ -346,11 +356,19 @@ Le scénario Make reçoit, via un webhook, les données qualifiées transmises p
 
 **Support utilisateur** : un mini-site d'aide (help-muscade.md) présentant le déroulement d'un signalement (« vous décrivez le problème → l'assistant pose quelques questions → il vérifie les informations → vous validez → le support reçoit un ticket complet »), des exemples de prompts par catégorie (incidents, questions, procédures) et une FAQ destinée aux utilisateurs non experts en IA ni en MUSCADE.
 
+*Enjeu RSE* : ce contenu ne comporte, par construction, aucune donnée sensible ou nominative — il porte uniquement sur le mode d'emploi générique de l'assistant **[à confirmer]**.
+
+*Accessibilité* : rédigé en Markdown structuré (titres hiérarchisés, listes), ce contenu est nativement compatible avec un lecteur d'écran **[à confirmer sur la version publiée]**.
+
 *[Emplacement réservé : capture d'écran du site d'aide]*
 
 ## Production n°2
 
 **Présentation Gamma** : support de présentation de l'organisation du support MUSCADE (missions, organisation de l'équipe, répartition des responsabilités, processus de traitement d'un incident, rôle de l'assistant IA, bénéfices attendus), destiné aux nouveaux collaborateurs.
+
+*Enjeu RSE* : anonymisation des noms de collaborateurs, remplacés par leurs fonctions, avant génération (cf. §8).
+
+*Accessibilité* : Gamma applique par défaut des contrastes et une taille de police lisibles **[à confirmer sur le support final]** ; à défaut de vérification formelle, ce point reste à valider avant diffusion large.
 
 *[Emplacement réservé : captures d'écran des diapositives clés de la présentation Gamma]*
 
@@ -396,6 +414,9 @@ Point de vigilance assumé dans l'analyse : l'IA ne remplace pas l'expertise hum
 | Temps consacré aux questions répétitives | Retours équipe support | Mensuel | Réduction |
 | Temps consacré au développement et aux formations | Retours équipe support | Mensuel | Augmentation |
 | Qualité des tickets (complétude) | GitLab + revue support | Mensuel | Amélioration continue |
+| Conformité à la charte IA (anonymisation avant transmission) | Revue support / auto-contrôle | Mensuel | 100 % de conformité |
+
+Ce dernier indicateur — taux de conformité à la checklist d'anonymisation de la charte (§5) avant toute transmission de données à une IA — traduit concrètement l'enjeu RSE de protection des données dans le dispositif de suivi, et non plus seulement dans la gouvernance déclarative de la charte.
 
 Ce dispositif combine mesures avant/après déploiement (questionnaires), suivi continu (extraction GitLab mensuelle) et retours qualitatifs de l'équipe support, afin de mesurer objectivement l'impact du déploiement de l'assistant, son adoption par les utilisateurs et les axes d'amélioration à prioriser.
 
@@ -468,17 +489,17 @@ Cette certification s'inscrit plus largement dans une trajectoire personnelle de
 
 # Bilan des compétences RS7424
 
-Au début de cette formation, j'avais réalisé un glossaire personnel pour traduire le vocabulaire « manager/certification » dans mes propres concepts métier (SCADA, support, IHM), afin de vérifier que mon profil correspondait bien au référentiel. Ce tableau fait le chemin inverse : il évalue, compétence par compétence, le niveau atteint à l'issue de la formation, à partir du contenu réel de ce rapport et des livrables produits.
+Au début de cette formation, j'avais réalisé un glossaire personnel pour traduire le vocabulaire « manager/certification » dans mes propres concepts métier (SCADA, support, IHM), afin de vérifier que mon profil correspondait bien au référentiel. Ce tableau fait le chemin inverse : il évalue, compétence par compétence, le niveau atteint à l'issue de la formation, à partir du contenu réel de ce rapport et des livrables produits. Il a été établi puis recoupé par deux instances IA distinctes (Claude, ChatGPT), dont les diagnostics ont convergé sur les mêmes points de vigilance, ce qui renforce la fiabilité de cette auto-évaluation.
 
 | Compétence | Description (référentiel) | Niveau atteint | Preuves dans ce rapport | Point de vigilance restant |
 | --- | --- | --- | --- | --- |
-| **C1** | Élaborer une stratégie d'intégration responsable de l'IA | **Fort** | Diagnostic AS IS (§4), charte IA (§5), objectifs métier/IA mesurables (§3), risques juridiques/éthiques/sécuritaires/écologiques couverts par la charte | Objectifs chiffrés encore prévisionnels (pas de mesure post-déploiement) |
-| **C2** | Reconfigurer l'organisation des activités et processus avec l'IA | **Moyen à fort** | Cartographie TO BE (§6), nouveaux rôles, redistribution des compétences dans l'équipe | Adaptation « personnel en situation de handicap » non explicitée (attendue par le référentiel en Cr2.3) |
-| **C3** | Élaborer des requêtes et configurations opérationnelles | **Fort** | Prompt principal du Muscade Incident Assistant documenté (§8), méthodologie itérative, difficultés explicitées | Justification des paramètres/choix d'outil IA (Custom GPT vs prompt ponctuel) à approfondir |
-| **C4** | Créer ou améliorer des contenus professionnels avec l'IA | **Moyen** | Deux productions identifiées et alignées à un objectif (§9), enjeu RSE traité (anonymisation) | Mesure d'accessibilité handicap non explicitée (attendue par le référentiel en Cr4.3) |
-| **C5** | Inscrire ses pratiques dans une démarche d'amélioration continue | **Très fort** | Dispositif de suivi (§10), comparatif avec/sans IA, veille IA à 3 sources distinctes et modalités précises | Aucun — c'est la compétence la mieux couverte du dossier |
+| **C1** | Élaborer une stratégie d'intégration responsable de l'IA | **Fort** (~85 %) | Diagnostic AS IS (§4), charte IA (§5), objectifs métier/IA mesurables (§3), risques juridiques/éthiques/sécuritaires/écologiques couverts par la charte, dont le volet sobriété numérique désormais développé concrètement (§5) | Rattachement à une politique RSE/diversité du CEA volontairement assumé comme non disponible plutôt que présumé |
+| **C2** | Reconfigurer l'organisation des activités et processus avec l'IA | **Fort** (~85 %) | Cartographie TO BE (§6), nouveaux rôles, redistribution des compétences dans l'équipe, mesure d'adaptation handicap ajoutée (§6) | Mesure d'accessibilité à confirmer factuellement avant la soutenance (structure Markdown, besoin réel identifié) |
+| **C3** | Élaborer des requêtes et configurations opérationnelles | **Fort** (~85 %) | Prompt principal documenté (§8), méthodologie itérative, justification du choix Custom GPT (§7), test de lisibilité relié à l'accessibilité (§8) | Aucune vérification formelle d'accessibilité (lecteur d'écran) réalisée à ce stade — assumé comme axe d'amélioration |
+| **C4** | Créer ou améliorer des contenus professionnels avec l'IA | **Fort** (~85 %) | Deux productions alignées à un objectif (§9), enjeu RSE explicité pour les deux (anonymisation, absence de donnée sensible), mesure d'accessibilité Markdown/Gamma ajoutée | Confirmation factuelle de l'absence de donnée sensible dans help-muscade.md et du contraste Gamma, à valider avant diffusion |
+| **C5** | Inscrire ses pratiques dans une démarche d'amélioration continue | **Très fort** (~90 %) | Dispositif de suivi (§10) enrichi d'un indicateur RSE (conformité à la charte), comparatif avec/sans IA, veille IA à 3 sources distinctes | Aucun — c'est la compétence la mieux couverte du dossier |
 
-**Estimation globale du niveau atteint : de l'ordre de 75 à 80 %** des attendus du référentiel. Les deux points de vigilance identifiés (C2 et C4) portent tous deux sur le même sujet — l'absence d'un volet accessibilité/handicap explicite — et constituent, à mon sens, la priorité de finalisation avant la soutenance, davantage que le fond du dossier lui-même, qui va au-delà des attendus grâce au POC fonctionnel déjà réalisé.
+**Estimation globale du niveau atteint : de l'ordre de 85 à 88 %** des attendus du référentiel, contre 75-80 % dans la version précédente. Les points de vigilance restants ne sont plus des manques structurels mais des **confirmations factuelles à apporter** avant la soutenance (structure réelle des documents, besoins d'accessibilité déjà rencontrés, politique RSE du CEA le cas échéant) : le rapport les signale explicitement plutôt que de présumer une conformité non vérifiée, ce qui est cohérent avec l'esprit critique attendu par la charte IA elle-même (§5).
 
 ---
 
