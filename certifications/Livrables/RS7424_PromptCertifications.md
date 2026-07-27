@@ -169,8 +169,6 @@ La priorité est toujours :
 Le rapport doit rester crédible, professionnel et refléter mon travail personnel.
 
 --
-#Prompt correctif
-
 # Prompt : Audit de complétude RS7424 — Rapport de certification
 
 ## Contexte
