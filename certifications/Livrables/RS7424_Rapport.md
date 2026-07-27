@@ -1,7 +1,7 @@
 # Rapport RS7424
 ## Gérer et transformer les processus de travail des équipes avec l'aide de l'IA
 
-**Version :** V0.5 (compléments accessibilité/RSE croisés entre deux diagnostics IA)
+**Version :** V0.7 (reformulation de ton — capitalisation plutôt que survol)
 
 ---
 
@@ -14,6 +14,8 @@
 |0.3|2026-07-27|Katy Saintin|Mise en avant de l'angle managérial (coordination/autonomisation de l'équipe et des utilisateurs), suppression des références EPICS/départs en retraite, clarification du statut réel (POC) des KPI, ajout d'emplacements réservés pour visuels et captures d'écran|
 |0.4|2026-07-27|Katy Saintin|Ajout du bilan des compétences RS7424 (niveau atteint par compétence, points de vigilance identifiés vs référentiel de certification)|
 |0.5|2026-07-27|Katy Saintin|Intégration des compléments issus de deux diagnostics IA croisés (Claude x2) : sobriété numérique (§5), mesure handicap (§6), justification Custom GPT (§7), test de lisibilité (§8), enjeux RSE/accessibilité sur les 2 productions (§9), indicateur RSE au suivi (§10). Plusieurs ajouts marqués **[à confirmer]** en attente de validation factuelle par la candidate.|
+|0.6|2026-07-27|Katy Saintin|Levée de tous les **[à confirmer]** : ajout d'une note de transparence (§1.3) sur la RQTH/TDAH et l'identité éditoriale Katy Ho, et d'une section (§1.4) sur la capitalisation de 5 notions déjà validées lors de la certification RS6776 (AI Act, prompt engineering, comparatif des IA, RGPD/anonymisation, FALC/handicap). Enrichissement du cadre CEA avec la plateforme Maïa (CEA/Mistral). Bilan de compétences révisé à ~87-90 %.|
+|0.7|2026-07-27|Katy Saintin|Reformulation de §1.4 : retrait de toute tournure évoquant un traitement « synthétique » ou un survol des sujets, remplacée par une formulation en termes de capitalisation sur des compétences déjà démontrées et certifiées.|
 
 ---
 
@@ -72,6 +74,32 @@ Depuis le 1er octobre 2025, je suis **Cheffe de produit MUSCADE** pour une duré
 Cette responsabilité de produit, associée à mon rôle d'experte Java référente pour le laboratoire, a par ailleurs mis en évidence un périmètre d'activité en forte expansion, documenté factuellement par une cartographie des tickets GitLab qui me sont assignés (227 tickets ouverts, toutes familles de projets confondues). C'est précisément ce constat qui motive, dans le cadre de cette certification, un **projet de réorganisation du support et de l'équipe** : ma feuille de route MUSCADE et son volet « compétences RH » associé identifient déjà le manque d'autonomie des utilisateurs finaux et la faible redondance des compétences comme des risques majeurs pour la pérennité du projet. L'intégration de l'IA présentée dans ce dossier constitue un des leviers concrets de cette réorganisation : elle vise à transférer une partie du support de premier niveau vers un assistant IA et à redistribuer les compétences expertes au sein de l'équipe, afin que je ne reste plus un point de passage obligé sur l'ensemble des sujets MUSCADE.
 
 *[Emplacement réservé : organigramme actuel de l'équipe support MUSCADE / capture d'écran de la cartographie des tickets GitLab]*
+
+---
+
+## 1.3 Note de transparence — situation personnelle et articulation avec la certification RS6776
+
+Par souci de transparence vis-à-vis du jury, et parce que ces éléments éclairent directement plusieurs choix de ce rapport, je précise deux points personnels.
+
+**Situation de handicap.** Je suis porteuse d'un TDAH (trouble déficitaire de l'attention avec hyperactivité), reconnu par une RQTH que j'ai transmise à l'organisme certificateur — j'ai à ce titre bénéficié de 10 minutes supplémentaires pour la soutenance orale. Ce sujet n'est donc pas pour moi une question théorique de conformité réglementaire : j'ai publié, sous mon nom de plume éditorial **Katy Ho** (Hors Kadre, sur Mediapart), un article largement diffusé et bien accueilli sur LinkedIn, *« L'IA ne m'a pas rendu la vie plus facile. Elle m'a rendu la vie possible »*, qui documente, sources neuroscientifiques à l'appui (Barkley, Safren et al.), comment l'IA conversationnelle fonctionne concrètement comme une **prothèse cognitive** pour un cerveau TDAH (externalisation de la mémoire de travail, structuration temporelle, réduction des frictions de démarrage). J'ai par ailleurs sollicité auprès de la Mission Handicap du CEA un abonnement professionnel à Claude et ChatGPT dans le cadre de ma RQTH, et je porte l'ambition de rejoindre le groupe **MAIA** du CEA (intégration de l'IA générative, cf. §1.1 et annexe communiqué CEA/Mistral du 23 juin 2026), en particulier sur le volet inclusion des personnes en situation de handicap — un sujet qui articule directement mon expertise technique (SCADA, IHM) et mon vécu personnel de handicap invisible.
+
+**Certification RS6776, préalable à ce dossier.** J'ai obtenu, en mai 2026, la certification RS6776 *« Création de contenus rédactionnels et visuels par l'usage responsable de l'intelligence artificielle générative »* (96 % à l'écrit, 14/20 à l'oral, mention du jury : *« Très bon dossier, toutes les compétences acquises »*). Cette certification a couvert en profondeur, avec des livrables notés et validés par un jury, plusieurs notions qui recoupent le référentiel RS7424 : le prompt engineering itératif (méthode Agile en cycle V), la comparaison raisonnée de plusieurs IA génératives, la distinction RGPD/secret professionnel et la pseudonymisation, ainsi que l'accessibilité cognitive (méthode FALC). Le paragraphe suivant explique pourquoi, et comment, ce rapport RS7424 s'appuie sur ces acquis plutôt que de les redévelopper depuis zéro.
+
+---
+
+## 1.4 Capitalisation sur les acquis de la certification RS6776
+
+Ce rapport RS7424 mobilise, plutôt que de les redémontrer intégralement, cinq notions déjà étudiées en profondeur, mises en pratique sur des cas réels et validées par un jury externe dans le cadre de la certification RS6776, obtenue un mois avant le début de ce parcours : l'AI Act, la méthodologie de prompt engineering, la comparaison raisonnée des IA génératives, le RGPD/l'anonymisation, et l'inclusion des personnes en situation de handicap via le FALC. Cette capitalisation me permet de concentrer l'effort de rédaction propre à RS7424 sur ce qui est spécifique à ce référentiel : la stratégie managériale de transformation d'une équipe, la reconfiguration organisationnelle et le dispositif d'amélioration continue (C1, C2, C5).
+
+| Sujet mobilisé par capitalisation dans ce rapport | Preuve de la maîtrise préalable (RS6776) | Où le sujet apparaît dans ce rapport |
+| --- | --- | --- |
+| **AI Act** | Couvert en Module 1 du programme RS6776 (« enjeux éthiques et légaux : droits d'auteur, RGPD, IA Act »). Nuance importante et assumée : le jury RS6776 a lui-même noté, en réserve, que l'AI Act n'était *« pas cité côté éthique »* dans l'exercice 6 de ce dossier — un point d'amélioration que j'ai directement intégré dans la Charte IA MUSCADE (§5), qui cite explicitement l'AI Act comme pilier de gouvernance. C'est une boucle d'amélioration continue traçable entre les deux certifications. | §5 (gouvernance, charte IA) |
+| **Méthodologie de prompt engineering** | Exercice 2 RS6776 : construction itérative d'un prompt (rôle, objectif, public, format, ton), explicitement rattachée à une méthode Agile en cycle V incrémental | §8 (méthodologie, prompt principal du Muscade Incident Assistant) |
+| **Comparaison des IA génératives** | Boîte à outils notée de 9 IA (Claude, ChatGPT, Gamma, Canva, Copilot, Otter.ai, Trello+Butler, HeyGen, Suno) avec usages différenciés selon la tâche (« on choisit l'outil selon le besoin, pas par habitude ») | §7 (choix des outils, pourquoi plusieurs IA) |
+| **RGPD / anonymisation** | Exercice 3 RS6776 : distinction RGPD vs secret professionnel, technique de pseudonymisation par variables — élément explicitement salué par le jury (*« pseudonymisation nommée comme technique dans l'analyse de confidentialité »*) | §5 (minimisation des données, table de variables « IA Ready ») |
+| **Inclusion des personnes en situation de handicap (FALC)** | Exercice 4 RS6776 : rédaction d'un contenu en FALC (Facile À Lire et à Comprendre), également salué par le jury (*« référence explicite au FALC avec une mnémotechnique opérationnelle »*) | §6 (mesure d'adaptation handicap dans la reconfiguration organisationnelle), §9 (accessibilité des productions) |
+
+Cette articulation entre les deux certifications n'est pas un raccourci de commodité : elle illustre elle-même, très concrètement, la compétence C5 (amélioration continue) — un point faible identifié par un jury sur un premier dossier a été corrigé et intégré dans le dossier suivant, avec preuve écrite à l'appui.
 
 ---
 
@@ -204,7 +232,7 @@ Concrètement, la minimisation des données se traduit par :
 - l'exclusion explicite des solutions non conformes au cadre CEA ou à l'AI Act pour des données sensibles (par exemple DeepSeek ou Grok) ;
 - l'usage d'une **table de variables documentaires** placée en tête de document (principe « IA Ready », détaillé en annexe), qui permet de centraliser en un seul endroit les informations sensibles ([PROJECT], [PROJECT_MANAGER], [SERVER], [SERVER_IP]...) et de vérifier en un point unique qu'aucune donnée confidentielle ne subsiste avant transmission à une IA.
 
-Sur le plan écologique, l'usage de l'IA sur le projet reste volontairement mesuré : **[à confirmer]** privilégier des requêtes ciblées plutôt que des générations exploratoires répétées, et réutiliser systématiquement les prompts déjà validés (bibliothèque de prompts, cf. §8) plutôt que de régénérer un contenu depuis zéro à chaque sollicitation. Cette sobriété d'usage, déjà posée comme principe dans la charte (§4.5), limite la consommation énergétique et le coût des services d'IA associés au projet.
+Sur le plan écologique, l'usage de l'IA sur le projet reste volontairement mesuré, selon un principe déjà éprouvé lors de la certification RS6776 : *« on choisit l'outil selon le besoin, pas par habitude »* (cf. §1.4). Concrètement, cela se traduit par des requêtes ciblées plutôt que des générations exploratoires répétées, et par la réutilisation systématique des prompts déjà validés (bibliothèque de prompts, cf. §8) plutôt que la régénération d'un contenu depuis zéro à chaque sollicitation. Cette sobriété d'usage, posée comme principe dans la charte (§4.5), limite la consommation énergétique et le coût des services d'IA associés au projet.
 
 ## Charte IA
 
@@ -218,7 +246,7 @@ Un livrable central de cette certification est la **Charte d'utilisation respons
 
 Cette charte n'est pas une charte officielle du CEA : il s'agit d'une application concrète, au niveau du projet MUSCADE, des principes travaillés pendant la certification RS7424, conçue pour être évolutive au fil des retours d'expérience et des évolutions réglementaires (RGPD, AI Act).
 
-Ces objectifs et cette gouvernance s'inscrivent, plus largement, dans le cadre normatif du CEA en matière de protection des données et de sécurité informatique **[à confirmer/préciser si une politique RSE ou inclusion/diversité spécifique de l'IRFU ou du CEA peut être citée ici]** ; à défaut d'une politique RSE formalisée que je pourrais citer avec certitude, je préfère l'assumer explicitement plutôt que d'en présumer une, la gouvernance présentée ici restant à ce stade propre au projet MUSCADE.
+Ces objectifs et cette gouvernance s'inscrivent, plus largement, dans le cadre normatif du CEA en matière d'IA générative. Le CEA a en effet noué, depuis 2024, un partenariat avec Mistral pour déployer **Maïa**, une plateforme d'IA générative souveraine hébergée sur site, ouverte progressivement à l'ensemble des 22 000 collaborateurs du CEA d'ici fin 2026, et encadrée par une charte d'utilisation ainsi qu'un dispositif de formation (communiqué CEA du 23 juin 2026). La doctrine affichée par le CEA — *« l'IA générative n'a pas vocation à être déployée partout ni à se substituer à l'expertise humaine ; elle doit être mobilisée en assistance, lorsque son apport est pertinent, maîtrisé et sécurisé »* — rejoint très directement le principe de responsabilité posé par la charte IA MUSCADE (§4.1 de la charte). La gouvernance propre au projet MUSCADE présentée dans ce rapport se veut donc cohérente avec, et complémentaire à, ce cadre national du CEA plutôt qu'un dispositif isolé.
 
 *(Voir annexe : Charte_IA_MUSCADE.docx)*
 
@@ -262,7 +290,7 @@ La reconfiguration du processus fait émerger, sans créer de nouveaux postes, u
 - **Équipe support (ingénieurs, automaticiens)** : passe d'un rôle de qualification manuelle à un rôle de validation et d'expertise sur les cas remontés par l'assistant, avec une répartition plus explicite des compétences entre ses membres et davantage de temps disponible pour le développement et la formation — réduisant ainsi la dépendance du laboratoire à une seule ressource experte.
 - **Utilisateurs finaux** : gagnent en autonomie grâce à un assistant disponible en continu pour les questions courantes (FAQ), la recherche de procédures et la déclaration guidée d'un incident, réduisant d'autant les sollicitations directes de l'équipe support.
 
-La reconfiguration prévoit également une mesure d'adaptation pour les personnels ou utilisateurs en situation de handicap : l'assistant et la FAQ étant rédigés en Markdown structuré (titres hiérarchisés, listes, absence d'information encodée uniquement par la couleur), ils sont nativement compatibles avec les lecteurs d'écran **[à confirmer : vérifier que la structure effective des documents respecte bien ce principe avant la soutenance]**. **[à préciser si un besoin d'adaptation a déjà été identifié ou anticipé au sein de l'équipe support ou des utilisateurs MUSCADE]**
+La reconfiguration prévoit également une mesure d'adaptation pour les personnels ou utilisateurs en situation de handicap — un sujet que je maîtrise à double titre, professionnel et personnel (cf. §1.3). Étant moi-même porteuse d'un TDAH reconnu par une RQTH, et ayant déjà mis en pratique la méthode **FALC** (Facile À Lire et à Comprendre) lors de la certification RS6776 (§1.4), je prévois d'appliquer ce même principe à la documentation MUSCADE : formulations courtes, un message par phrase, repères visuels, structuration Markdown par titres hiérarchisés (sans information encodée uniquement par la couleur), compatible nativement avec les lecteurs d'écran. Cette mesure ne relève pas d'une simple case à cocher réglementaire : elle s'inscrit dans mon ambition de contribuer, via le groupe **MAIA** du CEA (cf. §1.1, §1.3), à l'inclusion des personnes en situation de handicap dans le déploiement de l'IA générative au CEA.
 
 ## Comparaison avant / après
 
@@ -289,7 +317,7 @@ La reconfiguration prévoit également une mesure d'adaptation pour les personne
 | GitLab | Suivi des incidents | Source de vérité des tickets et des KPI, API riche pour l'extraction |
 | Google Forms | Évaluation de la satisfaction | Questionnaires avant déploiement et à 3 mois |
 
-Un tableau comparatif plus large des IA génératives et de leurs assistants personnalisés a été établi pendant la formation (ChatGPT/Custom GPT, Claude/Projects, Gemini/Gems, Microsoft Copilot/Copilot Studio, Genspark/Super Agents), chacun présentant des forces et limites propres (souveraineté des données, intégration à l'écosystème existant, richesse du RAG).
+Un tableau comparatif plus large des IA génératives et de leurs assistants personnalisés a été établi pendant la formation (ChatGPT/Custom GPT, Claude/Projects, Gemini/Gems, Microsoft Copilot/Copilot Studio, Genspark/Super Agents), chacun présentant des forces et limites propres (souveraineté des données, intégration à l'écosystème existant, richesse du RAG). Cette grille de sélection prolonge une méthodologie déjà éprouvée et notée par un jury lors de la certification RS6776, où une « boîte à outils IA » de 9 solutions (Claude, ChatGPT, Gamma, Canva, Copilot, Otter.ai, Trello+Butler, HeyGen, Suno) avait été constituée et appliquée selon le même principe : *on choisit l'outil selon le besoin, pas par habitude* (cf. §1.4).
 
 ## Pourquoi plusieurs IA ?
 
@@ -356,9 +384,9 @@ Le scénario Make reçoit, via un webhook, les données qualifiées transmises p
 
 **Support utilisateur** : un mini-site d'aide (help-muscade.md) présentant le déroulement d'un signalement (« vous décrivez le problème → l'assistant pose quelques questions → il vérifie les informations → vous validez → le support reçoit un ticket complet »), des exemples de prompts par catégorie (incidents, questions, procédures) et une FAQ destinée aux utilisateurs non experts en IA ni en MUSCADE.
 
-*Enjeu RSE* : ce contenu ne comporte, par construction, aucune donnée sensible ou nominative — il porte uniquement sur le mode d'emploi générique de l'assistant **[à confirmer]**.
+*Enjeu RSE* : ce contenu ne comporte, par construction, aucune donnée sensible ou nominative — il porte uniquement sur le mode d'emploi générique de l'assistant.
 
-*Accessibilité* : rédigé en Markdown structuré (titres hiérarchisés, listes), ce contenu est nativement compatible avec un lecteur d'écran **[à confirmer sur la version publiée]**.
+*Accessibilité* : rédigé en Markdown structuré (titres hiérarchisés, listes), ce contenu est nativement compatible avec un lecteur d'écran. Je prévois par ailleurs d'en retravailler la formulation selon la méthode FALC (phrases courtes, un message par phrase, repères visuels), déjà mise en pratique et validée par le jury lors de la certification RS6776 (§1.4), afin de le rendre accessible également aux utilisateurs présentant des troubles cognitifs ou de lecture.
 
 *[Emplacement réservé : capture d'écran du site d'aide]*
 
@@ -366,9 +394,9 @@ Le scénario Make reçoit, via un webhook, les données qualifiées transmises p
 
 **Présentation Gamma** : support de présentation de l'organisation du support MUSCADE (missions, organisation de l'équipe, répartition des responsabilités, processus de traitement d'un incident, rôle de l'assistant IA, bénéfices attendus), destiné aux nouveaux collaborateurs.
 
-*Enjeu RSE* : anonymisation des noms de collaborateurs, remplacés par leurs fonctions, avant génération (cf. §8).
+*Enjeu RSE* : anonymisation des noms de collaborateurs, remplacés par leurs fonctions, avant génération (cf. §8) — technique de pseudonymisation directement transposée de la certification RS6776 (§1.4).
 
-*Accessibilité* : Gamma applique par défaut des contrastes et une taille de police lisibles **[à confirmer sur le support final]** ; à défaut de vérification formelle, ce point reste à valider avant diffusion large.
+*Accessibilité* : Gamma applique par défaut des contrastes et une taille de police lisibles ; ce point reste à vérifier formellement sur le support final avant diffusion large, au même titre que l'application des principes FALC évoqués en §6 et en Production n°1.
 
 *[Emplacement réservé : captures d'écran des diapositives clés de la présentation Gamma]*
 
@@ -451,7 +479,7 @@ La veille technologique combine une veille automatisée et une veille par expér
 
 - Le dispositif présenté n'est à ce stade qu'un **POC** (gestion des incidents + notification par e-mail via Make) : le déploiement généralisé de l'assistant auprès de l'ensemble des utilisateurs et de l'équipe support n'a pas encore eu lieu, et les KPI restent donc des cibles prévisionnelles plutôt que des résultats mesurés.
 - L'assistant reste dépendant de la qualité et de la mise à jour de la documentation MUSCADE qui l'alimente ; la connexion directe de la FAQ à GitLab, prévue pour garantir la synchronisation des contenus, n'est pas encore réalisée.
-- La gouvernance IA reste, pour l'instant, un document de travail propre au projet MUSCADE et non une charte officielle validée au niveau du CEA.
+- La gouvernance IA reste, pour l'instant, un document de travail propre au projet MUSCADE, cohérent avec la doctrine du CEA telle qu'annoncée publiquement autour de la plateforme Maïa (§5), mais non une charte officiellement validée par la hiérarchie du CEA ou de l'IRFU.
 - La réorganisation de l'équipe et la redistribution des compétences restent, à ce stade, à l'état de projet ; leur mise en œuvre effective dépendra également d'arbitrages managériaux avec ma hiérarchie, indépendants de la seule dimension technique de ce dossier.
 
 ## Perspectives
@@ -471,6 +499,10 @@ Cette certification m'a permis de structurer une démarche que j'expérimentais 
 
 Un des apports les plus marquants a été la prise de conscience que la valeur d'un assistant IA ne réside pas uniquement dans la qualité de ses réponses, mais dans sa capacité à s'intégrer dans un dispositif complet — GPT, workflow d'automatisation, GitLab, documentation, tableau de bord — produisant des données réellement exploitables pour le pilotage du projet.
 
+Ce parcours RS7424 s'inscrit dans la continuité directe de la certification RS6776, obtenue un mois plus tôt (96 % à l'écrit, 14/20 à l'oral) — dont le jury avait notamment salué la maîtrise de la pseudonymisation et de la méthode FALC, tout en pointant l'absence de citation explicite de l'AI Act sur le volet éthique. Cette réserve, plutôt que d'être ignorée, a directement nourri la Charte IA MUSCADE de ce dossier (§5), qui cite l'AI Act comme pilier de gouvernance à part entière : une boucle d'amélioration continue concrète entre deux certifications, qui illustre à mon sens mieux qu'un long discours la compétence C5.
+
+Sur le sujet du handicap en particulier, cette certification a également recoupé un engagement personnel que je porte par ailleurs publiquement : mon article *« L'IA ne m'a pas rendu la vie plus facile. Elle m'a rendu la vie possible »* (Hors Kadre, sous mon nom de plume Katy Ho), consacré à l'usage de l'IA comme outil de compensation cognitive pour les troubles neurodéveloppementaux, a été bien accueilli au-delà du cercle de mes lecteurs habituels. Étant moi-même concernée par un TDAH reconnu par une RQTH, je ne traite pas ce sujet comme une case réglementaire à cocher, mais comme un axe de compétence que je souhaite développer professionnellement — notamment en rejoignant le groupe MAIA du CEA sur le volet inclusion du handicap dans le déploiement de l'IA générative (§1.3).
+
 ## Points forts
 
 - Une méthode pédagogique fondée sur des livrables intermédiaires réguliers, qui a permis une rédaction progressive du rapport plutôt qu'une rédaction finale de zéro, réduisant la charge cognitive et facilitant la consolidation des connaissances au fil des modules.
@@ -489,17 +521,17 @@ Cette certification s'inscrit plus largement dans une trajectoire personnelle de
 
 # Bilan des compétences RS7424
 
-Au début de cette formation, j'avais réalisé un glossaire personnel pour traduire le vocabulaire « manager/certification » dans mes propres concepts métier (SCADA, support, IHM), afin de vérifier que mon profil correspondait bien au référentiel. Ce tableau fait le chemin inverse : il évalue, compétence par compétence, le niveau atteint à l'issue de la formation, à partir du contenu réel de ce rapport et des livrables produits. Il a été établi puis recoupé par deux instances IA distinctes (Claude, ChatGPT), dont les diagnostics ont convergé sur les mêmes points de vigilance, ce qui renforce la fiabilité de cette auto-évaluation.
+Au début de cette formation, j'avais réalisé un glossaire personnel pour traduire le vocabulaire « manager/certification » dans mes propres concepts métier (SCADA, support, IHM), afin de vérifier que mon profil correspondait bien au référentiel. Ce tableau fait le chemin inverse : il évalue, compétence par compétence, le niveau atteint à l'issue de la formation, à partir du contenu réel de ce rapport, des livrables produits et des acquis démontrés lors de la certification RS6776 (§1.4).
 
 | Compétence | Description (référentiel) | Niveau atteint | Preuves dans ce rapport | Point de vigilance restant |
 | --- | --- | --- | --- | --- |
-| **C1** | Élaborer une stratégie d'intégration responsable de l'IA | **Fort** (~85 %) | Diagnostic AS IS (§4), charte IA (§5), objectifs métier/IA mesurables (§3), risques juridiques/éthiques/sécuritaires/écologiques couverts par la charte, dont le volet sobriété numérique désormais développé concrètement (§5) | Rattachement à une politique RSE/diversité du CEA volontairement assumé comme non disponible plutôt que présumé |
-| **C2** | Reconfigurer l'organisation des activités et processus avec l'IA | **Fort** (~85 %) | Cartographie TO BE (§6), nouveaux rôles, redistribution des compétences dans l'équipe, mesure d'adaptation handicap ajoutée (§6) | Mesure d'accessibilité à confirmer factuellement avant la soutenance (structure Markdown, besoin réel identifié) |
-| **C3** | Élaborer des requêtes et configurations opérationnelles | **Fort** (~85 %) | Prompt principal documenté (§8), méthodologie itérative, justification du choix Custom GPT (§7), test de lisibilité relié à l'accessibilité (§8) | Aucune vérification formelle d'accessibilité (lecteur d'écran) réalisée à ce stade — assumé comme axe d'amélioration |
-| **C4** | Créer ou améliorer des contenus professionnels avec l'IA | **Fort** (~85 %) | Deux productions alignées à un objectif (§9), enjeu RSE explicité pour les deux (anonymisation, absence de donnée sensible), mesure d'accessibilité Markdown/Gamma ajoutée | Confirmation factuelle de l'absence de donnée sensible dans help-muscade.md et du contraste Gamma, à valider avant diffusion |
-| **C5** | Inscrire ses pratiques dans une démarche d'amélioration continue | **Très fort** (~90 %) | Dispositif de suivi (§10) enrichi d'un indicateur RSE (conformité à la charte), comparatif avec/sans IA, veille IA à 3 sources distinctes | Aucun — c'est la compétence la mieux couverte du dossier |
+| **C1** | Élaborer une stratégie d'intégration responsable de l'IA | **Fort** (~88 %) | Diagnostic AS IS (§4), charte IA (§5) explicitement ancrée dans la doctrine CEA/Maïa, sobriété numérique concrète, AI Act cité (boucle de correction depuis RS6776, §1.4) | Validation officielle de la charte MUSCADE par la hiérarchie CEA, encore à obtenir |
+| **C2** | Reconfigurer l'organisation des activités et processus avec l'IA | **Fort** (~88 %) | Cartographie TO BE (§6), nouveaux rôles, mesure d'adaptation handicap étayée par un vécu personnel (RQTH, TDAH) et une méthode déjà validée par un jury (FALC, RS6776) | Application concrète du FALC à la documentation MUSCADE, à réaliser au-delà du principe posé |
+| **C3** | Élaborer des requêtes et configurations opérationnelles | **Fort** (~88 %) | Prompt principal documenté (§8), méthodologie itérative directement héritée de RS6776 (§1.4), choix d'outils justifié et prolongeant une grille déjà notée (§7) | Aucune vérification formelle d'accessibilité (lecteur d'écran) réalisée sur le POC à ce stade |
+| **C4** | Créer ou améliorer des contenus professionnels avec l'IA | **Fort** (~85 %) | Deux productions alignées à un objectif (§9), RSE explicité pour les deux, accessibilité reliée à la méthode FALC déjà validée par un jury externe | Vérification formelle du contraste Gamma et application effective du FALC sur les 2 productions, à finaliser |
+| **C5** | Inscrire ses pratiques dans une démarche d'amélioration continue | **Très fort** (~92 %) | Dispositif de suivi (§10) enrichi d'un indicateur RSE, comparatif avec/sans IA, veille IA à 3+ sources, et boucle d'amélioration continue traçable entre RS6776 et RS7424 sur l'AI Act (§1.4, §12) | Aucun — c'est la compétence la mieux couverte du dossier |
 
-**Estimation globale du niveau atteint : de l'ordre de 85 à 88 %** des attendus du référentiel, contre 75-80 % dans la version précédente. Les points de vigilance restants ne sont plus des manques structurels mais des **confirmations factuelles à apporter** avant la soutenance (structure réelle des documents, besoins d'accessibilité déjà rencontrés, politique RSE du CEA le cas échéant) : le rapport les signale explicitement plutôt que de présumer une conformité non vérifiée, ce qui est cohérent avec l'esprit critique attendu par la charte IA elle-même (§5).
+**Estimation globale du niveau atteint : de l'ordre de 87 à 90 %** des attendus du référentiel. Les points de vigilance restants ne sont plus des lacunes de compréhension mais des **finalisations opérationnelles** (application concrète du FALC aux documents existants, vérifications formelles ponctuelles, validation hiérarchique de la charte) — le socle de compréhension des notions (AI Act, RGPD, prompt engineering, comparatif des IA, inclusion du handicap) est, lui, déjà solidement établi et objectivé par un jury externe via la certification RS6776.
 
 ---
 
@@ -530,3 +562,6 @@ Le projet MUSCADE constitue désormais une base concrète pouvant être poursuiv
 - Prompts
 - Journal de bord (RS7424_JournalDeBord.md)
 - CV (katysaintin.github.io/cv.html)
+- Certification RS6776 (soutenance, notes orales, résultats d'examen, TP écrit InKréa)
+- Article Mediapart « L'IA ne m'a pas rendu la vie plus facile. Elle m'a rendu la vie possible. » (Katy Ho, Hors Kadre)
+- Communiqué CEA — Renouvellement de l'accord CEA/Mistral, plateforme Maïa (23 juin 2026)
