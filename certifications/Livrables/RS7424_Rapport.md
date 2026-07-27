@@ -1,7 +1,7 @@
 # Rapport RS7424
 ## Gérer et transformer les processus de travail des équipes avec l'aide de l'IA
 
-**Version :** V1.0 (harmonisation §4 + retour d'expérience sur la gestion du périmètre)
+**Version :** V1.1 (genèse du principe IA Ready, outil de pseudonymisation en perspective, second article Hors Kadre)
 
 ---
 
@@ -19,6 +19,7 @@
 |0.8|2026-07-27|Katy Saintin|Intégration de l'audit ChatGPT : sobriété numérique reliée au workflow TO BE (§6, Cr2.3), critère de décision explicite entre versions de prompt (§8, Cr3.3), accessibilité transformée en preuve concrète via la mise en forme du rapport lui-même (§9, Cr4.3), regroupement du dispositif de suivi en 3 familles d'indicateurs Performance/Satisfaction/RSE (§10, Cr5.1). Bilan de compétences révisé à ~92-95 %, convergent avec l'estimation ChatGPT.|
 |0.9|2026-07-27|Katy Saintin|Complétion du §4 à partir des livrables Diagnostic et Cartographie détaillée : ajout d'une section « Sélection des deux processus prioritaires » signalant une divergence non résolue entre le Diagnostic (priorité n°2 = Piloter l'activité) et la Schématisation produite (Exploiter + Capitaliser les connaissances) ; ajout de la description détaillée complète du processus « Exploiter les incidents » (déclencheur, étapes, dépendances, points sensibles, comparatif Make/n8n, impacts attendus) ; ajout de la schématisation visuelle des 2 processus retenus (emplacements réservés + déroulé texte).|
 |1.0|2026-07-27|Katy Saintin|Arbitrage tranché en §4 : la paire officielle est désormais Exploiter les incidents + Capitaliser les connaissances (Piloter l'activité reclassé en perspective §11, non abandonné). Ajout en §11 d'un retour d'expérience sur la difficulté à limiter le périmètre du dossier (hyperfocus, besoin de concret, comparaison ChatGPT/Claude sur la clôture des tâches).|
+|1.1|2026-07-27|Katy Saintin|Enrichissement de §5 avec la genèse du principe « IA Ready » (coût de l'anonymisation manuelle, évolution en deux temps : outil générique de pseudonymisation puis convention documentaire simplifiée). Ajout en §11 du développement de cet outil et du report explicite des POC Zapier/n8n/Genspark après la certification. Ajout d'une référence au second article Hors Kadre sur la traçabilité de l'usage de l'IA, en lien avec le principe de transparence de la charte.|
 
 ---
 
@@ -302,6 +303,11 @@ Concrètement, la minimisation des données se traduit par :
 - l'exclusion explicite des solutions non conformes au cadre CEA ou à l'AI Act pour des données sensibles (par exemple DeepSeek ou Grok) ;
 - l'usage d'une **table de variables documentaires** placée en tête de document (principe « IA Ready », détaillé en annexe), qui permet de centraliser en un seul endroit les informations sensibles ([PROJECT], [PROJECT_MANAGER], [SERVER], [SERVER_IP]...) et de vérifier en un point unique qu'aucune donnée confidentielle ne subsiste avant transmission à une IA.
 
+Ce principe « IA Ready » n'est pas parti d'une lecture théorique du RGPD, mais d'un constat pratique et coûteux en temps : anonymiser à la main chaque e-mail ou document avant de le soumettre à une IA (remplacer un nom par « Monsieur A », une IP par une variable...) devenait vite un frein à l'usage lui-même. Ma réflexion a évolué en deux temps :
+
+1. **Un outil générique de pseudonymisation/dépseudonymisation**, envisagé sous forme d'un dictionnaire clé → valeur (à la façon d'une table de hachage simple), capable de remplacer automatiquement les données sensibles d'un document (noms de personnes, adresses IP...) par des identifiants génériques avant transmission à une IA, puis de restituer les données réelles après génération. Conçu pour être suffisamment générique pour s'appliquer à n'importe quel domaine (juridique, RH, informatique...), et non spécifique à MUSCADE. Cet outil n'est, à ce jour, pas encore développé (cf. perspectives, §11).
+2. **Le format « IA Ready »**, plus simple et immédiatement applicable sans outil dédié : imposer une règle d'écriture des documents plaçant l'ensemble des données sensibles sur une page ou section isolée en tête de document (table de variables), plutôt que dispersées dans le corps du texte. Il suffit alors de retirer cette seule page avant transmission à une IA, sans traitement automatisé. C'est ce second principe, plus pragmatique, qui est effectivement appliqué sur le projet MUSCADE et formalisé dans la charte (§7 de la charte).
+
 Sur le plan écologique, l'usage de l'IA sur le projet reste volontairement mesuré, selon un principe déjà éprouvé lors de la certification RS6776 : *« on choisit l'outil selon le besoin, pas par habitude »* (cf. §1.4). Concrètement, cela se traduit par des requêtes ciblées plutôt que des générations exploratoires répétées, et par la réutilisation systématique des prompts déjà validés (bibliothèque de prompts, cf. §8) plutôt que la régénération d'un contenu depuis zéro à chaque sollicitation. Cette sobriété d'usage, posée comme principe dans la charte (§4.5), limite la consommation énergétique et le coût des services d'IA associés au projet.
 
 ## Charte IA
@@ -313,6 +319,8 @@ Un livrable central de cette certification est la **Charte d'utilisation respons
 - le principe documentaire « IA Ready » (table de variables) ;
 - une checklist de bonnes pratiques avant toute utilisation d'un outil d'IA ;
 - l'engagement individuel de chaque membre de l'équipe.
+
+Le principe de transparence (conservation des prompts importants pour assurer la traçabilité, cf. §4.4 de la charte) rejoint une réflexion que je porte également dans mon activité éditoriale : dans un second article Hors Kadre (*« Angle mort : “Fais-le toi-même. Tu as une IA” »*), je défends l'idée qu'un usage actif de l'IA (diriger, apporter son expertise, valider, corriger) se distingue d'un usage passif (copier-coller sans comprendre), et que la meilleure façon de rendre cette distinction vérifiable est d'exiger la trace du processus — prompts et échanges — plutôt que d'interdire l'outil. C'est très exactement le principe appliqué dans ce dossier et dans la charte IA MUSCADE.
 
 Cette charte n'est pas une charte officielle du CEA : il s'agit d'une application concrète, au niveau du projet MUSCADE, des principes travaillés pendant la certification RS7424, conçue pour être évolutive au fil des retours d'expérience et des évolutions réglementaires (RGPD, AI Act).
 
@@ -579,7 +587,8 @@ La veille technologique combine une veille automatisée et une veille par expér
 - mise en place d'un pipeline CI/CD pour automatiser la production régulière des KPI et des rapports ;
 - RAG documentaire complet, alimenté par l'ensemble de la documentation MUSCADE et des procédures capitalisées ;
 - évolution vers un agent IA plus autonome, capable de proposer des recherches d'incidents similaires directement dans GitLab, tout en conservant la validation humaine systématique définie dans la charte ;
-- test de solutions non encore évaluées pendant cette certification par souci de limitation du périmètre (Airtable, n8n, Genspark), volontairement reportés à l'après-certification.
+- développement de l'outil générique de pseudonymisation/dépseudonymisation évoqué en §5 : dictionnaire clé → valeur (fichier local, ex. CSV), encodage avant soumission à une IA puis décodage à réception de la réponse, conçu pour fonctionner avec plusieurs IA (Claude, ChatGPT, Mistral...) et être réutilisable au-delà du seul contexte MUSCADE ;
+- test, après la certification, des outils d'automatisation et d'orchestration non encore évalués par souci de limitation du périmètre pendant cette formation (Zapier, n8n, Genspark, Airtable), dans la continuité du TP de découverte des plateformes d'automatisation déjà amorcé pendant le parcours.
 
 ---
 
