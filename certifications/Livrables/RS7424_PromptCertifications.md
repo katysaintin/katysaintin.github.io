@@ -171,51 +171,57 @@ Le rapport doit rester crédible, professionnel et refléter mon travail personn
 --
 # Prompt : Audit de complétude RS7424 — Rapport de certification
 
+# Prompt RS7424 — Audit de complétude + validation mémoire (réutilisable, one-shot)
+
 ## Contexte
 Je prépare la certification RS7424 "Gérer et transformer les processus de travail des
-équipes avec l'aide de l'IA" (Classe Digitale). Je te fournis :
-1. Mon rapport de certification actuel (V0.4, format Markdown).
+équipes avec l'aide de l'IA" (Classe Digitale). Je te fournis, en pièces jointes :
+1. La dernière version de mon rapport de certification (Markdown).
 2. Le référentiel de compétences et de critères d'évaluation officiel (C1 à C5, Cr1.1 à Cr5.3).
-3. Un diagnostic déjà réalisé par un autre assistant IA, qui estime mon niveau actuel à
-   environ 75-80 % des attendus, avec deux lacunes identifiées : absence de mesure
-   d'accessibilité/handicap explicite (Cr2.3 et Cr4.3).
 
-## Objectif
-Mon objectif est d'atteindre au moins 90 % de couverture sur CHACUNE des 5 compétences
-(C1 à C5). Je veux identifier tout ce qui, dans le référentiel, n'est pas encore couvert
-ou insuffisamment explicité dans mon rapport actuel.
+Mon objectif est d'atteindre au moins 90 % de couverture sur CHACUNE des 5 compétences.
 
-## Ce que je te demande de faire
+## Étape 1 — Audit de complétude (référentiel)
 
-1. **Relis le référentiel critère par critère** (Cr1.1, Cr1.2, Cr1.3, Cr2.1, Cr2.2, Cr2.3,
-   Cr3.1, Cr3.2, Cr3.3, Cr4.1, Cr4.2, Cr4.3, Cr5.1, Cr5.2, Cr5.3) et confronte chacun
-   au contenu réel de mon rapport (pas à ce que tu supposes que j'ai pu faire ailleurs).
+Relis le référentiel critère par critère (Cr1.1 à Cr5.3) et confronte chacun au contenu
+réel du rapport ci-joint (pas à ce que tu supposes que j'ai pu faire ailleurs).
 
-2. **Pour chaque critère**, indique :
-   - Statut : ✅ couvert / 🟡 partiellement couvert / ❌ non couvert
-   - La preuve exacte dans mon rapport (section, phrase) si couvert
-   - Ce qui manque précisément si partiel ou non couvert
+Pour chaque critère, indique :
+- Statut : ✅ couvert / 🟡 partiellement couvert / ❌ non couvert
+- Preuve exacte (section, phrase) si couvert
+- Ce qui manque précisément si partiel ou non couvert
+- Une suggestion de texte prête à insérer (2-5 phrases max) si un manque peut être comblé
+  par une simple reformulation
 
-3. **Ne fabrique aucun fait sur mon activité professionnelle.** Si combler un critère
-   nécessite une information factuelle que tu n'as pas (ex. : "avez-vous mis en place une
-   mesure d'accessibilité handicap sur tel document ?"), **pose-moi la question** plutôt
-   que de l'inventer ou de la présumer. Le rapport doit rester strictement fidèle à la
-   réalité de mon activité chez CEA Irfu/DIS/LDISC.
+**Ne fabrique aucun fait sur mon activité professionnelle.** Si combler un critère nécessite
+une information factuelle que tu n'as pas, insère dans le rapport suggéré la mention
+**[à confirmer : <précise ici la question exacte>]** plutôt que d'inventer ou de présumer.
 
-4. **Priorise tes recommandations** : classe-les par (a) impact sur le score, et
-   (b) facilité de mise en œuvre (une simple phrase factuelle vs. un livrable à produire).
+## Étape 2 — Validation mémoire des points [à confirmer]
 
-5. **Propose, pour chaque lacune, une formulation concrète prête à insérer**
-   dans le rapport (2-5 phrases maximum), que je pourrai valider ou corriger, plutôt
-   qu'une simple description du problème.
+Le rapport ci-joint peut contenir, à un nombre variable d'endroits, des passages marqués
+**[à confirmer : ...]** (issus d'un audit précédent, le mien ou celui d'une autre IA).
 
-6. **Signale les redites ou incohérences** éventuelles entre les sections du rapport
-   (par exemple si un même chiffre ou une même affirmation varie d'un endroit à l'autre).
+1. **Repère toi-même, dans le document fourni, tous les passages marqués `[à confirmer]`**
+   (ne te fie pas à une liste que je te donnerais à part — le nombre et le contenu varient
+   d'une version à l'autre du rapport).
+2. Pour chacun, cherche dans **notre historique de conversation** (mémoire, chats passés,
+   documents déjà échangés) si j'ai mentionné un élément qui permettrait de confirmer,
+   nuancer ou infirmer l'affirmation.
+3. Ne déduis rien et n'extrapole pas : si tu ne trouves aucune trace exploitable, réponds
+   "aucun élément trouvé dans notre historique" plutôt que de supposer une réponse plausible.
 
-## Format de sortie attendu
+## Format de sortie attendu (Markdown, prêt à copier)
 
-Un tableau : Critère | Statut | Preuve / Manque | Suggestion de texte à insérer | Question
-posée si info manquante
+### Tableau 1 — Audit de complétude
+| Critère | Statut | Preuve / Manque | Suggestion de texte à insérer |
+| --- | --- | --- | --- |
 
-Puis une synthèse en 5 lignes : un score estimé par compétence (C1 à C5) et les 2-3
-actions prioritaires pour passer de mon niveau actuel à 90 % sur chacune.
+### Tableau 2 — Validation des [à confirmer] détectés dans le rapport
+| # | Passage [à confirmer] repéré (citation courte) | Statut mémoire | Élément trouvé / "Aucun élément trouvé" |
+| --- | --- | --- | --- |
+
+### Synthèse (5 lignes max)
+- Score estimé par compétence (C1 à C5)
+- 2-3 actions prioritaires pour atteindre 90 % sur chacune
+- Nombre de [à confirmer] résolus par la mémoire vs. restant à trancher directement par moi
