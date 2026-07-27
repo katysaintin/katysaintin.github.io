@@ -1,7 +1,7 @@
 # Rapport RS7424
 ## Gérer et transformer les processus de travail des équipes avec l'aide de l'IA
 
-**Version :** V0.9 (§4 complété : sélection des processus, description détaillée, schématisation)
+**Version :** V1.0 (harmonisation §4 + retour d'expérience sur la gestion du périmètre)
 
 ---
 
@@ -18,6 +18,7 @@
 |0.7|2026-07-27|Katy Saintin|Reformulation de §1.4 : retrait de toute tournure évoquant un traitement « synthétique » ou un survol des sujets, remplacée par une formulation en termes de capitalisation sur des compétences déjà démontrées et certifiées.|
 |0.8|2026-07-27|Katy Saintin|Intégration de l'audit ChatGPT : sobriété numérique reliée au workflow TO BE (§6, Cr2.3), critère de décision explicite entre versions de prompt (§8, Cr3.3), accessibilité transformée en preuve concrète via la mise en forme du rapport lui-même (§9, Cr4.3), regroupement du dispositif de suivi en 3 familles d'indicateurs Performance/Satisfaction/RSE (§10, Cr5.1). Bilan de compétences révisé à ~92-95 %, convergent avec l'estimation ChatGPT.|
 |0.9|2026-07-27|Katy Saintin|Complétion du §4 à partir des livrables Diagnostic et Cartographie détaillée : ajout d'une section « Sélection des deux processus prioritaires » signalant une divergence non résolue entre le Diagnostic (priorité n°2 = Piloter l'activité) et la Schématisation produite (Exploiter + Capitaliser les connaissances) ; ajout de la description détaillée complète du processus « Exploiter les incidents » (déclencheur, étapes, dépendances, points sensibles, comparatif Make/n8n, impacts attendus) ; ajout de la schématisation visuelle des 2 processus retenus (emplacements réservés + déroulé texte).|
+|1.0|2026-07-27|Katy Saintin|Arbitrage tranché en §4 : la paire officielle est désormais Exploiter les incidents + Capitaliser les connaissances (Piloter l'activité reclassé en perspective §11, non abandonné). Ajout en §11 d'un retour d'expérience sur la difficulté à limiter le périmètre du dossier (hyperfocus, besoin de concret, comparaison ChatGPT/Claude sur la clôture des tâches).|
 
 ---
 
@@ -205,13 +206,13 @@ Ce même schéma s'applique, en parallèle, à l'activité « Capitaliser les co
 
 ## Sélection des deux processus prioritaires
 
-Le diagnostic initial (tableau ci-dessus) retient comme prioritaires les deux processus présentant le plus fort volume et le plus fort potentiel d'automatisation :
+Le diagnostic initial (tableau ci-dessus) et les livrables produits ensuite convergent sur la sélection de deux processus prioritaires : **Exploiter les incidents** et **Capitaliser les connaissances**.
 
-**Processus prioritaire n°1 : Exploiter les incidents.** Le volume de tickets est important, les données GitLab sont déjà structurées, et l'IA peut accélérer la qualification, la recherche d'incidents similaires, la synthèse et la génération de comptes rendus, tout en conservant une validation humaine.
+**Processus prioritaire n°1 : Exploiter les incidents.** Le volume de tickets est important, les données GitLab sont déjà structurées, et l'IA peut accélérer la qualification, la recherche d'incidents similaires, la synthèse et la génération de comptes rendus, tout en conservant une validation humaine. C'est le processus le mieux documenté de ce dossier : cartographie détaillée complète (sous-section suivante), comparatif d'outils d'orchestration (Make vs n8n) et POC fonctionnel (Muscade Incident Assistant, §9).
 
-**Processus prioritaire n°2 : Piloter l'activité.** Les KPI GitLab peuvent être extraits et synthétisés automatiquement afin d'identifier des tendances et des besoins en ressources — les indicateurs restant strictement agrégés par projet et jamais utilisés pour évaluer individuellement un collaborateur.
+**Processus prioritaire n°2 : Capitaliser les connaissances.** La transformation d'un ticket résolu en procédure technique répond directement à la problématique de dépendance à une expertise unique (§1.2, §2) : chaque incident capitalisé réduit d'autant le besoin de repasser par moi pour un cas similaire. Ce processus a fait l'objet d'une schématisation visuelle dédiée (sous-section suivante).
 
-⚠️ *Note de cohérence à trancher avant la version finale* : le livrable de schématisation visuelle (§4, sous-section suivante) a en pratique été réalisé sur **« Exploiter les incidents »** et **« Capitaliser les connaissances »**, et non sur « Piloter l'activité » comme indiqué ci-dessus. Cette page reste donc, à ce stade, une divergence assumée entre le diagnostic initial et le livrable de schématisation produit ensuite — probablement le résultat d'un arbitrage a posteriori en faveur de la capitalisation des connaissances (documentation, FAQ), non encore reporté dans la conclusion du diagnostic. Je choisirai, avant la version finale, laquelle des deux versions faire autorité, et harmoniserai la justification en conséquence plutôt que de laisser cohabiter les deux.
+Le processus « Piloter l'activité », bien qu'identifié dans le diagnostic initial avec un potentiel d'automatisation réel, n'a pas été approfondi au-delà du diagnostic : à effort et temps constants, la priorité a été donnée à la capitalisation des connaissances, plus directement alignée avec l'objectif managérial d'autonomisation de l'équipe. Le pilotage de l'activité reste une perspective d'évolution du dispositif (§11).
 
 Le processus « Déployer l'IA de manière responsable » est identifié mais volontairement non prioritaire en termes d'automatisation à ce stade : le laboratoire n'ayant pas encore une maturité suffisante sur ces pratiques, une charte d'usage constitue la première étape indispensable avant tout élargissement.
 
@@ -550,7 +551,7 @@ La veille technologique combine une veille automatisée et une veille par expér
 
 ## Ce qui a fonctionné
 
-- La démarche de diagnostic préalable (cartographie AS IS, priorisation par volume/temps/potentiel d'automatisation) a permis de concentrer l'effort sur les deux processus à plus forte valeur ajoutée (exploiter les incidents, piloter l'activité) plutôt que de disperser les développements.
+- La démarche de diagnostic préalable (cartographie AS IS, priorisation par volume/temps/potentiel d'automatisation) a permis de concentrer l'effort sur les deux processus à plus forte valeur ajoutée (exploiter les incidents, capitaliser les connaissances) plutôt que de disperser les développements.
 - La combinaison IA générative + outil de workflow (Make) s'est révélée pertinente : l'IA produit et structure le contenu, l'automatisation assure la circulation fiable des données entre GitLab, l'assistant et l'équipe support.
 - Le principe documentaire « IA Ready » (table de variables) a simplifié concrètement l'anonymisation et la réutilisation des documents, sans nécessiter d'outil d'anonymisation dédié.
 - La rédaction progressive du rapport à partir de livrables intermédiaires produits à chaque module a évité une rédaction finale de zéro et a favorisé une consolidation continue des connaissances.
@@ -561,6 +562,8 @@ La veille technologique combine une veille automatisée et une veille par expér
 - Le calibrage du niveau de questionnement de l'assistant (ni trop, ni trop peu) a nécessité plusieurs itérations de prompt.
 - Le passage de la théorie (identification d'un cas d'usage) à la mise en œuvre opérationnelle concrète (script Python, intégration API, agent IA) a confirmé la nécessité d'une expertise technique, au-delà des seules compétences managériales visées par le référentiel — expertise que je possède, ce qui m'a permis de pousser l'expérimentation au-delà du strict exercice demandé.
 - La criticité de l'expertise unique, déjà identifiée dans ma feuille de route MUSCADE, rappelle que la réussite de cette transformation dépend autant de la réorganisation managériale de l'équipe que des outils IA eux-mêmes.
+- La principale difficulté n'a pas été de choisir un processus à améliorer, mais de me limiter à deux. Mon fonctionnement — que je documente par ailleurs dans mon activité éditoriale sur le TDAH (§1.3) — m'aurait naturellement conduite à développer en parallèle un site MUSCADE complet, un assistant enrichi, un questionnaire de satisfaction et un support de formation dès qu'un point restait ambigu ou incomplet dans un module : ma tendance est de comprendre en construisant un POC concret plutôt qu'en restant dans l'abstrait, ce qui peut vite élargir un périmètre au-delà du nécessaire. Le périmètre volontairement contenu de ce dossier est donc lui-même le résultat d'une compétence exercée — poser une limite de réalisation — et non d'un manque de matière ou d'idées.
+- Sur le choix des outils IA eux-mêmes, j'ai constaté une différence pratique entre ChatGPT et Claude sur ce point précis : ChatGPT a tendance à proposer systématiquement des améliorations ou extensions supplémentaires à chaque échange, ce qui, combiné à mon propre fonctionnement, peut entretenir une escalade mutuelle de scope. Claude, à l'inverse, referme davantage les tâches une fois traitées. Ce n'est pas un simple confort d'usage : c'est devenu un critère de choix d'outil à part entière, cohérent avec le principe de sobriété numérique posé en §5-§6.
 
 ## Limites
 
@@ -571,10 +574,12 @@ La veille technologique combine une veille automatisée et une veille par expér
 
 ## Perspectives
 
+- Approfondissement du processus « Piloter l'activité », identifié dès le diagnostic (§4) mais volontairement non développé dans ce dossier faute de temps, au profit de la capitalisation des connaissances ;
 - Extraction GitLab via API, de façon industrialisée (au-delà du script Python ponctuel actuel) ;
 - mise en place d'un pipeline CI/CD pour automatiser la production régulière des KPI et des rapports ;
 - RAG documentaire complet, alimenté par l'ensemble de la documentation MUSCADE et des procédures capitalisées ;
-- évolution vers un agent IA plus autonome, capable de proposer des recherches d'incidents similaires directement dans GitLab, tout en conservant la validation humaine systématique définie dans la charte.
+- évolution vers un agent IA plus autonome, capable de proposer des recherches d'incidents similaires directement dans GitLab, tout en conservant la validation humaine systématique définie dans la charte ;
+- test de solutions non encore évaluées pendant cette certification par souci de limitation du périmètre (Airtable, n8n, Genspark), volontairement reportés à l'après-certification.
 
 ---
 
