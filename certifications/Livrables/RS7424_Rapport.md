@@ -1,7 +1,7 @@
 # Rapport RS7424
 ## Gérer et transformer les processus de travail des équipes avec l'aide de l'IA
 
-**Version :** V1.6 (Cr3.3 : exemple concret de test/correction + méthode d'accessibilité justifiée, §8)
+**Version :** V1.7 (Cr4.3 : mesure d'accessibilité appliquée sur la Production n°2, §9)
 
 ---
 
@@ -25,6 +25,7 @@
 |1.4|2026-07-27|Katy Saintin|Traitement de Cr1.3 : ajout en §1.2 d'une phrase sur le passé de support opérationnel à SOLEIL et la formation ITIL ; complétion de §3 Objectifs métier avec le bénéfice utilisateur explicite (point d'entrée unique, guidé, rassurant) et citation de la feuille de route MUSCADE comme preuve que cet objectif préexistait à la certification.|
 |1.5|2026-07-27|Katy Saintin|Traitement de Cr2.3 : ajout en §6 d'un paragraphe dédié sécurité/protection des données de la reconfiguration (token GitLab restreint à terme, cloisonnement des données entre outils, restriction du domaine e-mail @cea.fr, configuration ChatGPT sans mémorisation, cible d'alignement sur la liste des IA autorisées CEA), avec mention transparente de la limite actuelle du POC (lien public de l'action GPT, sans authentification).|
 |1.6|2026-07-27|Katy Saintin|Traitement de Cr3.3 : ajout en §8 d'un exemple concret de test et correction (bug de mapping de variable dans Make, diagnostic croisé Claude/ChatGPT, décision de format JSON indépendant de l'outil d'orchestration) ; justification de la méthode de vérification d'accessibilité prévue par l'expertise IHM déjà établie et l'exemple des sondages UNAAPE (réduction des frictions, taux de réponse).|
+|1.7|2026-07-27|Katy Saintin|Traitement de Cr4.3 : correction de l'accessibilité de la Production n°2 (§9) — la consigne FALC explicite dans le prompt, ciblée sur le public non-expert, et sa validation avant diffusion sont désormais présentées comme une mesure appliquée, distincte de la vérification formelle des contrastes/lecteur d'écran qui reste à faire.|
 
 ---
 
@@ -587,7 +588,7 @@ Le scénario Make reçoit, via un webhook, les données qualifiées transmises p
 
 *Enjeu RSE* : anonymisation des noms de collaborateurs, remplacés par leurs fonctions, avant génération (cf. §8) — technique de pseudonymisation directement transposée de la certification RS6776 (§1.4).
 
-*Accessibilité* : Gamma applique par défaut des contrastes et une taille de police lisibles ; ce point reste à vérifier formellement sur le support final avant diffusion large, au même titre que l'application des principes FALC évoqués en §6 et en Production n°1.
+*Accessibilité* : le prompt de génération demandait explicitement une adaptation selon les principes **FALC**, en fonction du public visé par ce support (utilisateurs non informaticiens et non nécessairement experts de MUSCADE) ; le contenu généré a été relu et validé au regard de cette consigne avant diffusion, plutôt que produit sans exigence particulière. Gamma applique par ailleurs par défaut des contrastes et une taille de police lisibles. Pour cet exercice, le support a été exporté au format PDF (contrainte de remise du module) ; la version source (.pptx) a été conservée en vue d'une adaptation ultérieure à un gabarit graphique CEA/IRFU dédié, restant à concevoir. La vérification formelle des contrastes et de la compatibilité avec un lecteur d'écran sur le support final n'a, à ce stade, pas été réalisée.
 
 *[Emplacement réservé : captures d'écran des diapositives clés de la présentation Gamma]*
 
