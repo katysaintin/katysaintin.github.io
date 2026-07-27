@@ -1,7 +1,7 @@
 # Rapport RS7424
 ## Gérer et transformer les processus de travail des équipes avec l'aide de l'IA
 
-**Version :** V1.3 (finitions issues de l'audit ChatGPT final : tableau comparatif inline, équité, fiches de poste)
+**Version :** V1.4 (extraction du journal de bord : objectifs SMART, grille 5 dimensions, maturité de l'assistant, Stargate)
 
 ---
 
@@ -22,6 +22,7 @@
 |1.1|2026-07-27|Katy Saintin|Enrichissement de §5 avec la genèse du principe « IA Ready » (coût de l'anonymisation manuelle, évolution en deux temps : outil générique de pseudonymisation puis convention documentaire simplifiée). Ajout en §11 du développement de cet outil et du report explicite des POC Zapier/n8n/Genspark après la certification. Ajout d'une référence au second article Hors Kadre sur la traçabilité de l'usage de l'IA, en lien avec le principe de transparence de la charte.|
 |1.2|2026-07-27|Katy Saintin|Ajout d'un sommaire avec ancres de navigation en début de document.|
 |1.3|2026-07-27|Katy Saintin|Intégration des derniers ajustements issus de l'audit ChatGPT final (95-100 % sur tous les critères) : tableau de synthèse du comparatif avec/sans IA désormais inline en §10 (Cr5.2, la preuve ne dépend plus uniquement de l'annexe non fournie) ; ajout d'une phrase sur l'équité entre collaborateurs (§5, Cr1.2) ; ajout de la mise à jour des fiches de rôle de l'équipe support (§6, Cr2.2). La proposition sur les « paramètres de configuration IA » (Cr3.2) n'a volontairement pas été intégrée, car elle aurait affirmé un réglage technique (température, etc.) non confirmé par la candidate.|
+|1.4|2026-07-27|Katy Saintin|Extraction du journal de bord : ajout du tableau d'objectifs SMART détaillé par tâche (§3, renforce Cr1.3) ; ajout de la grille d'évaluation à 5 dimensions justifiant le choix du processus prioritaire (§4, renforce Cr2.1) ; restructuration des perspectives (§11) selon une trajectoire de maturité en 3 niveaux (assistant documentaire → support guidé → agent autonome), avec mention du projet Stargate comme horizon long terme, cohérent avec le pôle de compétence évoqué en §12.|
 
 ---
 
@@ -42,6 +43,7 @@
 - [3. Objectifs](#3-objectifs)
   - [Objectifs métier](#objectifs-métier)
   - [Objectifs IA](#objectifs-ia)
+  - [Objectifs SMART par activité](#objectifs-smart-par-activité)
 - [4. Analyse du processus existant (C1)](#4-analyse-du-processus-existant-c1)
   - [Cartographie AS IS](#cartographie-as-is)
   - [Sélection des deux processus prioritaires](#sélection-des-deux-processus-prioritaires)
@@ -211,6 +213,23 @@ Le diagnostic du processus (cf. § 4) a permis de mettre en évidence que les ac
 - assistance documentaire (FAQ, procédures, guides utilisateurs) ;
 - amélioration continue des pratiques par une veille active et un dispositif de suivi structuré.
 
+## Objectifs SMART par activité
+
+Chacun des cas d'usage IA envisagés pour MUSCADE a été formalisé selon la méthode SMART (Spécifique, Mesurable, Atteignable, Réaliste, Temporel), afin de garantir des objectifs précis et vérifiables plutôt que des intentions générales :
+
+| Tâche | Objectif SMART |
+| --- | --- |
+| **Synthèse des activités hebdomadaires** | **S** : utiliser une IA pour générer une synthèse hebdomadaire des activités MUSCADE. **M** : réduire de 50 % le temps de rédaction. **A** : tester sur un stand-up meeting par semaine. **R** : validation systématique par le coordinateur avant diffusion. **T** : expérimentation sur 3 mois. |
+| **Rédaction des procédures** | **S** : utiliser l'IA pour produire une première version des procédures d'installation et de dépannage. **M** : réduire de 40 % le temps de rédaction. **A** : tester sur les nouvelles procédures créées pendant la période. **R** : validation technique obligatoire avant publication GitLab. **T** : déploiement progressif sur 3 mois. |
+| **Préparation des formations utilisateurs** | **S** : générer les supports de formation et FAQ avec l'IA. **M** : diminuer de 30 % le temps de préparation. **A** : utiliser pour chaque nouvelle formation MUSCADE. **R** : relecture systématique par le formateur. **T** : évaluation après deux sessions de formation. |
+| **Analyse des tickets GitLab** | **S** : utiliser l'IA pour classer les tickets et proposer un diagnostic de premier niveau. **M** : réduire de 30 % le temps de qualification. **A** : tester sur les nouveaux tickets entrants. **R** : l'expert conserve la décision finale. **T** : expérimentation pendant 3 mois. |
+| **Communication utilisateurs** | **S** : générer des brouillons de newsletters et d'annonces projet. **M** : réduire de 50 % le temps de rédaction. **A** : une newsletter par mois et les communications majeures. **R** : validation avant diffusion. **T** : bilan après 3 newsletters. |
+| **Analyse des KPI du projet** | **S** : utiliser l'IA pour produire un commentaire automatique des indicateurs GitLab. **M** : générer un tableau de bord hebdomadaire en moins de 15 minutes. **A** : tester sur les indicateurs existants. **R** : validation par le coordinateur du projet. **T** : évaluation après 3 mois. |
+| **Diagnostic de premier niveau** | **S** : utiliser l'IA pour proposer des pistes de diagnostic à partir des tickets et de la documentation. **M** : réduire le temps d'analyse initial de 30 %. **A** : utilisation uniquement pour l'assistance au diagnostic. **R** : aucune action en production sans validation humaine. **T** : phase pilote de 3 mois. |
+| **Capitalisation des connaissances (RAG)** | **S** : construire une base documentaire interrogeable regroupant GitLab, procédures et documentation MUSCADE. **M** : réduire de 50 % le temps de recherche d'information. **A** : tester avec une dizaine d'utilisateurs pilotes. **R** : les réponses sont vérifiées avant utilisation en production. **T** : prototype réalisé dans les 6 mois. |
+
+Ces objectifs SMART sont cohérents avec les cibles chiffrées présentées en §10 (KPI) ; ils en constituent le détail méthodologique, tâche par tâche, plutôt qu'une simple reformulation.
+
 ---
 
 # 4. Analyse du processus existant (C1)
@@ -274,6 +293,18 @@ Ce même schéma s'applique, en parallèle, à l'activité « Capitaliser les co
 Le diagnostic initial (tableau ci-dessus) et les livrables produits ensuite convergent sur la sélection de deux processus prioritaires : **Exploiter les incidents** et **Capitaliser les connaissances**.
 
 **Processus prioritaire n°1 : Exploiter les incidents.** Le volume de tickets est important, les données GitLab sont déjà structurées, et l'IA peut accélérer la qualification, la recherche d'incidents similaires, la synthèse et la génération de comptes rendus, tout en conservant une validation humaine. C'est le processus le mieux documenté de ce dossier : cartographie détaillée complète (sous-section suivante), comparatif d'outils d'orchestration (Make vs n8n) et POC fonctionnel (Muscade Incident Assistant, §9).
+
+Ce choix a été confirmé selon une grille d'évaluation à cinq dimensions, destinée à vérifier qu'une automatisation apporte une valeur réelle et pas seulement une modernisation de façade — car automatiser un mauvais processus revient simplement à accélérer un dysfonctionnement existant plutôt qu'à le corriger :
+
+| Dimension | Question à se poser | Application au processus « Exploiter les incidents » |
+| --- | --- | --- |
+| Gain de temps | Les tâches sont-elles répétitives et chronophages ? | **Fort** : génération automatique du rapport hebdomadaire d'incidents, statistiques, synthèse des tickets GitLab. |
+| Fiabilité | L'automatisation réduit-elle les erreurs ou les oublis ? | **Élevée** : suppression des erreurs de comptage, homogénéisation des rapports, réduction des oublis. |
+| Fluidité | Le processus devient-il plus rapide ou plus lisible ? | **Moyenne** : la préparation est accélérée mais les validations et arbitrages restent humains. |
+| Expérience collaborateur | Les utilisateurs bénéficient-ils directement de l'automatisation ? | **Faible à directe** : l'amélioration est d'abord interne au support ; les utilisateurs en bénéficient indirectement via une meilleure qualité de service, et plus directement pour la capitalisation des connaissances (FAQ). |
+| Alignement organisationnel | Le processus contribue-t-il aux objectifs du service ? | **Fort** : amélioration du pilotage, aide à la décision, meilleure priorisation des incidents et meilleure allocation des ressources. |
+
+Cette grille confirme que l'IA intervient ici comme un **outil d'aide à la décision, non de décision** : elle assiste la collecte, le comptage et la mise en forme, tandis que l'interprétation du contexte métier, l'arbitrage des priorités et la communication aux équipes restent des activités humaines, cohérentes avec le principe de responsabilité posé par la charte (§5).
 
 **Processus prioritaire n°2 : Capitaliser les connaissances.** La transformation d'un ticket résolu en procédure technique répond directement à la problématique de dépendance à une expertise unique (§1.2, §2) : chaque incident capitalisé réduit d'autant le besoin de repasser par moi pour un cas similaire. Ce processus a fait l'objet d'une schématisation visuelle dédiée (sous-section suivante).
 
@@ -663,13 +694,26 @@ La veille technologique combine une veille automatisée et une veille par expér
 
 ## Perspectives
 
+Au-delà des évolutions ponctuelles listées ci-dessous, l'assistant MUSCADE s'inscrit dans une trajectoire de maturité en trois niveaux, déjà esquissée pendant la formation :
+
+| Niveau | Description | Statut |
+| --- | --- | --- |
+| **Niveau 1** | Assistant documentaire (FAQ, procédures, guide utilisateur) | Réalisé (§9) |
+| **Niveau 2** | Assistant support guidant la qualification d'un incident, avec génération de ticket | Réalisé — POC fonctionnel (§9) |
+| **Niveau 3** | Agent capable de créer automatiquement une Issue GitLab via API ou un workflow Make/n8n, sans étape manuelle intermédiaire | À développer |
+
+Évolutions concrètes prévues pour atteindre le niveau 3 et au-delà :
+
 - Approfondissement du processus « Piloter l'activité », identifié dès le diagnostic (§4) mais volontairement non développé dans ce dossier faute de temps, au profit de la capitalisation des connaissances ;
 - Extraction GitLab via API, de façon industrialisée (au-delà du script Python ponctuel actuel) ;
+- création automatique d'Issues GitLab directement depuis l'assistant (sans passage par Make en étape intermédiaire), connexion GitHub, notifications Teams, archivage ;
 - mise en place d'un pipeline CI/CD pour automatiser la production régulière des KPI et des rapports ;
 - RAG documentaire complet, alimenté par l'ensemble de la documentation MUSCADE et des procédures capitalisées ;
 - évolution vers un agent IA plus autonome, capable de proposer des recherches d'incidents similaires directement dans GitLab, tout en conservant la validation humaine systématique définie dans la charte ;
 - développement de l'outil générique de pseudonymisation/dépseudonymisation évoqué en §5 : dictionnaire clé → valeur (fichier local, ex. CSV), encodage avant soumission à une IA puis décodage à réception de la réponse, conçu pour fonctionner avec plusieurs IA (Claude, ChatGPT, Mistral...) et être réutilisable au-delà du seul contexte MUSCADE ;
 - test, après la certification, des outils d'automatisation et d'orchestration non encore évalués par souci de limitation du périmètre pendant cette formation (Zapier, n8n, Genspark, Airtable), dans la continuité du TP de découverte des plateformes d'automatisation déjà amorcé pendant le parcours.
+
+**Vision à plus long terme.** L'architecture développée pour MUSCADE (assistant documentaire + qualification guidée + automatisation Low Code) est conçue pour être réutilisable au-delà du seul projet MUSCADE : elle pourrait alimenter un projet plus large, **Stargate**, destiné à centraliser la documentation et les ressources techniques autour des différentes technologies SCADA du laboratoire (MUSCADE, EPICS, TANGO), et à proposer un point d'entrée intelligent unique vers ces ressources — prolongeant ainsi, au niveau du laboratoire, l'ambition de pôle de compétence évoquée en §12.
 
 ---
 
