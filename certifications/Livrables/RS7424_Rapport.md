@@ -1,7 +1,7 @@
 # Rapport RS7424
 ## Gérer et transformer les processus de travail des équipes avec l'aide de l'IA
 
-**Version :** V1.1 (genèse du principe IA Ready, outil de pseudonymisation en perspective, second article Hors Kadre)
+**Version :** V1.2 (ajout d'un sommaire avec ancres de navigation)
 
 ---
 
@@ -20,6 +20,69 @@
 |0.9|2026-07-27|Katy Saintin|Complétion du §4 à partir des livrables Diagnostic et Cartographie détaillée : ajout d'une section « Sélection des deux processus prioritaires » signalant une divergence non résolue entre le Diagnostic (priorité n°2 = Piloter l'activité) et la Schématisation produite (Exploiter + Capitaliser les connaissances) ; ajout de la description détaillée complète du processus « Exploiter les incidents » (déclencheur, étapes, dépendances, points sensibles, comparatif Make/n8n, impacts attendus) ; ajout de la schématisation visuelle des 2 processus retenus (emplacements réservés + déroulé texte).|
 |1.0|2026-07-27|Katy Saintin|Arbitrage tranché en §4 : la paire officielle est désormais Exploiter les incidents + Capitaliser les connaissances (Piloter l'activité reclassé en perspective §11, non abandonné). Ajout en §11 d'un retour d'expérience sur la difficulté à limiter le périmètre du dossier (hyperfocus, besoin de concret, comparaison ChatGPT/Claude sur la clôture des tâches).|
 |1.1|2026-07-27|Katy Saintin|Enrichissement de §5 avec la genèse du principe « IA Ready » (coût de l'anonymisation manuelle, évolution en deux temps : outil générique de pseudonymisation puis convention documentaire simplifiée). Ajout en §11 du développement de cet outil et du report explicite des POC Zapier/n8n/Genspark après la certification. Ajout d'une référence au second article Hors Kadre sur la traçabilité de l'usage de l'IA, en lien avec le principe de transparence de la charte.|
+|1.2|2026-07-27|Katy Saintin|Ajout d'un sommaire avec ancres de navigation en début de document.|
+
+---
+
+---
+
+# Sommaire
+
+*(Ancres au format GitHub — peuvent varier légèrement selon la visionneuse Markdown utilisée.)*
+
+- [Résumé exécutif](#résumé-exécutif)
+- [1. Présentation du contexte](#1-présentation-du-contexte)
+  - [1.1 Présentation du laboratoire](#11-présentation-du-laboratoire)
+  - [1.2 Mon rôle](#12-mon-rôle)
+  - [1.3 Note de transparence — situation personnelle et articulation avec la certification RS6776](#13-note-de-transparence--situation-personnelle-et-articulation-avec-la-certification-rs6776)
+  - [1.4 Capitalisation sur les acquis de la certification RS6776](#14-capitalisation-sur-les-acquis-de-la-certification-rs6776)
+- [2. Problématique](#2-problématique)
+  - [Situation initiale](#situation-initiale)
+- [3. Objectifs](#3-objectifs)
+  - [Objectifs métier](#objectifs-métier)
+  - [Objectifs IA](#objectifs-ia)
+- [4. Analyse du processus existant (C1)](#4-analyse-du-processus-existant-c1)
+  - [Cartographie AS IS](#cartographie-as-is)
+  - [Sélection des deux processus prioritaires](#sélection-des-deux-processus-prioritaires)
+  - [Description détaillée du processus n°1 : Exploiter les incidents](#description-détaillée-du-processus-n1--exploiter-les-incidents)
+  - [Schématisation visuelle des processus retenus](#schématisation-visuelle-des-processus-retenus)
+- [5. Gouvernance IA](#5-gouvernance-ia)
+  - [Confidentialité](#confidentialité)
+  - [Charte IA](#charte-ia)
+- [6. Reconfiguration du processus (C2)](#6-reconfiguration-du-processus-c2)
+  - [Cartographie TO BE](#cartographie-to-be)
+  - [Nouveaux rôles](#nouveaux-rôles)
+  - [Comparaison avant / après](#comparaison-avant--après)
+- [7. Choix des outils (C3)](#7-choix-des-outils-c3)
+  - [Outils étudiés](#outils-étudiés)
+  - [Pourquoi plusieurs IA ?](#pourquoi-plusieurs-ia-)
+- [8. Conception des prompts](#8-conception-des-prompts)
+  - [Méthodologie](#méthodologie)
+  - [Prompt principal](#prompt-principal)
+  - [Difficultés rencontrées](#difficultés-rencontrées)
+- [9. Réalisations (C4)](#9-réalisations-c4)
+  - [GPT MUSCADE](#gpt-muscade)
+  - [Workflow Make](#workflow-make)
+  - [Production n°1](#production-n1)
+  - [Production n°2](#production-n2)
+  - [Autres productions](#autres-productions)
+- [10. Évaluation (C5)](#10-évaluation-c5)
+  - [Précision sur le niveau d'avancement](#précision-sur-le-niveau-davancement)
+  - [KPI](#kpi)
+  - [Dispositif de suivi](#dispositif-de-suivi)
+  - [Veille IA](#veille-ia)
+- [11. Analyse critique](#11-analyse-critique)
+  - [Ce qui a fonctionné](#ce-qui-a-fonctionné)
+  - [Difficultés rencontrées](#difficultés-rencontrées-1)
+  - [Limites](#limites)
+  - [Perspectives](#perspectives)
+- [12. Retour d'expérience personnel](#12-retour-dexpérience-personnel)
+  - [Ce que cette formation m'a apporté](#ce-que-cette-formation-ma-apporté)
+  - [Points forts](#points-forts)
+  - [Points à améliorer](#points-à-améliorer)
+- [Bilan des compétences RS7424](#bilan-des-compétences-rs7424)
+- [Conclusion](#conclusion)
+- [Annexes](#annexes)
 
 ---
 
