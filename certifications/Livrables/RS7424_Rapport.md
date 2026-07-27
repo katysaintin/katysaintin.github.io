@@ -1,7 +1,7 @@
 # Rapport RS7424
 ## Gérer et transformer les processus de travail des équipes avec l'aide de l'IA
 
-**Version :** V1.4 (Cr1.3 : bénéfice utilisateur explicite en §3 + passé SOLEIL/ITIL en §1.2)
+**Version :** V1.5 (Cr2.3 : mesure de sécurité/données dédiée dans la reconfiguration, §6)
 
 ---
 
@@ -23,6 +23,7 @@
 |1.2|2026-07-27|Katy Saintin|Ajout d'un sommaire avec ancres de navigation en début de document.|
 |1.3|2026-07-27|Katy Saintin|Ajout en tête de §6 d'un paragraphe explicitant la reconfiguration du processus métier (Cr2.2) : schémas avant/après du parcours utilisateur↔support, montrant la bascule du rôle du support de la qualification vers l'expertise/résolution.|
 |1.4|2026-07-27|Katy Saintin|Traitement de Cr1.3 : ajout en §1.2 d'une phrase sur le passé de support opérationnel à SOLEIL et la formation ITIL ; complétion de §3 Objectifs métier avec le bénéfice utilisateur explicite (point d'entrée unique, guidé, rassurant) et citation de la feuille de route MUSCADE comme preuve que cet objectif préexistait à la certification.|
+|1.5|2026-07-27|Katy Saintin|Traitement de Cr2.3 : ajout en §6 d'un paragraphe dédié sécurité/protection des données de la reconfiguration (token GitLab restreint à terme, cloisonnement des données entre outils, restriction du domaine e-mail @cea.fr, configuration ChatGPT sans mémorisation, cible d'alignement sur la liste des IA autorisées CEA), avec mention transparente de la limite actuelle du POC (lien public de l'action GPT, sans authentification).|
 
 ---
 
@@ -462,6 +463,10 @@ Ce même schéma cible s'applique de façon transverse aux quatre processus iden
 
 Un point clé de cette reconfiguration concerne la **FAQ de l'assistant**, qui apporte les réponses de premier niveau aux questions courantes des utilisateurs. À terme, cette FAQ ne sera plus maintenue manuellement : elle sera **directement connectée à GitLab**, de sorte que toute mise à jour des documents de référence du projet (procédures, wiki, résolutions capitalisées) soit automatiquement répercutée dans les réponses de l'assistant, sans double saisie ni risque de désynchronisation entre la documentation « officielle » et celle utilisée par l'IA.
 
+La reconfiguration intègre également une mesure de sécurité et de protection des données propre au nouveau workflow — distincte de la gouvernance générale posée en §5, et appliquée cette fois directement à l'architecture de l'assistant. À ce stade du POC, les documents de référence (feuille de route, FAQ, procédures) sont extraits manuellement de GitLab et centralisés en local ; la cible prévue est une **connexion directe du référentiel documentaire à GitLab via un token d'accès restreint**, garantissant qu'aucune donnée nominative ou technique sensible (adresses IP, noms de serveurs) ne reste accessible en dehors du périmètre CEA. La reconfiguration repose par ailleurs sur un principe de **cloisonnement des données entre outils** : seul l'assistant spécialisé (Custom GPT) a connaissance des documents de référence du projet ; les autres briques du workflow (Gamma, Make) ne reçoivent que des prompts préformatés générés par cet assistant et n'ont à aucun moment d'accès direct à la documentation MUSCADE, ce qui limite la surface d'exposition des données. Le workflow prévoit également de restreindre la déclaration d'un incident aux adresses professionnelles du domaine **@cea.fr**, et l'envoi automatique d'une copie du ticket au déclarant pour garantir la traçabilité de l'échange. Enfin, si les outils mobilisés pendant la formation (ChatGPT, Make) ont été configurés pour limiter les risques associés (mémorisation et entraînement désactivés côté ChatGPT, documents conservés en local), la cible est d'aligner à terme la solution sur la liste des **IA autorisées par le CEA**, plutôt que sur les seuls outils disponibles pendant la certification.
+
+Point de vigilance assumé de ce POC : l'action GPT de déclaration d'incident est aujourd'hui accessible via un lien public sans authentification, une contrainte liée aux modalités de restitution de la formation (partage d'un lien vers l'assistant) plutôt qu'à un choix de conception ; l'assistant est destiné, à terme, à n'être partagé qu'à un groupe restreint d'utilisateurs identifiés du laboratoire.
+
 ## Nouveaux rôles
 
 La reconfiguration du processus fait émerger, sans créer de nouveaux postes, une évolution des responsabilités existantes, dont l'objectif managérial est de sortir d'une organisation centrée sur une expertise unique :
@@ -768,3 +773,4 @@ Le projet MUSCADE constitue désormais une base concrète pouvant être poursuiv
 - Certification RS6776 (soutenance, notes orales, résultats d'examen, TP écrit InKréa)
 - Article Mediapart « L'IA ne m'a pas rendu la vie plus facile. Elle m'a rendu la vie possible. » (Katy Ho, Hors Kadre)
 - Communiqué CEA — Renouvellement de l'accord CEA/Mistral, plateforme Maïa (23 juin 2026)
+- Liste des IA autorisées par le CEA (CEA_IAAutorisee.pdf)
