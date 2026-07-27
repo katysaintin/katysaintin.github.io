@@ -1,7 +1,7 @@
 # Rapport RS7424
 ## Gérer et transformer les processus de travail des équipes avec l'aide de l'IA
 
-**Version :** V1.4 (extraction du journal de bord : objectifs SMART, grille 5 dimensions, maturité de l'assistant, Stargate)
+**Version :** V1.3 (ajout du paragraphe sur la reconfiguration du processus métier, §6)
 
 ---
 
@@ -21,8 +21,7 @@
 |1.0|2026-07-27|Katy Saintin|Arbitrage tranché en §4 : la paire officielle est désormais Exploiter les incidents + Capitaliser les connaissances (Piloter l'activité reclassé en perspective §11, non abandonné). Ajout en §11 d'un retour d'expérience sur la difficulté à limiter le périmètre du dossier (hyperfocus, besoin de concret, comparaison ChatGPT/Claude sur la clôture des tâches).|
 |1.1|2026-07-27|Katy Saintin|Enrichissement de §5 avec la genèse du principe « IA Ready » (coût de l'anonymisation manuelle, évolution en deux temps : outil générique de pseudonymisation puis convention documentaire simplifiée). Ajout en §11 du développement de cet outil et du report explicite des POC Zapier/n8n/Genspark après la certification. Ajout d'une référence au second article Hors Kadre sur la traçabilité de l'usage de l'IA, en lien avec le principe de transparence de la charte.|
 |1.2|2026-07-27|Katy Saintin|Ajout d'un sommaire avec ancres de navigation en début de document.|
-|1.3|2026-07-27|Katy Saintin|Intégration des derniers ajustements issus de l'audit ChatGPT final (95-100 % sur tous les critères) : tableau de synthèse du comparatif avec/sans IA désormais inline en §10 (Cr5.2, la preuve ne dépend plus uniquement de l'annexe non fournie) ; ajout d'une phrase sur l'équité entre collaborateurs (§5, Cr1.2) ; ajout de la mise à jour des fiches de rôle de l'équipe support (§6, Cr2.2). La proposition sur les « paramètres de configuration IA » (Cr3.2) n'a volontairement pas été intégrée, car elle aurait affirmé un réglage technique (température, etc.) non confirmé par la candidate.|
-|1.4|2026-07-27|Katy Saintin|Extraction du journal de bord : ajout du tableau d'objectifs SMART détaillé par tâche (§3, renforce Cr1.3) ; ajout de la grille d'évaluation à 5 dimensions justifiant le choix du processus prioritaire (§4, renforce Cr2.1) ; restructuration des perspectives (§11) selon une trajectoire de maturité en 3 niveaux (assistant documentaire → support guidé → agent autonome), avec mention du projet Stargate comme horizon long terme, cohérent avec le pôle de compétence évoqué en §12.|
+|1.3|2026-07-27|Katy Saintin|Ajout en tête de §6 d'un paragraphe explicitant la reconfiguration du processus métier (Cr2.2) : schémas avant/après du parcours utilisateur↔support, montrant la bascule du rôle du support de la qualification vers l'expertise/résolution.|
 
 ---
 
@@ -43,7 +42,6 @@
 - [3. Objectifs](#3-objectifs)
   - [Objectifs métier](#objectifs-métier)
   - [Objectifs IA](#objectifs-ia)
-  - [Objectifs SMART par activité](#objectifs-smart-par-activité)
 - [4. Analyse du processus existant (C1)](#4-analyse-du-processus-existant-c1)
   - [Cartographie AS IS](#cartographie-as-is)
   - [Sélection des deux processus prioritaires](#sélection-des-deux-processus-prioritaires)
@@ -213,23 +211,6 @@ Le diagnostic du processus (cf. § 4) a permis de mettre en évidence que les ac
 - assistance documentaire (FAQ, procédures, guides utilisateurs) ;
 - amélioration continue des pratiques par une veille active et un dispositif de suivi structuré.
 
-## Objectifs SMART par activité
-
-Chacun des cas d'usage IA envisagés pour MUSCADE a été formalisé selon la méthode SMART (Spécifique, Mesurable, Atteignable, Réaliste, Temporel), afin de garantir des objectifs précis et vérifiables plutôt que des intentions générales :
-
-| Tâche | Objectif SMART |
-| --- | --- |
-| **Synthèse des activités hebdomadaires** | **S** : utiliser une IA pour générer une synthèse hebdomadaire des activités MUSCADE. **M** : réduire de 50 % le temps de rédaction. **A** : tester sur un stand-up meeting par semaine. **R** : validation systématique par le coordinateur avant diffusion. **T** : expérimentation sur 3 mois. |
-| **Rédaction des procédures** | **S** : utiliser l'IA pour produire une première version des procédures d'installation et de dépannage. **M** : réduire de 40 % le temps de rédaction. **A** : tester sur les nouvelles procédures créées pendant la période. **R** : validation technique obligatoire avant publication GitLab. **T** : déploiement progressif sur 3 mois. |
-| **Préparation des formations utilisateurs** | **S** : générer les supports de formation et FAQ avec l'IA. **M** : diminuer de 30 % le temps de préparation. **A** : utiliser pour chaque nouvelle formation MUSCADE. **R** : relecture systématique par le formateur. **T** : évaluation après deux sessions de formation. |
-| **Analyse des tickets GitLab** | **S** : utiliser l'IA pour classer les tickets et proposer un diagnostic de premier niveau. **M** : réduire de 30 % le temps de qualification. **A** : tester sur les nouveaux tickets entrants. **R** : l'expert conserve la décision finale. **T** : expérimentation pendant 3 mois. |
-| **Communication utilisateurs** | **S** : générer des brouillons de newsletters et d'annonces projet. **M** : réduire de 50 % le temps de rédaction. **A** : une newsletter par mois et les communications majeures. **R** : validation avant diffusion. **T** : bilan après 3 newsletters. |
-| **Analyse des KPI du projet** | **S** : utiliser l'IA pour produire un commentaire automatique des indicateurs GitLab. **M** : générer un tableau de bord hebdomadaire en moins de 15 minutes. **A** : tester sur les indicateurs existants. **R** : validation par le coordinateur du projet. **T** : évaluation après 3 mois. |
-| **Diagnostic de premier niveau** | **S** : utiliser l'IA pour proposer des pistes de diagnostic à partir des tickets et de la documentation. **M** : réduire le temps d'analyse initial de 30 %. **A** : utilisation uniquement pour l'assistance au diagnostic. **R** : aucune action en production sans validation humaine. **T** : phase pilote de 3 mois. |
-| **Capitalisation des connaissances (RAG)** | **S** : construire une base documentaire interrogeable regroupant GitLab, procédures et documentation MUSCADE. **M** : réduire de 50 % le temps de recherche d'information. **A** : tester avec une dizaine d'utilisateurs pilotes. **R** : les réponses sont vérifiées avant utilisation en production. **T** : prototype réalisé dans les 6 mois. |
-
-Ces objectifs SMART sont cohérents avec les cibles chiffrées présentées en §10 (KPI) ; ils en constituent le détail méthodologique, tâche par tâche, plutôt qu'une simple reformulation.
-
 ---
 
 # 4. Analyse du processus existant (C1)
@@ -293,18 +274,6 @@ Ce même schéma s'applique, en parallèle, à l'activité « Capitaliser les co
 Le diagnostic initial (tableau ci-dessus) et les livrables produits ensuite convergent sur la sélection de deux processus prioritaires : **Exploiter les incidents** et **Capitaliser les connaissances**.
 
 **Processus prioritaire n°1 : Exploiter les incidents.** Le volume de tickets est important, les données GitLab sont déjà structurées, et l'IA peut accélérer la qualification, la recherche d'incidents similaires, la synthèse et la génération de comptes rendus, tout en conservant une validation humaine. C'est le processus le mieux documenté de ce dossier : cartographie détaillée complète (sous-section suivante), comparatif d'outils d'orchestration (Make vs n8n) et POC fonctionnel (Muscade Incident Assistant, §9).
-
-Ce choix a été confirmé selon une grille d'évaluation à cinq dimensions, destinée à vérifier qu'une automatisation apporte une valeur réelle et pas seulement une modernisation de façade — car automatiser un mauvais processus revient simplement à accélérer un dysfonctionnement existant plutôt qu'à le corriger :
-
-| Dimension | Question à se poser | Application au processus « Exploiter les incidents » |
-| --- | --- | --- |
-| Gain de temps | Les tâches sont-elles répétitives et chronophages ? | **Fort** : génération automatique du rapport hebdomadaire d'incidents, statistiques, synthèse des tickets GitLab. |
-| Fiabilité | L'automatisation réduit-elle les erreurs ou les oublis ? | **Élevée** : suppression des erreurs de comptage, homogénéisation des rapports, réduction des oublis. |
-| Fluidité | Le processus devient-il plus rapide ou plus lisible ? | **Moyenne** : la préparation est accélérée mais les validations et arbitrages restent humains. |
-| Expérience collaborateur | Les utilisateurs bénéficient-ils directement de l'automatisation ? | **Faible à directe** : l'amélioration est d'abord interne au support ; les utilisateurs en bénéficient indirectement via une meilleure qualité de service, et plus directement pour la capitalisation des connaissances (FAQ). |
-| Alignement organisationnel | Le processus contribue-t-il aux objectifs du service ? | **Fort** : amélioration du pilotage, aide à la décision, meilleure priorisation des incidents et meilleure allocation des ressources. |
-
-Cette grille confirme que l'IA intervient ici comme un **outil d'aide à la décision, non de décision** : elle assiste la collecte, le comptage et la mise en forme, tandis que l'interprétation du contexte métier, l'arbitrage des priorités et la communication aux équipes restent des activités humaines, cohérentes avec le principe de responsabilité posé par la charte (§5).
 
 **Processus prioritaire n°2 : Capitaliser les connaissances.** La transformation d'un ticket résolu en procédure technique répond directement à la problématique de dépendance à une expertise unique (§1.2, §2) : chaque incident capitalisé réduit d'autant le besoin de repasser par moi pour un cas similaire. Ce processus a fait l'objet d'une schématisation visuelle dédiée (sous-section suivante).
 
@@ -405,8 +374,6 @@ Ce principe « IA Ready » n'est pas parti d'une lecture théorique du RGPD, mai
 
 Sur le plan écologique, l'usage de l'IA sur le projet reste volontairement mesuré, selon un principe déjà éprouvé lors de la certification RS6776 : *« on choisit l'outil selon le besoin, pas par habitude »* (cf. §1.4). Concrètement, cela se traduit par des requêtes ciblées plutôt que des générations exploratoires répétées, et par la réutilisation systématique des prompts déjà validés (bibliothèque de prompts, cf. §8) plutôt que la régénération d'un contenu depuis zéro à chaque sollicitation. Cette sobriété d'usage, posée comme principe dans la charte (§4.5), limite la consommation énergétique et le coût des services d'IA associés au projet.
 
-Sur le plan social, la répartition des tâches assistées par l'IA au sein de l'équipe (§6) est conçue pour soutenir chaque collaborateur dans son activité, sans créer de disparité de traitement entre eux : les décisions managériales (répartition des dossiers, arbitrages de priorité) restent exclusivement humaines, précisément pour garantir cette équité et la transparence vis-à-vis de l'équipe.
-
 ## Charte IA
 
 Un livrable central de cette certification est la **Charte d'utilisation responsable de l'IA — Projet MUSCADE** (CEA Irfu/DIS/LDISC), qui formalise l'ensemble de ces principes pour l'équipe projet. Elle s'articule autour de cinq principes fondamentaux — responsabilité, protection des données, esprit critique, transparence et sobriété — et définit :
@@ -428,6 +395,38 @@ Ces objectifs et cette gouvernance s'inscrivent, plus largement, dans le cadre n
 ---
 
 # 6. Reconfiguration du processus (C2)
+
+Avant d'entrer dans le détail de la cartographie cible, il convient de préciser la nature de la reconfiguration opérée : il ne s'agit pas d'un simple ajout d'un outil IA en périphérie du processus existant, mais d'une modification du point d'entrée de la relation entre l'utilisateur et le support, c'est-à-dire du processus métier lui-même.
+
+Avant le projet, l'utilisateur adressait un e-mail libre au support, qui devait ensuite reformuler la demande, poser des questions complémentaires pour la qualifier, avant de pouvoir constituer un ticket exploitable :
+
+```
+Utilisateur
+   ↓
+E-mail libre
+   ↓
+Support
+   ↓
+Questions complémentaires
+   ↓
+Ticket exploitable
+```
+
+Depuis le POC, ce même parcours est inversé : c'est l'assistant MUSCADE qui conduit la qualification, en amont de toute intervention humaine, et transmet au support un dossier déjà structuré :
+
+```
+Utilisateur
+   ↓
+Assistant MUSCADE
+   ↓
+Qualification guidée
+   ↓
+Ticket complet
+   ↓
+Support
+```
+
+Le support n'est donc plus sollicité pour la qualification initiale de l'incident, mais intervient désormais en aval, sur l'analyse et la résolution d'un dossier déjà complet. Cette bascule du rôle du support — d'un rôle de collecte d'informations vers un rôle d'expertise sur des cas déjà qualifiés — est la transformation organisationnelle concrète que la cartographie et le tableau comparatif ci-dessous viennent détailler.
 
 ## Cartographie TO BE
 
@@ -464,8 +463,6 @@ La reconfiguration du processus fait émerger, sans créer de nouveaux postes, u
 - **Cheffe de produit** : pilote la configuration et l'amélioration continue de l'assistant IA, valide les contenus générés avant diffusion, et supervise l'usage conforme à la charte. Sa charge de support de premier niveau diminue progressivement, ce qui lui permet de réallouer du temps à l'architecture, au développement, à la correction durable des anomalies, à la création d'un portail central MUSCADE (documentation, assistant, ressources) et à la formation des collègues.
 - **Équipe support (ingénieurs, automaticiens)** : passe d'un rôle de qualification manuelle à un rôle de validation et d'expertise sur les cas remontés par l'assistant, avec une répartition plus explicite des compétences entre ses membres et davantage de temps disponible pour le développement et la formation — réduisant ainsi la dépendance du laboratoire à une seule ressource experte.
 - **Utilisateurs finaux** : gagnent en autonomie grâce à un assistant disponible en continu pour les questions courantes (FAQ), la recherche de procédures et la déclaration guidée d'un incident, réduisant d'autant les sollicitations directes de l'équipe support.
-
-Cette évolution des responsabilités se traduira, à terme, par une mise à jour formelle des fiches de rôle de l'équipe support, afin d'y intégrer explicitement les nouvelles activités de validation des contenus générés par l'IA et de capitalisation des connaissances — et non plus seulement les activités historiques de support et de développement.
 
 La reconfiguration prévoit également une mesure d'adaptation pour les personnels ou utilisateurs en situation de handicap — un sujet que je maîtrise à double titre, professionnel et personnel (cf. §1.3). Étant moi-même porteuse d'un TDAH reconnu par une RQTH, et ayant déjà mis en pratique la méthode **FALC** (Facile À Lire et à Comprendre) lors de la certification RS6776 (§1.4), je prévois d'appliquer ce même principe à la documentation MUSCADE : formulations courtes, un message par phrase, repères visuels, structuration Markdown par titres hiérarchisés (sans information encodée uniquement par la couleur), compatible nativement avec les lecteurs d'écran. Cette mesure ne relève pas d'une simple case à cocher réglementaire : elle s'inscrit dans mon ambition de contribuer, via le groupe **MAIA** du CEA (cf. §1.1, §1.3), à l'inclusion des personnes en situation de handicap dans le déploiement de l'IA générative au CEA.
 
@@ -606,20 +603,7 @@ Cette certification s'adresse à des managers, dont le rôle est de définir la 
 | Temps de reporting / rédaction | -40 à -50 % |
 | Satisfaction des utilisateurs | > 80 % |
 
-Ces objectifs prévisionnels s'appuient sur l'analyse comparative détaillée du processus avec et sans IA, dont la synthèse est reprise ci-dessous (le détail complet figure en annexe, *RS7424_Comparatif_Avec_Sans_IA_MUSCADE.docx*) :
-
-| Critère | Sans IA | Avec IA | Impact attendu |
-| --- | --- | --- | --- |
-| Temps de qualification | Analyse manuelle des demandes | Préqualification par l'assistant | -30 % |
-| Temps de rédaction | Rédaction manuelle des rapports | Rapport généré puis relu | -40 à -50 % |
-| Qualité des tickets | Informations parfois incomplètes | Formulaire guidé et rapport structuré | Amélioration |
-| Recherche documentaire | Recherche dans plusieurs documents | Interrogation de la base documentaire | -50 % |
-| Questions répétitives | Sollicitations fréquentes du support | Autonomie via l'assistant | Réduction |
-| Expérience utilisateur | Support dépendant des disponibilités | Accès 24/7 à un assistant | Amélioration |
-| Capitalisation | Documentation dispersée | Base documentaire enrichie | Amélioration continue |
-| Charge de l'équipe | Forte sollicitation sur le support N1 | Temps réalloué au développement et aux formations | Gain qualitatif |
-
-Au-delà du gain de temps, les ajustements retenus à l'issue de cette comparaison sont : maintenir une validation humaine systématique pour toute situation critique, garantir la mise à jour continue de la base documentaire (sans quoi l'assistant perd en pertinence), et protéger les données sensibles à chaque étape du processus (cf. charte, §5).
+Ces objectifs prévisionnels s'appuient sur l'analyse comparative du processus avec et sans IA : au-delà du gain de temps, les effets attendus concernent l'amélioration de la qualité des tickets (formulaire guidé plutôt qu'informations incomplètes), la réduction des sollicitations répétitives grâce à l'autonomie apportée par l'assistant (disponible 24/7), et une meilleure capitalisation des connaissances dans la base documentaire.
 
 Point de vigilance assumé dans l'analyse : l'IA ne remplace pas l'expertise humaine — les réponses doivent être validées pour les situations critiques —, la base documentaire doit être maintenue à jour, et les données sensibles doivent rester protégées à chaque étape.
 
@@ -694,26 +678,13 @@ La veille technologique combine une veille automatisée et une veille par expér
 
 ## Perspectives
 
-Au-delà des évolutions ponctuelles listées ci-dessous, l'assistant MUSCADE s'inscrit dans une trajectoire de maturité en trois niveaux, déjà esquissée pendant la formation :
-
-| Niveau | Description | Statut |
-| --- | --- | --- |
-| **Niveau 1** | Assistant documentaire (FAQ, procédures, guide utilisateur) | Réalisé (§9) |
-| **Niveau 2** | Assistant support guidant la qualification d'un incident, avec génération de ticket | Réalisé — POC fonctionnel (§9) |
-| **Niveau 3** | Agent capable de créer automatiquement une Issue GitLab via API ou un workflow Make/n8n, sans étape manuelle intermédiaire | À développer |
-
-Évolutions concrètes prévues pour atteindre le niveau 3 et au-delà :
-
 - Approfondissement du processus « Piloter l'activité », identifié dès le diagnostic (§4) mais volontairement non développé dans ce dossier faute de temps, au profit de la capitalisation des connaissances ;
 - Extraction GitLab via API, de façon industrialisée (au-delà du script Python ponctuel actuel) ;
-- création automatique d'Issues GitLab directement depuis l'assistant (sans passage par Make en étape intermédiaire), connexion GitHub, notifications Teams, archivage ;
 - mise en place d'un pipeline CI/CD pour automatiser la production régulière des KPI et des rapports ;
 - RAG documentaire complet, alimenté par l'ensemble de la documentation MUSCADE et des procédures capitalisées ;
 - évolution vers un agent IA plus autonome, capable de proposer des recherches d'incidents similaires directement dans GitLab, tout en conservant la validation humaine systématique définie dans la charte ;
 - développement de l'outil générique de pseudonymisation/dépseudonymisation évoqué en §5 : dictionnaire clé → valeur (fichier local, ex. CSV), encodage avant soumission à une IA puis décodage à réception de la réponse, conçu pour fonctionner avec plusieurs IA (Claude, ChatGPT, Mistral...) et être réutilisable au-delà du seul contexte MUSCADE ;
 - test, après la certification, des outils d'automatisation et d'orchestration non encore évalués par souci de limitation du périmètre pendant cette formation (Zapier, n8n, Genspark, Airtable), dans la continuité du TP de découverte des plateformes d'automatisation déjà amorcé pendant le parcours.
-
-**Vision à plus long terme.** L'architecture développée pour MUSCADE (assistant documentaire + qualification guidée + automatisation Low Code) est conçue pour être réutilisable au-delà du seul projet MUSCADE : elle pourrait alimenter un projet plus large, **Stargate**, destiné à centraliser la documentation et les ressources techniques autour des différentes technologies SCADA du laboratoire (MUSCADE, EPICS, TANGO), et à proposer un point d'entrée intelligent unique vers ces ressources — prolongeant ainsi, au niveau du laboratoire, l'ambition de pôle de compétence évoquée en §12.
 
 ---
 
