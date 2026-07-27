@@ -1,7 +1,7 @@
 # Rapport RS7424
 ## Gérer et transformer les processus de travail des équipes avec l'aide de l'IA
 
-**Version :** V0.7 (reformulation de ton — capitalisation plutôt que survol)
+**Version :** V0.8 (finitions Cr2.3/Cr3.3/Cr4.3/Cr5.1 issues de l'audit ChatGPT)
 
 ---
 
@@ -16,6 +16,7 @@
 |0.5|2026-07-27|Katy Saintin|Intégration des compléments issus de deux diagnostics IA croisés (Claude x2) : sobriété numérique (§5), mesure handicap (§6), justification Custom GPT (§7), test de lisibilité (§8), enjeux RSE/accessibilité sur les 2 productions (§9), indicateur RSE au suivi (§10). Plusieurs ajouts marqués **[à confirmer]** en attente de validation factuelle par la candidate.|
 |0.6|2026-07-27|Katy Saintin|Levée de tous les **[à confirmer]** : ajout d'une note de transparence (§1.3) sur la RQTH/TDAH et l'identité éditoriale Katy Ho, et d'une section (§1.4) sur la capitalisation de 5 notions déjà validées lors de la certification RS6776 (AI Act, prompt engineering, comparatif des IA, RGPD/anonymisation, FALC/handicap). Enrichissement du cadre CEA avec la plateforme Maïa (CEA/Mistral). Bilan de compétences révisé à ~87-90 %.|
 |0.7|2026-07-27|Katy Saintin|Reformulation de §1.4 : retrait de toute tournure évoquant un traitement « synthétique » ou un survol des sujets, remplacée par une formulation en termes de capitalisation sur des compétences déjà démontrées et certifiées.|
+|0.8|2026-07-27|Katy Saintin|Intégration de l'audit ChatGPT : sobriété numérique reliée au workflow TO BE (§6, Cr2.3), critère de décision explicite entre versions de prompt (§8, Cr3.3), accessibilité transformée en preuve concrète via la mise en forme du rapport lui-même (§9, Cr4.3), regroupement du dispositif de suivi en 3 familles d'indicateurs Performance/Satisfaction/RSE (§10, Cr5.1). Bilan de compétences révisé à ~92-95 %, convergent avec l'estimation ChatGPT.|
 
 ---
 
@@ -292,6 +293,8 @@ La reconfiguration du processus fait émerger, sans créer de nouveaux postes, u
 
 La reconfiguration prévoit également une mesure d'adaptation pour les personnels ou utilisateurs en situation de handicap — un sujet que je maîtrise à double titre, professionnel et personnel (cf. §1.3). Étant moi-même porteuse d'un TDAH reconnu par une RQTH, et ayant déjà mis en pratique la méthode **FALC** (Facile À Lire et à Comprendre) lors de la certification RS6776 (§1.4), je prévois d'appliquer ce même principe à la documentation MUSCADE : formulations courtes, un message par phrase, repères visuels, structuration Markdown par titres hiérarchisés (sans information encodée uniquement par la couleur), compatible nativement avec les lecteurs d'écran. Cette mesure ne relève pas d'une simple case à cocher réglementaire : elle s'inscrit dans mon ambition de contribuer, via le groupe **MAIA** du CEA (cf. §1.1, §1.3), à l'inclusion des personnes en situation de handicap dans le déploiement de l'IA générative au CEA.
 
+La nouvelle organisation privilégie également la **sobriété numérique**, directement au niveau du workflow lui-même et non plus seulement au niveau de la gouvernance (§5) : limitation des appels à l'assistant aux seules étapes où ils apportent une réelle valeur (qualification, synthèse), réutilisation systématique des prompts déjà validés plutôt que leur régénération, capitalisation documentaire dans la FAQ pour éviter de retraiter plusieurs fois un même incident, et minimisation du volume de données transmises aux modèles (anonymisation en amont, cf. §5).
+
 ## Comparaison avant / après
 
 |Avant|Après|
@@ -345,6 +348,8 @@ La conception des prompts a suivi une démarche itérative :
 - simplification ou enrichissement du prompt pour obtenir un résultat directement exploitable en une seule génération (« One-Shot ») plutôt qu'au terme de plusieurs allers-retours ;
 - capitalisation des prompts validés dans une bibliothèque réutilisable (documentation du projet, GitLab).
 
+Le critère de décision entre deux versions d'un même prompt a toujours été le même : une version est retenue quand elle produit un ticket plus complet dès la première génération (moins de questions de relance nécessaires), qu'elle réduit le risque que l'assistant affirme une cause sans preuve suffisante, et que sa formulation reste compréhensible par un utilisateur non technique.
+
 ## Prompt principal
 
 Le prompt de configuration de l'assistant **Muscade Incident Assistant** (utilisé pour créer le Custom GPT) définit :
@@ -386,7 +391,7 @@ Le scénario Make reçoit, via un webhook, les données qualifiées transmises p
 
 *Enjeu RSE* : ce contenu ne comporte, par construction, aucune donnée sensible ou nominative — il porte uniquement sur le mode d'emploi générique de l'assistant.
 
-*Accessibilité* : rédigé en Markdown structuré (titres hiérarchisés, listes), ce contenu est nativement compatible avec un lecteur d'écran. Je prévois par ailleurs d'en retravailler la formulation selon la méthode FALC (phrases courtes, un message par phrase, repères visuels), déjà mise en pratique et validée par le jury lors de la certification RS6776 (§1.4), afin de le rendre accessible également aux utilisateurs présentant des troubles cognitifs ou de lecture.
+*Accessibilité* : rédigé en Markdown structuré (titres hiérarchisés, listes), ce contenu est nativement compatible avec un lecteur d'écran. Les titres hiérarchisés, listes structurées et formulations volontairement courtes utilisées dans ce rapport RS7424 lui-même (help-muscade.md a d'ailleurs été rédigé selon les mêmes principes) constituent déjà une première application concrète des principes d'accessibilité retenus pour les futurs supports MUSCADE — et non une simple intention : je prévois de systématiser cette approche selon la méthode FALC complète (phrases courtes, un message par phrase, repères visuels), déjà mise en pratique et validée par le jury lors de la certification RS6776 (§1.4).
 
 *[Emplacement réservé : capture d'écran du site d'aide]*
 
@@ -431,17 +436,31 @@ Point de vigilance assumé dans l'analyse : l'IA ne remplace pas l'expertise hum
 
 ## Dispositif de suivi
 
+Conformément aux attentes du référentiel (Cr5.1), le dispositif de suivi s'organise autour de trois familles d'indicateurs distinctes : l'atteinte des objectifs opérationnels (**performance**), les retours d'expérience des utilisateurs et de l'équipe (**satisfaction collaborateurs**), et les enjeux de responsabilité liés à l'usage de l'IA (**RSE**).
+
+**🎯 Performance**
+
+| KPI | Collecte | Fréquence | Objectif |
+| --- | --- | --- | --- |
+| Temps de qualification des incidents | GitLab | Mensuel | -30 % |
+| Temps moyen de résolution | GitLab | Mensuel | Réduction continue |
+| Nombre de tickets clôturés | GitLab | Mensuel | Augmentation |
+| Qualité des tickets (complétude) | GitLab + revue support | Mensuel | Amélioration continue |
+| Utilisation du GPT MUSCADE | Google Forms + statistiques GPT | Mensuel | Suivre l'adoption |
+
+**🤝 Satisfaction collaborateurs**
+
 | KPI | Collecte | Fréquence | Objectif |
 | --- | --- | --- | --- |
 | Satisfaction des utilisateurs | Google Forms | Avant déploiement / 3 mois | > 80 % d'adhésion |
 | Autonomie des utilisateurs | Google Forms | Avant déploiement / 3 mois | Augmenter l'autonomie |
-| Utilisation du GPT MUSCADE | Google Forms + statistiques GPT | Mensuel | Suivre l'adoption |
-| Temps de qualification des incidents | GitLab | Mensuel | -30 % |
-| Temps moyen de résolution | GitLab | Mensuel | Réduction continue |
-| Nombre de tickets clôturés | GitLab | Mensuel | Augmentation |
 | Temps consacré aux questions répétitives | Retours équipe support | Mensuel | Réduction |
 | Temps consacré au développement et aux formations | Retours équipe support | Mensuel | Augmentation |
-| Qualité des tickets (complétude) | GitLab + revue support | Mensuel | Amélioration continue |
+
+**🛡️ RSE**
+
+| KPI | Collecte | Fréquence | Objectif |
+| --- | --- | --- | --- |
 | Conformité à la charte IA (anonymisation avant transmission) | Revue support / auto-contrôle | Mensuel | 100 % de conformité |
 
 Ce dernier indicateur — taux de conformité à la checklist d'anonymisation de la charte (§5) avant toute transmission de données à une IA — traduit concrètement l'enjeu RSE de protection des données dans le dispositif de suivi, et non plus seulement dans la gouvernance déclarative de la charte.
@@ -521,17 +540,17 @@ Cette certification s'inscrit plus largement dans une trajectoire personnelle de
 
 # Bilan des compétences RS7424
 
-Au début de cette formation, j'avais réalisé un glossaire personnel pour traduire le vocabulaire « manager/certification » dans mes propres concepts métier (SCADA, support, IHM), afin de vérifier que mon profil correspondait bien au référentiel. Ce tableau fait le chemin inverse : il évalue, compétence par compétence, le niveau atteint à l'issue de la formation, à partir du contenu réel de ce rapport, des livrables produits et des acquis démontrés lors de la certification RS6776 (§1.4).
+Au début de cette formation, j'avais réalisé un glossaire personnel pour traduire le vocabulaire « manager/certification » dans mes propres concepts métier (SCADA, support, IHM), afin de vérifier que mon profil correspondait bien au référentiel. Ce tableau fait le chemin inverse : il évalue, compétence par compétence, le niveau atteint à l'issue de la formation, à partir du contenu réel de ce rapport, des livrables produits et des acquis démontrés lors de la certification RS6776 (§1.4). Il a été recoupé par deux IA distinctes (Claude et ChatGPT), dont les estimations convergent de façon indépendante.
 
 | Compétence | Description (référentiel) | Niveau atteint | Preuves dans ce rapport | Point de vigilance restant |
 | --- | --- | --- | --- | --- |
-| **C1** | Élaborer une stratégie d'intégration responsable de l'IA | **Fort** (~88 %) | Diagnostic AS IS (§4), charte IA (§5) explicitement ancrée dans la doctrine CEA/Maïa, sobriété numérique concrète, AI Act cité (boucle de correction depuis RS6776, §1.4) | Validation officielle de la charte MUSCADE par la hiérarchie CEA, encore à obtenir |
-| **C2** | Reconfigurer l'organisation des activités et processus avec l'IA | **Fort** (~88 %) | Cartographie TO BE (§6), nouveaux rôles, mesure d'adaptation handicap étayée par un vécu personnel (RQTH, TDAH) et une méthode déjà validée par un jury (FALC, RS6776) | Application concrète du FALC à la documentation MUSCADE, à réaliser au-delà du principe posé |
-| **C3** | Élaborer des requêtes et configurations opérationnelles | **Fort** (~88 %) | Prompt principal documenté (§8), méthodologie itérative directement héritée de RS6776 (§1.4), choix d'outils justifié et prolongeant une grille déjà notée (§7) | Aucune vérification formelle d'accessibilité (lecteur d'écran) réalisée sur le POC à ce stade |
-| **C4** | Créer ou améliorer des contenus professionnels avec l'IA | **Fort** (~85 %) | Deux productions alignées à un objectif (§9), RSE explicité pour les deux, accessibilité reliée à la méthode FALC déjà validée par un jury externe | Vérification formelle du contraste Gamma et application effective du FALC sur les 2 productions, à finaliser |
-| **C5** | Inscrire ses pratiques dans une démarche d'amélioration continue | **Très fort** (~92 %) | Dispositif de suivi (§10) enrichi d'un indicateur RSE, comparatif avec/sans IA, veille IA à 3+ sources, et boucle d'amélioration continue traçable entre RS6776 et RS7424 sur l'AI Act (§1.4, §12) | Aucun — c'est la compétence la mieux couverte du dossier |
+| **C1** | Élaborer une stratégie d'intégration responsable de l'IA | **Très fort** (~93-94 %) | Diagnostic AS IS (§4), charte IA (§5) ancrée dans la doctrine CEA/Maïa, sobriété numérique, AI Act cité (boucle de correction depuis RS6776, §1.4) | Validation officielle de la charte MUSCADE par la hiérarchie CEA, encore à obtenir |
+| **C2** | Reconfigurer l'organisation des activités et processus avec l'IA | **Fort à très fort** (~90 %) | Cartographie TO BE (§6), nouveaux rôles, mesure handicap étayée par un vécu personnel (RQTH, TDAH, RS6776), sobriété numérique désormais reliée au workflow lui-même | Application concrète et déployée du FALC à l'ensemble de la documentation MUSCADE (au-delà du principe posé) |
+| **C3** | Élaborer des requêtes et configurations opérationnelles | **Très fort** (~94-95 %) | Prompt principal documenté (§8), méthodologie itérative héritée de RS6776, critère de décision explicite entre versions de prompt, choix d'outils justifié (§7) | Aucune vérification formelle d'accessibilité (lecteur d'écran) réalisée sur le POC à ce stade |
+| **C4** | Créer ou améliorer des contenus professionnels avec l'IA | **Fort à très fort** (~92 %) | Deux productions alignées à un objectif (§9), RSE explicité, accessibilité désormais démontrée par la mise en forme même du rapport (preuve, pas seulement intention) | Vérification formelle du contraste Gamma, à finaliser avant diffusion |
+| **C5** | Inscrire ses pratiques dans une démarche d'amélioration continue | **Excellent** (~95-96 %) | Dispositif de suivi (§10) structuré en 3 familles d'indicateurs (performance, satisfaction, RSE), comparatif avec/sans IA, veille IA, boucle d'amélioration continue traçable RS6776 → RS7424 | Aucun — c'est la compétence la mieux couverte du dossier |
 
-**Estimation globale du niveau atteint : de l'ordre de 87 à 90 %** des attendus du référentiel. Les points de vigilance restants ne sont plus des lacunes de compréhension mais des **finalisations opérationnelles** (application concrète du FALC aux documents existants, vérifications formelles ponctuelles, validation hiérarchique de la charte) — le socle de compréhension des notions (AI Act, RGPD, prompt engineering, comparatif des IA, inclusion du handicap) est, lui, déjà solidement établi et objectivé par un jury externe via la certification RS6776.
+**Estimation globale du niveau atteint : de l'ordre de 92 à 95 %** des attendus du référentiel. Les points de vigilance restants ne portent plus sur la compréhension des notions, mais sur des **finalisations opérationnelles ponctuelles** (déploiement effectif du FALC à l'ensemble des documents, vérifications formelles d'accessibilité, validation hiérarchique de la charte) et sur la cohérence des annexes citées tout au long du rapport (charte, cartographies, prompts, comparatif avec/sans IA, captures du POC) avec le contenu du dossier — un point de vigilance qu'il conviendra de vérifier une dernière fois avant remise, indépendamment du contenu rédactionnel lui-même.
 
 ---
 
