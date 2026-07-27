@@ -1,7 +1,7 @@
 # Rapport RS7424
 ## Gérer et transformer les processus de travail des équipes avec l'aide de l'IA
 
-**Version :** V0.8 (finitions Cr2.3/Cr3.3/Cr4.3/Cr5.1 issues de l'audit ChatGPT)
+**Version :** V0.9 (§4 complété : sélection des processus, description détaillée, schématisation)
 
 ---
 
@@ -17,6 +17,7 @@
 |0.6|2026-07-27|Katy Saintin|Levée de tous les **[à confirmer]** : ajout d'une note de transparence (§1.3) sur la RQTH/TDAH et l'identité éditoriale Katy Ho, et d'une section (§1.4) sur la capitalisation de 5 notions déjà validées lors de la certification RS6776 (AI Act, prompt engineering, comparatif des IA, RGPD/anonymisation, FALC/handicap). Enrichissement du cadre CEA avec la plateforme Maïa (CEA/Mistral). Bilan de compétences révisé à ~87-90 %.|
 |0.7|2026-07-27|Katy Saintin|Reformulation de §1.4 : retrait de toute tournure évoquant un traitement « synthétique » ou un survol des sujets, remplacée par une formulation en termes de capitalisation sur des compétences déjà démontrées et certifiées.|
 |0.8|2026-07-27|Katy Saintin|Intégration de l'audit ChatGPT : sobriété numérique reliée au workflow TO BE (§6, Cr2.3), critère de décision explicite entre versions de prompt (§8, Cr3.3), accessibilité transformée en preuve concrète via la mise en forme du rapport lui-même (§9, Cr4.3), regroupement du dispositif de suivi en 3 familles d'indicateurs Performance/Satisfaction/RSE (§10, Cr5.1). Bilan de compétences révisé à ~92-95 %, convergent avec l'estimation ChatGPT.|
+|0.9|2026-07-27|Katy Saintin|Complétion du §4 à partir des livrables Diagnostic et Cartographie détaillée : ajout d'une section « Sélection des deux processus prioritaires » signalant une divergence non résolue entre le Diagnostic (priorité n°2 = Piloter l'activité) et la Schématisation produite (Exploiter + Capitaliser les connaissances) ; ajout de la description détaillée complète du processus « Exploiter les incidents » (déclencheur, étapes, dépendances, points sensibles, comparatif Make/n8n, impacts attendus) ; ajout de la schématisation visuelle des 2 processus retenus (emplacements réservés + déroulé texte).|
 
 ---
 
@@ -175,12 +176,6 @@ Ce même schéma s'applique, en parallèle, à l'activité « Capitaliser les co
 | Capitaliser les connaissances | Moyen | Moyen | Rédaction documentaire chronophage | Documentation obsolète | Fort | ⭐ |
 | Déployer l'IA de manière responsable | Faible | Faible | Processus encore peu mature | Risque de non-conformité si absence de cadre | Moyen | ⭐ |
 
-**Processus prioritaire n°1 : Exploiter les incidents.** Le volume de tickets est important, les données GitLab sont déjà structurées, et l'IA peut accélérer la qualification, la recherche d'incidents similaires, la synthèse et la génération de comptes rendus, tout en conservant une validation humaine.
-
-**Processus prioritaire n°2 : Piloter l'activité.** Les KPI GitLab peuvent être extraits et synthétisés automatiquement afin d'identifier des tendances et des besoins en ressources — les indicateurs restant strictement agrégés par projet et jamais utilisés pour évaluer individuellement un collaborateur.
-
-Le processus « Déployer l'IA de manière responsable » est identifié mais volontairement non prioritaire en termes d'automatisation à ce stade : le laboratoire n'ayant pas encore une maturité suffisante sur ces pratiques, une charte d'usage constitue la première étape indispensable avant tout élargissement.
-
 ### Forces
 
 - Les données d'incidents sont déjà centralisées et structurées dans GitLab (labels, projets, historique), ce qui facilite tout traitement automatisé ou assisté par IA.
@@ -205,6 +200,79 @@ Le processus « Déployer l'IA de manière responsable » est identifié mais vo
 - Risque de divulgation de données sensibles (adresses IP, noms de serveurs, certificats, données personnelles) si l'anonymisation n'est pas systématique avant transmission à une IA externe.
 - Risque de décision automatisée non maîtrisée sur un système en production si le périmètre d'usage de l'IA n'est pas clairement délimité.
 - Risque d'usage des indicateurs GitLab à des fins d'évaluation individuelle si la gouvernance ne l'interdit pas explicitement.
+
+---
+
+## Sélection des deux processus prioritaires
+
+Le diagnostic initial (tableau ci-dessus) retient comme prioritaires les deux processus présentant le plus fort volume et le plus fort potentiel d'automatisation :
+
+**Processus prioritaire n°1 : Exploiter les incidents.** Le volume de tickets est important, les données GitLab sont déjà structurées, et l'IA peut accélérer la qualification, la recherche d'incidents similaires, la synthèse et la génération de comptes rendus, tout en conservant une validation humaine.
+
+**Processus prioritaire n°2 : Piloter l'activité.** Les KPI GitLab peuvent être extraits et synthétisés automatiquement afin d'identifier des tendances et des besoins en ressources — les indicateurs restant strictement agrégés par projet et jamais utilisés pour évaluer individuellement un collaborateur.
+
+⚠️ *Note de cohérence à trancher avant la version finale* : le livrable de schématisation visuelle (§4, sous-section suivante) a en pratique été réalisé sur **« Exploiter les incidents »** et **« Capitaliser les connaissances »**, et non sur « Piloter l'activité » comme indiqué ci-dessus. Cette page reste donc, à ce stade, une divergence assumée entre le diagnostic initial et le livrable de schématisation produit ensuite — probablement le résultat d'un arbitrage a posteriori en faveur de la capitalisation des connaissances (documentation, FAQ), non encore reporté dans la conclusion du diagnostic. Je choisirai, avant la version finale, laquelle des deux versions faire autorité, et harmoniserai la justification en conséquence plutôt que de laisser cohabiter les deux.
+
+Le processus « Déployer l'IA de manière responsable » est identifié mais volontairement non prioritaire en termes d'automatisation à ce stade : le laboratoire n'ayant pas encore une maturité suffisante sur ces pratiques, une charte d'usage constitue la première étape indispensable avant tout élargissement.
+
+---
+
+## Description détaillée du processus n°1 : Exploiter les incidents
+
+Conformément à l'exercice de cartographie détaillée demandé par le module, le processus « Exploitation des incidents et génération du bilan hebdomadaire » a été décrit pas à pas.
+
+**Déclencheur.** Stand-up meeting hebdomadaire MUSCADE (chaque jeudi) : la cheffe de projet fait le point sur les incidents ouverts, en cours, résolus, et les tendances par projet.
+
+**Résultat attendu.** Production d'un rapport hebdomadaire d'incidents : nombre de tickets ouverts/fermés, répartition par projet, incidents critiques, tendances, propositions de priorisation.
+
+| Étape | Acteur | Action | Outil | Validation | Décision |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Support | Lancer l'extraction des incidents GitLab (CI/CD ou export) | GitLab CI/CD | Non | Non |
+| 2 | Cheffe de projet | Générer le rapport d'incidents, statistiques et tendances | ChatGPT ou Claude | Non | Non |
+| 3 | Cheffe de projet | Présenter les résultats et proposer les priorités | Gamma | Manager | Oui |
+| 4 | Équipe MUSCADE | Distribuer les actions et issues décidées | GitLab | Oui | Fin du processus |
+
+**Dépendances.** Étape bloquante : l'arbitrage du manager (étape 3) — sans validation, la cheffe de projet risque une surcharge de travail. Délai : le rapport peut être hebdomadaire ou mensuel selon les ressources. Double saisie : mails, appels et échanges informels doivent être retranscrits dans GitLab après détection des doublons. Particularité : le support et la cheffe de projet sont aujourd'hui principalement assurés par une même personne — ce qui rejoint directement la problématique managériale du §2.
+
+**Points sensibles.**
+- Étape la plus fragile : l'arbitrage des priorités (étape 3) — les rapports doivent expliciter la criticité métier pour aider la décision.
+- Étape la plus longue : la qualification, l'étiquetage des issues, la suppression des doublons et la retranscription des demandes informelles (un formulaire standard de création d'incident a été mis en place pour améliorer la qualité des tickets en amont).
+- Étape la plus risquée juridiquement : aucun risque réglementaire majeur identifié ; un risque organisationnel existe en revanche si les priorités sont fixées selon les financements des projets plutôt que selon la criticité technique.
+- Étape la plus automatisable : la génération du rapport statistique à partir des données GitLab.
+- Étapes devant rester humaines : relecture du rapport, interprétation des résultats, arbitrage des priorités et affectation des actions — ces décisions nécessitent une connaissance du contexte opérationnel qu'une IA ne possède pas.
+
+**Scénario d'automatisation retenu** : PDF GitLab → IA (Claude, extraction des données) → JSON → Airtable (structuration) → génération automatique de tableaux de bord, KPI, graphiques, rapport Markdown et présentation Gamma → envoi automatique par e-mail.
+
+**Choix de l'outil d'orchestration.** Deux solutions ont été comparées pour porter ce workflow :
+
+| Critère | Make | n8n |
+| --- | --- | --- |
+| Fonctionnalités | Très nombreuses, nombreux connecteurs | Très nombreuses, très personnalisable |
+| Facilité d'utilisation | ★★★★★ | ★★★☆☆ |
+| Interface | Très intuitive | Plus technique |
+| Accessibilité | SaaS immédiatement disponible | SaaS ou auto-hébergement |
+| Protection des données | Dépend du cloud utilisé | Possibilité d'hébergement interne |
+| Coût | Gratuit pour petits projets puis abonnement | Open source gratuit, coût éventuel d'hébergement |
+| Délai de mise en place | Très rapide | Un peu plus long |
+| ROI | Très rapide grâce à la simplicité | Excellent pour des projets plus importants |
+
+**Solution retenue : Make.** Ce choix est motivé par l'objectif principal de découvrir les principes de l'orchestration de workflows intégrant une IA générative : Make propose une interface intuitive permettant de construire rapidement un scénario complet sans compétences avancées en développement, et offre de nombreux connecteurs déjà utilisés dans le projet (GitLab, Airtable, Gmail, IA génératives). Une fois les principes maîtrisés, le workflow pourra être porté vers une solution plus technique comme n8n si les besoins d'industrialisation ou de souveraineté des données deviennent plus importants — c'est d'ailleurs très exactement ce qui a été fait dans le POC réel du Muscade Incident Assistant (§9), qui utilise Make.
+
+**Impacts attendus** : réduction importante des tâches manuelles de traitement des rapports GitLab, suppression des ressaisies, amélioration de la fiabilité des informations, génération rapide de tableaux de bord, diffusion plus rapide de l'information aux équipes, meilleure traçabilité, et gain de temps réalloué aux activités à plus forte valeur ajoutée — cohérent avec l'objectif managérial de réallocation de mon temps posé en §1.2 et §3.
+
+---
+
+## Schématisation visuelle des processus retenus
+
+Les deux processus retenus (§4, sélection ci-dessus) ont fait l'objet d'une schématisation visuelle dédiée, réalisée avec Gamma.
+
+*[Emplacement réservé : schéma « Exploitation des incidents GitLab » — objectif, acteurs (support, cheffe de projet, manager, équipe technique), déroulé en 5 étapes (déclencheur → extraction → analyse → rapport → validation), cycle hebdomadaire du jeudi]*
+
+*[Emplacement réservé : schéma « Capitalisation des connaissances » — transformation d'un ticket GitLab résolu en procédure technique]*
+
+Pour ce second processus (Capitaliser les connaissances), le déroulé schématisé est le suivant : un incident résolu et son ticket GitLab clôturé déclenchent la sélection du ticket par la cheffe de projet (GitLab), puis une analyse du contenu par l'IA (ChatGPT ou Claude — problème, investigations, solution, commentaires techniques), la génération automatique d'une procédure selon un modèle Markdown prédéfini, une relecture et validation par la cheffe de projet, puis la publication (documentation GitLab, wiki, base de connaissances, supports de formation Gamma). La répartition entre ce qui est automatisable par l'IA (analyse statistique, comptage, détection de tendances, génération de rapport, proposition de synthèse) et ce qui doit rester humain (validation des résultats, arbitrage des priorités, décision managériale, communication aux équipes, prise en compte du contexte métier) est explicitée pour les deux processus — cohérent avec le principe de responsabilité posé dans la charte IA (§5).
+
+À terme, ces schémas seront intégrés directement dans le corps du rapport plutôt que renvoyés en annexe, l'objectif étant que le rapport soit lisible de façon autonome, sans que la consultation des annexes soit indispensable à sa compréhension.
 
 ---
 
