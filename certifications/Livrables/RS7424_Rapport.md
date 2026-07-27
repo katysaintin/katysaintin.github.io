@@ -1,7 +1,7 @@
 # Rapport RS7424
 ## Gérer et transformer les processus de travail des équipes avec l'aide de l'IA
 
-**Version :** V1.3 (ajout du paragraphe sur la reconfiguration du processus métier, §6)
+**Version :** V1.4 (Cr1.3 : bénéfice utilisateur explicite en §3 + passé SOLEIL/ITIL en §1.2)
 
 ---
 
@@ -22,6 +22,7 @@
 |1.1|2026-07-27|Katy Saintin|Enrichissement de §5 avec la genèse du principe « IA Ready » (coût de l'anonymisation manuelle, évolution en deux temps : outil générique de pseudonymisation puis convention documentaire simplifiée). Ajout en §11 du développement de cet outil et du report explicite des POC Zapier/n8n/Genspark après la certification. Ajout d'une référence au second article Hors Kadre sur la traçabilité de l'usage de l'IA, en lien avec le principe de transparence de la charte.|
 |1.2|2026-07-27|Katy Saintin|Ajout d'un sommaire avec ancres de navigation en début de document.|
 |1.3|2026-07-27|Katy Saintin|Ajout en tête de §6 d'un paragraphe explicitant la reconfiguration du processus métier (Cr2.2) : schémas avant/après du parcours utilisateur↔support, montrant la bascule du rôle du support de la qualification vers l'expertise/résolution.|
+|1.4|2026-07-27|Katy Saintin|Traitement de Cr1.3 : ajout en §1.2 d'une phrase sur le passé de support opérationnel à SOLEIL et la formation ITIL ; complétion de §3 Objectifs métier avec le bénéfice utilisateur explicite (point d'entrée unique, guidé, rassurant) et citation de la feuille de route MUSCADE comme preuve que cet objectif préexistait à la certification.|
 
 ---
 
@@ -139,6 +140,8 @@ Depuis le 1er octobre 2025, je suis **Cheffe de produit MUSCADE** pour une duré
 - l'amélioration continue des processus, de la documentation et des pratiques de l'équipe ;
 - à moyen terme, l'animation d'un centre de compétence et d'une offre de formation interne sur MUSCADE.
 
+Cette sensibilité à la structuration du support n'est pas nouvelle : avant de rejoindre le CEA, j'ai occupé un poste de support opérationnel au Synchrotron SOLEIL, où j'assurais notamment la formation du support de niveau 1, et je suis formée à la méthode **ITIL** (qualification et triage des tickets, traçabilité des interventions) — un bagage qui explique directement l'attention portée, dans ce dossier, à la structuration du parcours utilisateur plutôt qu'au seul outillage technique.
+
 Cette responsabilité de produit, associée à mon rôle d'experte Java référente pour le laboratoire, a par ailleurs mis en évidence un périmètre d'activité en forte expansion, documenté factuellement par une cartographie des tickets GitLab qui me sont assignés (227 tickets ouverts, toutes familles de projets confondues). C'est précisément ce constat qui motive, dans le cadre de cette certification, un **projet de réorganisation du support et de l'équipe** : ma feuille de route MUSCADE et son volet « compétences RH » associé identifient déjà le manque d'autonomie des utilisateurs finaux et la faible redondance des compétences comme des risques majeurs pour la pérennité du projet. L'intégration de l'IA présentée dans ce dossier constitue un des leviers concrets de cette réorganisation : elle vise à transférer une partie du support de premier niveau vers un assistant IA et à redistribuer les compétences expertes au sein de l'équipe, afin que je ne reste plus un point de passage obligé sur l'ensemble des sujets MUSCADE.
 
 *[Emplacement réservé : organigramme actuel de l'équipe support MUSCADE / capture d'écran de la cartographie des tickets GitLab]*
@@ -202,7 +205,10 @@ Le diagnostic du processus (cf. § 4) a permis de mettre en évidence que les ac
 - améliorer la qualité des tickets d'incidents transmis par les utilisateurs ;
 - réduire le temps consacré à la qualification et au reporting ;
 - homogénéiser les pratiques de traitement des incidents au sein de l'équipe support ;
+- **remplacer les sollicitations informelles des utilisateurs (téléphone, couloir, e-mail non structuré) par un point d'entrée unique, guidé et rassurant**, qui ne suppose aucune connaissance de l'organisation interne de l'équipe support : l'utilisateur n'a plus besoin de savoir *qui* contacter ni *comment* formuler sa demande, l'assistant s'en charge à sa place ;
 - faciliter la transmission des connaissances vers de nouveaux contributeurs (automaticiens, stagiaires, apprentis), notamment via la création d'un portail central MUSCADE regroupant documentation, assistant et supports de formation.
+
+Cet objectif d'autonomisation des utilisateurs n'est pas propre à cette certification : il figure explicitement dans la feuille de route MUSCADE elle-même (*RoadMapMuscade.md*, réunion du 7 octobre 2024), qui fixe comme second objectif stratégique du projet d'*« accroître l'autonomie des utilisateurs finaux de Muscade en distribuant des logiciels ne nécessitant aucune compétence informatique pour l'installation et l'utilisation »*. L'assistant IA présenté dans ce dossier constitue une déclinaison concrète de cet objectif préexistant, appliquée cette fois au parcours de signalement d'un incident plutôt qu'au seul déploiement logiciel.
 
 ## Objectifs IA
 
