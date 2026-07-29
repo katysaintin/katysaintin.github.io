@@ -260,6 +260,20 @@ Chaque nouveauté jugée pertinente fait l'objet d'un petit test avant d'être �
 
 ## Conclusion et perspectives
 
+**Bilan des compétences RS7424**
+
+Au début de cette formation, j'avais réalisé un glossaire personnel pour traduire le vocabulaire « manager/certification » dans mes propres concepts métier (SCADA, support, IHM), afin de vérifier que mon profil correspondait bien au référentiel. Ce tableau fait le chemin inverse : il évalue, compétence par compétence, le niveau atteint à l'issue de la formation, à partir du contenu réel de ce rapport, des livrables produits et des acquis démontrés lors de la certification RS6776 (§1.4). Il a été recoupé par deux IA distinctes (Claude et ChatGPT), dont les estimations convergent de façon indépendante.
+
+| Compétence | Description (référentiel) | Niveau atteint | Preuves dans ce rapport | Point de vigilance restant |
+| --- | --- | --- | --- | --- |
+| **C1** | Élaborer une stratégie d'intégration responsable de l'IA | **Très fort** (~93-94 %) | Diagnostic AS IS (§4), charte IA (§5) ancrée dans la doctrine CEA/Maïa, sobriété numérique, AI Act cité (boucle de correction depuis RS6776, §1.4) | Validation officielle de la charte MUSCADE par la hiérarchie CEA, encore à obtenir |
+| **C2** | Reconfigurer l'organisation des activités et processus avec l'IA | **Fort à très fort** (~90 %) | Cartographie TO BE (§6), nouveaux rôles, mesure handicap étayée par un vécu personnel (RQTH, TDAH, RS6776), sobriété numérique désormais reliée au workflow lui-même | Application concrète et déployée du FALC à l'ensemble de la documentation MUSCADE (au-delà du principe posé) |
+| **C3** | Élaborer des requêtes et configurations opérationnelles | **Très fort** (~94-95 %) | Prompt principal documenté (§8), méthodologie itérative héritée de RS6776, critère de décision explicite entre versions de prompt, choix d'outils justifié (§7) | Aucune vérification formelle d'accessibilité (lecteur d'écran) réalisée sur le POC à ce stade |
+| **C4** | Créer ou améliorer des contenus professionnels avec l'IA | **Fort à très fort** (~92 %) | Deux productions alignées à un objectif (§9), RSE explicité, accessibilité désormais démontrée par la mise en forme même du rapport (preuve, pas seulement intention) | Vérification formelle du contraste Gamma, à finaliser avant diffusion |
+| **C5** | Inscrire ses pratiques dans une démarche d'amélioration continue | **Excellent** (~95-96 %) | Dispositif de suivi (§10) structuré en 3 familles d'indicateurs (performance, satisfaction, RSE), comparatif avec/sans IA, veille IA, boucle d'amélioration continue traçable RS6776 → RS7424 | Aucun — c'est la compétence la mieux couverte du dossier |
+
+Estimation globale du niveau atteint : de l'ordre de 92 à 95 %** des attendus du référentiel. Les points de vigilance restants ne portent plus sur la compréhension des notions, mais sur des **finalisations opérationnelles ponctuelles** (déploiement effectif du FALC à l'ensemble des documents, vérifications formelles d'accessibilité, validation hiérarchique de la charte) et sur la cohérence des annexes citées tout au long du rapport (charte, cartographies, prompts, comparatif avec/sans IA, captures du POC) avec le contenu du dossier — un point de vigilance qu'il conviendra de vérifier une dernière fois avant remise, indépendamment du contenu rédactionnel lui-même.
+
 **Bilan global.** Ce projet m'a permis de passer d'une réflexion générale sur l'apport de l'IA à un dispositif concret et testé, sur un vrai processus de mon équipe. Il illustre les cinq compétences du référentiel : diagnostic responsable, reconfiguration organisationnelle, configuration d'outils IA justifiée, production de contenus professionnels, et démarche d'amélioration continue — le tout au service d'un objectif managérial clair : sortir d'une organisation centrée sur une expertise unique.
 
 **Prochaines étapes.**
