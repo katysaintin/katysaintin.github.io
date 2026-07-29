@@ -268,6 +268,8 @@ Chaque nouveauté jugée pertinente fait l'objet d'un petit test avant d'être �
 - Formation des collègues à l'utilisation et à l'évolution du dispositif, dans le cadre plus large d'un portail de documentation centralisé pour le projet.
 - Approfondissement du processus de pilotage de l'activité (KPI), identifié mais non développé à ce stade faute de temps.
 
+**Note sur les livrables.** Cette certification donne lieu à trois documents distincts : ce rapport (destiné au jury, selon le format attendu), un rapport complet et plus approfondi que je tiens à disposition du jury si une analyse plus détaillée est souhaitée, et une note interne adaptée à mon organisme, pour valoriser ce travail auprès de ma hiérarchie indépendamment de la certification.
+
 ---
 
 ## Visuels à insérer — table de correspondance
