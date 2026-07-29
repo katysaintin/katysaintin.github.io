@@ -274,11 +274,11 @@ Chaque nouveauté jugée pertinente fait l'objet d'un petit test avant d'être �
 
 **Auto-évaluation des compétences RS7424**
 
-Ce qui suit n'est pas une évaluation officielle : c'est un exercice d'auto-positionnement que j'ai voulu mener avant la remise du dossier, pour vérifier moi-même la cohérence entre ce que le référentiel demande et ce que ce rapport démontre réellement, compétence par compétence.
+J'ai configuré ChatGPT et Claude en « tuteurs certification », avec les référentiels RS7424 et RS6776 comme grille de lecture, pour trois usages : reformuler une notion du référentiel avec mes propres mots puis la faire challenger par l'IA afin d'identifier les zones de flou ; faire auditer un même livrable par les deux IA séparément pour repérer les incohérences qu'une seule relecture aurait pu laisser passer ; et, une fois le rapport rédigé, évaluer le niveau atteint par rapport au référentiel.
 
-Pour limiter mon propre biais de jugement (il est difficile de s'auto-évaluer objectivement sur son propre travail), j'ai soumis le rapport à deux IA génératives distinctes (Claude et ChatGPT), avec pour seule consigne de noter chaque compétence à partir des preuves effectivement présentes dans le texte — pas de mes intentions ni de mon ressenti. Les deux estimations, obtenues indépendamment, convergent, ce qui rassure sur la cohérence du diagnostic, sans en faire une garantie de validité : seul le jury évalue réellement la certification.
+Pour cette dernière étape, j'ai soumis le rapport aux deux IA avec pour seule consigne de noter chaque compétence à partir des preuves présentes dans le texte, des échanges menés avec elles et des livrables intermédiaires produits. Les deux estimations, obtenues indépendamment, convergent — un diagnostic algorithmique qui aide à la relecture et à la structuration, sans valeur de validation externe.
 
-Le tableau ci-dessous reprend ces estimations et, surtout, les points de vigilance qu'elles ont identifiés — c'est cette colonne qui m'intéresse le plus, car elle balise ce qu'il me reste à finaliser avant la remise du dossier.
+Le tableau ci-dessous reprend ces estimations et les points de vigilance identifiés — c'est cette dernière colonne qui balise ce qu'il reste à finaliser avant la remise du dossier.
 
 | Compétence | Description (référentiel) | Niveau atteint | Preuves dans ce rapport | Point de vigilance restant |
 | --- | --- | --- | --- | --- |
