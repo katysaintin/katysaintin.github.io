@@ -225,3 +225,71 @@ Le rapport ci-joint peut contenir, à un nombre variable d'endroits, des passage
 - Score estimé par compétence (C1 à C5)
 - 2-3 actions prioritaires pour atteindre 90 % sur chacune
 - Nombre de [à confirmer] résolus par la mémoire vs. restant à trancher directement par moi
+---
+## Support de présentation soutenance RS7424
+Crée un support de présentation de 10 slides pour une soutenance orale de certification professionnelle (RS7424 — Gérer et transformer les processus de travail des équipes avec l'aide de l'IA), durée totale imposée : 25 minutes.
+
+RÈGLE ABSOLUE DE FORME : chaque slide ne contient QUE des bullet points courts (5 à 8 mots maximum par ligne), jamais de phrases complètes ni de paragraphes. Le but est que je parle à partir des bullets, pas que je lise le slide. Maximum 5 bullets par slide.
+
+Ajoute, en petit texte discret en bas de chaque slide, un minutage indicatif (ex. "~2 min") pour m'aider à ne pas déborder — je suis quelqu'un de très bavard et j'ai déjà manqué de temps sur une certification précédente (RS6776).
+
+Style sobre et professionnel, cohérent avec un contexte CEA (recherche publique), palette bleu marine et gris clair, pas de couleurs vives, pas d'icônes superflues.
+
+Voici le contenu de chaque slide :
+
+**Slide 1 — Titre (~1 min)**
+- Gérer et transformer les processus de travail des équipes avec l'aide de l'IA
+- Certification RS7424 — Katy Saintin
+- Ingénieure chercheuse en génie logiciel, Experte Senior CEA
+- Cheffe de produit MUSCADE (SCADA, IRFU/DIS/LDISC)
+
+**Slide 2 — Mon contexte et ma légitimité (~2 min)**
+- 25 ans en contrôle-commande scientifique (EPICS, TANGO, MUSCADE)
+- Rôle managérial : sortir d'une organisation centrée sur une expertise unique
+- RS6776 obtenue un mois avant (création de contenus IA, 96 % écrit)
+- Intégration continue déjà ancrée dans ma pratique d'ingénieure
+
+**Slide 3 — Ce qui était acquis vs ce que j'ai approfondi (~2 min)**
+- RS6776 : prompt engineering, RGPD/anonymisation, FALC — déjà maîtrisés
+- RS7424 : cette certification, un prolongement, pas un premier contact
+- Approfondissement principal : l'automatisation (Make) et le GPT spécialisé
+- [Capture d'écran : comparatif RS6776 / RS7424 si disponible]
+
+**Slide 4 — Ma méthodologie de certification elle-même (~2,5 min)**
+- Journal de bord versionné, tenu au fil de l'eau (module après module)
+- Méthode agile en cycle V appliquée à la rédaction du rapport
+- Livrables intermédiaires → consolidation progressive, pas de rédaction finale à blanc
+- Deux IA (Claude, ChatGPT) configurées en tuteurs certification
+
+**Slide 5 — Le processus retenu et sa reconfiguration (~3 min)**
+- Diagnostic : traitement des incidents, forte dépendance à une seule experte
+- Grille d'évaluation à 5 dimensions pour prioriser
+- Nouvelle organisation : support recentré sur l'expertise, plus sur la collecte
+- [Capture d'écran : cartographie avant / après]
+
+**Slide 6 — Ce que j'ai concrètement construit (~3 min)**
+- Assistant conversationnel dédié (GPT spécialisé Muscade)
+- Workflow d'automatisation Make (POC fonctionnel)
+- Pourquoi un POC réel : je n'intègre un concept qu'en le pratiquant
+- [Capture d'écran : configuration du GPT ou scénario Make]
+
+**Slide 7 — Preuve d'usage (~2 min)**
+- [Capture d'écran : conversation avec l'assistant Muscade]
+- Qualification guidée d'un incident, ticket structuré généré
+- Guide d'utilisation produit pour les utilisateurs
+
+**Slide 8 — Dispositif de suivi et résultats attendus (~2,5 min)**
+- 3 familles d'indicateurs : Performance, Satisfaction, RSE
+- Comparatif avant/après (résultats prévisionnels, POC en cours)
+- [Capture d'écran ou graphique : tableau de bord des indicateurs]
+
+**Slide 9 — Auto-évaluation et limites assumées (~2,5 min)**
+- [Emplacement réservé : diagramme radar auto-évaluation des 5 compétences]
+- Points de vigilance encore ouverts : validation hiérarchique, vérifications d'accessibilité
+- Une démarche volontairement incrémentale, pas encore un déploiement complet
+
+**Slide 10 — Perspectives (~3 min)**
+- Candidatures déjà engagées sur des rôles transverses IA (CEA List, SOLEIL)
+- Ambition : rejoindre le groupe MAIA du CEA
+- Deux axes qui me tiennent à cœur : IA et inclusion du handicap, IA dans les métiers techniques/support
+- Déploiement progressif de l'assistant à l'ensemble de l'équipe
