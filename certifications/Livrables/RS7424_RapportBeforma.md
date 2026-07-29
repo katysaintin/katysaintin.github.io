@@ -329,18 +329,36 @@ Cette annexe vise à rendre ce rapport lisible par des collègues non familiers 
 | CEA | Commissariat à l'énergie atomique et aux énergies alternatives | Établissement public de recherche français, employeur de la candidate. |
 | IRFU | Institut de recherche sur les lois fondamentales de l'Univers | Institut du CEA rattaché à la Direction de la Recherche Fondamentale (DRF), cadre du projet MUSCADE. |
 
-## Visuels à insérer — table de correspondance
+## Liste des images, diagrammes et tableaux
 
-| # | Emplacement dans le rapport | Type | Source / Prompt Gamma |
-|---|---|---|---|
-| IMAGE 1 | C2, Partie 1 | Capture existante | Schéma AS IS / TO BE déjà réalisé (présentation Gamma « Schématisation de 2 processus du projet MUSCADE ») |
-| IMAGE 2 | C2, Partie 1 | Capture existante | Capture du scénario Make (POC) |
-| IMAGE 3 | C3, Partie 1 | Capture existante | Capture d'une conversation avec le Muscade Incident Assistant |
-| IMAGE 4 | C4, Dépôt n°1 | Capture existante | Capture du guide utilisateur (help-muscade.md) |
-| IMAGE 5 | C4, Dépôt n°2 | Capture existante | Capture d'une diapositive de la présentation Gamma existante |
-| DIAGRAMME 1 | C1, Partie 1 | À générer (Gamma) | Voir prompt ci-dessous |
-| DIAGRAMME 2 | C5, Partie 1 | À générer (Gamma) | Voir prompt ci-dessous |
-| DIAGRAMME 3 | C5, Partie 2 | À générer (Gamma) | Voir prompt ci-dessous |
+| Type | N° | Titre / description | Chapitre |
+| --- | --- | --- | --- |
+| Tableau | 1 | Processus de travail pouvant être transformés | C1 – Périmètre d'utilisation de l'IA, Partie 1 |
+| Tableau | 2 | Comment l'IA peut améliorer ces processus | C1, Partie 1 |
+| Tableau | 3 | Grille d'évaluation à 5 dimensions pour vérifier la valeur ajoutée d'une automatisation | C1, Partie 1 |
+| Diagramme | 1 | Grille d'évaluation à 5 dimensions (schéma) | C1, Partie 1 |
+| Tableau | 4 | Périmètre d'utilisation de l'IA / types de risques identifiés | C1 |
+| Tableau | 5 | Types de risques identifiés et mesures mises en place (anonymisation…) | C1 |
+| Tableau | 6 | Objectifs stratégiques SMART | C1 |
+| Tableau | 7 | Cartographie des processus | C2 – Reconfigurer un processus de travail avec l'IA, Partie 1 |
+| Image | 1 | Schématisation du processus « Produire un bilan hebdomadaire des incidents » | C2, Partie 1 |
+| Image | 2 | Scénario Make (POC) de saisie d'un ticket et d'envoi au support | C2, Partie 1 |
+| Tableau | 8 | Nouvelle organisation de l'équipe support | C2, Partie 2 |
+| Tableau | 9 | Accessibilité, sécurité et sobriété | C2, Partie 3 |
+| Tableau | 10 | Paramétrage et accessibilité | C3 – Élaborer des requêtes et configurer les outils IA, Partie 1 |
+| Image | 3 | Conversation avec le Muscade Incident Assistant (qualification guidée d'un incident) | C3, Partie 1 |
+| Image | 4 | GPT spécialisé Muscade assistant pour la gestion des incidents (configuration et Actions) | C3, Partie 1 |
+| Tableau | 11 | Production réalisée avec l'IA – Guide d'utilisation de l'assistant MUSCADE | C4 – Créer ou améliorer des contenus professionnels avec l'IA, Dépôt n°1 |
+| Image | 5 | Guide rapide d'utilisation de l'assistant MUSCADE | C4, Dépôt n°1 |
+| Tableau | 12 | Production réalisée avec l'IA – Présentation de l'organisation du support | C4, Dépôt n°2 |
+| Image | 6 | Diapositive Gamma – Présentation de l'organisation du support | C4, Dépôt n°2 |
+| Tableau | 13 | Dispositif d'évaluation / mesure des KPI | C5 – Amélioration continue, Partie 1 |
+| Diagramme | 2 | Tableau de bord des indicateurs | C5, Partie 1 |
+| Tableau | 14 | Comparatif avant / après (résultats prévisionnels) | C5, Partie 2 |
+| Diagramme | 3 | Comparatif avant / après (schéma) | C5, Partie 2 |
+| Tableau | 15 | Veille technologique | C5, Partie 3 |
+| Tableau | 16 | Auto-évaluation des compétences RS7424 | Conclusion et perspectives |
+| Diagramme | 4 | Auto-évaluation des compétences RS7424 (schéma radar) | Conclusion et perspectives |
 
 ### Prompt Gamma — DIAGRAMME 1 : grille d'évaluation à 5 dimensions
 
