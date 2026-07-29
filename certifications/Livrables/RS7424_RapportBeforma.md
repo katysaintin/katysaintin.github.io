@@ -288,6 +288,8 @@ Le tableau ci-dessous reprend ces estimations et les points de vigilance identif
 | **C4** | Créer ou améliorer des contenus professionnels avec l'IA | **Fort à très fort** (~92 %) | Deux productions alignées à un objectif (§9), RSE explicité, accessibilité désormais démontrée par la mise en forme même du rapport (preuve, pas seulement intention) | Vérification formelle du contraste Gamma, à finaliser avant diffusion |
 | **C5** | Inscrire ses pratiques dans une démarche d'amélioration continue | **Excellent** (~95-96 %) | Dispositif de suivi (§10) structuré en 3 familles d'indicateurs (performance, satisfaction, RSE), comparatif avec/sans IA, veille IA, boucle d'amélioration continue traçable RS6776 → RS7424 | Aucun — c'est la compétence la mieux couverte du dossier |
 
+*[DIAGRAMME 4 — voir prompt Gamma en fin de document]*
+
 Estimation globale du niveau atteint : de l'ordre de 92 à 95 %** des attendus du référentiel. Les points de vigilance restants ne portent plus sur la compréhension des notions, mais sur des **finalisations opérationnelles ponctuelles** (déploiement effectif du FALC à l'ensemble des documents, vérifications formelles d'accessibilité, validation hiérarchique de la charte) et sur la cohérence des annexes citées tout au long du rapport (charte, cartographies, prompts, comparatif avec/sans IA, captures du POC) avec le contenu du dossier — un point de vigilance qu'il conviendra de vérifier une dernière fois avant remise, indépendamment du contenu rédactionnel lui-même.
 
 **Bilan global.** Ce projet m'a permis de passer d'une réflexion générale sur l'apport de l'IA à un dispositif concret et testé, sur un vrai processus de mon équipe. Il illustre les cinq compétences du référentiel : diagnostic responsable, reconfiguration organisationnelle, configuration d'outils IA justifiée, production de contenus professionnels, et démarche d'amélioration continue — le tout au service d'un objectif managérial clair : sortir d'une organisation centrée sur une expertise unique.
@@ -413,4 +415,31 @@ Titre : "Impact attendu de l'IA sur le support MUSCADE (résultats prévisionnel
 Mention en petit texte, bien visible : "Résultats prévisionnels — POC en cours
 de généralisation".
 Style sobre et professionnel, couleurs bleu et gris, format paysage.
+```
+
+### Prompt Gamma — DIAGRAMME 4 : Auto-évaluation des compétences RS7424
+```
+Crée une infographie sobre en une seule page, format paysage, présentant une auto-évaluation de compétences en 5 axes (référentiel de certification professionnelle RS7424, thème : gestion et transformation des processus de travail avec l'aide de l'IA).
+
+Type de visuel : diagramme radar (araignée) à 5 axes, complété par une légende textuelle sous chaque axe. Pas de tableau, pas de texte long — uniquement le diagramme et des libellés courts.
+
+Données (niveau atteint sur 100, à représenter fidèlement, sans arrondir vers le haut) :
+- C1 – Élaborer une stratégie d'intégration responsable de l'IA : 93
+- C2 – Reconfigurer l'organisation des activités et processus avec l'IA : 90
+- C3 – Élaborer des requêtes et configurations opérationnelles : 94
+- C4 – Créer ou améliorer des contenus professionnels avec l'IA : 92
+- C5 – Inscrire ses pratiques dans une démarche d'amélioration continue : 96
+
+Style :
+- Palette sobre, professionnelle : bleu marine (#1F3864) et gris clair, pas de couleurs vives ni de dégradés flashy.
+- Typographie lisible, sans effet décoratif, compatible avec un usage en entreprise (CEA).
+- Pas d'icônes superflues, pas d'illustration décorative autour du radar : la clarté prime sur l'esthétique.
+- Contraste suffisant pour rester lisible en noir et blanc à l'impression (vérifier que le contraste texte/fond respecte les normes d'accessibilité).
+
+Titre du visuel : "Auto-évaluation des compétences RS7424"
+Sous-titre (petit, discret) : "Estimation croisée par deux IA génératives, à partir des preuves du rapport — diagnostic de préparation, non une évaluation officielle"
+
+Contrainte importante : ne pas ajouter de texte interprétatif, de recommandations, ou de commentaire au-delà des 5 libellés d'axes et du titre/sous-titre. Le diagramme doit rester un simple support visuel, complémentaire à un tableau détaillé déjà présent dans le document.
+
+Format d'export souhaité : PNG ou PDF, fond transparent ou blanc, en haute résolution pour intégration dans un rapport Word.
 ```
