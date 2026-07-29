@@ -27,7 +27,7 @@
 |1.6|2026-07-27|Katy Saintin|Traitement de Cr3.3 : ajout en §8 d'un exemple concret de test et correction (bug de mapping de variable dans Make, diagnostic croisé Claude/ChatGPT, décision de format JSON indépendant de l'outil d'orchestration) ; justification de la méthode de vérification d'accessibilité prévue par l'expertise IHM déjà établie et l'exemple des sondages UNAAPE (réduction des frictions, taux de réponse).|
 |1.7|2026-07-27|Katy Saintin|Traitement de Cr4.3 : correction de l'accessibilité de la Production n°2 (§9) — la consigne FALC explicite dans le prompt, ciblée sur le public non-expert, et sa validation avant diffusion sont désormais présentées comme une mesure appliquée, distincte de la vérification formelle des contrastes/lecteur d'écran qui reste à faire.|
 |1.8|2026-07-27|Katy Saintin|Traitement de Cr5.2 : rapatriement du comparatif avec/sans IA dans le corps du rapport (§10, nouvelle sous-section), à partir du contenu réel de l'annexe RS7424_Comparatif_Avec_Sans_IA_MUSCADE.docx, avec points de vigilance et ajustements retenus explicités ; correction des références croisées vers ce comparatif (précédemment un renvoi erroné vers §7-8).|
-
+|1.9|2026-07-28|Katy Saintin|Ajout, en conclusion, de la mention des 3 documents produits à l'issue de la certification : ce rapport complet, le rapport intermédiaire remis au jury (modèle BEFORMA), et une note interne CEA à venir (sans contexte personnel, avec tableau nominatif de l'équipe, conforme au principe IA Ready).|
 ---
 
 ---
@@ -771,6 +771,13 @@ Au début de cette formation, j'avais réalisé un glossaire personnel pour trad
 Cette certification m'a permis de transformer un projet réel de support informatique en un véritable projet d'intégration de l'IA générative. Au-delà des outils utilisés, elle m'a conduit à structurer une démarche complète de transformation des processus intégrant gouvernance, sécurité, automatisation, amélioration continue et accompagnement des utilisateurs.
 
 Le projet MUSCADE constitue désormais une base concrète pouvant être poursuivie indépendamment de la certification.
+
+**Trois documents distincts sont produits à l'issue de cette certification**, chacun avec un public et un objectif propres :
+
+1. **Ce rapport complet** (`RS7424_Rapport.md`) — la version de référence pour la certification, non modifiée, incluant l'ensemble du diagnostic, des audits croisés et du contexte personnel justifiant ma légitimité sur les sujets traités. Il reste disponible pour le jury si une version plus approfondie est souhaitée au-delà du rapport intermédiaire remis.
+2. **Un rapport intermédiaire**, structuré selon le modèle attendu par l'organisme de formation (BEFORMA), condensé et recentré sur le niveau de détail adapté à un jury RH/management.
+3. **Une note interne à destination du CEA**, adaptée pour un usage managérial auprès de ma hiérarchie et de mon équipe : sans les éléments de contexte personnel (RQTH, TDAH) qui n'ont de sens que face à un jury externe, avec un tableau nominatif de l'équipe en introduction plutôt que des rôles génériques, et conforme au principe « IA Ready » (§5) pour rester réutilisable avec une IA si besoin.
+
 
 ---
 
