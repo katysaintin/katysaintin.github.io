@@ -28,6 +28,7 @@
 |1.7|2026-07-27|Katy Saintin|Traitement de Cr4.3 : correction de l'accessibilité de la Production n°2 (§9) — la consigne FALC explicite dans le prompt, ciblée sur le public non-expert, et sa validation avant diffusion sont désormais présentées comme une mesure appliquée, distincte de la vérification formelle des contrastes/lecteur d'écran qui reste à faire.|
 |1.8|2026-07-27|Katy Saintin|Traitement de Cr5.2 : rapatriement du comparatif avec/sans IA dans le corps du rapport (§10, nouvelle sous-section), à partir du contenu réel de l'annexe RS7424_Comparatif_Avec_Sans_IA_MUSCADE.docx, avec points de vigilance et ajustements retenus explicités ; correction des références croisées vers ce comparatif (précédemment un renvoi erroné vers §7-8).|
 |1.9|2026-07-28|Katy Saintin|Ajout, en conclusion, de la mention des 3 documents produits à l'issue de la certification : ce rapport complet, le rapport intermédiaire remis au jury (modèle BEFORMA), et une note interne CEA à venir (sans contexte personnel, avec tableau nominatif de l'équipe, conforme au principe IA Ready).|
+|2.0|2026-07-28|Katy Saintin| Reformulation du bilan de compétences au auto évaluation. 1.5 Méthodologie et journal de bord. Ajout des annexes acronymes |
 ---
 
 ---
@@ -42,6 +43,7 @@
   - [1.2 Mon rôle](#12-mon-rôle)
   - [1.3 Note de transparence — situation personnelle et articulation avec la certification RS6776](#13-note-de-transparence--situation-personnelle-et-articulation-avec-la-certification-rs6776)
   - [1.4 Capitalisation sur les acquis de la certification RS6776](#14-capitalisation-sur-les-acquis-de-la-certification-rs6776)
+  - [1.5 Démarche méthodologique et journal de bord](#15-methodologie-journal-de-bord)
 - [2. Problématique](#2-problématique)
   - [Situation initiale](#situation-initiale)
 - [3. Objectifs](#3-objectifs)
@@ -175,6 +177,19 @@ Ce rapport RS7424 mobilise, plutôt que de les redémontrer intégralement, cinq
 | **Inclusion des personnes en situation de handicap (FALC)** | Exercice 4 RS6776 : rédaction d'un contenu en FALC (Facile À Lire et à Comprendre), également salué par le jury (*« référence explicite au FALC avec une mnémotechnique opérationnelle »*) | §6 (mesure d'adaptation handicap dans la reconfiguration organisationnelle), §9 (accessibilité des productions) |
 
 Cette articulation entre les deux certifications n'est pas un raccourci de commodité : elle illustre elle-même, très concrètement, la compétence C5 (amélioration continue) — un point faible identifié par un jury sur un premier dossier a été corrigé et intégré dans le dossier suivant, avec preuve écrite à l'appui.
+
+## 1.5 Démarche méthodologique et journal de bord
+
+Ce rapport n'a pas été rédigé d'un seul tenant en fin de parcours : il est la synthèse d'un travail mené au fil de l'eau, module après module, à partir d'un journal de bord tenu en Markdown tout au long de la certification.
+
+**Principe de fonctionnement.** Chaque module ou exercice donnait lieu à un livrable intermédiaire (diagnostic, cartographie, charte, dispositif de suivi…), consigné et daté dans le journal de bord au fur et à mesure de sa production, avant d'être ensuite consolidé dans ce rapport final. Cette méthode a évité une rédaction finale « à blanc » et a permis une amélioration continue traçable du dossier, module après module — visible dans l'historique de versions de ce document (voir tableau en tête de rapport).
+
+**Rôle des IA comme tuteurs de certification.** Pour valider mes acquis et ma compréhension du référentiel au fur et à mesure, j'ai configuré ChatGPT et Claude en « tuteurs certification », en leur fournissant les référentiels RS7424 et RS6776 comme grille de lecture. Cet usage a servi trois objectifs distincts :
+- **Vérification de compréhension** : reformuler une notion du référentiel avec mes propres mots, puis la faire challenger par l'IA pour identifier les zones de flou avant de les traiter dans le rapport.
+- **Diagnostic croisé** : faire auditer un même livrable par les deux IA séparément, afin de repérer les incohérences ou les angles morts qu'une seule relecture (la mienne ou celle d'une seule IA) aurait pu laisser passer.
+- **Auto-positionnement** : évaluer, une fois le rapport rédigé, le niveau atteint par rapport au référentiel (cf. auto-évaluation des compétences ci-après), en gardant à l'esprit que ce diagnostic reste un outil de préparation, non une validation du jury.
+
+**Limite assumée de cette méthode.** Un diagnostic ou un audit produit par une IA reste un point de vue algorithmique, pas une garantie de conformité au référentiel : il a valeur d'aide à la relecture et à la structuration, pas de validation externe. C'est pour cette raison que chaque ajout suggéré par une IA a été marqué **[à confirmer]** dans le journal de bord jusqu'à validation factuelle de ma part (voir historique de versions v0.5 à v0.6) — aucun contenu n'a été intégré tel quel sans repasser par ce filtre.
 
 ---
 
@@ -750,9 +765,12 @@ Cette certification s'inscrit plus largement dans une trajectoire personnelle de
 
 ---
 
-# Bilan des compétences RS7424
+## Auto-évaluation des compétences RS7424
 
-Au début de cette formation, j'avais réalisé un glossaire personnel pour traduire le vocabulaire « manager/certification » dans mes propres concepts métier (SCADA, support, IHM), afin de vérifier que mon profil correspondait bien au référentiel. Ce tableau fait le chemin inverse : il évalue, compétence par compétence, le niveau atteint à l'issue de la formation, à partir du contenu réel de ce rapport, des livrables produits et des acquis démontrés lors de la certification RS6776 (§1.4). Il a été recoupé par deux IA distinctes (Claude et ChatGPT), dont les estimations convergent de façon indépendante.
+Ce qui suit n'est pas une évaluation officielle : c'est un exercice d'auto-positionnement que j'ai voulu mener avant la remise du dossier, pour vérifier moi-même la cohérence entre ce que le référentiel demande et ce que ce rapport démontre réellement, compétence par compétence.
+Pour limiter mon propre biais de jugement (il est difficile de s'auto-évaluer objectivement sur son propre travail), j'ai soumis le rapport à deux IA génératives distinctes (Claude et ChatGPT), avec pour seule consigne de noter chaque compétence à partir des preuves effectivement présentes dans le texte — pas de mes intentions ni de mon ressenti. Les deux estimations, obtenues indépendamment, convergent, ce qui rassure sur la cohérence du diagnostic, sans en faire une garantie de validité : seul le jury évalue réellement la certification.
+
+Le tableau ci-dessous reprend ces estimations et, surtout, les points de vigilance qu'elles ont identifiés — c'est cette colonne qui m'intéresse le plus, car elle balise ce qu'il me reste à finaliser avant la remise du dossier.
 
 | Compétence | Description (référentiel) | Niveau atteint | Preuves dans ce rapport | Point de vigilance restant |
 | --- | --- | --- | --- | --- |
@@ -804,3 +822,29 @@ Le projet MUSCADE constitue désormais une base concrète pouvant être poursuiv
 - Article Mediapart « L'IA ne m'a pas rendu la vie plus facile. Elle m'a rendu la vie possible. » (Katy Ho, Hors Kadre)
 - Communiqué CEA — Renouvellement de l'accord CEA/Mistral, plateforme Maïa (23 juin 2026)
 - Liste des IA autorisées par le CEA (CEA_IAAutorisee.pdf)
+
+## Annexe — Glossaire des sigles
+
+Cette annexe vise à rendre ce rapport lisible par des collègues non familiers du vocabulaire de la certification ou de l'IA générative, dans un objectif de partage et de vulgarisation.
+
+| Sigle | Signification | Explication en une phrase |
+| --- | --- | --- |
+| IA | Intelligence artificielle | Ensemble des technologies permettant à une machine d'exécuter des tâches associées à l'intelligence humaine. |
+| IA générative | — | Famille d'IA capable de produire du texte, des images ou du code à partir d'une consigne (prompt). |
+| LLM | Large Language Model (grand modèle de langage) | Modèle d'IA entraîné sur d'énormes volumes de texte, à la base des assistants comme ChatGPT ou Claude. |
+| GPT | Generative Pre-trained Transformer | Architecture de modèle de langage ; ici, désigne aussi un assistant spécialisé configuré sur ChatGPT (ex. GPT MUSCADE). |
+| RGPD | Règlement Général sur la Protection des Données | Réglementation européenne encadrant l'usage des données personnelles. |
+| AI Act | Règlement européen sur l'intelligence artificielle | Cadre légal européen classant les usages de l'IA par niveau de risque. |
+| FALC | Facile À Lire et à Comprendre | Méthode de rédaction simplifiée destinée à rendre un contenu accessible à tous les publics, y compris en situation de handicap cognitif. |
+| RQTH | Reconnaissance de la Qualité de Travailleur Handicapé | Statut administratif ouvrant droit à des aménagements de poste ou d'examen. |
+| TDAH | Trouble Déficitaire de l'Attention avec ou sans Hyperactivité | Trouble neurodéveloppemental affectant l'attention, l'impulsivité et l'organisation. |
+| RSE | Responsabilité Sociétale des Entreprises | Prise en compte des enjeux sociaux, environnementaux et éthiques dans les pratiques professionnelles. |
+| ROI | Return On Investment (retour sur investissement) | Mesure du bénéfice obtenu (temps, qualité, coût) rapporté à l'effort ou aux ressources investies. |
+| POC | Proof Of Concept (preuve de concept) | Version d'essai limitée d'une solution, destinée à valider sa faisabilité avant un déploiement complet. |
+| KPI | Key Performance Indicator (indicateur clé de performance) | Indicateur chiffré permettant de mesurer l'atteinte d'un objectif. |
+| ITIL | Information Technology Infrastructure Library | Référentiel de bonnes pratiques pour la gestion des services informatiques (dont la gestion des incidents). |
+| SCADA | Supervisory Control And Data Acquisition | Système de supervision et de contrôle d'installations industrielles ou scientifiques. |
+| IHM | Interface Homme-Machine | Interface permettant à un utilisateur d'interagir avec un système ou une machine. |
+| API | Application Programming Interface | Interface permettant à deux logiciels d'échanger des données ou des instructions de façon automatisée. |
+| CEA | Commissariat à l'énergie atomique et aux énergies alternatives | Établissement public de recherche français, employeur de la candidate. |
+| IRFU | Institut de recherche sur les lois fondamentales de l'Univers | Institut du CEA rattaché à la Direction de la Recherche Fondamentale (DRF), cadre du projet MUSCADE. |
