@@ -102,12 +102,26 @@
       "descriptionEn": "SCADA, EPICS, TANGO and scientific control systems",
       "url": "https://katysaintin.github.io/KatyInControl/"
     },
+    ={
+      "emoji": "🎙️",
+      "title": "Podcast",
+      "descriptionFr": "Vulgarisation scientifique et technique",
+      "descriptionEn": "Scientific and technical outreach",
+      "url": "https://www.youtube.com/@katyincontrol"
+    },
     {
       "emoji": "🎓",
       "title": "Hors Kadre",
       "descriptionFr": "Orientation, Parcoursup et accompagnement des familles",
       "descriptionEn": "Student orientation and higher education guidance",
-      "url": "https://horskadre.github.io"
+      "url": "http://katy.ho.free.fr/"
+    },
+     {
+      "emoji": "🏫",
+      "title": "Bénévolat UNAAPE",
+      "descriptionFr": "Représentante bénévole UNAAPE depuis 7 ans",
+      "descriptionEn": "Volunteer parent UNAAPE since 2019",
+      "url": "https://unaape-montigny.fr/college-et-lycee/lycee-descartes/"
     },
     {
       "emoji": "✍️",
@@ -117,25 +131,18 @@
       "url": "https://medium.com/@katy.saintin"
     },
     {
-      "emoji": "🎙️",
-      "title": "Podcast",
-      "descriptionFr": "Vulgarisation scientifique et technique",
-      "descriptionEn": "Scientific and technical outreach",
-      "url": ""
-    },
-    {
       "emoji": "📸",
       "title": "Photography",
       "descriptionFr": "Fashion, portraits et publications internationales",
       "descriptionEn": "Fashion, portraits and international publications",
-      "url": ""
+      "url": "https://kavyar.com/gh94ryadod1i"
     },
     {
       "emoji": "🎵",
       "title": "Music",
       "descriptionFr": "Composition, chant et concerts",
       "descriptionEn": "Music composition, vocals and live performances",
-      "url": ""
+      "url": "https://www.youtube.com/@zebridee"
     }
   ],
   "menu": [
