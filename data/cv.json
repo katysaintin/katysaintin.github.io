@@ -6,8 +6,9 @@
     "titleEn": "CEA Senior Expert · Software Engineering, Control Systems Architecture & Technical Project Coordination",
     "taglineFr": "Reconnue dans les communautés EPICS et TANGO — 25+ ans d'ingénierie logicielle au service des grands instruments scientifiques internationaux.",
     "taglineEn": "Recognised within both the EPICS and TANGO communities — 25+ years of software engineering for international Big Science facilities.",
-    "summaryFr": "Ingénieure-chercheuse spécialisée en génie logiciel et architecture de systèmes de contrôle-commande pour les grands instruments scientifiques. Reconnue dans les communautés EPICS et TANGO à travers des présentations en conférences internationales (ICALEPCS, EPICS Collaboration Meetings, TANGO Collaboration Meetings, Journées nationales IN2P3/IJCLab 2025). Créatrice de plusieurs logiciels utilisés internationalement, contributrice open-source à Phoebus (EPICS), conférencière internationale, nommée Experte DRF en janvier 2025 puis promue Experte Senior dès septembre 2025.",
-    "summaryEn": "Research engineer specialising in software engineering and control systems architecture for large-scale scientific instruments. Recognised within both the EPICS and TANGO communities through presentations at international conferences (ICALEPCS, EPICS Collaboration Meetings, TANGO Collaboration Meetings, IN2P3/IJCLab National Days 2025). Creator of several internationally used software tools, open-source contributor to Phoebus (EPICS), international conference speaker, appointed DRF Expert in January 2025 and promoted to Senior Expert as early as September 2025."
+    "summaryFr": "Ingénieure-chercheuse spécialisée en génie logiciel et architecture de systèmes de contrôle-commande pour les grands instruments scientifiques. Reconnue dans les communautés EPICS et TANGO à travers des présentations en conférences internationales (ICALEPCS, EPICS Collaboration Meetings, TANGO Collaboration Meetings, Journées nationales IN2P3/IJCLab 2025). Créatrice de plusieurs logiciels utilisés internationalement, contributrice open-source à Phoebus (EPICS), conférencière internationale, nommée Experte DRF en janvier 2025 puis promue Experte Senior dès septembre 2025. Engagée depuis 2026 dans une double certification professionnelle sur l'intégration responsable de l'IA générative dans les organisations (RS6776 — 96% à l'écrit, obtenue ; RS7424 — gouvernance et transformation des processus par l'IA, en cours), avec une expérience concrète de définition de processus ITIL et d'amélioration continue au service des utilisateurs, initiée dès 2017 à SOLEIL.",
+    "summaryEn": "Research engineer specialising in software engineering and control systems architecture for large-scale scientific instruments. Recognised within both the EPICS and TANGO communities through presentations at international conferences (ICALEPCS, EPICS Collaboration Meetings, TANGO Collaboration Meetings, IN2P3/IJCLab National Days 2025). Creator of several internationally used software tools, open-source contributor to Phoebus (EPICS), international conference speaker, appointed DRF Expert in January 2025 and promoted to Senior Expert as early as September 2025. Since 2026, pursuing a double professional certification on the responsible integration of generative AI within organisations (RS6776 — 96% written score, obtained; RS7424 — AI governance and process transformation, in progress), building on hands-on ITIL process definition and continuous improvement work with end users, first led at SOLEIL back in 2017.",
+    "location": "Montigny-le-Bretonneux, Île-de-France"
   },
   "highlights": [
     {
@@ -61,11 +62,13 @@
     }
   ],
   "certifications": [
-     {
+    {
       "year": 2026,
       "name": "RS6776 Création de contenus rédactionnels et visuels par l'usage responsable de l'intelligence artificielle générative (96% à l'écrit)",
       "url": "https://katysaintin.github.io/certifications/2026_05_18_CertificationIA-RS6776-KatySAINTIN.pdf",
-      "status": "obtained"
+      "status": "obtained",
+      "quote": "Très bon dossier, toutes les compétences acquises",
+      "quoteSource": "Jury RS6776, mai 2026"
     },
     {
       "year": 2026,
@@ -185,7 +188,8 @@
         "Knowledge Management",
         "Documentation Generation",
         "Digital Twin",
-        "AI-assisted Development"
+        "AI-assisted Development",
+        "AI Governance & Compliance (AI Act, RGPD)"
       ]
     }
   ],
@@ -231,6 +235,15 @@
       "url": "https://proceedings.jacow.org/icalepcs2011/papers/wemau012.pdf",
       "description": "Multi data source graphical framework for scientific facilities. Published ICALEPCS 2011.",
       "descriptionFr": "Framework graphique multi-sources pour installations scientifiques. Publié ICALEPCS 2011."
+    },
+    {
+      "name": "Programme ITIL SOLEIL",
+      "role": "Conceptrice & Animatrice",
+      "url": "",
+      "description": "ITIL-based operational process improvement programme for SOLEIL's control-system IT: incident workflow mapping across 3 support levels, cluster presentations and operator training.",
+      "descriptionFr": "Programme d'amélioration des processus opérationnels (ITIL) pour l'informatique de contrôle-commande de SOLEIL : cartographie du workflow incident sur 3 niveaux de support, présentations aux clusters et formation des opérationnels.",
+      "quote": "Un incident est une occasion de progresser collectivement",
+      "quoteSource": "Katy Saintin — Formation support SOLEIL, 2017"
     }
   ],
   "experience": [
@@ -272,14 +285,16 @@
         "Developer of SDR (Scientific Data Retriever) — remote data access platform for experimental users",
         "TANGO Controls ecosystem contributor — 13 years native expertise across beamlines and accelerator systems",
         "Interface between physicists, automation engineers and IT developers — HMI design and multilingual technical translation",
-        "5 international conference publications (ICALEPCS 2005, 2007, 2011 · EPAC 2006 · NOBUGS 2000)"
+        "5 international conference publications (ICALEPCS 2005, 2007, 2011 · EPAC 2006 · NOBUGS 2000)",
+        "Designed and led SOLEIL's ITIL-based operational process improvement programme: multi-level (L1/L2/L3) incident workflow mapping, presentations to beamline clusters, and first-level diagnostic training for operations teams (2017)"
       ],
       "detailsFr": [
         "Créatrice et développeuse principale de DataBrowser — plateforme de visualisation de données scientifiques (NeXus, HDF5, TANGO, données archivées), toujours en production internationale",
         "Développeuse principale de SDR — plateforme d'accès distant aux données expérimentales",
         "Contributrice à l'écosystème TANGO Controls — 13 ans d'expertise native sur beamlines et systèmes accélérateurs",
         "Interface entre physiciens, automaticiens et informaticiens — conception IHM et traduction technique multilingue",
-        "5 publications en conférences internationales (ICALEPCS 2005, 2007, 2011 · EPAC 2006 · NOBUGS 2000)"
+        "5 publications en conférences internationales (ICALEPCS 2005, 2007, 2011 · EPAC 2006 · NOBUGS 2000)",
+        "Conception et animation du programme d'amélioration des processus opérationnels (ITIL) appliqué à l'informatique de contrôle-commande : cartographie du workflow incident sur 3 niveaux de support (L1/L2/L3), présentations aux clusters lignes de lumière et formation des équipes opérationnelles au diagnostic de premier niveau (2017)"
       ]
     },
     {
