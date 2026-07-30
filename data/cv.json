@@ -489,6 +489,8 @@
   "teaching": {
     "items": [
       "Java & Object-Oriented Programming",
+      "Enseignante vacataire (2016–2017) — Programmation Orientée Objet & Java, Master 2 et école d'ingénieur",
+      "Animation d'un hackathon étudiant",
       "Apprentice supervision",
       "Engineer mentoring",
       "International conferences",
@@ -518,5 +520,31 @@
     "Music",
     "Open Data",
     "Student Orientation"
+  ],
+  "volunteering": [
+    {
+      "period": "2016 — Présent (10 ans)",
+      "periodEn": "2016 — Present (10 years)",
+      "organization": "UNAAPE Montigny",
+      "url": "https://unaape-montigny.fr/",
+      "position": "Tête de liste élue — Lycée Descartes (3 ans), précédemment Collège Giacometti (4 ans) et école primaire (3 ans)",
+      "positionEn": "Elected list leader — Lycée Descartes (3 years), previously Collège Giacometti (4 years) and primary school (3 years)",
+      "details": [
+        "Volunteer coordination of parent-representative teams (50 to 60 people depending on the school) with no hierarchical authority",
+        "Point of contact for approximately 1,400 families at the high school; structured communication via HubSpot",
+        "Regular participation in Boards of Governors, financial and academic committees, staffing-allocation (DGH) meetings, and careers-fair organisation",
+        "Author of the UNAAPE Representative's Charter (2025): neutrality principles, escalation rules for sensitive topics, reporting protocol",
+        "Succession planning: recruited and structured a 10-candidate team spanning all 4 grade levels ahead of her own eventual departure",
+        "Webmaster of the association's website and surveys; created a dedicated website decoding Parcoursup (the French higher-education admissions platform) for families"
+      ],
+      "detailsFr": [
+        "Coordination bénévole d'équipes de représentants (50 à 60 parents selon l'établissement), sans lien hiérarchique",
+        "Interface avec environ 1 400 familles au lycée ; communication structurée via HubSpot",
+        "Participation régulière aux Conseils d'Administration, commissions financières et pédagogiques, réunions DGH, et organisation de forums métiers",
+        "Auteure de la Charte du représentant UNAAPE (2025) : principes de neutralité, règles d'escalade des sujets sensibles, protocole de compte-rendu",
+        "Structuration de la succession de l'équipe : recrutement et constitution d'une liste de 10 candidats couvrant les 4 niveaux, en vue de son propre départ",
+        "Webmestre du site associatif et des sondages ; création d'un site dédié à la vulgarisation de Parcoursup pour les familles"
+      ]
+    }
   ]
 }
