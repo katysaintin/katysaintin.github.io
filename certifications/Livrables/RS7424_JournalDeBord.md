@@ -1,6 +1,6 @@
 # Journal de bord -- Certification RS7424
 
-## Prompt de sauvega
+## Prompt de sauvegarde
 
 Chaque entrée :
 
@@ -60,6 +60,16 @@ Aucun.
 - Ne produire que les entrées Markdown.
 
 ```
+## Comparatif RS6776 et RS7424
+| Axe | RS6776 (acquis, mai 2026) | RS7424 (apporté en plus) |
+| --- | --- | --- |
+| Culture IA | Types d'IA, enjeux éthiques/légaux/environnementaux | — (déjà acquis, non répété) |
+| Création de contenu | Prompting texte/image, FALC, RGPD | Contenus professionnels formalisés : tableaux de bord, tutoriels, critère d'accessibilité (DYS, contrastes, alt-text) |
+| Outils IA | Maîtrise ChatGPT, GPTs personnalisés | Choix d'outils justifié dans une logique de transformation de processus (pas seulement d'usage) |
+| Automatisation | Introduction Make/Zapier, no-code | Workflow complet documenté et testé (POC réel : scénario Make, GPT spécialisé Muscade) |
+| Dimension organisationnelle | Gains rapides individuels | **Nouveau** : cartographie de processus, reconfiguration des rôles d'équipe, gouvernance IA |
+| Pilotage | Veille technologique | **Nouveau** : dispositif de suivi formalisé (KPIs Performance/Satisfaction/RSE), comparatif avant/après |
+| Amélioration continue | Non traité | **Nouveau** : démarche structurée d'amélioration continue (C5), auto-évaluation par compétence |
 
 ## Journal existant
 
