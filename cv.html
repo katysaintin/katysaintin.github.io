@@ -328,6 +328,12 @@
       <div class="projects-grid" id="cv-projects"></div>
     </div>
 
+    <!-- ENGAGEMENT BÉNÉVOLE — pleine largeur -->
+    <div class="cv-card cv-full">
+      <h3>🤝 <span id="label-volunteering"></span></h3>
+      <ul class="timeline" id="cv-volunteering"></ul>
+    </div>
+
     <!-- PUBLICATIONS — pleine largeur -->
     <div class="cv-card cv-full">
       <h3 id="publications">📚 <span id="label-publications"></span></h3>
@@ -407,6 +413,7 @@
       expertise:      fr ? 'Expertise Technique' : 'Technical Expertise',
       experience:     fr ? 'Parcours Professionnel' : 'Professional Experience',
       projects:       fr ? 'Projets Majeurs' : 'Major Projects',
+      volunteering:   fr ? 'Engagement Bénévole & Leadership' : 'Volunteer Leadership & Outreach',
       // publications et talks gérés séparément
       education:      fr ? 'Formation' : 'Education',
       recognition:    fr ? 'Reconnaissance' : 'Recognition',
@@ -456,6 +463,16 @@
           : e.organization}</div>
         <div class="tl-pos">${e.position}</div>
         <div class="tl-details">${e.details.map(d => `<div class="tl-detail"><span style="color:var(--terracotta);font-weight:700;margin-right:.4rem">→</span>${d}</div>`).join('')}</div>
+      </li>`).join('');
+
+    document.getElementById('cv-volunteering').innerHTML = (cv.volunteering || []).map(e =>
+      `<li>
+        <div class="tl-period">${fr ? e.period : e.periodEn}</div>
+        <div class="tl-org">${e.url
+          ? `<a href="${e.url}" target="_blank" style="color:var(--navy);text-decoration:none;border-bottom:2px solid var(--terracotta)">${e.organization}</a>`
+          : e.organization}</div>
+        <div class="tl-pos">${fr ? e.position : e.positionEn}</div>
+        <div class="tl-details">${(fr ? e.detailsFr : e.details).map(d => `<div class="tl-detail"><span style="color:var(--terracotta);font-weight:700;margin-right:.4rem">→</span>${d}</div>`).join('')}</div>
       </li>`).join('');
 
     document.getElementById('cv-projects').innerHTML = cv.majorProjects.map(proj =>
