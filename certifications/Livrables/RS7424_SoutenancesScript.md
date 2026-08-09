@@ -20,4 +20,27 @@ Je n'ai pas choisi au hasard parmi ces quatre. J'ai retenu Exploiter les inciden
 ## Slide 6 — Le processus retenu et sa reconfiguration (~3 min)
 Ce diagnostic n'était pas qu'une observation technique : c'est ma hiérarchie qui l'avait déjà documenté dans la feuille de route de l'équipe. Je vous le disais en introduction : ce qui me manquait, c'était le langage pour faire reconnaître mon rôle réel auprès de mes managers et de la RH. Voici où ça se concrétise.
 
-Ces feuilles de route, c'est moi qui les ai rédigées, seule, sous la pression directe des utilisateurs — pas mes managers. Ce qui veut dire que je portais aussi, de fait, des décisions d
+Ces feuilles de route, c'est moi qui les ai rédigées, seule, sous la pression directe des utilisateurs — pas mes managers. Ce qui veut dire que je portais aussi, de fait, des décisions d'arbitrage qui ne devraient pas être les miennes. C'est exactement ce que cette certification me permet de corriger. Je compte réécrire ma feuille de route avec l'aide de l'IA, à partir de ce que j'ai acquis ici, puis la soumettre à l'arbitrage de mes chefs. Mon rôle, c'est de fournir la matière technique et la stratégie adaptée — le go, no-go, doit revenir à ma hiérarchie, pas rester sous ma responsabilité de fait.
+
+[Montrer le schéma] Concrètement, sur le processus lui-même : avant, chaque incident remonte jusqu'à moi. Après, l'assistant qualifie et structure le ticket en amont, et je n'interviens que sur les cas qui nécessitent une expertise réelle.
+
+## Slide 7 — Ce que j'ai concrètement construit (~3 min)
+J'ai construit deux livrables concrets : un assistant conversationnel, le GPT Muscade, dédié à mon périmètre, et un workflow d'automatisation via Make, en POC fonctionnel. Pourquoi un POC réel plutôt qu'une simple maquette ? Parce que je n'intègre un concept qu'en le pratiquant — c'est une constante dans ma façon de travailler.
+
+## Slide 8 — Preuve d'usage (~2 min)
+Voici un incident réel traité pas à pas par l'assistant. La qualification est guidée, question par question. À la fin de l'échange, un ticket structuré est généré automatiquement. J'ai également livré un guide d'utilisation aux utilisateurs, pour qu'ils sachent quand et comment mobiliser l'assistant.
+
+## Slide 9 — Dispositif de suivi et résultats attendus (~2,5 min)
+Le dispositif s'organise autour de trois familles d'indicateurs : Performance — temps de qualification et temps de rédaction ; Satisfaction — retours utilisateurs via des sondages Google Forms ; et RSE — conformité à la charte d'anonymisation. Je précise que ces chiffres sont des résultats prévisionnels : le POC est fonctionnel, mais pas encore déployé à l'ensemble de l'équipe.
+
+## Slide 10 — Preuves par compétence (~2,5 min)
+Je récapitule ici, compétence par compétence, où se trouvent mes preuves dans le dossier : C1, le diagnostic et la charte IA ; C2, la cartographie avant-après et la nouvelle organisation du support ; C3, le prompt documenté et le GPT paramétré ; C4, le guide d'utilisation et la présentation livrés ; C5, le dispositif de suivi structuré en trois familles d'indicateurs.
+
+## Slide 11 — Auto-évaluation et limites assumées (~2,5 min)
+J'ai soumis mon dossier à une estimation croisée par deux IA génératives — un diagnostic de préparation, pas une évaluation officielle. Ce qui m'intéresse le plus, ce sont les limites que ce diagnostic a mises en évidence : la validation hiérarchique de la charte est encore en cours, les vérifications d'accessibilité restent à finaliser, et le déploiement est volontairement incrémental, pas encore complet.
+
+## Slide 12 — Perspectives (~3 min)
+Cette certification a déjà des suites concrètes. J'ai engagé des candidatures sur des rôles transverses IA, au CEA List et à SOLEIL. J'ai l'ambition de rejoindre le groupe MAIA du CEA. Deux axes me tiennent particulièrement à cœur : l'IA au service de l'inclusion des personnes en situation de handicap, et l'IA dans les métiers experts et support. Et bien sûr, le déploiement progressif de l'assistant à l'ensemble de mon équipe.
+
+## Slide 13 — Sources
+Voilà mes sources. Je reste disponible pour vos questions.
