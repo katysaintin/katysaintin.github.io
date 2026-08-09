@@ -1,4 +1,4 @@
-# SCRIPT COMPLET — SOUTENANCE RS7424
+# SCRIPT COMPLET — SOUTENANCE RS7424 (v2)
 
 ## Slide 1 — Titre (~1 min)
 Bonjour à toutes et à tous. Je suis Katy Saintin, ingénieure chercheuse en génie logiciel et Experte Senior au CEA. Je suis cheffe de produit MUSCADE, notre système de supervision SCADA déployé sur une trentaine d'installations scientifiques à l'IRFU. Je vous présente aujourd'hui mon dossier de certification RS7424, "Gérer et transformer les processus de travail des équipes avec l'aide de l'IA".
@@ -9,17 +9,18 @@ J'ai 25 ans d'expérience en contrôle-commande scientifique, dont 13 ans à SOL
 ## Slide 3 — Ma méthodologie de certification (~2 min)
 Ce dossier n'a pas été rédigé en une fois à la fin du parcours. J'ai tenu un journal de bord versionné tout au long de la certification, avec des livrables intermédiaires consolidés progressivement. J'ai aussi configuré deux IA génératives, Claude et ChatGPT, en tuteurs certification, pour challenger ma compréhension du référentiel et auditer mes livrables de façon croisée.
 
-## Slide 4 [NOUVELLE] — Processus identifiés et objectifs stratégiques (~2 min)
-J'ai identifié deux processus de travail candidats à la transformation. Le premier : le traitement des incidents utilisateurs, qui repose aujourd'hui sur une réception informelle des demandes — téléphone, couloir, mail libre — avec une qualité d'information inégale et une forte dépendance à une seule experte, moi-même. Le second : la capitalisation des connaissances, c'est-à-dire transformer un incident résolu en fiche de procédure réutilisable — un travail aujourd'hui chronophage, souvent repoussé, avec un savoir-faire mal transmis aux nouveaux arrivants.
+## Slide 4 [NOUVELLE] — Les 4 processus identifiés (~2 min)
+J'ai construit mon diagnostic à partir des tickets GitLab, des retours de l'équipe support, et de ma propre feuille de route MUSCADE. Quatre processus en sont ressortis. Exploiter les incidents : volume important, forte dépendance à une seule experte, moi-même. Piloter l'activité : les KPI et comptes rendus sont produits manuellement. Capitaliser les connaissances : la rédaction de procédures est chronophage et souvent repoussée. Et déployer l'IA de manière responsable : un processus encore peu mature dans mon équipe.
 
-Pour chacun, j'ai formalisé des objectifs SMART. Sur le traitement des incidents : réduire de 30 % le temps de qualification, testé sur les nouveaux tickets entrants, sur trois mois, avec l'expert qui garde la décision finale. Sur la rédaction de comptes rendus : réduire de 40 à 50 % le temps de rédaction. Et sur la capitalisation : construire une base documentaire interrogeable à partir des tickets résolus, en six mois.
+## Slide 5 [NOUVELLE] — Sélection des 2 processus prioritaires (~2 min)
+Je n'ai pas choisi au hasard parmi ces quatre. J'ai retenu Exploiter les incidents, parce que le volume est fort et les données déjà structurées, ce qui rendait un POC réalisable. Et Capitaliser les connaissances, parce qu'il répond directement à ma problématique de dépendance à une experte unique. Piloter l'activité reste identifié comme une vraie opportunité, mais je l'ai volontairement mis de côté : je voulais rester concentrée sur mon objectif managérial premier, plutôt que de disperser mes efforts. Et déployer l'IA de manière responsable est trop peu mature à ce stade — une charte d'usage doit venir avant toute automatisation.
 
-## Slide 5 [NOUVELLE] — Sélection du processus prioritaire (~2 min)
-Pour choisir lequel de ces processus traiter en priorité, je ne me suis pas fiée à mon intuition : j'ai passé chaque candidat au crible d'une grille à cinq dimensions — gain de temps, fiabilité, fluidité, expérience collaborateur, alignement organisationnel. C'est le traitement des incidents qui est ressorti prioritaire : le gain de temps y est fort, la fiabilité élevée grâce à l'homogénéisation des tickets, et l'alignement avec les objectifs du service est direct. La capitalisation des connaissances reste identifiée et documentée dans mon dossier, mais son bénéfice est plus indirect et moins urgent — je la garde comme prochaine étape plutôt que comme premier POC.
+## Slide 6 — Le processus retenu et sa reconfiguration (~3 min)
+Ce diagnostic n'était pas qu'une observation technique : c'est ma hiérarchie qui l'avait déjà documenté dans la feuille de route de l'équipe. Mais j'ajoute une précision importante : ces feuilles de route, c'est moi qui les ai rédigées, seule, sous la pression directe des utilisateurs — pas mes managers. Ce qui veut dire que je portais aussi, de fait, des décisions d'arbitrage qui ne devraient pas être les miennes.
 
-## Slide 6 — Le processus retenu et sa reconfiguration (~2,5 min)
-[Version resserrée puisque le diagnostic et la priorisation viennent d'être développés dans les 2 slides précédentes]
-Ce diagnostic n'était pas qu'une observation technique : c'est ma hiérarchie qui l'avait documenté dans la feuille de route de l'équipe. La reconfiguration proposée recentre le support sur l'expertise, plus sur la collecte d'information. [Montrer le schéma] Avant, chaque incident remonte jusqu'à moi. Après, l'assistant qualifie et structure le ticket en amont, et je n'interviens que sur les cas qui nécessitent une expertise réelle.
+C'est exactement ce que cette certification me permet de corriger. Je compte réécrire ma feuille de route avec l'aide de l'IA, à partir de ce que j'ai acquis ici, puis la soumettre à l'arbitrage de mes chefs. Mon rôle, c'est de fournir la matière technique et la stratégie adaptée — le go, no-go, doit revenir à ma hiérarchie, pas rester sous ma responsabilité de fait.
+
+[Montrer le schéma] Concrètement, sur le processus lui-même : avant, chaque incident remonte jusqu'à moi. Après, l'assistant qualifie et structure le ticket en amont, et je n'interviens que sur les cas qui nécessitent une expertise réelle.
 
 ## Slide 7 — Ce que j'ai concrètement construit (~3 min)
 J'ai construit deux livrables concrets : un assistant conversationnel, le GPT Muscade, dédié à mon périmètre, et un workflow d'automatisation via Make, en POC fonctionnel. Pourquoi un POC réel plutôt qu'une simple maquette ? Parce que je n'intègre un concept qu'en le pratiquant — c'est une constante dans ma façon de travailler.
