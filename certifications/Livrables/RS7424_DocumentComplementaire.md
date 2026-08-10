@@ -109,10 +109,10 @@ Cette répartition n'est pas arbitraire : elle s'appuie sur une observation rép
 | Pages d'aide en ligne par épisode (HTML) | Claude | Podcast Katy In Control |
 | Guides PDF téléchargeables | Gamma | Podcast Katy In Control |
 | Épisodes vidéo (avatar numérique, anglais) | HeyGen | Podcast Katy In Control |
-| CV / portfolio professionnel | *Non précisé — à confirmer* | Site professionnel Katy Saintin |
-| Publications régulières | *Non précisé* | Site professionnel / LinkedIn |
-| Site de vulgarisation Parcoursup | *Non précisé* | Bénévolat UNAAPE |
-| Guides HTML et tests d'orientation | *Non précisé* | Bénévolat UNAAPE |
+| CV / portfolio professionnel | Claude | Site professionnel Katy Saintin |
+| Publications régulières | ChatGPT & Claude | Site professionnel / LinkedIn |
+| Site de vulgarisation Parcoursup | Claude | Bénévolat UNAAPE |
+| Guides HTML et tests d'orientation | Claude | Bénévolat UNAAPE |
 | Guide d'inscription UVSQ (PDF) | Gamma | Bénévolat UNAAPE |
 | Gazette de fin d'année + infographie chiffres clés | Gamma (infographie) / HubSpot (diffusion) | Bénévolat UNAAPE |
 | Sondages de satisfaction | Google Forms | Bénévolat UNAAPE |
