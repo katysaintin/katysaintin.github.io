@@ -118,5 +118,5 @@ Cette section sert de journal des différences découvertes au fur et à mesure 
 | Concept | Java | Python | À retenir |
 |---|---|---|---|
 | Trace d’exécution en cas d’erreur | **Stack Trace** | **Traceback** | Décrit la chaîne d’appels ayant conduit à l’erreur et indique notamment le fichier, la ligne et le type d’exception. |
-
+| Chaîne formatée F-String | Natif toString() | `f"{2} new messages"` | Préfixer la chaîne par `f` et placer les valeurs numériques ou expressions entre `{}`. En Java, la concaténation permet plus simplement `message = 2 + " new message";` puis `System.out.println(message);`. |
 
