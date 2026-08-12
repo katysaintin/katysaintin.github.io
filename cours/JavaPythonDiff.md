@@ -115,15 +115,8 @@ L'objectif de ce tableau est de retrouver les équivalents fonctionnels dans l'�
 
 Cette section sert de journal des différences découvertes au fur et à mesure de la pratique.
 
-| Notion / concept | Java | Python | Commentaire / warning |
+| Concept | Java | Python | À retenir |
 |---|---|---|---|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-'''
+| Trace d’exécution en cas d’erreur | **Stack Trace** | **Traceback** | Décrit la chaîne d’appels ayant conduit à l’erreur et indique notamment le fichier, la ligne et le type d’exception. |
 
-path = Path("/mnt/data/Java_Python_Memo_Differences.md")
-path.write_text(content, encoding="utf-8")
-print(f"Fichier créé : {path}")
+
