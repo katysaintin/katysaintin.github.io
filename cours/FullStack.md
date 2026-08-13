@@ -5,7 +5,7 @@
 Full Stack désigne l’ensemble des technologies nécessaires pour construire une application complète, depuis ce que voit l’utilisateur jusqu’aux traitements exécutés sur le serveur.
 
 On peut simplifier une application en trois grandes zones :
-
+```
                     APPLICATION
                          │
           ┌──────────────┴──────────────┐
@@ -20,7 +20,7 @@ On peut simplifier une application en trois grandes zones :
                          │
                       DONNÉES
                     Base de données
-
+```
 Un développeur Full Stack est donc capable d’intervenir sur plusieurs couches de cette architecture.
 
 ⸻
