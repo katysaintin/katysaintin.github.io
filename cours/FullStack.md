@@ -148,18 +148,18 @@ Ils peuvent tous intervenir dans une application Full Stack, mais ils ne sont pa
 
 ## 6. Tableau d’analogie Java / Python
 
-Catégorie	Objectif	Java	Python
-Front End	IHM Web	Angular est souvent utilisé avec un Back End Java	Streamlit, ou frameworks Web Python selon le besoin
-Front End	Interface Web	Angular / HTML / CSS / JavaScript / TypeScript	Streamlit, HTML/CSS/JS via frameworks Python
-Back End	API REST	Spring Boot / JAX-RS / Jakarta REST	Flask / FastAPI / Django REST Framework
-Back End	Serveur applicatif	Spring Boot, Jakarta EE	Flask, FastAPI, Django
-Back End	Logique métier	Java	Python
-Back End	Communication HTTP	REST, JAX-RS, Spring MVC	Flask, FastAPI
-Back End	Données / BDD	JDBC, JPA, Hibernate, Spring Data	SQLAlchemy, Django ORM
-Back End	Gestion du projet / dépendances	Maven / Gradle	Poetry / uv / pip
-Back End	Exécution serveur	JVM	Interpréteur Python
-Full Stack	Application complète	Angular + Spring Boot + BDD	Streamlit ou Angular + FastAPI/Flask + BDD
-
+| Catégorie | Objectif | Java | Python |
+|---|---|---|---|
+| Front End | IHM Web | Angular est souvent utilisé avec un Back End Java | Streamlit, ou frameworks Web Python selon le besoin |
+| Front End | Interface Web | Angular / HTML / CSS / JavaScript / TypeScript | Streamlit, HTML/CSS/JS via frameworks Python |
+| Back End | API REST | Spring Boot / JAX-RS / Jakarta REST | Flask / FastAPI / Django REST Framework |
+| Back End | Serveur applicatif | Spring Boot / Jakarta EE | Flask / FastAPI / Django |
+| Back End | Logique métier | Java | Python |
+| Back End | Communication HTTP | REST / JAX-RS / Spring MVC | Flask / FastAPI |
+| Back End | Données / BDD | JDBC / JPA / Hibernate / Spring Data | SQLAlchemy / Django ORM |
+| Back End | Gestion du projet / dépendances | Maven / Gradle | Poetry / uv / pip |
+| Back End | Exécution serveur | JVM | Interpréteur Python |
+| Full Stack | Application complète | Angular + Spring Boot + BDD | Streamlit ou Angular + FastAPI/Flask + BDD |
 ⸻
 
 ## 7. Node.js : où le placer ?
