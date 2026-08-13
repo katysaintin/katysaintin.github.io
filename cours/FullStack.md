@@ -1,6 +1,6 @@
 # Comprendre le Full Stack : Front End, Back End et analogie Java / Python
 
-1. Qu’est-ce que le Full Stack ?
+## 1. Qu’est-ce que le Full Stack ?
 
 Full Stack désigne l’ensemble des technologies nécessaires pour construire une application complète, depuis ce que voit l’utilisateur jusqu’aux traitements exécutés sur le serveur.
 
@@ -25,7 +25,7 @@ Un développeur Full Stack est donc capable d’intervenir sur plusieurs couches
 
 ⸻
 
-2. Le Front End
+## 2. Le Front End
 
 Le Front End, c’est la partie de l’application avec laquelle l’utilisateur interagit directement.
 
@@ -44,7 +44,7 @@ On parle souvent d’IHM (Interface Homme-Machine) ou d’UI (User Interface).
 Exemple
 
 Dans une application de supervision :
-
+```
 ┌─────────────────────────────────────┐
 │          SUPERVISION MUSCADE        │
 ├─────────────────────────────────────┤
@@ -56,12 +56,12 @@ Dans une application de supervision :
 │   [ Démarrer ]    [ Arrêter ]       │
 │                                     │
 └─────────────────────────────────────┘
-
+```
 Tout ce que l’utilisateur voit et manipule appartient principalement au Front End.
 
 ⸻
 
-3. Le Back End
+## 3. Le Back End
 
 Le Back End, c’est la partie qui travaille “derrière” l’interface.
 
@@ -75,7 +75,7 @@ Il peut notamment :
 * retourner des résultats au Front End.
 
 Par exemple :
-
+```
 Utilisateur
     │
     │ clique sur "Démarrer"
@@ -98,10 +98,10 @@ Front End
     │
     ▼
 Affichage à l'utilisateur
-
+```
 ⸻
 
-4. API : le lien entre Front End et Back End
+## 4. API : le lien entre Front End et Back End
 
 Une API (Application Programming Interface) permet à différents logiciels de communiquer.
 
@@ -120,19 +120,19 @@ Il demande simplement :
 "Donne-moi les informations de l'équipement 123"
 
 Le Back End répond par exemple :
-
+```
 {
   "id": 123,
   "nom": "Pompe 1",
   "temperature": 23.5,
   "etat": "RUNNING"
 }
-
+```
 Le Front End transforme ensuite ces données en interface graphique.
 
 ⸻
 
-5. Où se situent Java, Python, Node.js et Angular ?
+## 5. Où se situent Java, Python, Node.js et Angular ?
 
 C’est ici que la comparaison Java / Python devient intéressante.
 
@@ -146,7 +146,7 @@ Ils peuvent tous intervenir dans une application Full Stack, mais ils ne sont pa
 
 ⸻
 
-6. Tableau d’analogie Java / Python
+## 6. Tableau d’analogie Java / Python
 
 Catégorie	Objectif	Java	Python
 Front End	IHM Web	Angular est souvent utilisé avec un Back End Java	Streamlit, ou frameworks Web Python selon le besoin
@@ -162,14 +162,14 @@ Full Stack	Application complète	Angular + Spring Boot + BDD	Streamlit ou Angula
 
 ⸻
 
-7. Node.js : où le placer ?
+## 7. Node.js : où le placer ?
 
 Node.js est côté serveur, mais avec une particularité importante :
 
 Node.js permet d’exécuter du JavaScript en dehors du navigateur.
 
 On peut donc utiliser JavaScript côté serveur.
-
+```
                  FULL STACK
        FRONT END             BACK END
           │                     │
@@ -181,9 +181,9 @@ On peut donc utiliser JavaScript côté serveur.
           └──────────┬──────────┘
                      │
                  Base de données
-
+```
 Une architecture peut donc être :
-
+```
 Angular
    │
    │ HTTP / REST
@@ -192,9 +192,9 @@ Node.js
    │
    ▼
 Base de données
-
+```
 Mais elle peut tout aussi bien être :
-
+```
 Angular
    │
    │ HTTP / REST
@@ -203,9 +203,9 @@ Spring Boot
    │
    ▼
 Base de données
-
+```
 Ou :
-
+```
 Angular
    │
    │ HTTP / REST
@@ -214,10 +214,10 @@ FastAPI
    │
    ▼
 Base de données
-
+```
 ⸻
 
-8. Angular : où le placer ?
+## 8. Angular : où le placer ?
 
 Angular est principalement une technologie Front End.
 
@@ -234,7 +234,7 @@ IHM Web
 Angular utilise principalement TypeScript.
 
 Une architecture classique est :
-
+```
 ┌─────────────────────────────┐
 │          Angular            │
 │         Front End           │
@@ -256,10 +256,10 @@ Une architecture classique est :
                │
                ▼
           Base de données
-
+```
 ⸻
 
-9. Et Python dans tout cela ?
+## 9. Et Python dans tout cela ?
 
 Python peut intervenir à plusieurs niveaux.
 
@@ -270,7 +270,7 @@ C’est une différence importante avec l’idée simpliste :
 Python peut effectivement faire du Back End, mais pas uniquement.
 
 Python côté Back End
-
+```
 Python
    │
    ├── Flask
@@ -279,11 +279,11 @@ Python
           │
           ▼
        API REST
-
+```
 Python pour une IHM simple
 
 Avec Streamlit, Python peut également servir à construire rapidement une interface Web :
-
+```
 Python
    │
    ▼
@@ -291,43 +291,43 @@ Streamlit
    │
    ▼
 IHM Web
-
+```
 C’est particulièrement intéressant pour les applications scientifiques, la data science et les prototypes.
 
 ⸻
 
-10. Poetry : attention, ce n’est pas un équivalent de Flask
+## 10. Poetry : attention, ce n’est pas un équivalent de Flask
 
 C’est une distinction importante pour comprendre l’écosystème Python.
 
 En Java :
-
+```
 Maven / Gradle
       │
       ▼
 Gestion du projet et des dépendances
-
+```
 En Python :
-
+```
 Poetry / uv
       │
       ▼
 Gestion du projet et des dépendances
-
+```
 Alors que :
-
+```
 Java
   └── Spring Boot
           │
           └── API / Back End
-
+```
 et :
-
+```
 Python
   └── Flask / FastAPI
           │
           └── API / Back End
-
+```
 Donc :
 
 Java	Python	Rôle
@@ -345,7 +345,7 @@ JVM	Python runtime	Environnement d’exécution
 11. Une analogie simple à retenir
 
 Pour comprendre l’écosystème, il est utile de raisonner en couches plutôt qu’en langages.
-
+```
 ┌──────────────────────────────────────────────┐
 │                    IHM                       │
 │              FRONT END                      │
@@ -368,18 +368,18 @@ Pour comprendre l’écosystème, il est utile de raisonner en couches plutôt q
 │                                              │
 │       SQL / PostgreSQL / MongoDB...          │
 └──────────────────────────────────────────────┘
-
+```
 Et autour de tout cela, on trouve les outils de développement :
-
+```
 Java                  Python
  │                       │
 Maven / Gradle        Poetry / uv
  │                       │
 JDK / JVM             Python
-
+```
 ⸻
 
-12. Le point essentiel pour comparer Java et Python
+## 12. Le point essentiel pour comparer Java et Python
 
 Il vaut mieux poser la question :
 
@@ -392,7 +392,7 @@ plutôt que :
 Car Java est principalement un langage + environnement d’exécution, alors que les autres noms correspondent à des frameworks, outils ou technologies différentes.
 
 Par exemple :
-
+```
 JAVA
  │
  ├── Langage
@@ -406,9 +406,9 @@ JAVA
  │
  └── peut être associé à Angular
          └── Front End
-
+```
 Et côté Python :
-
+```
 PYTHON
  │
  ├── Langage
@@ -422,13 +422,13 @@ PYTHON
  │
  └── Streamlit
          └── IHM Web Python
-
+```
 ⸻
 
-13. Une architecture Full Stack concrète
+## 13. Une architecture Full Stack concrète
 
 Une application pourrait par exemple être construite ainsi :
-
+```
                  UTILISATEUR
                       │
                       ▼
@@ -451,9 +451,9 @@ Une application pourrait par exemple être construite ainsi :
               │   PostgreSQL  │
               │    Données    │
               └───────────────┘
-
+```
 Mais une autre application pourrait être :
-
+```
                  UTILISATEUR
                       │
                       ▼
@@ -472,10 +472,10 @@ Mais une autre application pourrait être :
                       │
                       ▼
                   Données
-
+```
 ⸻
 
-14. Résumé en une phrase
+## 14. Résumé en une phrase
 
 Pour retenir l’essentiel :
 
@@ -498,7 +498,7 @@ Streamlit = outil Python permettant notamment de créer rapidement une IHM Web.
 Poetry = outil de gestion de projet et de dépendances Python.
 
 Et surtout :
-
+```
               FULL STACK
                   │
         ┌─────────┴─────────┐
@@ -514,3 +514,4 @@ Et surtout :
                   │
                   ▼
                DONNÉES
+```
