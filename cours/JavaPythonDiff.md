@@ -108,6 +108,7 @@ L'objectif de ce tableau est de retrouver les équivalents fonctionnels dans l'�
 | Typage des variables | `String name = "Katy";` | `name: str = "Katy"` | L'annotation Python est optionnelle et n'impose pas le typage à l'exécution. |
 | Réaffectation d'un autre type | `name = 42` → erreur de compilation | `name = 42` → autorisé | Python est dynamiquement typé. |
 | Variable / valeur | `name` désigne la variable ; `"name"` est une chaîne | Même distinction | `print(name)` affiche la valeur ; `print("name")` affiche le texte `name`. |
+| Lisibilité / débogage | Décomposer les instructions et conditions complexes ; une instruction par ligne facilite le debug pas à pas. | Même principe, avec une importance accrue car l'indentation définit les blocs syntaxiques. Éviter les conditions longues sur une seule ligne. | Bonne pratique transversale du génie logiciel, indépendante du langage. |
 
 ---
 
