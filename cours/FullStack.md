@@ -342,7 +342,7 @@ JVM	Python runtime	Environnement d’exécution
 
 ⸻
 
-11. Une analogie simple à retenir
+## 11. Une analogie simple à retenir
 
 Pour comprendre l’écosystème, il est utile de raisonner en couches plutôt qu’en langages.
 ```
