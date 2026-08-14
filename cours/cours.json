@@ -1,0 +1,17 @@
+{
+  "_lisezmoi": "Clé = nom du fichier .html SANS l'extension. Toute clé commençant par _ est ignorée par cours.html. Champs : title, description, icon (emoji ou chemin d'image), pdf (chemin vers le PDF, optionnel).",
+
+  "fullstack-web": {
+    "title": "Full Stack Web : comprendre l'architecture moderne",
+    "description": "Introduction structurée pour ingénieurs Java expérimentés : Front End, API REST, Back End, données.",
+    "icon": "🧩",
+    "pdf": "Full-Stack-Web-Comprendre-larchitecture-moderne.pdf"
+  },
+
+  "_exemple-a-dupliquer": {
+    "title": "Titre du cours",
+    "description": "Une phrase claire qui résume le contenu et le public visé.",
+    "icon": "📘",
+    "pdf": "NomDuFichier.pdf"
+  }
+}
