@@ -131,4 +131,5 @@ Cette section sert de journal des différences découvertes au fur et à mesure 
 | Condition `if` `elsè | `if (condition) {} else {}` | `if condition: else:` | En Python, pas d'accolades : l'indentation définit le bloc de code. Elle est donc syntaxiquement obligatoire et doit être cohérente. |
 | Condition multiple | `else if (condition)` | `elif condition:` | Python utilise `elif` à la place de `else if`. Même logique conditionnelle. |
 | Sélection de valeurs | `switch/case` pour tester plusieurs valeurs d'une même expression | `match/case` | Pour plusieurs égalités strictes sur une même valeur, préférer une structure de sélection dédiée plutôt qu'une longue chaîne de `if/elif`. Plus lisible et exprime mieux l'intention. |
+| Incrémentation / décrémentation | `var += 1` → `var = var + 1` ; `var++` / `var--` | `var += 1` → `var = var + 1` ; pas de `++` / `--` | Java possède les opérateurs d'incrémentation/décrémentation préfixés et postfixés : `++var` incrémente avant l'utilisation de la valeur, `var++` après. Python utilise `+=` et `-=`. |
 
