@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Full Stack Web — Comprendre l'architecture moderne | Katy Saintin</title>
+<meta name="description" content="Introduction structurée au Full Stack Web pour ingénieurs Java expérimentés : Front End, API REST, Back End, données.">
+<link rel="icon" type="image/png" href="favicon.png">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CLGVGY5YNH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CLGVGY5YNH', { 'anonymize_ip': true });
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #0c1220;
+    --bg-panel: #121a2b;
+    --bg-card: #16203350;
+    --line: #26324a;
+    --text: #e7ecf6;
+    --text-muted: #90a0bd;
+    --accent: #5b9bd5;
+    --accent-soft: #8ecae6;
+    --accent-2: #4fd1c5;
+    --code-bg: #0a0f1a;
+    --radius: 10px;
+    --maxw: 920px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 85% -10%, #16233f 0%, transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter', system-ui, sans-serif;
+    line-height:1.65;
+  }
+
+  a{ color:var(--accent-soft); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+
+  h1,h2,h3{
+    font-family:'Space Grotesk', 'Inter', sans-serif;
+    letter-spacing:-0.01em;
+    color:#f4f7fc;
+  }
+
+  code, pre, .mono{
+    font-family:'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  /* ---------- top bar : la "chaîne" Front > API > Back > Data ---------- */
+  .archbar{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; gap:0;
+    background:rgba(10,15,26,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--line);
+    overflow-x:auto;
+    padding: 0 20px;
+  }
+  .archbar .brand{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:0.92rem;
+    color:var(--text);
+    padding:14px 18px 14px 0;
+    border-right:1px solid var(--line);
+    margin-right:14px;
+    white-space:nowrap;
+  }
+  .archbar .brand span{ color:var(--accent-soft); }
+  .arch-steps{ display:flex; align-items:center; }
+  .arch-step{
+    font-size:0.78rem;
+    padding:6px 12px;
+    border-radius:999px;
+    color:var(--text-muted);
+    white-space:nowrap;
+    border:1px solid transparent;
+    transition:all .15s ease;
+  }
+  .arch-step.is-active{
+    color:#0c1220;
+    background:var(--accent-soft);
+    font-weight:600;
+  }
+  .arch-sep{ color:var(--line); padding:0 2px; font-size:0.8rem; }
+
+  /* ---------- layout ---------- */
+  .layout{
+    display:grid;
+    grid-template-columns: 250px 1fr;
+    gap:48px;
+    max-width:1240px;
+    margin:0 auto;
+    padding: 36px 24px 100px;
+  }
+  @media (max-width: 880px){
+    .layout{ grid-template-columns: 1fr; }
+    .toc{ position:static; order:2; }
+    main{ order:1; }
+  }
+
+  /* ---------- sommaire ---------- */
+  .toc{
+    position:sticky; top:70px; align-self:start;
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px 16px;
+    max-height: calc(100vh - 100px);
+    overflow-y:auto;
+  }
+  .toc h2{
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--text-muted);
+    margin:0 0 12px;
+  }
+  .toc ol{
+    list-style:none; margin:0; padding:0;
+    counter-reset: toc-counter;
+  }
+  .toc li{ counter-increment: toc-counter; margin:0; }
+  .toc a{
+    display:flex; gap:10px;
+    padding:8px 8px;
+    border-radius:6px;
+    font-size:0.87rem;
+    color:var(--text-muted);
+  }
+  .toc a::before{
+    content: counter(toc-counter, decimal-leading-zero);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.75rem;
+    color:var(--accent);
+    flex-shrink:0;
+  }
+  .toc a:hover, .toc a.is-active{
+    background:#1b2740;
+    color:var(--text);
+    text-decoration:none;
+  }
+  .toc a.is-active::before{ color:var(--accent-soft); }
+
+  /* ---------- hero ---------- */
+  .hero{
+    max-width:var(--maxw);
+    padding: 8px 0 28px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:12px;
+  }
+  .hero .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    color:var(--accent-2);
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-size:clamp(1.8rem, 3.6vw, 2.6rem);
+    line-height:1.15;
+    margin:0 0 16px;
+  }
+  .hero p{
+    color:var(--text-muted);
+    font-size:1.05rem;
+    max-width: 60ch;
+  }
+
+  /* ---------- sections ---------- */
+  main{ max-width:var(--maxw); }
+  section{
+    padding: 52px 0;
+    border-bottom:1px solid var(--line);
+    scroll-margin-top: 84px;
+  }
+  section:last-of-type{ border-bottom:none; }
+
+  .section-num{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--accent);
+    font-size:0.85rem;
+    margin-bottom:8px;
+  }
+  section h2{
+    font-size:clamp(1.35rem, 2.4vw, 1.7rem);
+    margin:0 0 18px;
+  }
+  section > p.lede{
+    color:var(--text-muted);
+    font-size:1.02rem;
+    max-width:65ch;
+    margin-bottom:26px;
+  }
+
+  /* analogy grid */
+  .analogy{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:14px;
+    margin-bottom:18px;
+  }
+  @media (max-width:600px){ .analogy{ grid-template-columns:1fr; } }
+  .analogy-col h3{
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--text-muted);
+    margin:0 0 10px;
+    font-weight:500;
+  }
+  .analogy-item{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-left:3px solid var(--accent);
+    border-radius:8px;
+    padding:14px 16px;
+    margin-bottom:10px;
+  }
+  .analogy-item b{ display:block; font-size:0.95rem; margin-bottom:4px; color:#f4f7fc; }
+  .analogy-item span{ color:var(--text-muted); font-size:0.9rem; }
+
+  .callout{
+    background:linear-gradient(135deg, #16345a 0%, #142138 100%);
+    border:1px solid #2c4870;
+    border-radius:var(--radius);
+    padding:16px 18px;
+    font-size:0.95rem;
+    color:#dce8f7;
+    margin-top:8px;
+  }
+  .callout b{ color:#fff; }
+
+  /* pipeline (où placer les technologies) */
+  .pipeline{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:12px;
+    margin:20px 0 14px;
+  }
+  @media (max-width:700px){ .pipeline{ grid-template-columns: 1fr; } }
+  .pipe-col{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .pipe-col h4{
+    margin:0; padding:12px 14px;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:0.9rem;
+    color:var(--accent-soft);
+    border-bottom:1px solid var(--line);
+    background:#0f172a;
+  }
+  .pipe-col ul{ list-style:none; margin:0; padding:10px; }
+  .pipe-col li{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.82rem;
+    padding:8px 10px;
+    color:var(--text);
+    border-radius:6px;
+  }
+  .pipe-col li:hover{ background:#1b2740; }
+
+  /* tech grid (Java web / Python web) */
+  .tech-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:12px;
+    margin-bottom:16px;
+  }
+  @media (max-width:700px){ .tech-grid{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width:480px){ .tech-grid{ grid-template-columns: 1fr; } }
+  .tech-card{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px;
+  }
+  .tech-card h4{
+    margin:0 0 6px;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1rem;
+    color:#f4f7fc;
+  }
+  .tech-card p{ margin:0; color:var(--text-muted); font-size:0.88rem; }
+
+  /* code block */
+  .code-block{
+    background:var(--code-bg);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px 20px;
+    overflow-x:auto;
+    margin:18px 0;
+  }
+  .code-block .req{ color:var(--accent-2); }
+  .code-block pre{ margin:0; font-size:0.88rem; color:#c9d6ea; }
+  .code-block .key{ color:var(--accent-soft); }
+  .code-block .str{ color:#ffd479; }
+  .code-block .num{ color:var(--accent-2); }
+
+  ul.key-points{ margin:0; padding-left:0; list-style:none; }
+  ul.key-points li{
+    padding:10px 0 10px 26px;
+    position:relative;
+    border-bottom:1px dashed var(--line);
+    font-size:0.95rem;
+  }
+  ul.key-points li:last-child{ border-bottom:none; }
+  ul.key-points li::before{
+    content:"▸";
+    position:absolute; left:0; top:10px;
+    color:var(--accent);
+  }
+  ul.key-points b{ color:#f4f7fc; }
+
+  /* venn / orm */
+  .orm-flags{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:14px;
+    margin:18px 0;
+  }
+  @media (max-width:600px){ .orm-flags{ grid-template-columns:1fr; } }
+  .orm-flags .tech-card b{ display:block; color:var(--accent-soft); margin-bottom:4px; font-size:0.9rem; }
+
+  /* comparison table */
+  .table-wrap{ overflow-x:auto; margin:18px 0; border-radius:10px; border:1px solid var(--line); }
+  table{ width:100%; border-collapse:collapse; font-size:0.92rem; min-width:560px; }
+  thead th{
+    background:#132038;
+    text-align:left;
+    padding:12px 16px;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    color:var(--accent-soft);
+    border-bottom:1px solid var(--line);
+  }
+  tbody td{
+    padding:12px 16px;
+    border-bottom:1px solid var(--line);
+    color:var(--text);
+  }
+  tbody td:first-child{ color:var(--text-muted); font-weight:500; }
+  tbody tr:last-child td{ border-bottom:none; }
+  tbody tr:hover td{ background:#101a2e; }
+
+  /* mind map / pyramid closing section */
+  .pyramid{
+    display:flex; flex-direction:column; gap:8px;
+    margin: 22px 0 26px;
+  }
+  .pyramid-row{
+    display:flex; align-items:center; gap:14px;
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-left:3px solid var(--accent-2);
+    border-radius:8px;
+    padding:12px 16px;
+  }
+  .pyramid-row .n{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--accent-2);
+    font-size:0.85rem;
+    width:18px;
+  }
+  .pyramid-row .t{ font-size:0.95rem; }
+  .pyramid-row .t b{ color:#f4f7fc; }
+
+  .quote{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.15rem;
+    line-height:1.5;
+    color:#f4f7fc;
+    border-left:3px solid var(--accent);
+    padding:6px 0 6px 20px;
+    margin:22px 0;
+  }
+  .quote span{ color:var(--text-muted); font-size:0.9rem; display:block; margin-top:8px; font-family:'Inter',sans-serif; }
+
+  .keyword-grid{
+    display:flex; flex-wrap:wrap; gap:8px;
+    margin-top:10px;
+  }
+  .keyword-grid span{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.82rem;
+    background:#101a2e;
+    border:1px solid var(--line);
+    color:var(--accent-soft);
+    padding:6px 12px;
+    border-radius:999px;
+  }
+
+  footer{
+    max-width:var(--maxw);
+    margin: 20px auto 0;
+    padding: 28px 24px 60px;
+    color:var(--text-muted);
+    font-size:0.85rem;
+    text-align:center;
+  }
+  footer a{ color:var(--text-muted); }
+
+  ::-webkit-scrollbar{ width:10px; height:10px; }
+  ::-webkit-scrollbar-track{ background:var(--bg); }
+  ::-webkit-scrollbar-thumb{ background:#243250; border-radius:8px; }
+
+  /* ---------- emplacements images extraites de la présentation ---------- */
+  figure.img-slot{
+    margin: 22px 0 26px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:var(--bg-panel);
+  }
+  figure.img-slot img{
+    display:block;
+    width:100%;
+    height:auto;
+    max-height:420px;
+    object-fit:contain;
+    background:#0a0f1a;
+  }
+  figure.img-slot figcaption{
+    padding:10px 14px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.76rem;
+    color:var(--text-muted);
+    border-top:1px solid var(--line);
+  }
+  /* état "image manquante" tant que le fichier n'est pas déposé */
+  figure.img-slot.is-empty{
+    min-height:180px;
+    display:flex; align-items:center; justify-content:center;
+    background:
+      repeating-linear-gradient(135deg, #101a2e 0 10px, #0e1626 10px 20px);
+    border-style:dashed;
+  }
+  figure.img-slot.is-empty img{ display:none; }
+  figure.img-slot.is-empty::before{
+    content: attr(data-hint);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.8rem;
+    color:var(--text-muted);
+    text-align:center;
+    padding:24px;
+    white-space:pre-line;
+  }
+  figure.img-slot.hero-slot img{ max-height:320px; }
+  figure.img-slot.wide-slot{ grid-column: 1 / -1; }
+</style>
+</head>
+<body>
+
+<!-- barre d'architecture / scrollspy global -->
+<div class="archbar" id="archbar">
+  <div class="brand">Katy Saintin <span>/ cours</span></div>
+  <div class="arch-steps">
+    <span class="arch-step" data-target="fullstack">Vue d'ensemble</span>
+    <span class="arch-sep">·</span>
+    <span class="arch-step" data-target="frontend">Front End</span>
+    <span class="arch-sep">·</span>
+    <span class="arch-step" data-target="api-rest">API REST</span>
+    <span class="arch-sep">·</span>
+    <span class="arch-step" data-target="java-python">Back End</span>
+    <span class="arch-sep">·</span>
+    <span class="arch-step" data-target="donnees">Données</span>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- sommaire -->
+  <nav class="toc" aria-label="Sommaire">
+    <h2>Sommaire</h2>
+    <ol>
+      <li><a href="#fullstack">Qu'est-ce que le Full Stack ?</a></li>
+      <li><a href="#analogie">L'analogie du restaurant</a></li>
+      <li><a href="#technologies">Où placer les technologies Web</a></li>
+      <li><a href="#java-web">Java Web : partir de vos connaissances</a></li>
+      <li><a href="#python-web">Python Web : l'écosystème alternatif</a></li>
+      <li><a href="#frontend">Front End : Angular, React, TypeScript</a></li>
+      <li><a href="#api-rest">API REST et JSON</a></li>
+      <li><a href="#orm">Données et ORM</a></li>
+      <li><a href="#java-python">Tableau comparatif Java / Python</a></li>
+      <li><a href="#carte-mentale">La carte mentale à retenir</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <div class="eyebrow">Cours · Architecture Web</div>
+      <h1>Full Stack Web : comprendre l'architecture moderne</h1>
+      <p>Une introduction structurée pour ingénieurs Java expérimentés — sans repartir de zéro.</p>
+    </div>
+
+    <!-- 1. Qu'est-ce que le Full Stack -->
+    <section id="fullstack">
+      <div class="section-num">01</div>
+      <h2>Qu'est-ce que le Full Stack ?</h2>
+      <p class="lede"><b>Full Stack</b> = travailler sur plusieurs couches d'une application Web. Une application Web n'est jamais isolée — elle est composée de parties qui communiquent entre elles.</p>
+
+      <h3 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); font-weight:500; margin-bottom:10px;">Le flux d'une requête Web</h3>
+      <div class="pipeline">
+        <div class="pipe-col"><h4>01 · Navigateur</h4><ul><li>L'utilisateur clique dans le navigateur</li></ul></div>
+        <div class="pipe-col"><h4>02 · Front End</h4><ul><li>Le Front End envoie une demande</li></ul></div>
+        <div class="pipe-col"><h4>03 · API</h4><ul><li>L'API transmet la demande</li></ul></div>
+        <div class="pipe-col"><h4>04 · Back End</h4><ul><li>Le Back End traite et renvoie les données</li></ul></div>
+      </div>
+    </section>
+
+    <!-- 2. Analogie restaurant -->
+    <section id="analogie">
+      <div class="section-num">02</div>
+      <h2>Front End et Back End : l'analogie du restaurant</h2>
+      <div class="analogy">
+        <div class="analogy-col">
+          <h3>🍽 Au restaurant</h3>
+          <div class="analogy-item"><b>Front End</b><span>La salle, le serveur, l'interface avec le client</span></div>
+          <div class="analogy-item"><b>API</b><span>Le bon de commande — la communication entre salle et cuisine</span></div>
+          <div class="analogy-item"><b>Back End</b><span>La cuisine, les traitements internes, la logique</span></div>
+        </div>
+        <div class="analogy-col">
+          <h3>💻 En informatique</h3>
+          <div class="analogy-item"><b>Front End</b><span>Navigateur Web, interface utilisateur (IHM)</span></div>
+          <div class="analogy-item"><b>API</b><span>Protocole HTTP/REST pour communiquer</span></div>
+          <div class="analogy-item"><b>Back End</b><span>Serveur, traitements métier, logique applicative</span></div>
+        </div>
+      </div>
+      <div class="callout"><b>À retenir —</b> Front End et Back End sont des zones de l'architecture, pas des langages de programmation.</div>
+    </section>
+
+    <!-- 3. Où placer les technologies -->
+    <section id="technologies">
+      <div class="section-num">03</div>
+      <h2>Où placer les technologies Web ?</h2>
+      <p class="lede">Chaque technologie occupe une zone précise — apprendre le Full Stack, c'est comprendre ces rôles.</p>
+      <div class="pipeline">
+        <div class="pipe-col">
+          <h4>Front End (navigateur)</h4>
+          <ul><li>Angular</li><li>React</li><li>HTML</li><li>CSS</li><li>TypeScript</li><li>JavaScript</li></ul>
+        </div>
+        <div class="pipe-col">
+          <h4>Communication (API REST)</h4>
+          <ul><li>HTTP</li><li>REST</li><li>JSON</li></ul>
+        </div>
+        <div class="pipe-col">
+          <h4>Back End (serveur)</h4>
+          <ul><li>Java · Spring Boot / Jakarta EE</li><li>Python · FastAPI / Flask / Django</li><li>Node.js · Express / NestJS</li></ul>
+        </div>
+        <div class="pipe-col">
+          <h4>Données</h4>
+          <ul><li>PostgreSQL</li><li>MySQL</li><li>MongoDB</li><li>ORM</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Java Web -->
+    <section id="java-web">
+      <div class="section-num">04</div>
+      <h2>Java Web : partir de vos connaissances</h2>
+      <p class="lede">Vous connaissez déjà Java, la POO et les design patterns. Voici comment ils s'appliquent au Web.</p>
+      <div class="tech-grid">
+        <div class="tech-card"><h4>JVM</h4><p>Machine virtuelle Java — exécute le bytecode</p></div>
+        <div class="tech-card"><h4>Maven / Gradle</h4><p>Build et gestion des dépendances (successeurs d'Ant)</p></div>
+        <div class="tech-card"><h4>Spring Boot</h4><p>Créer des API REST rapidement — comme Swing pour le client lourd</p></div>
+        <div class="tech-card"><h4>Jakarta EE</h4><p>Standard Java entreprise (ex-Java EE)</p></div>
+        <div class="tech-card"><h4>JPA / Hibernate</h4><p>ORM : mapper les objets Java aux tables SQL</p></div>
+      </div>
+    </section>
+
+    <!-- 5. Python Web -->
+    <section id="python-web">
+      <div class="section-num">05</div>
+      <h2>Python Web : l'écosystème alternatif</h2>
+      <p class="lede">Python offre plusieurs chemins pour le Web. Contrairement à Java, il n'y a pas un seul standard.</p>
+      <div class="tech-grid">
+        <div class="tech-card"><h4>Poetry / uv / pip</h4><p>Gestion des dépendances et de l'environnement virtuel</p></div>
+        <div class="tech-card"><h4>Flask</h4><p>Microframework léger et minimaliste</p></div>
+        <div class="tech-card"><h4>FastAPI</h4><p>Framework moderne, optimisé pour les API REST</p></div>
+        <div class="tech-card"><h4>Django</h4><p>Framework complet : ORM, admin, authentification intégrés</p></div>
+        <div class="tech-card"><h4>SQLAlchemy</h4><p>ORM Python — équivalent de Hibernate</p></div>
+        <div class="tech-card"><h4>Streamlit</h4><p>IHM Web rapide, sans HTML ni CSS</p></div>
+      </div>
+      <div class="callout"><b>Différence clé —</b> Python n'a pas de machine virtuelle comme la JVM. Le code s'exécute directement.</div>
+    </section>
+
+    <!-- 6. Front End -->
+    <section id="frontend">
+      <div class="section-num">06</div>
+      <h2>Front End : Angular, React, TypeScript</h2>
+      <p class="lede">Ces technologies vivent dans le navigateur. Elles créent l'interface que l'utilisateur voit et manipule.</p>
+      <ul class="key-points">
+        <li><b>HTML</b> — Structure : balises et éléments</li>
+        <li><b>CSS</b> — Présentation : couleurs, mise en page</li>
+        <li><b>TypeScript</b> — JavaScript avec typage statique, comme Java pour le Web</li>
+        <li><b>Angular / React</b> — Frameworks IHM, comme Swing ou JavaFX, dans le navigateur</li>
+      </ul>
+    </section>
+
+    <!-- 7. API REST -->
+    <section id="api-rest">
+      <div class="section-num">07</div>
+      <h2>API REST et JSON : le langage commun</h2>
+      <p class="lede">Le Front End et le Back End communiquent via une <b style="color:#f4f7fc;">API REST</b> en <b style="color:#f4f7fc;">JSON</b>.</p>
+
+      <div class="code-block">
+<pre><span class="req">GET</span> /api/users/<span class="num">42</span>
+
+Réponse JSON :
+{
+  <span class="key">"id"</span>: <span class="num">42</span>,
+  <span class="key">"name"</span>: <span class="str">"Alice"</span>,
+  <span class="key">"email"</span>: <span class="str">"alice@example.com"</span>
+}</pre>
+      </div>
+
+      <ul class="key-points">
+        <li><b>HTTP</b> — protocole de communication sur le Web</li>
+        <li><b>REST</b> — style architectural : GET, POST, PUT, DELETE</li>
+        <li><b>JSON</b> — format texte léger et lisible pour échanger des données</li>
+        <li><b>API</b> — contrat entre Front End et Back End</li>
+      </ul>
+      <div class="callout">REST n'est ni Front End ni Back End. C'est le <b>pont</b> entre les deux.</div>
+    </section>
+
+    <!-- 8. Données et ORM -->
+    <section id="orm">
+      <div class="section-num">08</div>
+      <h2>Données et ORM : mapper les objets à la base</h2>
+      <p class="lede">L'ORM automatise la conversion objet-relationnel — c'est un design pattern que vous connaissez déjà.</p>
+
+      <div class="orm-flags">
+        <div class="tech-card"><b>Sans ORM</b><p>SQL manuel, mapping objet-résultat</p></div>
+        <div class="tech-card"><b>Avec ORM</b><p>Classe User, table et conversion automatiques</p></div>
+      </div>
+
+      <div class="tech-grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="tech-card"><h4>Java</h4><p><b style="color:var(--text);">JPA</b> (standard) + <b style="color:var(--text);">Hibernate</b> (implémentation)</p></div>
+        <div class="tech-card"><h4>Python</h4><p><b style="color:var(--text);">SQLAlchemy</b> (indépendant) ou <b style="color:var(--text);">Django ORM</b> (intégré)</p></div>
+      </div>
+
+      <ul class="key-points" style="margin-top:16px;">
+        <li><b>Bases relationnelles</b> — PostgreSQL, MySQL, SQLite</li>
+        <li><b>Bases non-relationnelles</b> — MongoDB, Redis</li>
+      </ul>
+    </section>
+
+    <!-- 9. Tableau comparatif -->
+    <section id="java-python">
+      <div class="section-num">09</div>
+      <h2>Tableau comparatif : Java vs Python</h2>
+      <p class="lede">Java et Python sont comparables côté <b style="color:#f4f7fc;">Back End</b>. Le Front End (Angular, React) est <b style="color:#f4f7fc;">indépendant</b> du langage serveur.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Besoin</th><th>Java</th><th>Python</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Front End</td><td>Angular, React, TypeScript</td><td>Angular, React, TypeScript <i>(identique)</i></td></tr>
+            <tr><td>API REST</td><td>Spring Boot, Jakarta REST</td><td>FastAPI, Flask, Django REST</td></tr>
+            <tr><td>Framework Web</td><td>Spring Boot, Jakarta EE</td><td>Django, Flask, FastAPI</td></tr>
+            <tr><td>Build / Dépendances</td><td>Maven, Gradle</td><td>Poetry, uv, pip</td></tr>
+            <tr><td>ORM</td><td>JPA, Hibernate</td><td>SQLAlchemy, Django ORM</td></tr>
+            <tr><td>Runtime</td><td>JVM (bytecode compilé)</td><td>Python interprété (pas de VM)</td></tr>
+            <tr><td>IHM Web rapide</td><td>—</td><td>Streamlit</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 10. Carte mentale -->
+    <section id="carte-mentale">
+      <div class="section-num">10</div>
+      <h2>La carte mentale à retenir</h2>
+
+      <div class="pyramid">
+        <div class="pyramid-row"><span class="n">1</span><span class="t"><b>Front End navigateur</b> — Angular, React, TypeScript</span></div>
+        <div class="pyramid-row"><span class="n">2</span><span class="t"><b>API REST communication</b> — HTTP, JSON</span></div>
+        <div class="pyramid-row"><span class="n">3</span><span class="t"><b>Back End serveur</b> — Java Spring Boot ou Python FastAPI / Django</span></div>
+        <div class="pyramid-row"><span class="n">4</span><span class="t"><b>Données</b> — PostgreSQL, MySQL, MongoDB, plus ORM</span></div>
+      </div>
+
+      <blockquote class="quote">
+        « Je n'ai pas besoin de connaître tous les frameworks pour comprendre une architecture Full Stack. Je dois d'abord savoir quel rôle joue chaque technologie. »
+        <span>Vous maîtrisez déjà la POO et les design patterns. Le Web, c'est juste une autre façon d'organiser ces concepts.</span>
+      </blockquote>
+
+      <h3 style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); font-weight:500;">Les 10 mots-clés à retenir</h3>
+      <div class="keyword-grid">
+        <span>Full Stack</span><span>Front End</span><span>Back End</span><span>API</span>
+        <span>REST</span><span>JSON</span><span>Angular</span><span>Spring Boot</span>
+        <span>FastAPI</span><span>Database</span>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  Cours généré à partir du support Full Stack Web — Katy Saintin · <a href="https://katysaintin.github.io">katysaintin.github.io</a>
+</footer>
+
+<script>
+  // Scrollspy : sommaire + barre d'architecture
+  const sections = Array.from(document.querySelectorAll('main section[id]'));
+  const tocLinks = Array.from(document.querySelectorAll('.toc a'));
+  const archSteps = Array.from(document.querySelectorAll('.arch-step'));
+
+  const archMap = {
+    'fullstack': 'fullstack', 'analogie': 'fullstack', 'technologies': 'fullstack',
+    'frontend': 'frontend',
+    'api-rest': 'api-rest',
+    'java-web': 'java-python', 'python-web': 'java-python', 'java-python': 'java-python',
+    'orm': 'donnees', 'carte-mentale': 'donnees'
+  };
+
+  function onScroll(){
+    let current = sections[0]?.id;
+    const offset = 100;
+    for(const sec of sections){
+      const rect = sec.getBoundingClientRect();
+      if(rect.top - offset <= 0) current = sec.id;
+    }
+    tocLinks.forEach(a => {
+      a.classList.toggle('is-active', a.getAttribute('href') === '#' + current);
+    });
+    const archTarget = archMap[current] || 'fullstack';
+    archSteps.forEach(s => s.classList.toggle('is-active', s.dataset.target === archTarget));
+  }
+
+  document.addEventListener('scroll', onScroll, { passive:true });
+  window.addEventListener('load', onScroll);
+
+  archSteps.forEach(s => {
+    s.style.cursor = 'pointer';
+    s.addEventListener('click', () => {
+      const order = { 'fullstack':'fullstack', 'frontend':'frontend', 'api-rest':'api-rest', 'java-python':'java-python', 'donnees':'orm' };
+      document.getElementById(order[s.dataset.target])?.scrollIntoView({behavior:'smooth'});
+    });
+  });
+</script>
+
+</body>
+</html>
