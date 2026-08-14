@@ -515,3 +515,26 @@ Et surtout :
                   ▼
                DONNÉES
 ```
+
+## Tableau de synthèse 
+
+| Si le recruteur dit... | Tu peux le placer ici | Analogie Java / Python |
+|---|---|---|
+| **Angular** | Front End | TypeScript, IHM Web |
+| **React** | Front End | JavaScript/TypeScript, IHM Web |
+| **HTML / CSS** | Front End | Structure et présentation Web |
+| **Node.js** | Back End | JavaScript côté serveur |
+| **Spring Boot** | Back End | Framework Java |
+| **Jakarta EE** | Back End | Plateforme Java entreprise |
+| **REST** | API / communication | JAX-RS / Spring REST |
+| **JSON** | Échange de données | Format de données entre Front/Back |
+| **FastAPI** | Back End | Framework Python pour API |
+| **Flask** | Back End | Framework Web Python léger |
+| **Django** | Back End | Framework Web Python plus complet |
+| **Streamlit** | IHM Web Python | Permet de faire rapidement une application Web en Python |
+| **Maven / Gradle** | Build / dépendances Java | `pom.xml`, dépendances, build |
+| **Poetry / uv / pip** | Dépendances Python | Écosystème analogue côté Python |
+| **JPA / Hibernate** | Persistance Java | ORM |
+| **SQLAlchemy** | Persistance Python | ORM / accès BDD |
+| **Docker** | Déploiement | Conteneurisation |
+| **Git** | Gestion du code | Même rôle Java/Python |
