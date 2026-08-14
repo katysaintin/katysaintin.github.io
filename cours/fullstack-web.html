@@ -61,28 +61,51 @@
     font-family:'JetBrains Mono', ui-monospace, monospace;
   }
 
-  /* ---------- top bar : la "chaîne" Front > API > Back > Data ---------- */
+  /* ---------- top bar : navigation + la "chaîne" Front > API > Back > Data ---------- */
   .archbar{
     position:sticky; top:0; z-index:50;
-    display:flex; align-items:center; gap:0;
     background:rgba(10,15,26,0.92);
     backdrop-filter: blur(8px);
     border-bottom:1px solid var(--line);
-    overflow-x:auto;
-    padding: 0 20px;
+  }
+  .archbar-top{
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px 16px;
+    padding: 12px 20px;
   }
   .archbar .brand{
     font-family:'Space Grotesk', sans-serif;
     font-weight:600;
     font-size:0.92rem;
     color:var(--text);
-    padding:14px 18px 14px 0;
-    border-right:1px solid var(--line);
-    margin-right:14px;
     white-space:nowrap;
   }
   .archbar .brand span{ color:var(--accent-soft); }
-  .arch-steps{ display:flex; align-items:center; }
+  .archbar .pagenav{
+    display:flex; gap:8px;
+    flex-shrink:0;
+    white-space:nowrap;
+  }
+  .archbar .pagenav a{
+    font-size:0.8rem;
+    color:var(--text-muted);
+    padding:6px 12px;
+    border-radius:6px;
+    border:1px solid var(--line);
+    white-space:nowrap;
+  }
+  .archbar .pagenav a:hover{
+    color:var(--text);
+    border-color:var(--accent);
+    text-decoration:none;
+  }
+  .arch-steps-wrap{
+    overflow-x:auto;
+    border-top:1px solid var(--line);
+    padding: 0 20px;
+  }
+  .arch-steps{ display:flex; align-items:center; padding:8px 0; width:max-content; }
   .arch-step{
     font-size:0.78rem;
     padding:6px 12px;
@@ -91,6 +114,7 @@
     white-space:nowrap;
     border:1px solid transparent;
     transition:all .15s ease;
+    cursor:pointer;
   }
   .arch-step.is-active{
     color:#0c1220;
@@ -467,23 +491,67 @@
   }
   figure.img-slot.hero-slot img{ max-height:320px; }
   figure.img-slot.wide-slot{ grid-column: 1 / -1; }
+
+  /* ---------- liens "en savoir plus" ---------- */
+  a.more-link{
+    display:inline-flex; align-items:center; gap:4px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.74rem;
+    color:var(--accent-2);
+    margin-top:6px;
+  }
+  a.more-link:hover{ color:var(--accent-soft); }
+  .tech-card a.more-link{ margin-top:8px; }
+  li.key-point-with-link{ padding-bottom:14px; }
+  li.key-point-with-link a.more-link{ display:block; margin-top:4px; margin-left:0; }
+
+  /* ---------- lexique ---------- */
+  .glossary{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:0 32px;
+  }
+  @media (max-width:600px){ .glossary{ grid-template-columns:1fr; } }
+  .glossary dt{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:600;
+    color:var(--accent-soft);
+    font-size:0.92rem;
+    padding-top:14px;
+    border-top:1px solid var(--line);
+    margin-top:14px;
+  }
+  .glossary dt:nth-of-type(1), .glossary dt:nth-of-type(2){ margin-top:0; }
+  .glossary dd{
+    margin:6px 0 0;
+    color:var(--text-muted);
+    font-size:0.88rem;
+  }
 </style>
 </head>
 <body>
 
-<!-- barre d'architecture / scrollspy global -->
+<!-- barre de navigation + architecture / scrollspy global -->
 <div class="archbar" id="archbar">
-  <div class="brand">Katy Saintin <span>/ cours</span></div>
-  <div class="arch-steps">
-    <span class="arch-step" data-target="fullstack">Vue d'ensemble</span>
-    <span class="arch-sep">·</span>
-    <span class="arch-step" data-target="frontend">Front End</span>
-    <span class="arch-sep">·</span>
-    <span class="arch-step" data-target="api-rest">API REST</span>
-    <span class="arch-sep">·</span>
-    <span class="arch-step" data-target="java-python">Back End</span>
-    <span class="arch-sep">·</span>
-    <span class="arch-step" data-target="donnees">Données</span>
+  <div class="archbar-top">
+    <div class="brand">Katy Saintin <span>/ cours</span></div>
+    <div class="pagenav">
+      <a href="cours.html">← Catalogue</a>
+      <a href="../index.html">🏠 Home</a>
+    </div>
+  </div>
+  <div class="arch-steps-wrap">
+    <div class="arch-steps">
+      <span class="arch-step" data-target="fullstack">Vue d'ensemble</span>
+      <span class="arch-sep">·</span>
+      <span class="arch-step" data-target="frontend">Front End</span>
+      <span class="arch-sep">·</span>
+      <span class="arch-step" data-target="api-rest">API REST</span>
+      <span class="arch-sep">·</span>
+      <span class="arch-step" data-target="java-python">Back End</span>
+      <span class="arch-sep">·</span>
+      <span class="arch-step" data-target="donnees">Données</span>
+    </div>
   </div>
 </div>
 
@@ -503,6 +571,7 @@
       <li><a href="#orm">Données et ORM</a></li>
       <li><a href="#java-python">Tableau comparatif Java / Python</a></li>
       <li><a href="#carte-mentale">La carte mentale à retenir</a></li>
+      <li><a href="#lexique">Lexique des acronymes</a></li>
     </ol>
   </nav>
 
@@ -516,7 +585,7 @@
     <figure class="img-slot hero-slot" data-hint="Image de couverture&#10;../img/hero-couverture.png">
       <img src="../img/hero-couverture.png" alt="Couverture : architecture Full Stack en couches, style plan isométrique"
            onerror="this.closest('figure').classList.add('is-empty')">
-      <figcaption>../img/hero-couverture.png — visuel de couverture (plans en couches)</figcaption>
+      <figcaption>Vue en couches d'une architecture Web, façon plan d'architecte</figcaption>
     </figure>
 
     <!-- 1. Qu'est-ce que le Full Stack -->
@@ -536,7 +605,7 @@
       <figure class="img-slot" data-hint="Schéma réseau / composants connectés&#10;../img/schema-reseau.png">
         <img src="../img/schema-reseau.png" alt="Schéma isométrique de serveurs et postes connectés en réseau"
              onerror="this.closest('figure').classList.add('is-empty')">
-        <figcaption>../img/schema-reseau.png — schéma des composants connectés</figcaption>
+        <figcaption>Serveurs et postes clients échangeant des données en réseau</figcaption>
       </figure>
     </section>
 
@@ -563,7 +632,7 @@
       <figure class="img-slot" data-hint="Illustration cuisine de restaurant (isométrique)&#10;../img/cuisine-restaurant.png">
         <img src="../img/cuisine-restaurant.png" alt="Illustration isométrique d'une cuisine et salle de restaurant"
              onerror="this.closest('figure').classList.add('is-empty')">
-        <figcaption>../img/cuisine-restaurant.png — illustration de l'analogie restaurant</figcaption>
+        <figcaption>Salle et cuisine d'un restaurant, miroir de l'architecture Front End / Back End</figcaption>
       </figure>
     </section>
 
@@ -594,7 +663,7 @@
       <figure class="img-slot" data-hint="Schéma des 4 couches (Front End / API / Back End / Données)&#10;../img/couches-technologies.png">
         <img src="../img/couches-technologies.png" alt="Schéma des quatre couches technologiques du Full Stack"
              onerror="this.closest('figure').classList.add('is-empty')">
-        <figcaption>../img/couches-technologies.png — schéma des 4 couches</figcaption>
+        <figcaption>Les quatre couches technologiques, de l'écran à la base de données</figcaption>
       </figure>
     </section>
 
@@ -607,15 +676,14 @@
       <figure class="img-slot" data-hint="Illustration tasse de café / code Java&#10;../img/java-tasse-cafe.png">
         <img src="../img/java-tasse-cafe.png" alt="Illustration d'une tasse de café devant un écran de code"
              onerror="this.closest('figure').classList.add('is-empty')">
-        <figcaption>../img/java-tasse-cafe.png — illustration Java</figcaption>
       </figure>
 
       <div class="tech-grid">
-        <div class="tech-card"><h4>JVM</h4><p>Machine virtuelle Java — exécute le bytecode</p></div>
-        <div class="tech-card"><h4>Maven / Gradle</h4><p>Build et gestion des dépendances (successeurs d'Ant)</p></div>
-        <div class="tech-card"><h4>Spring Boot</h4><p>Créer des API REST rapidement — comme Swing pour le client lourd</p></div>
-        <div class="tech-card"><h4>Jakarta EE</h4><p>Standard Java entreprise (ex-Java EE)</p></div>
-        <div class="tech-card"><h4>JPA / Hibernate</h4><p>ORM : mapper les objets Java aux tables SQL</p></div>
+        <div class="tech-card"><h4>JVM</h4><p>Machine virtuelle Java — exécute le bytecode</p><a class="more-link" href="https://dev.java/" target="_blank" rel="noopener">↗ En savoir plus</a></div>
+        <div class="tech-card"><h4>Maven / Gradle</h4><p>Build et gestion des dépendances (successeurs d'Ant)</p><a class="more-link" href="https://maven.apache.org/" target="_blank" rel="noopener">↗ Maven</a> · <a class="more-link" href="https://gradle.org/" target="_blank" rel="noopener">↗ Gradle</a></div>
+        <div class="tech-card"><h4>Spring Boot</h4><p>Créer des API REST rapidement — comme Swing pour le client lourd</p><a class="more-link" href="https://spring.io/projects/spring-boot" target="_blank" rel="noopener">↗ En savoir plus</a></div>
+        <div class="tech-card"><h4>Jakarta EE</h4><p>Standard Java entreprise (ex-Java EE)</p><a class="more-link" href="https://jakarta.ee/" target="_blank" rel="noopener">↗ En savoir plus</a></div>
+        <div class="tech-card"><h4>JPA / Hibernate</h4><p>ORM : mapper les objets Java aux tables SQL</p><a class="more-link" href="https://hibernate.org/orm/" target="_blank" rel="noopener">↗ En savoir plus</a></div>
       </div>
     </section>
 
@@ -625,12 +693,12 @@
       <h2>Python Web : l'écosystème alternatif</h2>
       <p class="lede">Python offre plusieurs chemins pour le Web. Contrairement à Java, il n'y a pas un seul standard.</p>
       <div class="tech-grid">
-        <div class="tech-card"><h4>Poetry / uv / pip</h4><p>Gestion des dépendances et de l'environnement virtuel</p></div>
-        <div class="tech-card"><h4>Flask</h4><p>Microframework léger et minimaliste</p></div>
-        <div class="tech-card"><h4>FastAPI</h4><p>Framework moderne, optimisé pour les API REST</p></div>
-        <div class="tech-card"><h4>Django</h4><p>Framework complet : ORM, admin, authentification intégrés</p></div>
-        <div class="tech-card"><h4>SQLAlchemy</h4><p>ORM Python — équivalent de Hibernate</p></div>
-        <div class="tech-card"><h4>Streamlit</h4><p>IHM Web rapide, sans HTML ni CSS</p></div>
+        <div class="tech-card"><h4>Poetry / uv / pip</h4><p>Gestion des dépendances et de l'environnement virtuel</p><a class="more-link" href="https://python-poetry.org/" target="_blank" rel="noopener">↗ En savoir plus</a></div>
+        <div class="tech-card"><h4>Flask</h4><p>Microframework léger et minimaliste</p><a class="more-link" href="https://flask.palletsprojects.com/" target="_blank" rel="noopener">↗ En savoir plus</a></div>
+        <div class="tech-card"><h4>FastAPI</h4><p>Framework moderne, optimisé pour les API REST</p><a class="more-link" href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">↗ En savoir plus</a></div>
+        <div class="tech-card"><h4>Django</h4><p>Framework complet : ORM, admin, authentification intégrés</p><a class="more-link" href="https://www.djangoproject.com/" target="_blank" rel="noopener">↗ En savoir plus</a></div>
+        <div class="tech-card"><h4>SQLAlchemy</h4><p>ORM Python — équivalent de Hibernate</p><a class="more-link" href="https://www.sqlalchemy.org/" target="_blank" rel="noopener">↗ En savoir plus</a></div>
+        <div class="tech-card"><h4>Streamlit</h4><p>IHM Web rapide, sans HTML ni CSS</p><a class="more-link" href="https://streamlit.io/" target="_blank" rel="noopener">↗ En savoir plus</a></div>
       </div>
       <div class="callout"><b>Différence clé —</b> Python n'a pas de machine virtuelle comme la JVM. Le code s'exécute directement.</div>
     </section>
@@ -644,14 +712,14 @@
       <figure class="img-slot" data-hint="Fenêtre de navigateur stylisée&#10;../img/fenetre-navigateur.png">
         <img src="../img/fenetre-navigateur.png" alt="Illustration d'une fenêtre de navigateur Web avec interface"
              onerror="this.closest('figure').classList.add('is-empty')">
-        <figcaption>../img/fenetre-navigateur.png — illustration navigateur</figcaption>
+        <figcaption>Écran de navigateur affichant une interface Web</figcaption>
       </figure>
 
       <ul class="key-points">
-        <li><b>HTML</b> — Structure : balises et éléments</li>
-        <li><b>CSS</b> — Présentation : couleurs, mise en page</li>
-        <li><b>TypeScript</b> — JavaScript avec typage statique, comme Java pour le Web</li>
-        <li><b>Angular / React</b> — Frameworks IHM, comme Swing ou JavaFX, dans le navigateur</li>
+        <li class="key-point-with-link"><b>HTML</b> — Structure : balises et éléments<a class="more-link" href="https://developer.mozilla.org/fr/docs/Web/HTML" target="_blank" rel="noopener">↗ En savoir plus</a></li>
+        <li class="key-point-with-link"><b>CSS</b> — Présentation : couleurs, mise en page<a class="more-link" href="https://developer.mozilla.org/fr/docs/Web/CSS" target="_blank" rel="noopener">↗ En savoir plus</a></li>
+        <li class="key-point-with-link"><b>TypeScript</b> — JavaScript avec typage statique, comme Java pour le Web<a class="more-link" href="https://www.typescriptlang.org/" target="_blank" rel="noopener">↗ En savoir plus</a></li>
+        <li class="key-point-with-link"><b>Angular / React</b> — Frameworks IHM, comme Swing ou JavaFX, dans le navigateur<a class="more-link" href="https://angular.dev/" target="_blank" rel="noopener">↗ Angular</a> · <a class="more-link" href="https://react.dev/" target="_blank" rel="noopener">↗ React</a></li>
       </ul>
     </section>
 
@@ -675,13 +743,13 @@ Réponse JSON :
       <figure class="img-slot" data-hint="Illustration écrans connectés (API)&#10;../img/ecrans-api.png">
         <img src="../img/ecrans-api.png" alt="Illustration d'écrans connectés échangeant des données via une API"
              onerror="this.closest('figure').classList.add('is-empty')">
-        <figcaption>../img/ecrans-api.png — illustration API / échange de données</figcaption>
+        <figcaption>Écrans connectés échangeant des données via une API</figcaption>
       </figure>
 
       <ul class="key-points">
-        <li><b>HTTP</b> — protocole de communication sur le Web</li>
-        <li><b>REST</b> — style architectural : GET, POST, PUT, DELETE</li>
-        <li><b>JSON</b> — format texte léger et lisible pour échanger des données</li>
+        <li class="key-point-with-link"><b>HTTP</b> — protocole de communication sur le Web<a class="more-link" href="https://developer.mozilla.org/fr/docs/Web/HTTP" target="_blank" rel="noopener">↗ En savoir plus</a></li>
+        <li class="key-point-with-link"><b>REST</b> — style architectural : GET, POST, PUT, DELETE<a class="more-link" href="https://developer.mozilla.org/en-US/docs/Glossary/REST" target="_blank" rel="noopener">↗ En savoir plus</a></li>
+        <li class="key-point-with-link"><b>JSON</b> — format texte léger et lisible pour échanger des données<a class="more-link" href="https://www.json.org/json-fr.html" target="_blank" rel="noopener">↗ En savoir plus</a></li>
         <li><b>API</b> — contrat entre Front End et Back End</li>
       </ul>
       <div class="callout">REST n'est ni Front End ni Back End. C'est le <b>pont</b> entre les deux.</div>
@@ -699,8 +767,8 @@ Réponse JSON :
       </div>
 
       <div class="tech-grid" style="grid-template-columns: 1fr 1fr;">
-        <div class="tech-card"><h4>Java</h4><p><b style="color:var(--text);">JPA</b> (standard) + <b style="color:var(--text);">Hibernate</b> (implémentation)</p></div>
-        <div class="tech-card"><h4>Python</h4><p><b style="color:var(--text);">SQLAlchemy</b> (indépendant) ou <b style="color:var(--text);">Django ORM</b> (intégré)</p></div>
+        <div class="tech-card"><h4>Java</h4><p><b style="color:var(--text);">JPA</b> (standard) + <b style="color:var(--text);">Hibernate</b> (implémentation)</p><a class="more-link" href="https://jakarta.ee/specifications/persistence/" target="_blank" rel="noopener">↗ JPA</a> · <a class="more-link" href="https://hibernate.org/orm/" target="_blank" rel="noopener">↗ Hibernate</a></div>
+        <div class="tech-card"><h4>Python</h4><p><b style="color:var(--text);">SQLAlchemy</b> (indépendant) ou <b style="color:var(--text);">Django ORM</b> (intégré)</p><a class="more-link" href="https://www.sqlalchemy.org/" target="_blank" rel="noopener">↗ SQLAlchemy</a> · <a class="more-link" href="https://docs.djangoproject.com/en/stable/topics/db/" target="_blank" rel="noopener">↗ Django ORM</a></div>
       </div>
 
       <ul class="key-points" style="margin-top:16px;">
@@ -741,7 +809,7 @@ Réponse JSON :
       <figure class="img-slot" data-hint="Pyramide de l'architecture Full Stack&#10;../img/pyramide-architecture.png">
         <img src="../img/pyramide-architecture.png" alt="Pyramide représentant les 4 couches de l'architecture Full Stack"
              onerror="this.closest('figure').classList.add('is-empty')">
-        <figcaption>../img/pyramide-architecture.png — pyramide des 4 couches</figcaption>
+        <figcaption>Les 4 couches de l'architecture, empilées comme une pyramide</figcaption>
       </figure>
 
       <div class="pyramid">
@@ -762,6 +830,45 @@ Réponse JSON :
         <span>REST</span><span>JSON</span><span>Angular</span><span>Spring Boot</span>
         <span>FastAPI</span><span>Database</span>
       </div>
+    </section>
+
+    <!-- 11. Lexique -->
+    <section id="lexique">
+      <div class="section-num">11</div>
+      <h2>Lexique des acronymes</h2>
+      <p class="lede">Les termes techniques employés dans ce cours, en un coup d'œil.</p>
+
+      <dl class="glossary">
+        <dt>API</dt>
+        <dd>Application Programming Interface — interface qui permet à deux logiciels de communiquer entre eux.</dd>
+
+        <dt>REST</dt>
+        <dd>Representational State Transfer — style architectural pour concevoir des API, basé sur les verbes HTTP (GET, POST, PUT, DELETE).</dd>
+
+        <dt>HTTP</dt>
+        <dd>HyperText Transfer Protocol — protocole de communication standard du Web.</dd>
+
+        <dt>JSON</dt>
+        <dd>JavaScript Object Notation — format texte léger pour structurer et échanger des données.</dd>
+
+        <dt>JVM</dt>
+        <dd>Java Virtual Machine — machine virtuelle qui exécute le bytecode Java, indépendamment du système d'exploitation.</dd>
+
+        <dt>ORM</dt>
+        <dd>Object-Relational Mapping — technique qui convertit automatiquement les objets d'un programme en lignes de tables SQL, et inversement.</dd>
+
+        <dt>JPA</dt>
+        <dd>Jakarta Persistence API — standard Java qui définit comment faire de l'ORM ; Hibernate en est l'implémentation la plus utilisée.</dd>
+
+        <dt>IHM</dt>
+        <dd>Interface Homme-Machine — l'ensemble des éléments visuels et interactifs avec lesquels l'utilisateur manipule un logiciel.</dd>
+
+        <dt>POO</dt>
+        <dd>Programmation Orientée Objet — paradigme de programmation basé sur les classes, objets et l'héritage.</dd>
+
+        <dt>SQL</dt>
+        <dd>Structured Query Language — langage standard pour interroger et manipuler les bases de données relationnelles.</dd>
+      </dl>
     </section>
 
   </main>
