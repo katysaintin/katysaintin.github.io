@@ -293,3 +293,37 @@ Voici le contenu de chaque slide :
 - Ambition : rejoindre le groupe MAIA du CEA
 - Deux axes qui me tiennent à cœur : IA et inclusion du handicap, IA dans les métiers techniques/support
 - Déploiement progressif de l'assistant à l'ensemble de l'équipe
+
+## Recuperation de reponse en
+md sur ChatGPT
+
+Je veux récupérer ta réponse sous forme de SOURCE MARKDOWN BRUTE afin de la copier directement dans un fichier .md.
+
+IMPORTANT :
+- Toute ta réponse doit être contenue dans UN SEUL bloc de code extérieur.
+- Le bloc extérieur doit être délimité par quatre backticks : ````markdown
+- Ne rends PAS le Markdown.
+- Je veux voir les caractères Markdown tels quels : #, ##, ###, -, *, >, etc.
+- Les blocs de code qui font partie du document doivent utiliser TROIS tildes ~~~ au lieu de trois backticks, afin de ne pas fermer le bloc extérieur.
+- Conserve intégralement la structure Markdown : titres, listes, tableaux, citations, liens, blocs de code, etc.
+- Ne mets absolument rien avant ou après le bloc extérieur.
+- Je dois pouvoir utiliser directement « Copier » sur l'ensemble du bloc et coller le résultat dans un fichier .md valide.
+
+Exemple attendu :
+
+````markdown
+# Mon titre
+
+## Ma section
+
+Voici du texte.
+
+~~~python
+print("Hello")
+~~~
+
+### Sous-section
+
+- élément 1
+- élément 2
+
