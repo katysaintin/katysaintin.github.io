@@ -70,9 +70,8 @@
   }
   .archbar-top{
     display:flex; align-items:center; justify-content:space-between;
-    flex-wrap:wrap;
-    gap:10px 16px;
-    padding: 12px 20px;
+    gap:12px;
+    padding: 12px 16px;
   }
   .archbar .brand{
     font-family:'Space Grotesk', sans-serif;
@@ -80,17 +79,21 @@
     font-size:0.92rem;
     color:var(--text);
     white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    min-width:0;
+    flex-shrink:1;
   }
   .archbar .brand span{ color:var(--accent-soft); }
   .archbar .pagenav{
-    display:flex; gap:8px;
+    display:flex; gap:6px;
     flex-shrink:0;
     white-space:nowrap;
   }
   .archbar .pagenav a{
-    font-size:0.8rem;
+    font-size:0.78rem;
     color:var(--text-muted);
-    padding:6px 12px;
+    padding:6px 10px;
     border-radius:6px;
     border:1px solid var(--line);
     white-space:nowrap;
@@ -100,10 +103,29 @@
     border-color:var(--accent);
     text-decoration:none;
   }
+  @media (max-width:420px){
+    .archbar-top{ padding:10px 12px; }
+    .archbar .brand{ font-size:0.8rem; }
+    .archbar .pagenav a{ padding:6px 8px; font-size:0.72rem; }
+  }
   .arch-steps-wrap{
+    position:relative;
     overflow-x:auto;
     border-top:1px solid var(--line);
-    padding: 0 20px;
+    padding: 0 16px;
+    -ms-overflow-style:none;
+    scrollbar-width:none;
+  }
+  .arch-steps-wrap::-webkit-scrollbar{ display:none; }
+  .arch-steps-wrap::after{
+    content:"";
+    position:sticky;
+    top:0; right:0;
+    float:right;
+    width:28px; height:100%;
+    margin-right:-16px;
+    background:linear-gradient(90deg, transparent, rgba(10,15,26,0.95));
+    pointer-events:none;
   }
   .arch-steps{ display:flex; align-items:center; padding:8px 0; width:max-content; }
   .arch-step{
@@ -141,6 +163,7 @@
   /* ---------- sommaire ---------- */
   .toc{
     position:sticky; top:70px; align-self:start;
+    scroll-margin-top:90px;
     background:var(--bg-panel);
     border:1px solid var(--line);
     border-radius:var(--radius);
@@ -503,7 +526,12 @@
   a.more-link:hover{ color:var(--accent-soft); }
   .tech-card a.more-link{ margin-top:8px; }
   li.key-point-with-link{ padding-bottom:14px; }
-  li.key-point-with-link a.more-link{ display:block; margin-top:4px; margin-left:0; }
+  li.key-point-with-link .more-links{
+    display:flex; flex-wrap:wrap; align-items:center; gap:4px 8px;
+    margin-top:6px;
+  }
+  li.key-point-with-link .more-links a.more-link{ margin-top:0; }
+  li.key-point-with-link .sep{ color:var(--line); }
 
   /* ---------- lexique ---------- */
   .glossary{
@@ -538,6 +566,7 @@
     <div class="pagenav">
       <a href="cours.html">← Catalogue</a>
       <a href="../index.html">🏠 Home</a>
+      <a href="#toc">📑 Sommaire</a>
     </div>
   </div>
   <div class="arch-steps-wrap">
@@ -558,7 +587,7 @@
 <div class="layout">
 
   <!-- sommaire -->
-  <nav class="toc" aria-label="Sommaire">
+  <nav class="toc" id="toc" aria-label="Sommaire">
     <h2>Sommaire</h2>
     <ol>
       <li><a href="#fullstack">Qu'est-ce que le Full Stack ?</a></li>
@@ -672,6 +701,7 @@
       <div class="section-num">04</div>
       <h2>Java Web : partir de vos connaissances</h2>
       <p class="lede">Vous connaissez déjà Java, la POO et les design patterns. Voici comment ils s'appliquent au Web.</p>
+      <a class="more-link" href="https://www.w3schools.com/java/default.asp" target="_blank" rel="noopener" style="margin-bottom:14px;">📘 Apprendre Java sur W3Schools</a>
 
       <figure class="img-slot" data-hint="Illustration tasse de café / code Java&#10;../img/java-tasse-cafe.png">
         <img src="../img/java-tasse-cafe.png" alt="Illustration d'une tasse de café devant un écran de code"
@@ -692,6 +722,7 @@
       <div class="section-num">05</div>
       <h2>Python Web : l'écosystème alternatif</h2>
       <p class="lede">Python offre plusieurs chemins pour le Web. Contrairement à Java, il n'y a pas un seul standard.</p>
+      <a class="more-link" href="https://www.w3schools.com/python/default.asp" target="_blank" rel="noopener" style="margin-bottom:14px;">📘 Apprendre Python sur W3Schools</a>
       <div class="tech-grid">
         <div class="tech-card"><h4>Poetry / uv / pip</h4><p>Gestion des dépendances et de l'environnement virtuel</p><a class="more-link" href="https://python-poetry.org/" target="_blank" rel="noopener">↗ En savoir plus</a></div>
         <div class="tech-card"><h4>Flask</h4><p>Microframework léger et minimaliste</p><a class="more-link" href="https://flask.palletsprojects.com/" target="_blank" rel="noopener">↗ En savoir plus</a></div>
@@ -716,10 +747,20 @@
       </figure>
 
       <ul class="key-points">
-        <li class="key-point-with-link"><b>HTML</b> — Structure : balises et éléments<a class="more-link" href="https://developer.mozilla.org/fr/docs/Web/HTML" target="_blank" rel="noopener">↗ En savoir plus</a></li>
-        <li class="key-point-with-link"><b>CSS</b> — Présentation : couleurs, mise en page<a class="more-link" href="https://developer.mozilla.org/fr/docs/Web/CSS" target="_blank" rel="noopener">↗ En savoir plus</a></li>
-        <li class="key-point-with-link"><b>TypeScript</b> — JavaScript avec typage statique, comme Java pour le Web<a class="more-link" href="https://www.typescriptlang.org/" target="_blank" rel="noopener">↗ En savoir plus</a></li>
-        <li class="key-point-with-link"><b>Angular / React</b> — Frameworks IHM, comme Swing ou JavaFX, dans le navigateur<a class="more-link" href="https://angular.dev/" target="_blank" rel="noopener">↗ Angular</a> · <a class="more-link" href="https://react.dev/" target="_blank" rel="noopener">↗ React</a></li>
+        <li class="key-point-with-link"><b>HTML</b> — Structure : balises et éléments
+          <div class="more-links"><a class="more-link" href="https://developer.mozilla.org/fr/docs/Web/HTML" target="_blank" rel="noopener">↗ MDN</a><span class="sep">·</span><a class="more-link" href="https://www.w3schools.com/html/default.asp" target="_blank" rel="noopener">📘 W3Schools</a></div>
+        </li>
+        <li class="key-point-with-link"><b>CSS</b> — Présentation : couleurs, mise en page
+          <div class="more-links"><a class="more-link" href="https://developer.mozilla.org/fr/docs/Web/CSS" target="_blank" rel="noopener">↗ MDN</a><span class="sep">·</span><a class="more-link" href="https://www.w3schools.com/css/default.asp" target="_blank" rel="noopener">📘 W3Schools</a></div>
+        </li>
+        <li class="key-point-with-link"><b>TypeScript</b> — JavaScript avec typage statique, comme Java pour le Web
+          <div class="more-links"><a class="more-link" href="https://www.typescriptlang.org/" target="_blank" rel="noopener">↗ Doc officielle</a><span class="sep">·</span><a class="more-link" href="https://www.w3schools.com/typescript/" target="_blank" rel="noopener">📘 W3Schools</a></div>
+        </li>
+        <li class="key-point-with-link"><b>Angular / React</b> — Frameworks IHM, comme Swing ou JavaFX, dans le navigateur
+          <div class="more-links">
+            <a class="more-link" href="https://angular.dev/" target="_blank" rel="noopener">↗ Angular</a><span class="sep">·</span><a class="more-link" href="https://react.dev/" target="_blank" rel="noopener">↗ React</a><span class="sep">·</span><a class="more-link" href="https://www.w3schools.com/angular/" target="_blank" rel="noopener">📘 W3Schools Angular</a><span class="sep">·</span><a class="more-link" href="https://www.w3schools.com/react/" target="_blank" rel="noopener">📘 W3Schools React</a>
+          </div>
+        </li>
       </ul>
     </section>
 
@@ -747,9 +788,15 @@ Réponse JSON :
       </figure>
 
       <ul class="key-points">
-        <li class="key-point-with-link"><b>HTTP</b> — protocole de communication sur le Web<a class="more-link" href="https://developer.mozilla.org/fr/docs/Web/HTTP" target="_blank" rel="noopener">↗ En savoir plus</a></li>
-        <li class="key-point-with-link"><b>REST</b> — style architectural : GET, POST, PUT, DELETE<a class="more-link" href="https://developer.mozilla.org/en-US/docs/Glossary/REST" target="_blank" rel="noopener">↗ En savoir plus</a></li>
-        <li class="key-point-with-link"><b>JSON</b> — format texte léger et lisible pour échanger des données<a class="more-link" href="https://www.json.org/json-fr.html" target="_blank" rel="noopener">↗ En savoir plus</a></li>
+        <li class="key-point-with-link"><b>HTTP</b> — protocole de communication sur le Web
+          <div class="more-links"><a class="more-link" href="https://developer.mozilla.org/fr/docs/Web/HTTP" target="_blank" rel="noopener">↗ En savoir plus</a></div>
+        </li>
+        <li class="key-point-with-link"><b>REST</b> — style architectural : GET, POST, PUT, DELETE
+          <div class="more-links"><a class="more-link" href="https://developer.mozilla.org/en-US/docs/Glossary/REST" target="_blank" rel="noopener">↗ En savoir plus</a></div>
+        </li>
+        <li class="key-point-with-link"><b>JSON</b> — format texte léger et lisible pour échanger des données
+          <div class="more-links"><a class="more-link" href="https://www.json.org/json-fr.html" target="_blank" rel="noopener">↗ En savoir plus</a></div>
+        </li>
         <li><b>API</b> — contrat entre Front End et Back End</li>
       </ul>
       <div class="callout">REST n'est ni Front End ni Back End. C'est le <b>pont</b> entre les deux.</div>
@@ -772,7 +819,9 @@ Réponse JSON :
       </div>
 
       <ul class="key-points" style="margin-top:16px;">
-        <li><b>Bases relationnelles</b> — PostgreSQL, MySQL, SQLite</li>
+        <li class="key-point-with-link"><b>Bases relationnelles</b> — PostgreSQL, MySQL, SQLite
+          <div class="more-links"><a class="more-link" href="https://www.w3schools.com/sql/default.asp" target="_blank" rel="noopener">📘 SQL sur W3Schools</a></div>
+        </li>
         <li><b>Bases non-relationnelles</b> — MongoDB, Redis</li>
       </ul>
     </section>
