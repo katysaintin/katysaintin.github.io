@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cours — Katy Saintin</title>
+<meta name="description" content="Catalogue des cours et supports pédagogiques de Katy Saintin.">
+<link rel="icon" type="image/png" href="../favicon.png">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CLGVGY5YNH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CLGVGY5YNH', { 'anonymize_ip': true });
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #0c1220;
+    --bg-panel: #121a2b;
+    --bg-card: #16203350;
+    --line: #26324a;
+    --text: #e7ecf6;
+    --text-muted: #90a0bd;
+    --accent: #5b9bd5;
+    --accent-soft: #8ecae6;
+    --accent-2: #4fd1c5;
+    --radius: 12px;
+    --maxw: 1120px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 85% -10%, #16233f 0%, transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter', system-ui, sans-serif;
+    line-height:1.6;
+  }
+  a{ color:var(--accent-soft); text-decoration:none; }
+  h1,h2,h3{ font-family:'Space Grotesk','Inter',sans-serif; letter-spacing:-0.01em; color:#f4f7fc; }
+  code, .mono{ font-family:'JetBrains Mono', ui-monospace, monospace; }
+
+  header.topbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,15,26,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:var(--maxw); margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+  }
+  .brand{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600; font-size:0.98rem;
+  }
+  .brand span{ color:var(--accent-soft); }
+  .topbar-inner nav a{
+    color:var(--text-muted); font-size:0.88rem; margin-left:18px;
+  }
+  .topbar-inner nav a:hover{ color:var(--text); }
+
+  .hero{
+    max-width:var(--maxw); margin:0 auto;
+    padding: 56px 24px 28px;
+  }
+  .hero .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem; color:var(--accent-2);
+    text-transform:uppercase; letter-spacing:0.14em;
+    margin-bottom:14px;
+  }
+  .hero h1{ font-size:clamp(1.8rem, 3.6vw, 2.5rem); margin:0 0 12px; line-height:1.15; }
+  .hero p{ color:var(--text-muted); max-width:62ch; font-size:1.02rem; }
+
+  .toolbar{
+    max-width:var(--maxw); margin:0 auto;
+    padding: 0 24px 28px;
+    display:flex; gap:12px; align-items:center; flex-wrap:wrap;
+  }
+  #search{
+    flex:1; min-width:220px;
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:10px 18px;
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    font-size:0.92rem;
+  }
+  #search::placeholder{ color:var(--text-muted); }
+  #search:focus{ outline:none; border-color:var(--accent); }
+  #count{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.8rem; color:var(--text-muted);
+    white-space:nowrap;
+  }
+
+  main{ max-width:var(--maxw); margin:0 auto; padding: 0 24px 80px; }
+
+  #status{
+    color:var(--text-muted);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.88rem;
+    padding: 30px 0;
+  }
+  #status.error{ color:#ff8f8f; }
+
+  #grille{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap:18px;
+  }
+
+  .carte{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px;
+    display:flex; flex-direction:column;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .carte:hover{ border-color:var(--accent); transform:translateY(-2px); }
+
+  .carte-icon{
+    width:44px; height:44px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.4rem;
+    background:#101a2e;
+    border:1px solid var(--line);
+    border-radius:10px;
+    margin-bottom:16px;
+  }
+  .carte-icon img{ width:26px; height:26px; object-fit:contain; }
+
+  .carte h3{
+    font-size:1.05rem; margin:0 0 8px; line-height:1.3;
+  }
+  .carte p.desc{
+    color:var(--text-muted);
+    font-size:0.9rem;
+    margin:0 0 18px;
+    flex-grow:1;
+  }
+  .carte .badge-auto{
+    display:inline-block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    color:var(--text-muted);
+    border:1px dashed var(--line);
+    border-radius:999px;
+    padding:3px 10px;
+    margin-bottom:14px;
+    width:fit-content;
+  }
+
+  .carte-actions{
+    display:flex; gap:8px; flex-wrap:wrap;
+    padding-top:14px;
+    border-top:1px solid var(--line);
+  }
+  .btn{
+    font-family:'Inter', sans-serif;
+    font-size:0.85rem; font-weight:500;
+    padding:8px 14px;
+    border-radius:8px;
+    display:inline-flex; align-items:center; gap:6px;
+    border:1px solid var(--line);
+    color:var(--text);
+  }
+  .btn:hover{ text-decoration:none; border-color:var(--accent); color:#fff; }
+  .btn-primary{
+    background:var(--accent);
+    color:#0c1220;
+    border-color:var(--accent);
+    font-weight:600;
+  }
+  .btn-primary:hover{ background:var(--accent-soft); border-color:var(--accent-soft); color:#0c1220; }
+
+  footer{
+    max-width:var(--maxw); margin:0 auto;
+    padding: 20px 24px 60px;
+    color:var(--text-muted); font-size:0.85rem;
+    border-top:1px solid var(--line);
+  }
+  footer a{ color:var(--text-muted); }
+
+  ::-webkit-scrollbar{ width:10px; height:10px; }
+  ::-webkit-scrollbar-track{ background:var(--bg); }
+  ::-webkit-scrollbar-thumb{ background:#243250; border-radius:8px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Katy Saintin <span>/ cours</span></div>
+    <nav>
+      <a href="https://katysaintin.github.io">Accueil ↗</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="eyebrow">Catalogue</div>
+  <h1>Cours &amp; supports pédagogiques</h1>
+  <p>Cette page explore automatiquement les fichiers <code>.html</code> présents dans ce répertoire et affiche, pour chacun, le titre, la description, l'icône et le PDF téléchargeable renseignés dans <code>cours.json</code>.</p>
+</div>
+
+<div class="toolbar">
+  <input type="search" id="search" placeholder="Rechercher un cours…" aria-label="Rechercher un cours">
+  <span id="count" class="mono"></span>
+</div>
+
+<main>
+  <div id="status">Chargement du catalogue…</div>
+  <div id="grille"></div>
+</main>
+
+<footer>
+  Généré dynamiquement depuis ce répertoire · <a href="https://katysaintin.github.io">katysaintin.github.io</a>
+</footer>
+
+<script>
+(async function(){
+
+  // --- CONFIGURATION (même logique que index.html) ---
+  const SELF = 'cours.html';           // ce fichier, à exclure de la liste
+  const JSON_FILE = 'cours.json';      // fichier de métadonnées, dans le même dossier
+  const branch = 'main';               // changez en "master" si besoin
+
+  const owner = location.hostname.split('.')[0];
+  const repo  = location.hostname;
+  const folder = location.pathname.split('/').filter(p => p.length && !p.endsWith('.html')).join('/');
+
+  const statusEl = document.getElementById('status');
+  const grilleEl = document.getElementById('grille');
+  const searchEl = document.getElementById('search');
+  const countEl  = document.getElementById('count');
+
+  function slugFromFilename(name){
+    return name.replace(/\.html?$/i, '');
+  }
+
+  function titleFromSlug(slug){
+    return slug
+      .replace(/[-_]+/g, ' ')
+      .replace(/\b\w/g, c => c.toUpperCase());
+  }
+
+  function renderIcon(icon){
+    if(!icon) return '📄';
+    const looksLikeImage = /\.(png|jpg|jpeg|svg|webp)$/i.test(icon);
+    if(looksLikeImage){
+      return `<img src="${icon}" alt="">`;
+    }
+    return icon;
+  }
+
+  function carteHTML(item){
+    const icon = renderIcon(item.icon);
+    const desc = item.description || 'Description à venir — complétez cours.json pour ce cours.';
+    const autoBadge = item._auto ? '<span class="badge-auto">non référencé dans cours.json</span>' : '';
+    const pdfBtn = item.pdf
+      ? `<a class="btn" href="${item.pdf}" target="_blank" rel="noopener">⬇ PDF</a>`
+      : '';
+    return `
+      <article class="carte" data-title="${(item.title || '').toLowerCase()}" data-desc="${desc.toLowerCase()}">
+        <div class="carte-icon">${icon}</div>
+        ${autoBadge}
+        <h3>${item.title}</h3>
+        <p class="desc">${desc}</p>
+        <div class="carte-actions">
+          <a class="btn btn-primary" href="${item.href}">Ouvrir le cours →</a>
+          ${pdfBtn}
+        </div>
+      </article>`;
+  }
+
+  function applyFilter(){
+    const q = searchEl.value.trim().toLowerCase();
+    const cartes = Array.from(grilleEl.children);
+    let visible = 0;
+    cartes.forEach(c => {
+      const match = !q || c.dataset.title.includes(q) || c.dataset.desc.includes(q);
+      c.style.display = match ? '' : 'none';
+      if(match) visible++;
+    });
+    countEl.textContent = `${visible} cours`;
+  }
+
+  try {
+    // 1. Liste des fichiers du répertoire via l'API GitHub
+    const listUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${folder}?ref=${branch}`;
+    const listRes = await fetch(listUrl);
+    if(!listRes.ok) throw new Error(`Erreur ${listRes.status} en listant le répertoire (vérifiez owner/repo/branch, ou limite de l'API GitHub atteinte)`);
+    const files = await listRes.json();
+
+    const htmlFiles = files
+      .filter(f => f.type === 'file')
+      .filter(f => /\.html?$/i.test(f.name))
+      .filter(f => f.name.toLowerCase() !== SELF);
+
+    if(htmlFiles.length === 0){
+      statusEl.textContent = 'Aucun autre fichier .html trouvé dans ce répertoire.';
+      countEl.textContent = '';
+      return;
+    }
+
+    // 2. Métadonnées cours.json (best effort : la page fonctionne même sans)
+    let meta = {};
+    try {
+      const metaRes = await fetch(JSON_FILE, { cache: 'no-store' });
+      if(metaRes.ok) meta = await metaRes.json();
+    } catch(e) { /* pas de cours.json : on continue avec des cartes minimales */ }
+
+    // 3. Fusion fichiers + métadonnées
+    const items = htmlFiles.map(f => {
+      const slug = slugFromFilename(f.name);
+      const entry = (meta[slug] && !slug.startsWith('_')) ? meta[slug] : null;
+      if(entry){
+        return {
+          href: f.name,
+          title: entry.title || titleFromSlug(slug),
+          description: entry.description || '',
+          icon: entry.icon || '',
+          pdf: entry.pdf || ''
+        };
+      }
+      return {
+        href: f.name,
+        title: titleFromSlug(slug),
+        description: '',
+        icon: '',
+        pdf: '',
+        _auto: true
+      };
+    });
+
+    items.sort((a, b) => a.title.localeCompare(b.title, 'fr'));
+
+    statusEl.remove();
+    grilleEl.innerHTML = items.map(carteHTML).join('');
+    countEl.textContent = `${items.length} cours`;
+    searchEl.addEventListener('input', applyFilter);
+
+  } catch(err){
+    statusEl.textContent = 'Impossible de charger le catalogue : ' + err.message;
+    statusEl.classList.add('error');
+  }
+
+})();
+</script>
+
+</body>
+</html>
