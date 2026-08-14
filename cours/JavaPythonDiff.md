@@ -62,7 +62,73 @@ Ces annotations améliorent la lisibilité et peuvent être exploitées par les 
 > **Point important :** « interprété » ne signifie pas que Python n'effectue aucune compilation interne. Les implémentations Python peuvent notamment produire du bytecode. La différence porte surtout sur le modèle d'exécution et sur le fait que le typage n'est pas vérifié de la même manière qu'en Java.
 
 ---
+## Performance : Python vs Java
 
+> **Python n'est pas intrinsèquement plus rapide que Java pour les calculs ou les boucles sur des listes. Pour du code Python pur, c'est généralement Java qui est nettement plus rapide.**
+
+Dans un benchmark de boucle numérique de **10 millions d'itérations**, une étude mesurait environ **5 s avec CPython**, alors que Java se situait dans un ordre de grandeur nettement inférieur. Une autre mesure comparable rapportait environ **0,42 s en Python contre 0,012 s en Java**, soit environ **35 fois plus rapide pour Java** sur ce type de calcul. Ces chiffres sont indicatifs : ils dépendent fortement du matériel, des versions et surtout du code mesuré. [oai_citation:0‡Libstore](https://libstore.ugent.be/fulltxt/RUG01/002/945/718/RUG01-002945718_2021_0001_AC.pdf?utm_source=chatgpt.com)
+
+### Pourquoi Java est-il plus rapide ?
+
+Dans un code Java classique :
+
+~~~java
+for (int i = 0; i < 10_000_000; i++) {
+    total += i;
+}
+~~~
+
+le code est compilé en bytecode puis la **JVM HotSpot** identifie les parties exécutées fréquemment et les compile dynamiquement en code machine optimisé grâce au **JIT (Just-In-Time compiler)**.
+
+Elle peut notamment optimiser les boucles, les types et l'utilisation des registres CPU.
+
+Avec CPython, une boucle comme :
+
+~~~python
+for i in range(10_000_000):
+    total += i
+~~~
+
+passe par la machine virtuelle de CPython et son interprétation/exécution des instructions Python. Chaque opération doit gérer le modèle dynamique de Python, notamment les objets et les types à l'exécution. CPython ne transforme pas spontanément cette boucle Python en une boucle machine équivalente à celle optimisée par le JIT de la JVM.
+
+### Et les listes ?
+
+Pour les opérations structurelles courantes, les deux sont comparables en complexité :
+
+| Opération | Python `list` | Java `ArrayList` |
+|---|---|---|
+| Accès par index | O(1) | O(1) |
+| Ajout en fin | O(1) amorti | O(1) amorti |
+| Parcours | O(n) | O(n) |
+| Recherche linéaire | O(n) | O(n) |
+
+La différence ne vient donc pas principalement de la complexité algorithmique de la liste, mais du **coût d'exécution de chaque opération**.
+
+### Le paradoxe Python scientifique
+
+Python peut néanmoins être extrêmement performant pour les calculs scientifiques.
+
+~~~python
+result = numpy_array * 2
+~~~
+
+Ici, Python ne réalise pas nécessairement une opération Python pour chaque élément. Le travail est délégué à du code natif optimisé, généralement écrit en C/C++ ou Fortran.
+
+C'est donc une distinction fondamentale :
+
+> **Python pur peut être beaucoup plus lent que Java pour du calcul CPU intensif.  
+> Python + bibliothèques natives optimisées peut exploiter des performances très élevées.**
+
+C'est notamment une des raisons du succès de l'écosystème scientifique Python : **Python sert souvent de couche d'orchestration, tandis que le calcul intensif est exécuté par du code compilé.**
+
+### À retenir
+
+> **Python gagne souvent en concision et en productivité.  
+> Java gagne généralement en performance pour du code CPU exécuté directement dans le langage.  
+> L'écosystème Python permet cependant de déléguer les calculs lourds à du code natif très performant.**
+
+**Donc : non, Python n'est pas « plus rapide que Java parce qu'il manipule mieux les listes ». Pour des boucles Python pures, c'est plutôt l'inverse, parfois avec un facteur de plusieurs dizaines.**
+---
 # 2. Écosystème — repères Java → Python
 
 L'objectif de ce tableau est de retrouver les équivalents fonctionnels dans l'écosystème Python, sans supposer qu'ils sont techniquement identiques.
