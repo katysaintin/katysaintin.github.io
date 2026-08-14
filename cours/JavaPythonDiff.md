@@ -136,4 +136,6 @@ Cette section sert de journal des différences découvertes au fur et à mesure 
 | Parcours d'une liste | `for (item : list) {}` | `for item in list:` | Python utilise `in` et `:` pour introduire le bloc. Java utilise `:` dans le `for-each`. |
 | Longueur d'un tableau | `array.length` | `len(list)` | En Java, `length` est un attribut du tableau. En Python, `len()` est une fonction. |
 | Taille d'une collection | `list.size()` | `len(list)` | En Java, les collections (`List`, `Set`, etc.) utilisent la méthode `size()`. En Python, `len()` fonctionne sur les objets qui implémentent le protocole de longueur. |
+| Affichage d'une liste / d'un tableau | `System.out.println(array)` affiche une représentation du tableau (`[I@...` pour un tableau de `int`) ; utiliser `Arrays.toString(array)` pour afficher son contenu. Les collections ont un `toString()` qui affiche généralement leur contenu. | `print(list)` affiche directement le contenu de la liste, par exemple `[10, 20, 30]`. | Python est plus pratique pour l'affichage direct des listes. En Java, attention à la différence entre tableaux et collections : `Arrays.toString(array)` est nécessaire pour les tableaux. |
+
 
