@@ -61,19 +61,21 @@
     font-family:'JetBrains Mono', ui-monospace, monospace;
   }
 
-  /* ---------- top bar : navigation + la "chaîne" Front > API > Back > Data ---------- */
-  .archbar{
+  /* ---------- barre de navigation unique, avec menu déroulant ---------- */
+  .nav{
     position:sticky; top:0; z-index:50;
-    background:rgba(10,15,26,0.92);
+    background:rgba(10,15,26,0.96);
     backdrop-filter: blur(8px);
     border-bottom:1px solid var(--line);
   }
-  .archbar-top{
+  .nav-inner{
     display:flex; align-items:center; justify-content:space-between;
     gap:12px;
-    padding: 12px 16px;
+    padding: 13px 16px;
+    max-width:1240px;
+    margin:0 auto;
   }
-  .archbar .brand{
+  .nav .brand{
     font-family:'Space Grotesk', sans-serif;
     font-weight:600;
     font-size:0.92rem;
@@ -84,66 +86,59 @@
     min-width:0;
     flex-shrink:1;
   }
-  .archbar .brand span{ color:var(--accent-soft); }
-  .archbar .pagenav{
-    display:flex; gap:6px;
+  .nav .brand span{ color:var(--accent-soft); }
+
+  .nav-toggle{
     flex-shrink:0;
-    white-space:nowrap;
-  }
-  .archbar .pagenav a{
-    font-size:0.78rem;
-    color:var(--text-muted);
-    padding:6px 10px;
-    border-radius:6px;
+    display:flex; align-items:center; gap:6px;
+    background:transparent;
     border:1px solid var(--line);
-    white-space:nowrap;
-  }
-  .archbar .pagenav a:hover{
+    border-radius:8px;
     color:var(--text);
-    border-color:var(--accent);
+    font-family:'Inter', sans-serif;
+    font-size:0.82rem;
+    padding:8px 12px;
+    cursor:pointer;
+    min-height:40px;
+  }
+  .nav-toggle:hover{ border-color:var(--accent); }
+  .nav-toggle .bars{ display:inline-block; font-size:1rem; line-height:1; }
+
+  .nav-menu{
+    max-height:0;
+    overflow:hidden;
+    border-top:0 solid var(--line);
+    background:#0d1526;
+    transition: max-height .22s ease;
+  }
+  .nav-menu.is-open{
+    max-height:70vh;
+    overflow-y:auto;
+    border-top-width:1px;
+  }
+  .nav-menu-inner{ max-width:1240px; margin:0 auto; padding:10px 16px 18px; }
+  .nav-menu a{
+    display:flex; align-items:center; gap:10px;
+    padding:11px 6px;
+    font-size:0.9rem;
+    color:var(--text);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-menu a:last-child{ border-bottom:none; }
+  .nav-menu a:hover, .nav-menu a.is-active{
+    color:var(--accent-soft);
     text-decoration:none;
   }
-  @media (max-width:420px){
-    .archbar-top{ padding:10px 12px; }
-    .archbar .brand{ font-size:0.8rem; }
-    .archbar .pagenav a{ padding:6px 8px; font-size:0.72rem; }
-  }
-  .arch-steps-wrap{
-    position:relative;
-    overflow-x:auto;
-    border-top:1px solid var(--line);
-    padding: 0 16px;
-    -ms-overflow-style:none;
-    scrollbar-width:none;
-  }
-  .arch-steps-wrap::-webkit-scrollbar{ display:none; }
-  .arch-steps-wrap::after{
-    content:"";
-    position:sticky;
-    top:0; right:0;
-    float:right;
-    width:28px; height:100%;
-    margin-right:-16px;
-    background:linear-gradient(90deg, transparent, rgba(10,15,26,0.95));
-    pointer-events:none;
-  }
-  .arch-steps{ display:flex; align-items:center; padding:8px 0; width:max-content; }
-  .arch-step{
-    font-size:0.78rem;
-    padding:6px 12px;
-    border-radius:999px;
+  .nav-menu-label{
+    display:block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
     color:var(--text-muted);
-    white-space:nowrap;
-    border:1px solid transparent;
-    transition:all .15s ease;
-    cursor:pointer;
+    padding:14px 6px 6px;
   }
-  .arch-step.is-active{
-    color:#0c1220;
-    background:var(--accent-soft);
-    font-weight:600;
-  }
-  .arch-sep{ color:var(--line); padding:0 2px; font-size:0.8rem; }
+  .nav-menu-label:first-child{ padding-top:4px; }
 
   /* ---------- layout ---------- */
   .layout{
@@ -559,30 +554,31 @@
 </head>
 <body>
 
-<!-- barre de navigation + architecture / scrollspy global -->
-<div class="archbar" id="archbar">
-  <div class="archbar-top">
+<!-- barre de navigation unique, avec menu déroulant -->
+<header class="nav">
+  <div class="nav-inner">
     <div class="brand">Katy Saintin <span>/ cours</span></div>
-    <div class="pagenav">
-      <a href="cours.html">← Catalogue</a>
-      <a href="../index.html">🏠 Home</a>
-      <a href="#toc">📑 Sommaire</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+      <span class="bars">☰</span> Menu
+    </button>
+  </div>
+  <div class="nav-menu" id="navMenu">
+    <div class="nav-menu-inner">
+      <span class="nav-menu-label">Navigation</span>
+      <a href="cours.html">← Retour au catalogue</a>
+      <a href="../index.html">🏠 Accueil du site</a>
+      <a href="Full-Stack-Web-Comprendre-larchitecture-moderne.pdf" target="_blank" rel="noopener">⬇ Télécharger le PDF du cours</a>
+
+      <span class="nav-menu-label">Sections du cours</span>
+      <a href="#fullstack" class="jump-link" data-target="fullstack">Vue d'ensemble</a>
+      <a href="#frontend" class="jump-link" data-target="frontend">Front End</a>
+      <a href="#api-rest" class="jump-link" data-target="api-rest">API REST</a>
+      <a href="#java-python" class="jump-link" data-target="java-python">Back End (Java / Python)</a>
+      <a href="#orm" class="jump-link" data-target="orm">Données &amp; ORM</a>
+      <a href="#lexique" class="jump-link" data-target="lexique">Lexique des acronymes</a>
     </div>
   </div>
-  <div class="arch-steps-wrap">
-    <div class="arch-steps">
-      <span class="arch-step" data-target="fullstack">Vue d'ensemble</span>
-      <span class="arch-sep">·</span>
-      <span class="arch-step" data-target="frontend">Front End</span>
-      <span class="arch-sep">·</span>
-      <span class="arch-step" data-target="api-rest">API REST</span>
-      <span class="arch-sep">·</span>
-      <span class="arch-step" data-target="java-python">Back End</span>
-      <span class="arch-sep">·</span>
-      <span class="arch-step" data-target="donnees">Données</span>
-    </div>
-  </div>
-</div>
+</header>
 
 <div class="layout">
 
@@ -928,17 +924,43 @@ Réponse JSON :
 </footer>
 
 <script>
-  // Scrollspy : sommaire + barre d'architecture
+  // Menu déroulant (une seule barre, un seul bouton)
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  function closeMenu(){
+    navMenu.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+  function toggleMenu(){
+    const open = navMenu.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  }
+
+  navToggle.addEventListener('click', toggleMenu);
+
+  // Ferme le menu après avoir choisi un lien (ancre interne ou page externe)
+  navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Ferme le menu si on clique en dehors
+  document.addEventListener('click', (e) => {
+    if(!navMenu.contains(e.target) && !navToggle.contains(e.target)){
+      closeMenu();
+    }
+  });
+
+  // Scrollspy : sommaire + menu (section courante mise en évidence)
   const sections = Array.from(document.querySelectorAll('main section[id]'));
   const tocLinks = Array.from(document.querySelectorAll('.toc a'));
-  const archSteps = Array.from(document.querySelectorAll('.arch-step'));
+  const jumpLinks = Array.from(document.querySelectorAll('.jump-link'));
 
-  const archMap = {
+  const jumpMap = {
     'fullstack': 'fullstack', 'analogie': 'fullstack', 'technologies': 'fullstack',
     'frontend': 'frontend',
     'api-rest': 'api-rest',
     'java-web': 'java-python', 'python-web': 'java-python', 'java-python': 'java-python',
-    'orm': 'donnees', 'carte-mentale': 'donnees'
+    'orm': 'orm', 'carte-mentale': 'orm',
+    'lexique': 'lexique'
   };
 
   function onScroll(){
@@ -951,20 +973,12 @@ Réponse JSON :
     tocLinks.forEach(a => {
       a.classList.toggle('is-active', a.getAttribute('href') === '#' + current);
     });
-    const archTarget = archMap[current] || 'fullstack';
-    archSteps.forEach(s => s.classList.toggle('is-active', s.dataset.target === archTarget));
+    const jumpTarget = jumpMap[current] || 'fullstack';
+    jumpLinks.forEach(a => a.classList.toggle('is-active', a.dataset.target === jumpTarget));
   }
 
   document.addEventListener('scroll', onScroll, { passive:true });
   window.addEventListener('load', onScroll);
-
-  archSteps.forEach(s => {
-    s.style.cursor = 'pointer';
-    s.addEventListener('click', () => {
-      const order = { 'fullstack':'fullstack', 'frontend':'frontend', 'api-rest':'api-rest', 'java-python':'java-python', 'donnees':'orm' };
-      document.getElementById(order[s.dataset.target])?.scrollIntoView({behavior:'smooth'});
-    });
-  });
 </script>
 
 </body>
