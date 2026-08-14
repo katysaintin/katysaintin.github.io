@@ -310,7 +310,7 @@
     const htmlFiles = files
       .filter(f => f.type === 'file')
       .filter(f => /\.html?$/i.test(f.name))
-      .filter(f => f.name.toLowerCase() !== 'index.html');
+      .filter(f => f.name.toLowerCase() !== 'index.html')
       .filter(f => f.name.toLowerCase() !== SELF);
 
     if(htmlFiles.length === 0){
