@@ -1437,7 +1437,19 @@ Python
 > **Python ne fait pas nécessairement moins de choses que Java. Il exprime souvent les mêmes concepts avec moins de contraintes syntaxiques et davantage de conventions.**
 
 ---
+## Astuce — Refactoring : PyCharm vs Eclipse
 
+Un bon IDE ne sert pas seulement à écrire du code : il permet également de **refactorer le code sans devoir rechercher manuellement toutes les occurrences**.
+
+### Rename / Renommer
+
+#### PyCharm
+
+Pour renommer une variable, une fonction, une classe ou une méthode :
+
+```text
+Shift + F6
+--
 # Tableau comparatif — Fonctions / méthodes
 
 | Fonction | Java | Python | Commentaire |
