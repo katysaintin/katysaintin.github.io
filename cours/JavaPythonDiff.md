@@ -888,5 +888,6 @@ Cette section sert de journal des différences découvertes au fur et à mesure 
 | Initialisation d'une liste / d'un tableau | `String[] array = {"item0", "item1"};` | `array = ["item0", "item1"]` | Python utilise une syntaxe beaucoup plus concise. En Java, le type et les accolades sont nécessaires pour un tableau. Attention : une `List<String>` Java est une collection et s'initialise différemment. |
 | Liste dynamique | `List<String> items = new ArrayList<>();` puis `items.add(...)`, `items.remove(...)` | `items = ["item0", "item1"]` puis `items.append(...)`, `items.remove(...)` | La `list` Python est une collection dynamique, plus proche conceptuellement de `List` en Java que d'un tableau Java (`String[]`). |
 | Collection hétérogène | `Object[]` ou `List<Object>` pour mélanger plusieurs types ; nécessite souvent des vérifications de type/casts | `list` peut naturellement contenir des objets de types différents | Python autorise naturellement les listes hétérogènes. Avec le typage moderne, on peut néanmoins préciser les types attendus (`list[str]`, `list[str | int]`, etc.). |
+| Compter les occurrences d'une valeur | `Collections.frequency(list, value)` | `list.count(value)` | Compte le nombre d'occurrences de `value` dans la collection. En Java, méthode utilitaire de `java.util.Collections`. |
 
 
