@@ -7,6 +7,42 @@ L'objectif de ce cours n'est pas d'apprendre un langage supplémentaire, mais d'
 Un langage permet de faire fonctionner un programme.  
 Le génie logiciel permet de construire un programme que l'on peut **comprendre, tester, debugger, maintenir et faire évoluer**.
 
+## Introduction
+
+Python est facile à prendre en main.
+Mais écrire rapidement du code qui fonctionne n'est pas la même chose
+qu'écrire du logiciel maintenable.
+
+Plus le langage laisse de liberté au développeur,
+plus les conventions, la lisibilité, le typage explicite,
+les tests et l'architecture deviennent importants.
+
+🏸 Python
+Prise en main rapide
+→ on s'amuse rapidement
+→ beaucoup de liberté
+→ les contraintes arrivent progressivement
+
+🎾 Java
+Plus de technique dès le départ
+→ typage
+→ compilation
+→ POO
+→ interfaces
+→ exceptions
+→ JVM
+→ cadre plus contraignant
+
+🏓 C++
+On entre directement dans le technique
+→ compilation
+→ typage fort
+→ pointeurs
+→ références
+→ mémoire
+→ POO
+→ templates
+→ etc.
 ---
 
 # 1. Philosophie du cours
