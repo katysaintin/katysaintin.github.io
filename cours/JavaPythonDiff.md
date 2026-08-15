@@ -1449,7 +1449,7 @@ Pour renommer une variable, une fonction, une classe ou une méthode :
 
 ```text
 Shift + F6
-``ˋ
+```
 
 --
 # Tableau comparatif — Fonctions / méthodes
