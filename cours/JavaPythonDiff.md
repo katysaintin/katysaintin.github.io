@@ -890,4 +890,572 @@ Cette section sert de journal des différences découvertes au fur et à mesure 
 | Collection hétérogène | `Object[]` ou `List<Object>` pour mélanger plusieurs types ; nécessite souvent des vérifications de type/casts | `list` peut naturellement contenir des objets de types différents | Python autorise naturellement les listes hétérogènes. Avec le typage moderne, on peut néanmoins préciser les types attendus (`list[str]`, `list[str | int]`, etc.). |
 | Compter les occurrences d'une valeur | `Collections.frequency(list, value)` | `list.count(value)` | Compte le nombre d'occurrences de `value` dans la collection. En Java, méthode utilitaire de `java.util.Collections`. |
 
+---
+# Chapitre — Les fonctions / méthodes
+
+Les fonctions constituent une étape importante dans l'apprentissage d'un langage : elles permettent de regrouper une suite d'instructions dans une unité réutilisable.
+
+La syntaxe et surtout la philosophie diffèrent entre Python et Java.
+
+---
+
+## 1. Déclarer une fonction
+
+### Python
+
+En Python, une fonction est déclarée avec le mot-clé `def`.
+
+```python
+def my_function():
+    print("Hello")
+```
+
+L'appel de la fonction se fait simplement avec son nom :
+
+```python
+my_function()
+```
+
+L'indentation définit le bloc d'instructions appartenant à la fonction.
+
+```python
+def my_function():
+    print("Instruction 1")
+    print("Instruction 2")
+
+print("En dehors de la fonction")
+```
+
+Les deux `print()` indentés appartiennent à la fonction.
+
+Il n'y a pas d'accolades `{}` pour délimiter le bloc.
+
+---
+
+### Java
+
+En Java, on parle généralement de **méthode** lorsqu'une fonction appartient à une classe.
+
+```java
+private void myFunction() {
+    System.out.println("Hello");
+}
+```
+
+L'appel :
+
+```java
+myFunction();
+```
+
+Les accolades `{}` délimitent le bloc de la méthode.
+
+---
+
+## 2. Comparaison de la syntaxe
+
+```text
+Python :
+
+def my_function():
+    instruction
+    instruction
+
+
+Java :
+
+private void myFunction() {
+    instruction;
+    instruction;
+}
+```
+
+### Différence importante
+
+Python utilise :
+
+```python
+:
+    indentation
+```
+
+Java utilise :
+
+```java
+{
+    accolades
+}
+```
+
+L'indentation reste évidemment importante en Java pour la lisibilité, mais elle ne détermine pas le bloc de code.
+
+En Python, elle fait partie de la syntaxe.
+
+---
+
+# 3. Nommer les fonctions
+
+Python recommande généralement le **snake_case** :
+
+```python
+def calculate_value():
+    pass
+
+def get_variable():
+    pass
+```
+
+Java utilise généralement le **camelCase**, avec une première lettre minuscule :
+
+```java
+void calculateValue() {
+}
+
+void getVariable() {
+}
+```
+
+La convention de nommage dépend donc du langage.
+
+Il est techniquement possible d'utiliser d'autres conventions dans les deux langages, mais il est préférable de respecter les conventions idiomatiques du langage utilisé.
+
+---
+
+# 4. Type de retour
+
+### Java
+
+Java impose de déclarer le type de retour d'une méthode.
+
+Si la méthode ne retourne aucune valeur :
+
+```java
+void myFunction() {
+}
+```
+
+Si elle retourne un entier :
+
+```java
+int calculateValue() {
+    return 10;
+}
+```
+
+Si elle retourne un `String` :
+
+```java
+String getName() {
+    return "Katy";
+}
+```
+
+`void` signifie donc que la méthode ne retourne aucune valeur.
+
+---
+
+### Python
+
+Python ne demande pas de déclarer obligatoirement le type de retour :
+
+```python
+def calculate_value():
+    return 10
+```
+
+On peut toutefois utiliser les **type hints** :
+
+```python
+def calculate_value() -> int:
+    return 10
+```
+
+Le `-> int` indique que la fonction est censée retourner un entier.
+
+Contrairement à Java, cette annotation ne constitue pas une contrainte de typage équivalente au type de retour Java à l'exécution.
+
+---
+
+# 5. Encapsulation
+
+C'est une différence importante entre Java et Python.
+
+## Java
+
+Java possède de véritables modificateurs de visibilité :
+
+```java
+public
+protected
+private
+```
+
+Exemple :
+
+```java
+private void calculateValue() {
+}
+```
+
+Une méthode `private` n'est accessible que depuis la classe concernée.
+
+Une méthode `public` est accessible depuis l'extérieur de la classe.
+
+Lorsqu'aucun modificateur de visibilité n'est indiqué :
+
+```java
+void calculateValue() {
+}
+```
+
+la méthode est **package-private** : elle est accessible depuis les classes du même package.
+
+> Attention : l'absence de modificateur ne signifie donc pas `private`.
+
+---
+
+## Python
+
+Python ne possède pas de mécanisme `public / protected / private` équivalent à Java.
+
+Par défaut, les attributs et méthodes sont accessibles.
+
+### Public
+
+```python
+def calculate_value():
+    pass
+```
+
+### Convention `_`
+
+```python
+def _calculate_value():
+    pass
+```
+
+Le `_` indique par convention :
+
+> « Cette méthode est destinée à un usage interne. »
+
+Mais Python n'interdit pas son utilisation depuis l'extérieur.
+
+```python
+object._calculate_value()
+```
+
+reste techniquement possible.
+
+### Double underscore `__`
+
+Python possède également le mécanisme de **name mangling** :
+
+```python
+class MyClass:
+
+    def __calculate_value(self):
+        pass
+```
+
+Le nom est transformé internement, notamment en :
+
+```text
+_MyClass__calculate_value
+```
+
+Cela rend l'accès moins direct, mais ce n'est pas une confidentialité stricte équivalente au `private` de Java.
+
+### Philosophie
+
+On peut résumer ainsi :
+
+```text
+Java
+→ le langage impose les règles d'accès.
+
+Python
+→ le langage s'appuie davantage sur les conventions
+  et la responsabilité du développeur.
+```
+
+---
+
+# 6. Méthodes statiques
+
+## Java
+
+Java possède le mot-clé `static`.
+
+```java
+public static int add(int a, int b) {
+    return a + b;
+}
+```
+
+La méthode appartient à la classe plutôt qu'à une instance.
+
+```java
+int result = MyClass.add(10, 20);
+```
+
+---
+
+## Python
+
+Python possède un décorateur `@staticmethod`.
+
+```python
+class MyClass:
+
+    @staticmethod
+    def add(a, b):
+        return a + b
+```
+
+Appel :
+
+```python
+result = MyClass.add(10, 20)
+```
+
+Python possède également `@classmethod`, qui constitue un mécanisme différent :
+
+```python
+class MyClass:
+
+    @classmethod
+    def create(cls):
+        return cls()
+```
+
+`@classmethod` reçoit la classe (`cls`) comme premier argument.
+
+---
+
+# 7. `final` et les constantes
+
+## Java
+
+Java possède le mot-clé `final`.
+
+```java
+final int MAX_VALUE = 100;
+```
+
+Une variable `final` ne peut pas être réassignée après son initialisation.
+
+```java
+final int MAX_VALUE = 100;
+
+// MAX_VALUE = 200;  // erreur
+```
+
+`final` peut également être utilisé avec des méthodes et des classes, avec des significations différentes.
+
+---
+
+## Python
+
+Python ne possède pas de `final` ayant exactement le même rôle d'interdiction à l'exécution.
+
+On peut utiliser `Final` provenant de `typing` :
+
+```python
+from typing import Final
+
+MAX_VALUE: Final = 100
+```
+
+Cela indique aux outils de typage et d'analyse statique que la valeur est destinée à ne pas être réassignée.
+
+Python utilise également une convention très répandue pour les constantes :
+
+```python
+MAX_VALUE = 100
+DEFAULT_TIMEOUT = 30
+PI = 3.141592
+```
+
+Les constantes sont généralement écrites en **MAJUSCULES**.
+
+> Python privilégie donc ici encore davantage la convention et les outils d'analyse que la contrainte imposée par le langage.
+
+---
+
+# 8. Exceptions
+
+Java permet de déclarer explicitement les exceptions susceptibles d'être propagées :
+
+```java
+public void readFile() throws IOException {
+    // ...
+}
+```
+
+On peut donc trouver dans une déclaration :
+
+```java
+public static final void myFunction() throws Exception {
+}
+```
+
+Les différents éléments correspondent alors notamment à :
+
+```text
+public   → visibilité
+static   → méthode de classe
+final    → méthode non redéfinissable
+void     → type de retour
+myFunction() → nom et paramètres
+throws Exception → exceptions déclarées
+```
+
+Python utilise également les exceptions, mais ne demande pas de déclarer dans la signature les exceptions susceptibles d'être levées :
+
+```python
+def read_file():
+    # ...
+    raise Exception("Erreur")
+```
+
+La fonction peut également gérer les exceptions avec :
+
+```python
+try:
+    ...
+except Exception:
+    ...
+```
+
+---
+
+# 9. La signature d'une méthode en Java
+
+Une déclaration Java peut contenir de nombreuses informations :
+
+```java
+public static final int calculateValue(
+    int value,
+    int increment
+) throws Exception {
+    return value + increment;
+}
+```
+
+On retrouve :
+
+```text
+public
+static
+final
+int
+calculateValue
+(int value, int increment)
+throws Exception
+```
+
+Cela illustre une caractéristique importante de Java :
+
+> Beaucoup de contraintes et d'informations sont exprimées directement dans la déclaration de la méthode.
+
+Python utilise une syntaxe beaucoup plus légère :
+
+```python
+def calculate_value(value: int, increment: int) -> int:
+    return value + increment
+```
+
+---
+
+# 10. Bonne pratique : une fonction fait une seule chose
+
+Une fonction ou méthode devrait idéalement avoir **une responsabilité claire**.
+
+À éviter :
+
+```java
+boolean testIfOKAndDestroy() {
+    // vérifie quelque chose
+    // modifie quelque chose
+    // détruit quelque chose
+}
+```
+
+Le nom lui-même indique déjà plusieurs responsabilités.
+
+Préférer éventuellement :
+
+```java
+boolean isOK() {
+    ...
+}
+
+void destroy() {
+    ...
+}
+```
+
+Puis orchestrer les deux opérations dans une méthode ayant une responsabilité clairement identifiée.
+
+Cette règle facilite :
+
+- la lecture ;
+- le test ;
+- le débogage ;
+- la maintenance ;
+- la réutilisation.
+
+---
+
+# 11. Philosophie générale
+
+Python et Java permettent tous deux de structurer un programme avec des fonctions/méthodes.
+
+Mais leur philosophie est différente.
+
+```text
+Java
+│
+├── typage explicite
+├── visibilité explicite
+├── static
+├── final
+├── exceptions déclarées
+└── accolades pour délimiter les blocs
+
+
+Python
+│
+├── syntaxe plus légère
+├── indentation pour les blocs
+├── typage dynamique
+├── conventions pour la visibilité
+├── décorateurs pour certaines fonctionnalités
+└── davantage de liberté laissée au développeur
+```
+
+> **Python ne fait pas nécessairement moins de choses que Java. Il exprime souvent les mêmes concepts avec moins de contraintes syntaxiques et davantage de conventions.**
+
+---
+
+# Tableau comparatif — Fonctions / méthodes
+
+| Fonction | Java | Python | Commentaire |
+|---|---|---|---|
+| Déclarer une fonction/méthode | `void myFunction() {}` | `def my_function():` | Java utilise une méthode dans une classe ; Python utilise `def`. |
+| Appeler une fonction/méthode | `myFunction();` | `my_function()` | Syntaxe proche. |
+| Type de retour | `int calculate()` | `def calculate() -> int:` | Le type est obligatoire en Java ; le type hint est optionnel en Python. |
+| Aucun retour | `void myFunction()` | `def my_function():` | Python n'a pas besoin de `void`. |
+| Bloc de code | `{ ... }` | indentation | L'indentation est syntaxiquement significative en Python. |
+| Convention de nommage | `getVariable()` | `get_variable()` | Java : camelCase ; Python : snake_case. |
+| Public | `public` | pas de mot-clé | Les fonctions/méthodes sont accessibles par défaut en Python. |
+| Protected | `protected` | `_name` par convention | `_name` n'interdit pas l'accès en Python. |
+| Private | `private` | `__name` | Python utilise le name mangling, mais pas une confidentialité stricte équivalente à Java. |
+| Package-private | absence de modificateur | — | Java : accessible dans le même package. |
+| Méthode statique | `static` | `@staticmethod` | Python utilise un décorateur. |
+| Méthode de classe | `static` / méthodes de classe selon conception | `@classmethod` | `classmethod` reçoit `cls`. |
+| Constante | `final` | `Final` + convention MAJUSCULES | Python ne force pas la constance à l'exécution de la même manière. |
+| Exception déclarée | `throws Exception` | pas d'équivalent dans la signature | Python ne déclare pas les exceptions dans la signature. |
+| Paramètre typé | `int value` | `value: int` | Python utilise les type hints. |
+| Plusieurs responsabilités | possible | possible | Bonne pratique : une fonction doit idéalement avoir une responsabilité claire. |
 
