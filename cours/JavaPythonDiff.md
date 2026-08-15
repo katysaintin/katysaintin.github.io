@@ -278,6 +278,276 @@ Tri               → O(n log n)
 > **Ne pas trier une collection uniquement pour rechercher son minimum ou son maximum.**
 
 ---
+# Opérateurs et opérations sur les listes
+
+## 1. Concaténation avec `+`
+
+Python permet de concaténer directement deux listes avec l'opérateur `+`.
+
+```python
+list1 = [1, 2, 3]
+list2 = [4, 5]
+
+result = list1 + list2
+
+# [1, 2, 3, 4, 5]
+```
+
+L'opération crée une **nouvelle liste**.
+
+Les listes originales ne sont pas modifiées :
+
+```python
+list1 = [1, 2]
+list2 = [3, 4]
+
+result = list1 + list2
+
+# list1  → [1, 2]
+# list2  → [3, 4]
+# result → [1, 2, 3, 4]
+```
+
+### `+=`
+
+Avec `+=`, les éléments de la deuxième liste sont ajoutés à la première :
+
+```python
+list1 = [1, 2]
+list2 = [3, 4]
+
+list1 += list2
+
+# list1 → [1, 2, 3, 4]
+```
+
+---
+
+## 2. Répétition avec `*`
+
+Python permet également de répéter une liste avec `*`.
+
+```python
+values = [1, 2, 3]
+
+result = values * 3
+
+# [1, 2, 3, 1, 2, 3, 1, 2, 3]
+```
+
+Cela permet notamment d'initialiser facilement une liste :
+
+```python
+values = [0] * 5
+
+# [0, 0, 0, 0, 0]
+```
+
+Ou une liste de références initialisées à `None` :
+
+```python
+values = [None] * 5
+
+# [None, None, None, None, None]
+```
+
+---
+
+## 3. Soustraction `-`
+
+L'opérateur `-` n'est **pas défini pour les listes Python**.
+
+```python
+list1 = [1, 2, 3]
+list2 = [2, 3]
+
+result = list1 - list2
+```
+
+→ `TypeError`
+
+Python ne considère pas automatiquement cette opération comme « retirer les éléments de `list2` de `list1` ».
+
+On peut par exemple utiliser une compréhension de liste :
+
+```python
+list1 = [1, 2, 3, 4]
+list2 = [2, 4]
+
+result = [x for x in list1 if x not in list2]
+
+# [1, 3]
+```
+
+Si le besoin correspond réellement à une opération mathématique sur des ensembles, il peut être plus pertinent d'utiliser un `set`.
+
+---
+
+## 4. Division et autres opérateurs arithmétiques
+
+Les opérateurs suivants ne sont pas définis pour les listes :
+
+```python
+list1 / list2
+list1 // list2
+list1 % list2
+list1 - list2
+```
+
+Ils provoquent un `TypeError`.
+
+Les opérateurs particulièrement intéressants pour les listes sont donc :
+
+```text
++     concaténation
+*     répétition
+in    appartenance
+not in absence
+```
+
+---
+
+## 5. Tester l'appartenance avec `in`
+
+Python fournit une syntaxe très lisible pour vérifier si une valeur appartient à une liste :
+
+```python
+values = [10, 20, 30]
+
+20 in values
+# True
+
+40 in values
+# False
+```
+
+Pour tester l'absence :
+
+```python
+40 not in values
+# True
+```
+
+### Équivalent Java
+
+En Java, on utilise généralement :
+
+```java
+values.contains(20);
+```
+
+ou :
+
+```java
+!values.contains(40);
+```
+
+Comparaison :
+
+```text
+Python                    Java
+
+20 in values              values.contains(20)
+
+40 not in values          !values.contains(40)
+```
+
+---
+
+# 6. Équivalents en Java
+
+Java ne permet pas d'utiliser directement `+` ou `*` avec les `List`.
+
+### Concaténer deux listes
+
+Python :
+
+```python
+result = list1 + list2
+```
+
+Java :
+
+```java
+List<Integer> result = new ArrayList<>(list1);
+result.addAll(list2);
+```
+
+`addAll()` ajoute tous les éléments de `list2` à la fin de `result`.
+
+Une autre possibilité en Java moderne consiste à utiliser les Streams :
+
+```java
+List<Integer> result = Stream.concat(
+    list1.stream(),
+    list2.stream()
+).toList();
+```
+
+---
+
+## 7. Répéter une liste
+
+Python permet directement :
+
+```python
+values = [1, 2, 3]
+
+result = values * 3
+```
+
+Java ne possède pas d'opérateur équivalent pour répéter directement une `List`.
+
+Il faut construire explicitement la liste résultante.
+
+Par exemple :
+
+```java
+List<Integer> result = new ArrayList<>();
+
+for (int i = 0; i < 3; i++) {
+    result.addAll(values);
+}
+```
+
+---
+
+# 8. Comparaison Python / Java
+
+| Opération | Python | Java |
+|---|---|---|
+| Concaténer | `list1 + list2` | `addAll()` / Stream |
+| Concaténer sur place | `list1 += list2` | `list1.addAll(list2)` |
+| Répéter | `list * n` | Pas d'opérateur direct |
+| Soustraire | ❌ | ❌ |
+| Diviser | ❌ | ❌ |
+| Appartenance | `x in list` | `list.contains(x)` |
+| Absence | `x not in list` | `!list.contains(x)` |
+
+---
+
+# 9. À retenir
+
+Python offre une syntaxe particulièrement concise pour certaines opérations courantes sur les listes :
+
+```python
+list1 + list2      # concaténation
+list1 * 3          # répétition
+value in list1     # appartenance
+value not in list1 # absence
+```
+
+Java propose les mêmes fonctionnalités, mais principalement à travers les méthodes de son API :
+
+```java
+list1.addAll(list2);
+list.contains(value);
+```
+
+La différence est donc principalement **syntaxique et idiomatique**.
+
+> **Python utilise davantage les opérateurs pour exprimer certaines opérations sur les collections, tandis que Java s'appuie davantage sur les méthodes de ses classes de collections.**
+---
 
 # 2. Somme
 
