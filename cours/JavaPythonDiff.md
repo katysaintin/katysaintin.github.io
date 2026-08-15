@@ -1,5 +1,42 @@
 # Java → Python — Mémo des différences
 
+## 0. Introduction
+🏸 Python
+Prise en main rapide
+→ on s'amuse rapidement
+→ beaucoup de liberté
+→ les contraintes arrivent progressivement
+
+🎾 Java
+Plus de technique dès le départ
+→ typage
+→ compilation
+→ POO
+→ interfaces
+→ exceptions
+→ JVM
+→ cadre plus contraignant
+
+🏓 C++
+On entre directement dans le technique
+→ compilation
+→ typage fort
+→ pointeurs
+→ références
+→ mémoire
+→ POO
+→ templates
+→ etc.
+
+🏸 Python → badminton
+Prise en main rapide, ludique, peu de contraintes au départ.
+
+🎾 Java → tennis
+Plus de technique et de règles à intégrer avant d'être à l'aise.
+
+🏓 C++ → ping-pong
+Très technique, précis, exigeant dès les premières balles.
+
 ## 1. Différences fondamentales
 
 Java et Python sont tous deux des langages généralistes, orientés objet et largement utilisés pour le développement logiciel, mais leur modèle d'exécution et leur philosophie diffèrent sensiblement.
