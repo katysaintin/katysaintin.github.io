@@ -35,6 +35,158 @@ Les bonnes pratiques servent notamment à améliorer :
 Éviter de présenter les règles comme des interdictions arbitraires.
 
 ---
+## Complément — Initialisation et taille des listes / tableaux
+
+### Python : une liste contient réellement ses éléments
+
+```python
+values = [70]
+```
+
+crée une liste contenant **un seul élément**, dont la valeur est `70`.
+
+```python
+len(values)
+# 1
+```
+
+Pour créer une liste contenant 70 éléments initialisés à `0` :
+
+```python
+values = [0] * 70
+```
+
+Pour créer 70 éléments sans valeur métier définie :
+
+```python
+values = [None] * 70
+```
+
+`None` représente l'absence de valeur.
+
+La liste Python reste cependant **dynamique** :
+
+```python
+values.append(42)
+```
+
+La liste contient maintenant 71 éléments.
+
+---
+
+### Java : un tableau possède une taille fixe
+
+```java
+int[] values = new int[70];
+```
+
+crée un tableau de **70 éléments**.
+
+Pour un tableau de type primitif, chaque élément reçoit automatiquement sa valeur par défaut :
+
+```text
+int     → 0
+double  → 0.0
+float   → 0.0f
+long    → 0L
+boolean → false
+char    → '\u0000'
+```
+
+Exemple :
+
+```java
+int[] values = new int[70];
+
+System.out.println(values[0]);
+// 0
+```
+
+Pour un tableau contenant des objets :
+
+```java
+String[] values = new String[70];
+```
+
+les 70 références sont initialisées à `null`.
+
+```java
+System.out.println(values[0]);
+// null
+```
+
+Il n'y a donc pas encore d'objet `String` dans la case.
+
+---
+
+### Différence importante
+
+```java
+int[] values = new int[70];
+```
+
+→ 70 cases existent immédiatement et chacune contient `0`.
+
+```python
+values = [0] * 70
+```
+
+→ 70 éléments existent immédiatement et chacun contient `0`.
+
+Ces deux structures sont cependant différentes :
+
+| | Python `list` | Java `array` |
+|---|---|---|
+| Taille initiale | définie par le nombre d'éléments | définie à la création |
+| Taille modifiable | Oui | Non |
+| Ajouter un élément | `append()` | Impossible directement |
+| Valeur par défaut d'un entier | aucune création implicite | `0` |
+| Absence de valeur | `None` | `null` pour les références |
+| Taille | `len(list)` | `array.length` |
+
+> **Attention :** une liste Python n'a pas une taille fixe.  
+> `values = [None] * 70` crée bien 70 éléments, mais `append()` peut ensuite agrandir la liste.
+
+---
+
+### Liste Python ≠ tableau Java
+
+Il est tentant de traduire :
+
+```java
+int[] values = new int[70];
+```
+
+par :
+
+```python
+values = [0] * 70
+```
+
+mais les deux structures n'ont pas exactement le même rôle.
+
+En Python, `list` est une collection dynamique et peut contenir des objets de types différents :
+
+```python
+values = [10, "hello", 3.14, True]
+```
+
+En Java, un tableau est fortement typé :
+
+```java
+int[] values = {10, 20, 30};
+```
+
+Pour des données numériques homogènes et volumineuses en Python, des structures spécialisées comme `numpy.ndarray` sont souvent plus adaptées :
+
+```python
+import numpy as np
+
+values = np.zeros(70, dtype=int)
+```
+
+> **La bonne structure de données dépend du besoin : collection dynamique, tableau typé, file, ensemble, structure numérique, etc.**
+---
 
 # 2. Écrire du code lisible
 
