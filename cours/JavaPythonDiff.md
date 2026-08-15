@@ -223,6 +223,324 @@ deque.pollLast();
 >
 > Les opérations `pollFirst()`, `pollLast()`, `addFirst()` et `addLast()` concernent plutôt les structures `Deque` / `Queue` en Java.
 ---
+# Fonctions courantes de manipulation et d'analyse des collections
+
+Cette comparaison illustre une différence intéressante entre Python et Java : les deux langages proposent les mêmes grandes fonctionnalités, mais Python les rend souvent accessibles avec une syntaxe beaucoup plus directe.
+
+---
+
+## 1. Minimum et maximum
+
+### Python
+
+Aucun import n'est nécessaire :
+
+~~~python
+values = [10, 3, 25, 7]
+
+min(values)   # 3
+max(values)   # 25
+~~~
+
+`min()` et `max()` sont des **fonctions built-in** de Python.
+
+Elles parcourent la collection pour rechercher la valeur minimale ou maximale.
+
+### Java
+
+Java fournit notamment :
+
+~~~java
+Collections.min(values);
+Collections.max(values);
+~~~
+
+Il n'est donc pas nécessaire de trier la collection pour rechercher le minimum ou le maximum.
+
+### À éviter
+
+~~~java
+Collections.sort(values);
+
+int min = values.get(0);
+int max = values.get(values.size() - 1);
+~~~
+
+Cette solution fonctionne, mais elle effectue un tri complet alors que l'on souhaite uniquement rechercher deux valeurs.
+
+Complexité :
+
+~~~text
+Recherche min/max → O(n)
+Tri               → O(n log n)
+~~~
+
+> **Ne pas trier une collection uniquement pour rechercher son minimum ou son maximum.**
+
+---
+
+# 2. Somme
+
+### Python
+
+~~~python
+values = [10, 20, 30, 40]
+
+sum(values)   # 100
+~~~
+
+`sum()` est également une fonction built-in.
+
+Aucun import n'est nécessaire.
+
+---
+
+# 3. Nombre d'éléments
+
+### Python
+
+~~~python
+len(values)
+~~~
+
+`len()` est une fonction built-in.
+
+### Java
+
+Pour une collection :
+
+~~~java
+values.size();
+~~~
+
+Pour un tableau :
+
+~~~java
+values.length;
+~~~
+
+### Correspondance
+
+| Opération | Python | Java |
+|---|---|---|
+| Nombre d'éléments | `len(values)` | `values.size()` pour une collection |
+| Taille d'un tableau | `len(values)` | `values.length` |
+
+---
+
+# 4. Moyenne
+
+Python ne fournit pas `mean()` directement comme fonction built-in.
+
+Il faut importer la fonction depuis le module standard `statistics` :
+
+~~~python
+from statistics import mean
+
+values = [10, 20, 30, 40]
+
+mean(values)   # 25
+~~~
+
+Le module `statistics` fournit également d'autres fonctions statistiques, notamment :
+
+- `mean()`
+- `median()`
+- `mode()`
+- `stdev()`
+
+---
+
+# 5. Fonctions Python disponibles sans import
+
+Les fonctions suivantes sont directement disponibles :
+
+~~~python
+min(values)
+max(values)
+sum(values)
+len(values)
+~~~
+
+Elles font partie des **built-in functions** de Python.
+
+En revanche :
+
+~~~python
+from statistics import mean
+
+mean(values)
+~~~
+
+nécessite un import.
+
+### Mémo
+
+~~~text
+Python
+
+min()     → built-in
+max()     → built-in
+sum()     → built-in
+len()     → built-in
+mean()    → statistics.mean()
+~~~
+
+> **Python met directement à disposition de nombreuses opérations courantes sans nécessiter d'import.**
+
+---
+
+# 6. Statistiques en Java
+
+Java propose une classe particulièrement pratique pour obtenir plusieurs statistiques numériques :
+
+~~~java
+IntSummaryStatistics stats = values.stream()
+                                   .mapToInt(Integer::intValue)
+                                   .summaryStatistics();
+~~~
+
+On peut ensuite récupérer :
+
+~~~java
+stats.getCount();
+stats.getMin();
+stats.getMax();
+stats.getSum();
+stats.getAverage();
+~~~
+
+`IntSummaryStatistics` appartient au package :
+
+~~~java
+java.util
+~~~
+
+Il existe également :
+
+~~~java
+LongSummaryStatistics
+DoubleSummaryStatistics
+~~~
+
+Cette approche permet d'obtenir plusieurs statistiques lors d'un même parcours des données.
+
+---
+
+# 7. Comparaison synthétique
+
+| Opération | Python | Java |
+|---|---|---|
+| Minimum | `min(values)` | `Collections.min(values)` |
+| Maximum | `max(values)` | `Collections.max(values)` |
+| Somme | `sum(values)` | Stream `.sum()` |
+| Nombre d'éléments | `len(values)` | `values.size()` |
+| Moyenne | `statistics.mean(values)` | Stream `.average()` |
+| Statistiques groupées | `statistics` | `IntSummaryStatistics` |
+| Tri | `sorted(values)` / `values.sort()` | `Collections.sort(values)` |
+
+---
+
+# 8. Attention aux types comparables
+
+`min()` et `max()` fonctionnent lorsque les éléments peuvent être comparés.
+
+### Python : chaînes de caractères
+
+~~~python
+values = ["banana", "apple", "cherry"]
+
+min(values)   # "apple"
+max(values)   # "cherry"
+~~~
+
+La comparaison utilise l'ordre lexicographique des chaînes.
+
+Attention : l'ordre Unicode peut produire des résultats différents de l'ordre alphabétique humain lorsque majuscules et minuscules sont mélangées.
+
+### Types incompatibles
+
+Python ne permet pas arbitrairement de comparer des types sans relation de comparaison :
+
+~~~python
+values = [10, "hello", 3.5]
+
+min(values)
+~~~
+
+→ `TypeError`
+
+En revanche, des valeurs numériques de types différents peuvent être comparées :
+
+~~~python
+values = [10, 3.5, 7]
+
+min(values)   # 3.5
+max(values)   # 10
+~~~
+
+---
+
+# 9. Principe de bonne pratique
+
+> **Choisir l'opération correspondant réellement au besoin.**
+
+Si l'objectif est :
+
+- trouver le minimum → `min()`
+- trouver le maximum → `max()`
+- calculer une somme → `sum()`
+- compter les éléments → `len()`
+- calculer une moyenne → `mean()`
+
+Il est inutile de transformer ou de trier toute une collection lorsque l'opération recherchée peut être réalisée directement.
+
+### Exemple
+
+À éviter :
+
+~~~java
+Collections.sort(values);
+int max = values.get(values.size() - 1);
+~~~
+
+Préférer :
+
+~~~java
+int max = Collections.max(values);
+~~~
+
+Et en Python :
+
+~~~python
+max(values)
+~~~
+
+> **Une API bien choisie permet souvent d'écrire un code plus simple, plus lisible et plus performant.**
+
+---
+
+# 10. Observation personnelle
+
+La comparaison Python / Java montre qu'une partie de la complexité que l'on écrit soi-même peut être prise en charge directement par le langage ou sa bibliothèque standard.
+
+Cela ne signifie pas que Java ne possède pas les mêmes fonctionnalités.
+
+Java propose également des outils puissants :
+
+- `Collections`
+- Streams
+- `IntSummaryStatistics`
+- `DoubleSummaryStatistics`
+- `LongSummaryStatistics`
+
+Mais Python les rend souvent accessibles avec une syntaxe plus concise.
+
+> **Python n'est pas nécessairement plus puissant : il est souvent plus direct.**
+
+Cette différence de philosophie peut être particulièrement agréable lorsqu'on vient d'un langage fortement structuré comme Java et que l'on connaît déjà les concepts sous-jacents.
+---
+
 # 2. Écosystème — repères Java → Python
 
 L'objectif de ce tableau est de retrouver les équivalents fonctionnels dans l'écosystème Python, sans supposer qu'ils sont techniquement identiques.
