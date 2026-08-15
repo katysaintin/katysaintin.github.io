@@ -742,3 +742,279 @@ L'objectif est de produire un cours accessible aux débutants mais suffisamment 
 
 > **Bien programmer, ce n'est pas seulement apprendre à faire fonctionner une machine.  
 > C'est apprendre à écrire du code que des humains peuvent comprendre, maintenir et faire évoluer.**
+---
+# Programmer contre une abstraction, pas contre une implémentation
+
+## Le principe
+
+En programmation orientée objet, lorsque plusieurs classes implémentent le même contrat, il est généralement préférable de **déclarer les variables avec le type le plus générique adapté au besoin**.
+
+L'idée est simple :
+
+> **Le code métier doit dépendre de ce dont il a besoin, pas de ce qu'il n'a pas besoin de connaître.**
+
+### Exemple
+
+Plutôt que :
+
+~~~java
+ArrayList<MyObject> list = new ArrayList<>();
+~~~
+
+préférer :
+
+~~~java
+List<MyObject> list = new ArrayList<>();
+~~~
+
+Le reste du code utilise alors l'interface `List` :
+
+~~~java
+list.add(value);
+list.clear();
+
+for (MyObject value : list) {
+    ...
+}
+~~~
+
+Le code ne dépend pas inutilement de `ArrayList`.
+
+L'implémentation peut être remplacée :
+
+~~~java
+List<MyObject> list = new LinkedList<>();
+~~~
+
+sans modifier le code qui manipule la liste.
+
+---
+
+## Pourquoi ?
+
+Supposons qu'un logiciel utilise partout :
+
+~~~java
+ArrayList<MyObject> list = new ArrayList<>();
+~~~
+
+Si l'architecture impose plus tard une autre implémentation, il faudra rechercher et modifier toutes les dépendances à `ArrayList`.
+
+Avec :
+
+~~~java
+List<MyObject> list = new ArrayList<>();
+~~~
+
+le choix de l'implémentation est localisé à l'instanciation.
+
+> **Plus une dépendance à une implémentation est localisée, plus le logiciel est facile à faire évoluer.**
+
+---
+
+## Attention aux casts
+
+Le polymorphisme fonctionne correctement uniquement si l'on reste sur l'abstraction dont on a réellement besoin.
+
+À éviter :
+
+~~~java
+List<Object> list = new LinkedList<>();
+
+Object item = ((LinkedList<Object>) list).poll();
+~~~
+
+Le cast réintroduit une dépendance à `LinkedList`.
+
+Si le code nécessite `poll()`, le problème est probablement que `List` n'est pas la bonne abstraction.
+
+On peut alors utiliser directement une interface adaptée au besoin :
+
+~~~java
+Deque<Object> list = new LinkedList<>();
+
+Object item = list.pollFirst();
+~~~
+
+Et l'implémentation peut ensuite changer :
+
+~~~java
+Deque<Object> list = new ArrayDeque<>();
+~~~
+
+Le code métier reste basé sur `Deque`.
+
+> **Si vous devez caster systématiquement vers une implémentation concrète, demandez-vous si vous n'avez pas choisi la mauvaise abstraction.**
+
+---
+
+# Choisir l'interface correspondant au besoin
+
+L'objectif n'est pas de choisir systématiquement « l'interface la plus générique possible ».
+
+Il faut choisir **l'abstraction la plus générique qui exprime réellement les opérations nécessaires**.
+
+Par exemple :
+
+~~~text
+Collection
+    │
+    ├── List
+    │     ├── ArrayList
+    │     └── LinkedList
+    │
+    ├── Set
+    │
+    └── Queue / Deque
+          └── ...
+~~~
+
+Si le code a uniquement besoin de :
+
+- ajouter ;
+- supprimer ;
+- accéder à un élément ;
+- parcourir ;
+
+`List` peut être suffisante.
+
+Si le code a besoin d'opérations de file :
+
+- `pollFirst()`
+- `pollLast()`
+- `addFirst()`
+- `addLast()`
+
+alors `Deque` peut être une abstraction plus adaptée.
+
+---
+
+# Factory : centraliser le choix de l'implémentation
+
+On peut aller plus loin et isoler complètement la création des objets.
+
+~~~java
+public static List<MyObject> createList() {
+    return new ArrayList<>();
+}
+~~~
+
+Le code métier utilise alors :
+
+~~~java
+List<MyObject> list = createList();
+~~~
+
+Si l'implémentation doit évoluer, le changement est centralisé dans la factory.
+
+> **La factory permet de séparer la décision « quelle implémentation créer ? » de la décision « comment utiliser l'objet ? ».**
+
+---
+
+# Pourquoi cette pratique facilite la maintenance ?
+
+Imaginez un logiciel qui possède plusieurs points d'extension :
+
+~~~text
+                    Architecture
+                         │
+          ┌──────────────┼──────────────┐
+          │              │              │
+       Driver          Format         Service
+          │              │              │
+          ▼              ▼              ▼
+      Interface       Interface      Interface
+          │              │
+       ┌──┴──┐        ┌──┴──┐
+       │     │        │     │
+    DriverA DriverB FormatA FormatB
+~~~
+
+Le code métier dépend des interfaces.
+
+Lorsqu'un nouveau besoin apparaît :
+
+> « Il faut ajouter un nouveau driver. »
+
+on peut créer une nouvelle implémentation de l'interface existante sans réécrire toute l'architecture.
+
+Même principe pour un nouveau format de fichier.
+
+---
+
+# Concevoir avant de coder
+
+Une architecture bien pensée peut demander davantage de travail au début.
+
+Mais ce travail peut réduire considérablement le coût des évolutions futures.
+
+~~~text
+Conception / architecture
+          ↓
+     Abstractions
+          ↓
+       Découplage
+          ↓
+   Points d'extension
+          ↓
+Nouvelles fonctionnalités
+          ↓
+Modification localisée
+~~~
+
+Une mauvaise architecture peut produire l'effet inverse :
+
+~~~text
+Nouvelle fonctionnalité
+          ↓
+Modification du code existant
+          ↓
+Régression
+          ↓
+Modification d'autres composants
+          ↓
+Nouveaux tests
+          ↓
+Nouveaux effets de bord
+          ↓
+Coût croissant
+~~~
+
+> **Le temps passé à concevoir une architecture n'est pas nécessairement du temps perdu avant de coder. Il peut être un investissement qui réduit le coût de maintenance futur.**
+
+---
+
+# Une analogie
+
+Construire une maison avec des murs porteurs bien positionnés demande davantage de réflexion au départ.
+
+Mais si l'on veut déplacer une cloison plus tard, on peut le faire sans reconstruire toute la maison.
+
+Une architecture logicielle bien conçue fonctionne de la même manière :
+
+> **Prévoir les points d'extension permet de modifier une partie du système sans devoir reconstruire tout le système.**
+
+---
+
+# Principe à retenir
+
+> **Programmer contre une abstraction permet de changer une implémentation sans modifier tout le code qui l'utilise.**
+
+Et surtout :
+
+> **Ne choisissez pas l'abstraction la plus générique possible. Choisissez l'abstraction la plus générique qui exprime correctement le besoin.**
+
+---
+
+## À retenir
+
+- Dépendre d'une interface plutôt que d'une implémentation lorsque c'est pertinent.
+- Déclarer les variables avec le type abstrait adapté.
+- Réserver le choix de l'implémentation à l'instanciation.
+- Éviter les casts vers des classes concrètes.
+- Si un cast est nécessaire, vérifier si l'abstraction utilisée est réellement la bonne.
+- Utiliser une factory lorsque la création doit être centralisée.
+- Concevoir des points d'extension lorsque le logiciel est amené à évoluer.
+- Penser à la maintenance dès la conception.
+
+> **Une bonne architecture ne cherche pas seulement à faire fonctionner le logiciel aujourd'hui. Elle prépare le logiciel à changer demain.**
