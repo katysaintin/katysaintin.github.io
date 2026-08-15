@@ -129,6 +129,100 @@ C'est notamment une des raisons du succès de l'écosystème scientifique Python
 
 **Donc : non, Python n'est pas « plus rapide que Java parce qu'il manipule mieux les listes ». Pour des boucles Python pures, c'est plutôt l'inverse, parfois avec un facteur de plusieurs dizaines.**
 ---
+## Manipulation des listes
+
+### Accéder à un élément
+
+| Opération | Python | Java |
+|---|---|---|
+| Accéder à l'élément à l'index donné | `list[index]` | `list.get(index)` |
+
+### Ajouter des éléments
+
+| Opération | Python | Java |
+|---|---|---|
+| Ajouter à la fin | `list.append(value)` | `list.add(value)` |
+| Ajouter à un index donné | `list.insert(index, value)` | `list.add(index, value)` |
+
+### Supprimer un élément
+
+| Opération | Python | Java |
+|---|---|---|
+| Supprimer et retourner le dernier élément | `list.pop()` | `list.remove(list.size() - 1)` |
+| Supprimer et retourner l'élément à un index | `list.pop(index)` | `list.remove(index)` |
+
+> **Attention :** en Java, `List.remove(index)` retourne bien l'élément supprimé (`E`), contrairement à `List.remove(Object)` qui retourne un `boolean` indiquant si l'élément a été supprimé.
+
+### Informations sur la liste
+
+| Opération | Python | Java |
+|---|---|---|
+| Nombre d'éléments | `len(list)` | `list.size()` |
+| Tester si la liste est vide | `len(list) == 0` ou `not list` | `list.isEmpty()` |
+| Chercher l'index d'une valeur | `list.index(value)` | `list.indexOf(value)` |
+| Vider la liste | `list.clear()` | `list.clear()` |
+
+### Attention à `poll()`
+
+`poll()` n'est **pas une méthode de `List` en Java**.
+
+Elle appartient aux interfaces `Queue` / `Deque`.
+
+Par exemple :
+
+~~~java
+Queue<String> queue = new LinkedList<>();
+
+String value = queue.poll();
+~~~
+
+`poll()` retire et retourne l'élément en tête de la queue, ou retourne `null` si la queue est vide.
+
+Avec une `Deque`, on trouve notamment :
+
+~~~java
+deque.pollFirst();
+deque.pollLast();
+~~~
+
+Pour une `List`, pour supprimer le dernier élément :
+
+~~~java
+list.remove(list.size() - 1);
+~~~
+
+### Ajouter / supprimer aux extrémités
+
+En Python :
+
+~~~python
+list.append(value)       # ajout à la fin
+list.pop()               # suppression du dernier élément
+~~~
+
+Avec une `Deque` Python (`collections.deque`) :
+
+~~~python
+deque.appendleft(value)  # ajout au début
+deque.append(value)      # ajout à la fin
+deque.popleft()          # suppression du premier
+deque.pop()              # suppression du dernier
+~~~
+
+En Java, une `Deque` fournit notamment :
+
+~~~java
+deque.addFirst(value);
+deque.addLast(value);
+
+deque.pollFirst();
+deque.pollLast();
+~~~
+
+> **La `List` Python est plus proche conceptuellement de `ArrayList` en Java.**
+>
+> Les opérations `pollFirst()`, `pollLast()`, `addFirst()` et `addLast()` concernent plutôt les structures `Deque` / `Queue` en Java.
+---
 # 2. Écosystème — repères Java → Python
 
 L'objectif de ce tableau est de retrouver les équivalents fonctionnels dans l'écosystème Python, sans supposer qu'ils sont techniquement identiques.
