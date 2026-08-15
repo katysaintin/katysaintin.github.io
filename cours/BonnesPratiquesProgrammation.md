@@ -187,6 +187,100 @@ values = np.zeros(70, dtype=int)
 
 > **La bonne structure de données dépend du besoin : collection dynamique, tableau typé, file, ensemble, structure numérique, etc.**
 ---
+## Choisir entre types primitifs, wrappers et génériques
+
+Une abstraction plus générique n'est pas toujours la meilleure solution.
+
+En Java, utiliser des wrappers (`Integer`, `Double`, `Long`, `Number`, etc.) peut simplifier considérablement le développement lorsqu'un composant doit manipuler plusieurs types de données.
+
+Par exemple :
+
+~~~java
+Number value = ...;
+
+double doubleValue = value.doubleValue();
+int intValue = value.intValue();
+String stringValue = value.toString();
+~~~
+
+Cette approche est pratique et peut rendre le code plus générique.
+
+Mais elle peut avoir un **coût mémoire important** lorsque le logiciel manipule de très grandes quantités de données.
+
+### Exemple
+
+Une structure basée sur des objets :
+
+~~~java
+List<Double> values = new ArrayList<>();
+~~~
+
+ne possède pas la même représentation mémoire qu'un tableau de primitifs :
+
+~~~java
+double[] values = new double[size];
+~~~
+
+Dans le premier cas, les éléments sont des objets `Double` accessibles via des références.
+
+Dans le second cas, les valeurs `double` sont stockées directement dans le tableau.
+
+Pour des volumes importants de données — par exemple des données scientifiques issues de longs scans — cette différence peut devenir considérable.
+
+Elle peut avoir des conséquences sur :
+
+- la consommation mémoire ;
+- le nombre d'allocations ;
+- la pression exercée sur le Garbage Collector ;
+- les performances ;
+- la fluidité d'une IHM de visualisation ;
+- le risque d'`OutOfMemoryError`.
+
+### Ne pas optimiser sans mesurer
+
+Il ne faut cependant pas remplacer systématiquement les objets par des primitifs.
+
+Le bon réflexe est :
+
+> **Choisir d'abord une représentation claire et adaptée au besoin, puis mesurer les performances et la consommation mémoire lorsque les volumes ou les contraintes l'exigent.**
+
+Le profiling permet d'identifier les véritables problèmes.
+
+Avec Java VisualVM, on peut notamment observer :
+
+- la consommation mémoire ;
+- l'évolution du heap ;
+- l'activité du Garbage Collector ;
+- les allocations ;
+- les objets conservés en mémoire ;
+- l'évolution de l'utilisation mémoire pendant l'exécution.
+
+~~~text
+Architecture claire
+       ↓
+Choix des structures de données
+       ↓
+Mesure / profiling
+       ↓
+Identification du goulot d'étranglement
+       ↓
+Optimisation ciblée
+       ↓
+Nouvelle mesure
+~~~
+
+### À retenir
+
+> **La généricité est un outil, pas une fin en soi.**
+
+> **La simplicité d'utilisation d'un wrapper ou d'une abstraction doit être mise en balance avec son coût réel lorsque les volumes de données deviennent importants.**
+
+> **Ne pas optimiser prématurément, mais ne pas ignorer non plus les caractéristiques mémoire des structures de données.**
+
+Dans certains cas, passer d'une représentation générique basée sur des objets à une représentation basée sur des types primitifs peut transformer radicalement les performances d'une application.
+
+**Mesurer avec un profiler avant et après l'optimisation permet de vérifier que l'amélioration est réelle.**
+---
 
 # 2. Écrire du code lisible
 
