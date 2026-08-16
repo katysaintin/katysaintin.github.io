@@ -1523,4 +1523,9 @@ Shift + F6
 | Association clé → valeur | `Map` / `HashMap` : `Map<String, Object> data = new HashMap<>();` | `dict` | Une `HashMap` Java est conceptuellement beaucoup plus proche du `dict` Python que du `tuple`. |
 | Retourner plusieurs valeurs | Pas d'équivalent direct dans la syntaxe Java | `return val1, val2` | Python peut retourner plusieurs valeurs sous la forme d'un tuple. L'appelant peut les récupérer directement dans plusieurs variables. |
 | Récupérer plusieurs valeurs retournées | Il faut généralement utiliser un objet (`class`, `record`, etc.) ou une structure adaptée | `val1, val2 = my_function()` | Python réalise implicitement le déballage (*unpacking*) du tuple. |
+| Dictionnaire / association clé → valeur | `HashMap<K, V>` | `dict` : `{key1: value1, key2: value2}` | Associe une clé à une valeur. Les clés doivent être uniques. |
+| Type des clés | `HashMap<K, V>` impose un type `K` pour les clés | Les clés peuvent être de types différents | Python est plus permissif : un même dictionnaire peut contenir par exemple une clé `str` et une clé `int`. |
+| Types possibles pour une clé | La clé doit être compatible avec le type `K` et respecter les contraintes de `Map` | La clé doit être **hashable** | On peut utiliser notamment des `str`, `int`, `float`, `tuple`, etc. Une `list` ne peut pas être utilisée comme clé car elle est mutable et donc non hashable. |
+| Unicité des clés | Une clé est unique dans une `HashMap` | Une clé est unique dans un `dict` | Si une clé est réutilisée, sa valeur est remplacée. |
+
 
