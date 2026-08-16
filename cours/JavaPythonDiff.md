@@ -1510,3 +1510,9 @@ Shift + F6
 | Paramètre typé | `int value` | `value: int` | Python utilise les type hints. |
 | Plusieurs responsabilités | possible | possible | Bonne pratique : une fonction doit idéalement avoir une responsabilité claire. |
 
+| Notion | Java | Python | Commentaire |
+|---|---|---|---|
+| Variable non initialisée / valeur absente | `null` pour les types objets (`String`, `Integer`, `Double`, etc.) | `None` | En Python, une variable peut référencer `None`, qui représente l'absence de valeur. En Java, `null` ne peut être utilisé qu'avec les types référence. |
+| Types primitifs et absence de valeur | Les types primitifs (`int`, `double`, `boolean`, etc.) ne peuvent jamais valoir `null` | Python n'a pas cette distinction entre primitifs et objets de la même manière | Pour représenter l'absence de valeur avec un type objet Java, on utilise un wrapper (`Integer`, `Double`, etc.) plutôt qu'un primitif (`int`, `double`). |
+| Valeur numérique spéciale | `Double.NaN` / `Float.NaN` | `float('nan')` ou `math.nan` | `NaN` signifie **Not a Number**. Ce n'est pas `null` : il s'agit d'une valeur spéciale représentant un résultat numérique indéfini ou non représentable. |
+
