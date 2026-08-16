@@ -1528,5 +1528,7 @@ Shift + F6
 | Types possibles pour une clé | La clé doit être compatible avec le type `K` et respecter les contraintes de `Map` | La clé doit être **hashable** | On peut utiliser notamment des `str`, `int`, `float`, `tuple`, etc. Une `list` ne peut pas être utilisée comme clé car elle est mutable et donc non hashable. |
 | Unicité des clés | Une clé est unique dans une `HashMap` | Une clé est unique dans un `dict` | Si une clé est réutilisée, sa valeur est remplacée. |
 | Ajouter une entrée dans un dictionnaire | `dictionary.put(key, value)` | `dictionary[key] = value` | En Python, la même syntaxe permet également de modifier la valeur d'une clé existante. En Java, `put()` ajoute la clé si elle n'existe pas ou remplace sa valeur si elle existe déjà. |
+| Vérifier si une clé existe dans un dictionnaire | `map.containsKey(key)` | `key in dictionary` | Retourne `True` / `False` en Python. |
+| Vérifier si une valeur existe dans une collection | `collection.contains(value)` | `value in collection` | En Python, `in` fonctionne notamment avec les listes, tuples, sets et dictionnaires. Attention : sur un dictionnaire, `in` teste les **clés**, pas les valeurs. |
 
 
