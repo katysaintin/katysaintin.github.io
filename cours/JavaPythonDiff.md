@@ -1530,5 +1530,14 @@ Shift + F6
 | Ajouter une entrée dans un dictionnaire | `dictionary.put(key, value)` | `dictionary[key] = value` | En Python, la même syntaxe permet également de modifier la valeur d'une clé existante. En Java, `put()` ajoute la clé si elle n'existe pas ou remplace sa valeur si elle existe déjà. |
 | Vérifier si une clé existe dans un dictionnaire | `map.containsKey(key)` | `key in dictionary` | Retourne `True` / `False` en Python. |
 | Vérifier si une valeur existe dans une collection | `collection.contains(value)` | `value in collection` | En Python, `in` fonctionne notamment avec les listes, tuples, sets et dictionnaires. Attention : sur un dictionnaire, `in` teste les **clés**, pas les valeurs. |
+| Supprimer une entrée par clé | `map.remove(key)` | `dictionary.pop(key)` | Les deux méthodes suppriment l'entrée et retournent la valeur supprimée si la clé existe. |
+| Clé inexistante lors d'une suppression | `map.remove(key)` retourne `null` si la clé n'existe pas | `dictionary.pop(key)` lève une `KeyError` | En Python, l'absence de la clé provoque donc une exception par défaut. |
+| Suppression sans erreur si la clé peut être absente | `map.remove(key)` | `dictionary.pop(key, None)` | En Python, le second argument permet de fournir une valeur par défaut si la clé n'existe pas. |
+| Vérifier avant de supprimer | `map.containsKey(key)` | `key in dictionary` | Utile si l'absence de la clé doit être traitée explicitement. |
+
+### Exemple Python
+
+```python
+value = dictionary.pop(key, None)
 
 
