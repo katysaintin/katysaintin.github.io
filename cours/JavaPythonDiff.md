@@ -1521,4 +1521,6 @@ Shift + F6
 | Regrouper plusieurs valeurs dans une même structure | Pas d'équivalent direct au tuple Python. On peut utiliser un objet/classe, un `record`, un tableau ou une autre structure selon le besoin | `tuple` : `user_data = (name, age, gender)` | Un tuple regroupe plusieurs valeurs dans un ordre défini. Les éléments peuvent être de types différents. |
 | Tuple avec une seule valeur | Pas d'équivalent direct | `user_data = (name,)` | La virgule est indispensable : `(name)` correspond simplement à `name` entre parenthèses. |
 | Association clé → valeur | `Map` / `HashMap` : `Map<String, Object> data = new HashMap<>();` | `dict` | Une `HashMap` Java est conceptuellement beaucoup plus proche du `dict` Python que du `tuple`. |
+| Retourner plusieurs valeurs | Pas d'équivalent direct dans la syntaxe Java | `return val1, val2` | Python peut retourner plusieurs valeurs sous la forme d'un tuple. L'appelant peut les récupérer directement dans plusieurs variables. |
+| Récupérer plusieurs valeurs retournées | Il faut généralement utiliser un objet (`class`, `record`, etc.) ou une structure adaptée | `val1, val2 = my_function()` | Python réalise implicitement le déballage (*unpacking*) du tuple. |
 
