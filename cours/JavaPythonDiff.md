@@ -1527,5 +1527,6 @@ Shift + F6
 | Type des clés | `HashMap<K, V>` impose un type `K` pour les clés | Les clés peuvent être de types différents | Python est plus permissif : un même dictionnaire peut contenir par exemple une clé `str` et une clé `int`. |
 | Types possibles pour une clé | La clé doit être compatible avec le type `K` et respecter les contraintes de `Map` | La clé doit être **hashable** | On peut utiliser notamment des `str`, `int`, `float`, `tuple`, etc. Une `list` ne peut pas être utilisée comme clé car elle est mutable et donc non hashable. |
 | Unicité des clés | Une clé est unique dans une `HashMap` | Une clé est unique dans un `dict` | Si une clé est réutilisée, sa valeur est remplacée. |
+| Ajouter une entrée dans un dictionnaire | `dictionary.put(key, value)` | `dictionary[key] = value` | En Python, la même syntaxe permet également de modifier la valeur d'une clé existante. En Java, `put()` ajoute la clé si elle n'existe pas ou remplace sa valeur si elle existe déjà. |
 
 
