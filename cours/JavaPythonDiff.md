@@ -1540,4 +1540,12 @@ Shift + F6
 ```python
 value = dictionary.pop(key, None)
 
+| Notion | Java | Python | Commentaire |
+|---|---|---|---|
+| Ensemble de valeurs uniques | `Set` / `HashSet` | `set` : `{"val1", "val2", "val3"}` | Un `set` est une collection de valeurs uniques. Les doublons sont automatiquement éliminés. |
+| Set autonome | `Set<String> set = new HashSet<>();` | `my_set = {"val1", "val2", "val3"}` | Java possède bien une structure `Set` autonome : elle n'est pas limitée aux clés d'une `Map`. |
+| Clés uniques d'une Map | `map.keySet()` | `dictionary.keys()` | `keySet()` retourne un `Set` contenant les clés de la `Map`. |
+| Ajouter une valeur | `set.add(value)` | `my_set.add(value)` | Si la valeur existe déjà, le set reste inchangé. |
+| Vérifier l'existence | `set.contains(value)` | `value in my_set` | Les deux permettent de vérifier si une valeur appartient au set. |
+
 
