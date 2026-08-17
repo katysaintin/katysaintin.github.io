@@ -1556,5 +1556,6 @@ value = dictionary.pop(key, None)
 | Convertir une liste en ensemble de valeurs uniques | `new HashSet<>(list)` | `set(a_list)` | Les doublons sont supprimés lors de la création du `Set`. |
 | Vérifier si un `Set` est un sous-ensemble d'un autre | `mySet.containsAll(smallerSet)` | `smaller_set.issubset(my_set)` | Vérifie que tous les éléments de `smallerSet` sont présents dans `mySet`. |
 | Unir deux `Set` | `set1.addAll(set2)` | `set1.union(set2)` | Produit l'ensemble des valeurs présentes dans l'un ou l'autre des deux `Set`. Les doublons sont automatiquement éliminés. |
+| Récupérer les éléments communs entre deux `Set` | `set1.retainAll(set2)` | `set1.intersection(set2)` | Retourne les éléments présents dans les deux `Set`. Attention : en Java, `retainAll()` modifie directement `set1`. |
 
 
