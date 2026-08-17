@@ -1539,6 +1539,8 @@ Shift + F6
 
 ```python
 value = dictionary.pop(key, None)
+```
+## Suite des notes comparatives
 
 | Notion | Java | Python | Commentaire |
 |---|---|---|---|
