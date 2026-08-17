@@ -1549,5 +1549,9 @@ value = dictionary.pop(key, None)
 | Clés uniques d'une Map | `map.keySet()` | `dictionary.keys()` | `keySet()` retourne un `Set` contenant les clés de la `Map`. |
 | Ajouter une valeur | `set.add(value)` | `my_set.add(value)` | Si la valeur existe déjà, le set reste inchangé. |
 | Vérifier l'existence | `set.contains(value)` | `value in my_set` | Les deux permettent de vérifier si une valeur appartient au set. |
+| Ajouter une valeur à un `Set` | `mySet.add(item)` | `my_set.add(item)` | Si la valeur existe déjà, le `Set` reste inchangé. |
+| Supprimer une valeur | `mySet.remove(item)` | `my_set.remove(item)` | La valeur est supprimée si elle existe. Attention : le comportement en cas d'absence de l'élément diffère selon le langage. |
+| Vérifier la présence d'une valeur | `mySet.contains(item)` | `item in my_set` | Retourne un booléen. |
+| Parcourir un `Set` | `for (element : mySet) {}` | `for element in my_set:` | Les deux permettent de parcourir les éléments du `Set`. L'ordre n'est pas garanti par un `HashSet` Java ni par un `set` Python. |
 
 
