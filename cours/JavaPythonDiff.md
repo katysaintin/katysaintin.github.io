@@ -1554,5 +1554,6 @@ value = dictionary.pop(key, None)
 | Vérifier la présence d'une valeur | `mySet.contains(item)` | `item in my_set` | Retourne un booléen. |
 | Parcourir un `Set` | `for (element : mySet) {}` | `for element in my_set:` | Les deux permettent de parcourir les éléments du `Set`. L'ordre n'est pas garanti par un `HashSet` Java ni par un `set` Python. |
 | Convertir une liste en ensemble de valeurs uniques | `new HashSet<>(list)` | `set(a_list)` | Les doublons sont supprimés lors de la création du `Set`. |
+| Vérifier si un `Set` est un sous-ensemble d'un autre | `mySet.containsAll(smallerSet)` | `smaller_set.issubset(my_set)` | Vérifie que tous les éléments de `smallerSet` sont présents dans `mySet`. |
 
 
