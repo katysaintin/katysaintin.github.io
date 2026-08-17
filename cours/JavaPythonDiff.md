@@ -1557,5 +1557,6 @@ value = dictionary.pop(key, None)
 | Vérifier si un `Set` est un sous-ensemble d'un autre | `mySet.containsAll(smallerSet)` | `smaller_set.issubset(my_set)` | Vérifie que tous les éléments de `smallerSet` sont présents dans `mySet`. |
 | Unir deux `Set` | `set1.addAll(set2)` | `set1.union(set2)` | Produit l'ensemble des valeurs présentes dans l'un ou l'autre des deux `Set`. Les doublons sont automatiquement éliminés. |
 | Récupérer les éléments communs entre deux `Set` | `set1.retainAll(set2)` | `set1.intersection(set2)` | Retourne les éléments présents dans les deux `Set`. Attention : en Java, `retainAll()` modifie directement `set1`. |
+| Récupérer les éléments présents dans `set1` mais pas dans `set2` | `set1.removeAll(set2)` | `set1.difference(set2)` | En Python, `difference()` retourne un nouveau `set`. En Java, `removeAll()` modifie directement `set1`. Pour conserver `set1`, faire une copie avant l'opération. |
 
 
