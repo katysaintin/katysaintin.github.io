@@ -1559,4 +1559,318 @@ value = dictionary.pop(key, None)
 | Récupérer les éléments communs entre deux `Set` | `set1.retainAll(set2)` | `set1.intersection(set2)` | Retourne les éléments présents dans les deux `Set`. Attention : en Java, `retainAll()` modifie directement `set1`. |
 | Récupérer les éléments présents dans `set1` mais pas dans `set2` | `set1.removeAll(set2)` | `set1.difference(set2)` | En Python, `difference()` retourne un nouveau `set`. En Java, `removeAll()` modifie directement `set1`. Pour conserver `set1`, faire une copie avant l'opération. |
 
+# POO — Classes et organisation du code
+
+## 1. Définition d'une classe
+
+### Python
+
+~~~python
+class Car:
+    wheels = 4
+    doors = 4
+
+    def start_engine(self):
+        print("Vroom!")
+~~~
+
+### Java
+
+~~~java
+public class Car {
+    public int wheels = 4;
+    public int doors = 4;
+
+    public void startEngine() {
+        System.out.println("Vroom!");
+    }
+}
+~~~
+
+---
+
+## 2. Instanciation
+
+### Python
+
+~~~python
+my_car = Car()
+~~~
+
+### Java
+
+~~~java
+Car myCar = new Car();
+~~~
+
+Python utilise également des objets et des instances de classes, mais n'utilise pas le mot-clé `new`.
+
+---
+
+## 3. Accès aux membres
+
+Dans les deux langages, l'accès aux membres d'une instance utilise `.` :
+
+### Python
+
+~~~python
+my_car.wheels
+my_car.start_engine()
+~~~
+
+### Java
+
+~~~java
+myCar.wheels;
+myCar.startEngine();
+~~~
+
+---
+
+## 4. Toutes les classes Python héritent-elles de `Object` ?
+
+Oui.
+
+En Python, toutes les classes héritent finalement de `object`.
+
+~~~python
+class Car:
+    pass
+~~~
+
+est conceptuellement équivalent à :
+
+~~~python
+class Car(object):
+    pass
+~~~
+
+`object` est la classe de base de toutes les classes Python.
+
+On retrouve donc une idée similaire à Java :
+
+~~~text
+Java
+
+Object
+  ↑
+ Car
+~~~
+
+~~~text
+Python
+
+object
+  ↑
+ Car
+~~~
+
+Python permet cependant une syntaxe beaucoup plus concise.
+
+---
+
+## 5. Organisation des classes : un fichier par classe ?
+
+Oui, et c'est même une organisation courante dans les projets Python.
+
+Contrairement à un petit exercice où tout peut être placé dans `main.py`, un projet réel peut être organisé en plusieurs modules :
+
+~~~text
+my_project/
+│
+├── main.py
+│
+├── car.py
+├── engine.py
+├── wheel.py
+│
+└── utils.py
+~~~
+
+Par exemple :
+
+### car.py
+
+~~~python
+class Car:
+
+    def start_engine(self):
+        print("Vroom!")
+~~~
+
+### main.py
+
+~~~python
+from car import Car
+
+my_car = Car()
+my_car.start_engine()
+~~~
+
+Le fichier Python joue notamment le rôle de **module**.
+
+Il est donc parfaitement possible de construire une architecture en plusieurs fichiers et plusieurs packages, comme on le ferait en Java.
+
+---
+
+## 6. Pourquoi séparer les classes ?
+
+La séparation permet d'attribuer un rôle clair à chaque module.
+
+Par exemple :
+
+~~~text
+Car
+ ├── comportement de la voiture
+
+Engine
+ ├── gestion du moteur
+
+Wheel
+ ├── gestion des roues
+
+utils
+ ├── fonctions utilitaires
+~~~
+
+Cela améliore :
+
+- la lisibilité ;
+- la maintenance ;
+- la réutilisation ;
+- les tests ;
+- la séparation des responsabilités.
+
+Le principe est le même que dans une architecture Java bien structurée.
+
+---
+
+## 7. Classes utilitaires
+
+En Java, on peut créer une classe utilitaire contenant par exemple :
+
+~~~java
+public final class MathUtils {
+
+    public static double convert(double value) {
+        ...
+    }
+}
+~~~
+
+Puis :
+
+~~~java
+MathUtils.convert(value);
+~~~
+
+En Python, on peut faire quelque chose de plus simple : créer un module contenant directement les fonctions.
+
+### math_utils.py
+
+~~~python
+def convert(value):
+    ...
+~~~
+
+Puis :
+
+~~~python
+import math_utils
+
+math_utils.convert(value)
+~~~
+
+Il n'est donc pas toujours nécessaire de créer une classe uniquement pour regrouper des fonctions utilitaires.
+
+### À retenir
+
+> En Python, un module peut déjà jouer le rôle de regroupement fonctionnel qu'une classe utilitaire joue souvent en Java.
+
+Cela permet parfois d'éviter de reproduire mécaniquement une architecture Java en Python.
+
+---
+
+## 8. Comparaison générale
+
+| Notion | Java | Python | Commentaire |
+|---|---|---|---|
+| Classe de base de toutes les classes | `Object` | `object` | Toutes les classes héritent finalement de cette classe de base. |
+| Définir une classe | `class Car {}` | `class Car:` | Python utilise l'indentation au lieu des accolades. |
+| Instancier | `new Car()` | `Car()` | Python n'utilise pas le mot-clé `new`. |
+| Accéder à un membre | `myCar.wheels` | `my_car.wheels` | Même notation avec `.` |
+| Appeler une méthode | `myCar.startEngine()` | `my_car.start_engine()` | Même principe ; convention de nommage différente. |
+| Organiser le code | Classes dans des fichiers/packages | Classes dans des modules/packages | Python permet également une architecture multi-fichiers. |
+| Classe utilitaire | Souvent `static` + classe dédiée | Souvent module + fonctions | Python permet de regrouper directement des fonctions dans un module. |
+
+---
+
+## 9. Attributs de classe et attributs d'instance
+
+### Attention
+
+Dans le code Python :
+
+~~~python
+class Car:
+    wheels = 4
+    doors = 4
+~~~
+
+`wheels` et `doors` sont **des attributs de classe**, et non des attributs d'instance.
+
+Si l'on veut que chaque voiture possède ses propres valeurs, on utilise généralement `__init__` :
+
+~~~python
+class Car:
+
+    def __init__(self, wheels, doors):
+        self.wheels = wheels
+        self.doors = doors
+~~~
+
+Puis :
+
+~~~python
+my_car = Car(4, 4)
+~~~
+
+Ici :
+
+~~~python
+self.wheels
+self.doors
+~~~
+
+sont des **attributs de l'instance**.
+
+Ils sont conceptuellement beaucoup plus proches des attributs d'instance que l'on manipule habituellement en Java.
+
+### À retenir
+
+`self` et `__init__` sont deux notions fondamentales pour faire le lien entre le modèle objet Java et celui de Python.
+
+~~~text
+Java
+
+class Car {
+
+    private int wheels;
+
+    public Car(int wheels) {
+        this.wheels = wheels;
+    }
+}
+~~~
+
+~~~text
+Python
+
+class Car:
+
+    def __init__(self, wheels):
+        self.wheels = wheels
+~~~
+
+Dans les deux cas, chaque instance possède son propre état.
 
