@@ -1896,6 +1896,310 @@ Dans les deux cas, chaque instance possède son propre état.
 | Constantes | `static final` | Convention `UPPER_CASE` | Python n'impose pas réellement l'immutabilité d'une constante. |
 | Interface | `interface` | Protocoles, classes abstraites, duck typing | Python propose plusieurs mécanismes plutôt qu'un équivalent unique de `interface`. |
 
+
+# Python — IDE, documentation et génération de code
+
+## 1. `help()` et les docstrings
+
+Python possède une documentation intégrée accessible avec `help()`.
+
+Il n'est pas nécessaire de surcharger ou d'implémenter une fonction particulière pour utiliser `help()`.
+
+On documente une fonction avec une **docstring** :
+
+~~~python
+def calculate_age(birth_year):
+    """Calculate the age from a birth year."""
+    return 2026 - birth_year
+~~~
+
+Puis :
+
+~~~python
+help(calculate_age)
+~~~
+
+Pour une classe :
+
+~~~python
+class Car:
+    """Represent a car."""
+
+    def start_engine(self):
+        """Start the car engine."""
+        print("Vroom!")
+~~~
+
+Puis :
+
+~~~python
+help(Car)
+~~~
+
+La docstring est stockée dans l'attribut `__doc__`.
+
+### Comparaison avec Java
+
+~~~text
+Java
+→ Javadoc
+→ documentation associée aux classes et méthodes
+
+Python
+→ docstrings
+→ documentation accessible notamment avec help()
+~~~
+
+---
+
+# 2. PyCharm : retrouver les réflexes Eclipse
+
+PyCharm possède de nombreuses fonctionnalités similaires à celles d'Eclipse :
+
+- autocomplétion ;
+- documentation ;
+- affichage des paramètres ;
+- génération de code ;
+- refactoring ;
+- renommage avec mise à jour des références ;
+- quick-fixes ;
+- templates de code.
+
+---
+
+## 3. Autocomplétion
+
+### `Ctrl + Space`
+
+Permet d'obtenir la complétion du code.
+
+Par exemple :
+
+~~~python
+my_car.
+~~~
+
+PyCharm peut proposer les attributs et méthodes disponibles.
+
+La complétion tient également compte du contexte et des informations de type disponibles.
+
+---
+
+## 4. Documentation rapide
+
+### `Ctrl + Q`
+
+Affiche la **Quick Documentation** du symbole courant.
+
+Par exemple :
+
+~~~python
+math.sqrt
+~~~
+
+Puis `Ctrl + Q`.
+
+PyCharm affiche la documentation disponible.
+
+Cela permet de retrouver une expérience proche de la consultation de la Javadoc dans Eclipse.
+
+---
+
+## 5. Afficher les paramètres d'une fonction
+
+### `Ctrl + P`
+
+Permet d'afficher les paramètres attendus par une fonction.
+
+Exemple :
+
+~~~python
+math.pow(
+~~~
+
+PyCharm affiche la signature et les paramètres attendus.
+
+---
+
+# 6. Génération et templates de code
+
+PyCharm propose des **Live Templates** pour générer rapidement des structures courantes.
+
+Par exemple :
+
+~~~text
+for
+if
+while
+try
+~~~
+
+Les templates permettent d'éviter de taper manuellement du code répétitif.
+
+### `Ctrl + J`
+
+Permet d'afficher les Live Templates disponibles.
+
+### `Ctrl + Shift + Enter`
+
+Permet de compléter certaines constructions syntaxiques automatiquement.
+
+---
+
+# 7. Refactoring
+
+PyCharm possède de nombreux outils de refactoring.
+
+## Introduire une variable
+
+### `Ctrl + Alt + V`
+
+**Introduce Variable**
+
+Permet d'extraire une expression dans une variable.
+
+PyCharm peut proposer automatiquement un nom de variable et remplacer les occurrences nécessaires.
+
+---
+
+## Introduire une constante
+
+### `Ctrl + Alt + C`
+
+**Introduce Constant**
+
+Permet d'extraire une valeur dans une constante.
+
+---
+
+## Extraire une fonction
+
+### `Ctrl + Alt + M`
+
+**Extract Function**
+
+Permet de transformer un morceau de code en fonction et de déterminer les paramètres nécessaires.
+
+---
+
+## Renommer
+
+### `Shift + F6`
+
+**Rename**
+
+Permet de renommer un symbole et de mettre à jour les références correspondantes.
+
+---
+
+# 8. Quick-fixes et intentions
+
+### `Alt + Enter`
+
+Ouvre les **Intentions et Quick-Fixes** de PyCharm.
+
+Selon le contexte, PyCharm peut notamment proposer :
+
+~~~text
+Import manquant
+Créer le symbole manquant
+Corriger le code
+Simplifier une expression
+Transformer le code
+Ajouter une documentation
+~~~
+
+C'est un raccourci particulièrement utile à connaître.
+
+---
+
+# 9. Comparaison rapide Eclipse / PyCharm
+
+| Besoin | Eclipse / Java | PyCharm / Python |
+|---|---|---|
+| Autocomplétion | `Ctrl + Space` | `Ctrl + Space` |
+| Documentation | Javadoc / informations contextuelles | `Ctrl + Q` |
+| Paramètres d'une méthode | Informations contextuelles | `Ctrl + P` |
+| Quick-fix | `Ctrl + 1` | `Alt + Enter` |
+| Introduire une variable | Refactoring | `Ctrl + Alt + V` |
+| Introduire une constante | Refactoring | `Ctrl + Alt + C` |
+| Extraire une méthode | Refactoring | `Ctrl + Alt + M` |
+| Renommer | `Alt + Shift + R` | `Shift + F6` |
+| Générer du code | Generate | `Alt + Insert` |
+| Templates | Templates | Live Templates |
+| Documentation Python | — | Docstrings + `help()` + Quick Documentation |
+
+---
+
+# 10. Point important : PyCharm vs VS Code
+
+VS Code possède également :
+
+- l'autocomplétion ;
+- l'IntelliSense ;
+- le refactoring ;
+- les diagnostics ;
+- la navigation dans le code.
+
+Cependant, dans VS Code, une partie de ces fonctionnalités dépend de la configuration et des extensions Python utilisées.
+
+PyCharm propose davantage de fonctionnalités Python intégrées dans un même environnement.
+
+Pour un développement Python nécessitant beaucoup :
+
+- d'analyse de code ;
+- de refactoring ;
+- de navigation ;
+- de génération de code ;
+- de documentation ;
+- de détection précoce des erreurs ;
+
+PyCharm est donc particulièrement intéressant.
+
+---
+
+# 11. Mémo personnel
+
+~~~text
+Ctrl + Space
+→ Autocomplétion
+
+Ctrl + Q
+→ Documentation
+
+Ctrl + P
+→ Paramètres d'une fonction
+
+Alt + Enter
+→ Quick-fix / intention
+
+Ctrl + Alt + V
+→ Introduire une variable
+
+Ctrl + Alt + C
+→ Introduire une constante
+
+Ctrl + Alt + M
+→ Extraire une fonction
+
+Shift + F6
+→ Renommer
+
+Ctrl + J
+→ Live Templates
+~~~
+
+### À retenir
+
+L'objectif n'est pas de mémoriser immédiatement tous les raccourcis.
+
+Le plus important est de retrouver le réflexe :
+
+> **« Est-ce que mon IDE peut le faire à ma place ? »**
+
+Comme avec Eclipse, un bon IDE permet de réduire les erreurs de saisie, faciliter le refactoring et accélérer la navigation dans un projet Python.
+
+# Module Classe
 |Notion | Java | Python | Commentaire|
 |---|---|---|---|
 | Importer le module / package mathématique | `import java.lang.Math;` *(implicite, pas besoin d'import)* | `import math` | Python importe explicitement le module `math`. En Java, `java.lang` est importé implicitement. |
