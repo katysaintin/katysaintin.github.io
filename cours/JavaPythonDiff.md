@@ -1874,3 +1874,25 @@ class Car:
 
 Dans les deux cas, chaque instance possède son propre état.
 
+|Notion | Java | Python | Commentaire|
+|---|---|---|---|
+| Classe | `class Car {}` | `class Car:` | Python utilise l'indentation au lieu des accolades. |
+| Classe mère de toutes les classes | `Object` | `object` | Toutes les classes héritent finalement de cette classe de base. |
+| Instanciation | `new Car()` | `Car()` | Python n'utilise pas `new`. |
+| Constructeur | `public Car() {}` | `def __init__(self):` | `__init__` initialise l'instance. |
+| Référence à l'instance courante | `this` | `self` | `self` est explicitement passé comme premier paramètre des méthodes d'instance. |
+| Attribut d'instance | `this.wheels` | `self.wheels` | L'état appartient à l'instance. |
+| Appel d'une méthode | `myCar.startEngine()` | `my_car.start_engine()` | Même notation avec `.`. |
+| Héritage | `class Car extends Vehicle` | `class Car(Vehicle):` | Les deux permettent l'héritage de classes. |
+| Organisation du code | Classes réparties dans des fichiers `.java` | Classes réparties dans des modules `.py` | Python permet également une architecture multi-fichiers et packages. |
+| Classe utilitaire | Classe avec méthodes `static` | Module contenant directement des fonctions | En Python, une classe utilitaire n'est pas toujours nécessaire. |
+| Convention de nommage des méthodes | `startEngine()` | `start_engine()` | Java utilise généralement le camelCase ; Python utilise généralement le snake_case. |
+| Accès aux membres | `.` | `.` | Même syntaxe d'accès. |
+| Type des attributs | Généralement déclaré explicitement | Pas obligatoire | Python permet d'utiliser des annotations de type. |
+| Typage | Statique et fort | Dynamique, avec typage optionnel via annotations et type checkers | Python permet d'ajouter des garde-fous sans imposer le typage statique du langage. |
+| Encapsulation | `public`, `protected`, `private` | Pas de véritable `private` comme en Java | Python utilise notamment les conventions `_member` et `__member`. |
+| Méthodes statiques | `static` | `@staticmethod` | Les deux permettent une méthode qui ne dépend pas de l'instance. |
+| Méthodes de classe | Pas d'équivalent direct | `@classmethod` | Python possède cette notion directement. |
+| Constantes | `static final` | Convention `UPPER_CASE` | Python n'impose pas réellement l'immutabilité d'une constante. |
+| Interface | `interface` | Protocoles, classes abstraites, duck typing | Python propose plusieurs mécanismes plutôt qu'un équivalent unique de `interface`. |
+
