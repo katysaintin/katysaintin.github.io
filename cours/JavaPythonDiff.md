@@ -2228,3 +2228,196 @@ Comme avec Eclipse, un bon IDE permet de réduire les erreurs de saisie, facilit
 | Infini positif | `Double.POSITIVE_INFINITY` | `math.inf` | Représente l'infini positif. |
 | NaN | `Double.NaN` | `math.nan` | Représente **Not a Number**. |
 
+# Imports ciblés et conflits de noms — Python vs Java
+
+## 1. Importer uniquement ce dont on a besoin
+
+En Python, il est possible d'importer directement une fonction ou une constante depuis un module.
+
+~~~python
+from math import pi
+from statistics import mean
+~~~
+
+On peut ensuite utiliser directement les noms importés :
+
+~~~python
+print(pi)
+result = mean(values)
+~~~
+
+Il n'est plus nécessaire d'écrire :
+
+~~~python
+math.pi
+statistics.mean(values)
+~~~
+
+### En Java
+
+Java permet également les imports ciblés, mais il faut distinguer l'import d'une **classe** de l'import d'un membre `static`.
+
+Par exemple :
+
+~~~java
+import java.util.IntSummaryStatistics;
+~~~
+
+permet d'utiliser directement la classe :
+
+~~~java
+IntSummaryStatistics stats;
+~~~
+
+Pour importer directement une constante ou une méthode `static`, Java utilise `import static` :
+
+~~~java
+import static java.lang.Math.PI;
+import static java.lang.Math.sqrt;
+~~~
+
+On peut alors écrire :
+
+~~~java
+double value = sqrt(25);
+double pi = PI;
+~~~
+
+Sans `import static`, on écrit :
+
+~~~java
+Math.sqrt(25);
+Math.PI;
+~~~
+
+---
+
+## 2. Que se passe-t-il si deux modules Python possèdent le même nom ?
+
+C'est un point important.
+
+Par exemple, imaginons deux modules qui possèdent chacun une fonction `calculate()` :
+
+~~~python
+from module_a import calculate
+from module_b import calculate
+~~~
+
+Le deuxième import crée une nouvelle association avec le nom `calculate`.
+
+Le nom importé précédemment est donc masqué :
+
+~~~python
+calculate()
+~~~
+
+appellera la fonction provenant de `module_b`.
+
+Python ne conserve pas automatiquement les deux fonctions sous le même nom.
+
+---
+
+## 3. Solution : utiliser un alias
+
+Python permet de renommer localement un élément importé avec `as`.
+
+~~~python
+from module_a import calculate as calculate_a
+from module_b import calculate as calculate_b
+~~~
+
+On peut alors utiliser les deux fonctions :
+
+~~~python
+calculate_a()
+calculate_b()
+~~~
+
+C'est particulièrement utile lorsque deux modules possèdent des fonctions ou constantes portant le même nom.
+
+---
+
+## 4. Autre solution : importer les modules eux-mêmes
+
+On peut également conserver le nom du module :
+
+~~~python
+import module_a
+import module_b
+~~~
+
+Puis :
+
+~~~python
+module_a.calculate()
+module_b.calculate()
+~~~
+
+Cette forme évite naturellement les collisions de noms et rend également plus explicite l'origine de la fonction.
+
+---
+
+## 5. Comparaison avec Java
+
+En Java, deux classes provenant de packages différents peuvent avoir le même nom.
+
+Par exemple :
+
+~~~java
+import package1.Utils;
+import package2.Utils;
+~~~
+
+Cette situation crée une ambiguïté : Java ne peut pas utiliser les deux classes avec le même nom simple `Utils`.
+
+Il faut alors utiliser le nom qualifié pour lever l'ambiguïté :
+
+~~~java
+package1.Utils.method();
+package2.Utils.method();
+~~~
+
+### Comparaison
+
+| Notion | Java | Python | Commentaire |
+|---|---|---|---|
+| Importer une classe / module | `import package.ClassName` | `import module` | Python importe généralement un module ; Java importe une classe ou un package selon la syntaxe utilisée. |
+| Importer directement un membre | `import static package.Class.CONSTANT` | `from module import constant` | Permet d'utiliser directement le nom importé. |
+| Utiliser le membre importé | `Math.PI` ou `PI` avec `import static` | `math.pi` ou `pi` avec `from math import pi` | Python utilise `from ... import ...` pour importer directement un élément. |
+| Deux éléments portant le même nom | Utiliser le nom qualifié | Utiliser un alias avec `as` ou le nom du module | Les deux langages permettent de lever les ambiguïtés, mais avec des mécanismes différents. |
+| Alias | Pas d'équivalent direct pour les imports de classes | `from module import function as my_function` | Très pratique pour éviter les collisions de noms. |
+| Conserver le contexte du module/package | `package.Class.method()` | `module.function()` | Permet notamment de savoir d'où vient la fonction. |
+
+### À retenir
+
+En Python :
+
+~~~python
+from statistics import mean
+~~~
+
+donne directement accès à :
+
+~~~python
+mean(values)
+~~~
+
+Mais si plusieurs modules possèdent le même nom, il vaut souvent mieux utiliser :
+
+~~~python
+from module_a import calculate as calculate_a
+from module_b import calculate as calculate_b
+~~~
+
+ou simplement :
+
+~~~python
+import module_a
+import module_b
+
+module_a.calculate()
+module_b.calculate()
+~~~
+
+> **Importer directement un nom est pratique, mais conserver le contexte du module peut rendre le code plus clair et éviter les collisions.**
+
