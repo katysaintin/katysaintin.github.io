@@ -2421,3 +2421,88 @@ module_b.calculate()
 
 > **Importer directement un nom est pratique, mais conserver le contexte du module peut rendre le code plus clair et éviter les collisions.**
 
+# Lever une exception — Java / Python
+
+## 1. Lever une exception
+
+### Python
+raise Exception("error message")
+
+### Java
+throw new Exception("error message");
+
+⚠️ En Java :
+- `throw` = lève effectivement l'exception
+- `throws` = indique dans la signature qu'une méthode peut lever une exception
+
+Exemple :
+void maMethode() throws Exception {
+    throw new Exception("error message");
+}
+
+
+## 2. Exceptions courantes — équivalences Java / Python
+
+| Situation | Python | Java |
+|---|---|---|
+| Exception générique | `Exception` | `Exception` |
+| Valeur incorrecte | `ValueError` | `IllegalArgumentException` |
+| Type incorrect | `TypeError` | `IllegalArgumentException`* |
+| Index hors limites | `IndexError` | `IndexOutOfBoundsException` |
+| Index de tableau hors limites | `IndexError` | `ArrayIndexOutOfBoundsException` |
+| Clé absente d'un dictionnaire/map | `KeyError` | `NoSuchElementException`** |
+| Attribut inexistant | `AttributeError` | `NoSuchFieldException`*** |
+| Fichier inexistant | `FileNotFoundError` | `FileNotFoundException` |
+| Fichier / ressource inaccessible | `OSError` | `IOException` |
+| Division par zéro | `ZeroDivisionError` | `ArithmeticException` |
+| Conversion impossible | `ValueError` | `NumberFormatException` |
+| Valeur `None` / objet null | `AttributeError` | `NullPointerException` |
+| Opération non supportée | `NotImplementedError` | `UnsupportedOperationException` |
+| Méthode abstraite non implémentée | `NotImplementedError` | `AbstractMethodError` |
+| Erreur de mémoire | `MemoryError` | `OutOfMemoryError` |
+| Récursion trop profonde | `RecursionError` | `StackOverflowError` |
+| Timeout | `TimeoutError` | `TimeoutException` |
+| Interruption | `KeyboardInterrupt` | `InterruptedException` |
+
+\* Java ne possède pas une équivalence exacte de `TypeError`.  
+`IllegalArgumentException` est souvent utilisée lorsqu'un argument est invalide.
+
+\** Pour une `Map`, l'équivalent dépend de la manière dont on accède à la valeur :
+- `get()` → retourne généralement `null` si la clé n'existe pas
+- `get()` d'une collection spécialisée → peut lever une exception
+- `NoSuchElementException` est notamment utilisée par `Iterator.next()`.
+
+\*** Pas vraiment l'équivalent direct de `AttributeError` :
+`NoSuchFieldException` concerne surtout la réflexion Java.
+
+
+## 3. Hiérarchie à retenir
+
+Python :
+~~~text
+Exception
+├── ValueError
+├── TypeError
+├── IndexError
+├── KeyError
+├── FileNotFoundError
+└── ...
+~~~
+Java :
+~~~text
+Throwable
+├── Error
+│   ├── OutOfMemoryError
+│   └── StackOverflowError
+│
+└── Exception
+    ├── IOException
+    │   └── FileNotFoundException
+    ├── RuntimeException
+    │   ├── IllegalArgumentException
+    │   ├── IndexOutOfBoundsException
+    │   ├── NullPointerException
+    │   ├── ArithmeticException
+    │   └── NumberFormatException
+    └── ...
+~~~
