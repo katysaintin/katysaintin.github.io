@@ -1896,3 +1896,31 @@ Dans les deux cas, chaque instance possède son propre état.
 | Constantes | `static final` | Convention `UPPER_CASE` | Python n'impose pas réellement l'immutabilité d'une constante. |
 | Interface | `interface` | Protocoles, classes abstraites, duck typing | Python propose plusieurs mécanismes plutôt qu'un équivalent unique de `interface`. |
 
+|Notion | Java | Python | Commentaire|
+|---|---|---|---|
+| Importer le module / package mathématique | `import java.lang.Math;` *(implicite, pas besoin d'import)* | `import math` | Python importe explicitement le module `math`. En Java, `java.lang` est importé implicitement. |
+| Racine carrée | `Math.sqrt(value)` | `math.sqrt(value)` | Retourne la racine carrée. |
+| Valeur absolue | `Math.abs(value)` | `math.fabs(value)` / `abs(value)` | En Python, `abs()` est une fonction native et est généralement préférée. |
+| Puissance | `Math.pow(value, exponent)` | `math.pow(value, exponent)` / `value ** exponent` | En Python, `**` est souvent plus idiomatique. |
+| Arrondi inférieur | `Math.floor(value)` | `math.floor(value)` | Retourne le plus grand entier inférieur ou égal à `value`. |
+| Arrondi supérieur | `Math.ceil(value)` | `math.ceil(value)` | Retourne le plus petit entier supérieur ou égal à `value`. |
+| Arrondi | `Math.round(value)` | `round(value)` | En Python, `round()` est une fonction native. Le comportement d'arrondi peut différer entre les deux langages. |
+| Minimum | `Math.min(a, b)` | `min(a, b)` | Python permet également `min(values)` sur une collection. |
+| Maximum | `Math.max(a, b)` | `max(a, b)` | Python permet également `max(values)` sur une collection. |
+| Exponentielle | `Math.exp(value)` | `math.exp(value)` | Calcule `e` puissance `value`. |
+| Logarithme naturel | `Math.log(value)` | `math.log(value)` | Logarithme naturel (base `e`). |
+| Logarithme base 10 | `Math.log10(value)` | `math.log10(value)` | Logarithme en base 10. |
+| Logarithme base 2 | Pas de méthode `Math.log2()` dans les anciennes versions ; `Math.log(x) / Math.log(2)` | `math.log2(value)` | Python fournit directement cette fonction. |
+| Sinus | `Math.sin(value)` | `math.sin(value)` | Angle exprimé en radians. |
+| Cosinus | `Math.cos(value)` | `math.cos(value)` | Angle exprimé en radians. |
+| Tangente | `Math.tan(value)` | `math.tan(value)` | Angle exprimé en radians. |
+| Arc sinus | `Math.asin(value)` | `math.asin(value)` | Retourne un angle en radians. |
+| Arc cosinus | `Math.acos(value)` | `math.acos(value)` | Retourne un angle en radians. |
+| Arc tangente | `Math.atan(value)` | `math.atan(value)` | Retourne un angle en radians. |
+| Conversion degrés → radians | `Math.toRadians(value)` | `math.radians(value)` | Convertit un angle en degrés en radians. |
+| Conversion radians → degrés | `Math.toDegrees(value)` | `math.degrees(value)` | Convertit un angle en radians en degrés. |
+| Pi | `Math.PI` | `math.pi` | Constante π. |
+| Nombre d'Euler | `Math.E` | `math.e` | Constante `e`. |
+| Infini positif | `Double.POSITIVE_INFINITY` | `math.inf` | Représente l'infini positif. |
+| NaN | `Double.NaN` | `math.nan` | Représente **Not a Number**. |
+
