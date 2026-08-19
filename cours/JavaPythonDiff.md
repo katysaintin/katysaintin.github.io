@@ -2607,4 +2607,312 @@ En Java, `HttpClient` s'appuie sur les mécanismes TLS/SSL du JDK et peut être 
 
 La classe `HttpClient` fait partie du JDK depuis Java 11 et permet notamment les requêtes HTTP/1.1 et HTTP/2 ; les versions récentes du JDK prennent également en charge HTTP/3. [oai_citation:0‡docs.oracle.com](https://docs.oracle.com/en/java/javase/26/docs/api/java.net.http/java/net/http/HttpClient.html?utm_source=chatgpt.com)
 
+# Python `requests` et codes de statut HTTP
+
+## 1. Principales fonctions de `requests`
+
+Le module Python `requests` fournit des fonctions simples correspondant aux principales méthodes HTTP. Elles retournent un objet `Response`. 
+
+| Fonction Python | Méthode HTTP | Usage principal | Exemple |
+|---|---|---|---|
+| `requests.get(url)` | `GET` | Récupérer une ressource | `response = requests.get(url)` |
+| `requests.post(url, ...)` | `POST` | Créer une ressource / envoyer des données | `requests.post(url, json=data)` |
+| `requests.put(url, ...)` | `PUT` | Remplacer ou mettre à jour une ressource | `requests.put(url, json=data)` |
+| `requests.patch(url, ...)` | `PATCH` | Modifier partiellement une ressource | `requests.patch(url, json=data)` |
+| `requests.delete(url)` | `DELETE` | Supprimer une ressource | `requests.delete(url)` |
+| `requests.head(url)` | `HEAD` | Récupérer les headers sans le corps de la réponse | `requests.head(url)` |
+| `requests.options(url)` | `OPTIONS` | Demander les méthodes / options disponibles pour une ressource | `requests.options(url)` |
+| `requests.request(method, url, ...)` | Méthode au choix | Fonction générique permettant de réaliser n'importe laquelle des requêtes ci-dessus | `requests.request("GET", url)` |
+
+### Envoyer des données JSON
+
+Avec `requests`, le paramètre `json` est pratique pour envoyer un objet Python sérialisable en JSON :
+
+~~~python
+data = {
+    "username": "test_user",
+    "name": "tester"
+}
+
+response = requests.post(url, json=data)
+~~~
+
+À distinguer de :
+
+~~~python
+response = requests.post(url, data=data)
+~~~
+
+`json=data` indique explicitement que les données doivent être envoyées comme JSON.
+
+---
+
+# 2. L'objet `Response`
+
+Une requête retourne un objet `Response` :
+
+~~~python
+response = requests.get(url)
+~~~
+
+Cet objet fournit notamment :
+
+| Attribut / méthode | Signification |
+|---|---|
+| `response.status_code` | Code numérique de statut HTTP |
+| `response.reason` | Description textuelle du statut, par exemple `"OK"` ou `"Not Found"` |
+| `response.text` | Corps de la réponse sous forme de texte |
+| `response.content` | Corps de la réponse sous forme de bytes |
+| `response.json()` | Convertit un corps JSON en objet Python (`dict`, `list`, etc.) |
+| `response.url` | URL finale de la réponse |
+| `response.headers` | Headers HTTP reçus |
+| `response.ok` | `True` si le code est inférieur à 400 |
+| `response.raise_for_status()` | Déclenche une `HTTPError` si la réponse correspond à une erreur HTTP |
+
+---
+
+# 3. Les codes de statut HTTP
+
+Le code de statut est un entier de trois chiffres :
+
+~~~python
+response.status_code
+~~~
+
+Les codes sont regroupés en cinq grandes familles :
+
+| Classe | Signification générale |
+|---|---|
+| `1xx` | Information |
+| `2xx` | Succès |
+| `3xx` | Redirection |
+| `4xx` | Erreur côté client |
+| `5xx` | Erreur côté serveur |
+
+Ces catégories sont définies dans le registre officiel IANA des codes HTTP. [oai_citation:0‡IANA](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml?is_listing=false&utm_source=chatgpt.com)
+
+---
+
+## 4. Codes `1xx` — Information
+
+La requête a été reçue et le traitement continue.
+
+| Code | Nom | Signification simplifiée |
+|---:|---|---|
+| `100` | Continue | Le client peut continuer sa requête |
+| `101` | Switching Protocols | Changement de protocole |
+| `102` | Processing | Traitement en cours |
+| `103` | Early Hints | Informations préliminaires permettant notamment de préparer la réponse |
+
+Dans une utilisation classique d'une API REST, les codes `1xx` sont rarement ceux que l'application traite directement.
+
+---
+
+# 5. Codes `2xx` — Succès
+
+La requête a été correctement reçue, comprise et traitée.
+
+| Code | Nom | Signification simplifiée |
+|---:|---|---|
+| `200` | OK | Requête réussie |
+| `201` | Created | Ressource créée |
+| `202` | Accepted | Requête acceptée mais traitement pas nécessairement terminé |
+| `203` | Non-Authoritative Information | Réponse provenant d'une source intermédiaire |
+| `204` | No Content | Requête réussie, mais aucune donnée à retourner |
+| `205` | Reset Content | Requête réussie, le client doit réinitialiser le contenu |
+| `206` | Partial Content | Réponse partielle |
+
+### Les trois plus importants à retenir
+
+~~~text
+200 → OK / succès général
+201 → ressource créée
+204 → succès sans contenu
+~~~
+
+Par exemple, après un `POST` créant un utilisateur :
+
+~~~text
+POST /users
+        ↓
+201 Created
+~~~
+
+---
+
+# 6. Codes `3xx` — Redirection
+
+Le client doit effectuer une action supplémentaire pour obtenir la ressource.
+
+| Code | Nom | Signification simplifiée |
+|---:|---|---|
+| `300` | Multiple Choices | Plusieurs possibilités |
+| `301` | Moved Permanently | Ressource déplacée définitivement |
+| `302` | Found | Redirection temporaire |
+| `303` | See Other | Voir une autre URL |
+| `304` | Not Modified | Ressource inchangée ; le cache peut être utilisé |
+| `307` | Temporary Redirect | Redirection temporaire en conservant la méthode HTTP |
+| `308` | Permanent Redirect | Redirection permanente en conservant la méthode HTTP |
+
+`requests` suit automatiquement les redirections dans de nombreux cas. Le comportement peut être contrôlé avec `allow_redirects`. [oai_citation:1‡Requests](https://requests.readthedocs.io/en/latest/user/quickstart/?utm_source=chatgpt.com)
+
+---
+
+# 7. Codes `4xx` — Erreur côté client
+
+La requête reçue par le serveur pose un problème du côté du client.
+
+| Code | Nom | Signification simplifiée |
+|---:|---|---|
+| `400` | Bad Request | Requête invalide |
+| `401` | Unauthorized | Authentification nécessaire ou invalide |
+| `402` | Payment Required | Réservé / lié à un paiement |
+| `403` | Forbidden | Accès refusé |
+| `404` | Not Found | Ressource introuvable |
+| `405` | Method Not Allowed | Méthode HTTP non autorisée |
+| `406` | Not Acceptable | Réponse acceptable non disponible |
+| `408` | Request Timeout | Le serveur a attendu trop longtemps la requête |
+| `409` | Conflict | Conflit avec l'état actuel de la ressource |
+| `410` | Gone | Ressource définitivement supprimée |
+| `411` | Length Required | Longueur de contenu requise |
+| `412` | Precondition Failed | Précondition non satisfaite |
+| `413` | Content Too Large | Contenu trop volumineux |
+| `415` | Unsupported Media Type | Type de contenu non supporté |
+| `422` | Unprocessable Content | Requête syntaxiquement correcte mais données non traitables |
+| `429` | Too Many Requests | Trop de requêtes |
+
+### Les plus importants à retenir
+
+~~~text
+400 → ma requête est mauvaise
+401 → je dois m'authentifier / authentification invalide
+403 → je suis identifié mais je n'ai pas le droit
+404 → ce que je cherche n'existe pas
+405 → cette méthode HTTP n'est pas autorisée
+409 → conflit
+429 → trop de requêtes
+~~~
+
+---
+
+# 8. Codes `5xx` — Erreur côté serveur
+
+La requête semble valide, mais le serveur n'arrive pas à la traiter correctement.
+
+| Code | Nom | Signification simplifiée |
+|---:|---|---|
+| `500` | Internal Server Error | Erreur interne du serveur |
+| `501` | Not Implemented | Fonctionnalité non implémentée |
+| `502` | Bad Gateway | Un serveur intermédiaire reçoit une mauvaise réponse |
+| `503` | Service Unavailable | Service momentanément indisponible |
+| `504` | Gateway Timeout | Un serveur intermédiaire attend trop longtemps une réponse |
+| `505` | HTTP Version Not Supported | Version HTTP non supportée |
+
+### Les plus importants à retenir
+
+~~~text
+500 → le serveur a rencontré une erreur
+502 → problème entre serveurs / proxy / gateway
+503 → service momentanément indisponible
+504 → timeout entre serveurs
+~~~
+
+---
+
+# 9. `status_code` et `raise_for_status()`
+
+On peut tester explicitement le code :
+
+~~~python
+response = requests.get(url)
+
+if response.status_code == 200:
+    print("OK")
+~~~
+
+Mais `requests` fournit également :
+
+~~~python
+response.raise_for_status()
+~~~
+
+Cette méthode déclenche une `requests.exceptions.HTTPError` lorsqu'une réponse correspond à une erreur HTTP. [oai_citation:2‡Requests](https://requests.readthedocs.io/en/stable/api/?utm_source=chatgpt.com)
+
+Exemple :
+
+~~~python
+try:
+    response = requests.get(url)
+    response.raise_for_status()
+
+except requests.HTTPError as error:
+    print(error)
+~~~
+
+Cela permet de traiter les réponses `4xx` et `5xx` comme des exceptions plutôt que de tester chaque code individuellement.
+
+---
+
+# 10. `requests.codes`
+
+`requests` fournit également `requests.codes` pour éviter d'écrire certains nombres en dur :
+
+~~~python
+if response.status_code == requests.codes.ok:
+    print("OK")
+~~~
+
+Par exemple :
+
+~~~python
+requests.codes.ok       # 200
+requests.codes.created  # 201
+requests.codes.not_found # 404
+~~~
+
+La documentation de Requests fournit une table de correspondance entre les noms courants et les codes numériques. [oai_citation:3‡Requests](https://requests.readthedocs.io/en/stable/api/?utm_source=chatgpt.com)
+
+---
+
+# 11. À retenir pour les API REST
+
+~~~text
+                HTTP
+                 │
+        ┌────────┴────────┐
+        │                 │
+      Requête           Réponse
+        │                 │
+   GET / POST        status_code
+   PUT / PATCH       + body JSON
+   DELETE            + headers
+```
+
+Les codes à connaître en priorité :
+
+~~~text
+200  → OK
+201  → Created
+204  → No Content
+
+301/302 → Redirection
+
+400  → Bad Request
+401  → Unauthorized
+403  → Forbidden
+404  → Not Found
+405  → Method Not Allowed
+409  → Conflict
+429  → Too Many Requests
+
+500  → Internal Server Error
+502  → Bad Gateway
+503  → Service Unavailable
+504  → Gateway Timeout
+~~~
+
+> **Point important : `status_code` indique le résultat HTTP de la requête. Il ne signifie pas nécessairement que le programme Python a rencontré une exception.**
+>
+> Par exemple, une réponse `404` est une réponse HTTP parfaitement reçue par Python. C'est `raise_for_status()` qui peut ensuite transformer cette situation en `HTTPError`. [oai_citation:4‡Requests](https://requests.readthedocs.io/en/stable/api/?utm_source=chatgpt.com)
+
 
