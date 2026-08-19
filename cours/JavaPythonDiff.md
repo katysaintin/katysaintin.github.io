@@ -2506,3 +2506,105 @@ Throwable
     │   └── NumberFormatException
     └── ...
 ~~~
+
+| Notion | Java | Python | Commentaire |
+|---|---|---|---|
+| Faire une requête HTTP | `java.net.http.HttpClient` | bibliothèque `requests` | Java dispose aujourd'hui d'un client HTTP intégré au JDK. |
+| Requête GET | `HttpClient` + `HttpRequest` avec `.GET()` | `requests.get(url)` | Permet de récupérer des données. |
+| Requête POST | `HttpClient` + `HttpRequest` avec `.POST(...)` | `requests.post(url, ...)` | Permet notamment d'envoyer des données au serveur. |
+| Requête DELETE | `HttpClient` + `HttpRequest` avec `.DELETE()` | `requests.delete(url)` | Permet notamment de demander la suppression d'une ressource. |
+| Requête synchrone | `client.send(request, ...)` | `requests.get(...)`, `requests.post(...)` | Le programme attend la réponse. |
+| Requête asynchrone | `client.sendAsync(...)` → `CompletableFuture` | Possibilité avec des bibliothèques/outils asynchrones | Java fournit directement cette possibilité dans `HttpClient`. |
+| HTTPS / TLS | Géré par `HttpClient` avec le contexte SSL/TLS | Géré par `requests` avec HTTPS et les paramètres de vérification TLS | HTTPS ne nécessite pas de programmer soi-même les sockets. |
+| Sockets TCP bas niveau | `java.net.Socket` | `socket` | À utiliser lorsqu'on travaille au niveau réseau bas niveau, pas simplement pour consommer une API HTTP. |
+
+## Exemple Python
+
+~~~python
+import requests
+
+response = requests.get("https://mimo.org/courses")
+
+data = response.json()
+print(data)
+~~~
+
+Pour un POST avec des données JSON :
+
+~~~python
+import requests
+
+url = "https://mimo.org/users"
+
+data = {
+    "username": "test_user",
+    "name": "tester"
+}
+
+response = requests.post(url, json=data)
+
+print(response.json())
+~~~
+
+## Équivalent Java moderne
+
+Depuis Java 11, Java possède une API HTTP standard dans le JDK : `java.net.http`.
+
+Elle fournit notamment :
+
+- `HttpClient`
+- `HttpRequest`
+- `HttpResponse`
+
+Exemple de GET :
+
+~~~java
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+HttpClient client = HttpClient.newHttpClient();
+
+HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create("https://mimo.org/courses"))
+        .GET()
+        .build();
+
+HttpResponse<String> response =
+        client.send(request, HttpResponse.BodyHandlers.ofString());
+
+System.out.println(response.statusCode());
+System.out.println(response.body());
+~~~
+
+### À retenir
+
+Avant, on pouvait effectivement rencontrer beaucoup de code Java utilisant directement les `Socket` pour la communication réseau.
+
+Mais pour consommer une **API HTTP**, on n'a normalement pas besoin de programmer directement les sockets.
+
+~~~text
+API HTTP
+   ↓
+Java : java.net.http.HttpClient
+Python : requests
+   ↓
+HTTP / HTTPS
+   ↓
+Serveur
+~~~
+
+Les sockets restent utiles lorsque l'on a besoin d'un niveau de contrôle réseau plus bas.
+
+### Sécurité
+
+`https://` utilise TLS pour sécuriser la communication.
+
+En Java, `HttpClient` s'appuie sur les mécanismes TLS/SSL du JDK et peut être configuré avec un `SSLContext` lorsque des besoins particuliers existent.
+
+> **Java moderne : `HttpClient` est l'équivalent conceptuel le plus proche de `requests` pour effectuer des requêtes HTTP.**
+
+La classe `HttpClient` fait partie du JDK depuis Java 11 et permet notamment les requêtes HTTP/1.1 et HTTP/2 ; les versions récentes du JDK prennent également en charge HTTP/3. [oai_citation:0‡docs.oracle.com](https://docs.oracle.com/en/java/javase/26/docs/api/java.net.http/java/net/http/HttpClient.html?utm_source=chatgpt.com)
+
+
