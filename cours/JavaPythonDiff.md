@@ -3629,4 +3629,56 @@ self.size ≈ this.size
 
 La grosse différence est que Python rend `self` **explicite dans la signature des méthodes**.
 
+## Constructeur : Python vs Java
+
+### Python
+
+Le constructeur d'une classe est la méthode spéciale `__init__()` :
+
+~~~python
+class MyClass:
+
+    def __init__(self, argument):
+        self.argument = argument
+~~~
+
+- `__init__` est appelé automatiquement lors de la création de l'objet.
+- `self` représente l'instance courante.
+- `self` correspond conceptuellement à `this` en Java.
+
+Création d'un objet :
+
+~~~python
+my_object = MyClass(argument)
+~~~
+
+### Java
+
+Le constructeur porte le même nom que la classe :
+
+~~~java
+public class MyClass {
+
+    public MyClass(Type argument) {
+        this.argument = argument;
+    }
+}
+~~~
+
+Création d'un objet :
+
+~~~java
+MyClass myObject = new MyClass(argument);
+~~~
+
+### Comparaison
+
+| Python | Java |
+|---|---|
+| `def __init__(self, argument):` | `public MyClass(Type argument) {}` |
+| `self` | `this` |
+| `MyClass(argument)` | `new MyClass(argument)` |
+| Pas de `new` | `new` obligatoire |
+| Constructeur = méthode spéciale `__init__` | Constructeur = méthode portant le nom de la classe |
+
 
