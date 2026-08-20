@@ -3133,4 +3133,193 @@ Donc pour une liste de 6 éléments :
 
 > **Attention :** cette règle concerne l'accès direct à un élément avec `liste[index]`. Le comportement des **slices** (`liste[start:stop]`) est différent : un indice de slice qui dépasse les limites ne provoque généralement pas d'`IndexError`.
 
+# Sous-listes / slicing : Python vs Java
+
+## Python
+
+Python permet d'extraire une sous-liste avec :
+
+```python
+liste[indexStart:indexStop:step]
+```
+
+- `indexStart` : indice de départ, **inclus**
+- `indexStop` : indice de fin, **exclus**
+- `step` : pas
+- `indexStart`, `indexStop` et `step` peuvent être **négatifs**
+- ils peuvent également être **omis**
+
+Exemples :
+
+```python
+values = ["A", "B", "C", "D", "E", "F"]
+
+values[1:4]     # ["B", "C", "D"]
+values[:3]      # ["A", "B", "C"]
+values[3:]      # ["D", "E", "F"]
+values[::2]     # ["A", "C", "E"]
+values[::-1]    # ["F", "E", "D", "C", "B", "A"]
+values[-3:]     # ["D", "E", "F"]
+```
+
+### Indices hors limites
+
+Une différence importante avec l'accès direct `liste[index]` :
+
+```python
+values[100]     # IndexError
+```
+
+mais un slice hors limites ne provoque pas d'erreur :
+
+```python
+values[100:200]     # []
+values[-100:2]      # ["A", "B"]
+```
+
+Python **ajuste les bornes du slice** aux limites de la liste.
+
+---
+
+# Java
+
+Java n'a pas de syntaxe native équivalente à :
+
+```python
+liste[start:stop:step]
+```
+
+### 1. Sous-liste sans `step`
+
+Pour une `List`, on utilise :
+
+```java
+list.subList(start, stop)
+```
+
+Le principe est similaire :
+
+```java
+List<String> values =
+    Arrays.asList("A", "B", "C", "D", "E", "F");
+
+List<String> result = values.subList(1, 4);
+```
+
+Résultat :
+
+```text
+[A, B, C, D]
+```
+
+Attention : comme en Python, `stop` est **exclus**.
+
+```text
+index :   0    1    2    3    4    5
+valeur :  A    B    C    D    E    F
+               ↑         ↑
+             start      stop
+             inclus     exclu
+```
+
+Donc :
+
+```java
+subList(1, 4)
+```
+
+donne :
+
+```text
+[B, C, D]
+```
+
+### 2. Pas (`step`)
+
+Java n'a pas d'équivalent direct à :
+
+```python
+values[::2]
+```
+
+Il faut généralement utiliser une boucle :
+
+```java
+List<String> result = new ArrayList<>();
+
+for (int i = 0; i < values.size(); i += 2) {
+    result.add(values.get(i));
+}
+```
+
+Ou utiliser un `IntStream` :
+
+```java
+List<String> result =
+    IntStream.range(0, values.size())
+             .filter(i -> i % 2 == 0)
+             .mapToObj(values::get)
+             .toList();
+```
+
+### 3. Indices négatifs
+
+Java ne supporte **pas nativement** les indices négatifs :
+
+```java
+values.get(-1);    // IndexOutOfBoundsException
+```
+
+En Python :
+
+```python
+values[-1]         # dernier élément
+```
+
+En Java, on écrit :
+
+```java
+values.get(values.size() - 1);
+```
+
+Pour obtenir l'équivalent de `-n`, il faut donc convertir l'indice :
+
+```java
+int index = values.size() - n;
+```
+
+---
+
+## Comparaison rapide
+
+| Opération | Python | Java |
+|---|---|---|
+| Élément | `list[i]` | `list.get(i)` |
+| Dernier élément | `list[-1]` | `list.get(list.size() - 1)` |
+| Sous-liste | `list[start:stop]` | `list.subList(start, stop)` |
+| `stop` exclus | Oui | Oui |
+| Indices négatifs | Oui | Non |
+| `step` natif | Oui | Non |
+| Slice hors limites | Géré | `subList()` peut lever une exception |
+| Inverser une liste | `list[::-1]` | `Collections.reverse(list)` |
+| Tous les 2 éléments | `list[::2]` | boucle / `Stream` |
+
+### À retenir
+
+Le **slicing Python est beaucoup plus puissant et compact** que l'API standard des `List` Java.
+
+```python
+list[start:stop:step]
+```
+
+n'a pas d'équivalent unique en Java.
+
+En Java, on combine généralement :
+
+```java
+subList()
+```
+
+pour les bornes, et une **boucle ou un Stream** pour gérer un `step`.
+
 
