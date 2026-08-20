@@ -3027,3 +3027,47 @@ result = re.sub(r"\.", "#", tags)
 ~~~
 
 > **Piège classique :** en Java, `replace()` et `replaceAll()` ne sont pas équivalents. `replaceAll()` interprète son premier argument comme une expression régulière.
+
+### Python — compréhension de liste
+
+new_list = [value for value in values if value > 0]
+
+
+### Java — équivalent avec les Streams
+
+List<Integer> newList = values.stream()
+    .filter(value -> value > 0)
+    .toList();
+
+
+### Si values est un tableau int[]
+
+List<Integer> newList = Arrays.stream(values)
+    .filter(value -> value > 0)
+    .boxed()
+    .toList();
+
+
+### Correspondance conceptuelle
+
+| Python | Java |
+|---|---|
+| `for value in values` | `.stream()` |
+| `if value > 0` | `.filter(value -> value > 0)` |
+| `[value ...]` | `.toList()` |
+
+
+### Parallèle direct
+
+Python :
+
+new_list = [value for value in values if value > 0]
+
+Java :
+
+List<Integer> newList = values.stream()
+    .filter(value -> value > 0)
+    .toList();
+
+
+
