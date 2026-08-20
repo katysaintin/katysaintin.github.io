@@ -3681,4 +3681,356 @@ MyClass myObject = new MyClass(argument);
 | Pas de `new` | `new` obligatoire |
 | Constructeur = méthode spéciale `__init__` | Constructeur = méthode portant le nom de la classe |
 
+# POO Python — classes, `print()`, encapsulation et `super()`
+
+## 1. Une classe Python peut-elle être vide ?
+
+**Non, pas syntaxiquement.** C'est une différence importante avec Java.
+
+En Java :
+
+~~~java
+public class MyClass {}
+~~~
+
+est parfaitement valide.
+
+En Python :
+
+~~~python
+class MyClass:
+~~~
+
+provoque une erreur, car après `:` Python attend **au moins une instruction indentée**.
+
+On utilise donc `pass` :
+
+~~~python
+class MyClass:
+    pass
+~~~
+
+`pass` signifie simplement : **« ne rien faire »**.
+
+Dans l'exercice Mimo, si on désindente :
+
+~~~python
+class Virtual_Pet:
+print("inside the class definition")
+~~~
+
+le `print` n'appartient plus à la classe.
+
+Mais surtout, **la classe n'a plus aucun contenu**, donc Python lève une erreur.
+
+On peut donc retenir :
+
+~~~python
+class MyClass:
+    pass
+~~~
+
+est la manière classique d'écrire une classe volontairement vide.
+
+---
+
+## 2. Combien d'arguments peut-on donner à `print()` ?
+
+Beaucoup.
+
+Il n'y a pas une limite du genre « maximum 2 arguments ».
+
+Par exemple :
+
+~~~python
+print("Nom :", "Katy", "Age :", 25, "Langage :", "Python")
+~~~
+
+donne :
+
+~~~text
+Nom : Katy Age : 25 Langage : Python
+~~~
+
+Python sépare automatiquement les arguments par un espace.
+
+On peut aussi utiliser `sep` pour choisir le séparateur :
+
+~~~python
+print("A", "B", "C", sep="-")
+~~~
+
+donne :
+
+~~~text
+A-B-C
+~~~
+
+Et `end` permet de contrôler ce qui est ajouté à la fin :
+
+~~~python
+print("Bonjour", end=" ")
+print("Katy")
+~~~
+
+donne :
+
+~~~text
+Bonjour Katy
+~~~
+
+Donc mentalement :
+
+~~~python
+print(valeur1, valeur2, valeur3, ...)
+~~~
+
+Le `...` signifie ici qu'on peut fournir autant d'arguments qu'on le souhaite en pratique.
+
+---
+
+## 3. L'encapsulation : Mimo dit-il la même chose qu'en Java ?
+
+**Oui, mais Mimo donne une définition simplifiée.**
+
+Mimo dit en substance :
+
+> Regrouper des données et les fonctions qui travaillent sur ces données dans un même objet.
+
+C'est bien **une composante fondamentale de l'encapsulation**.
+
+Par exemple :
+
+~~~python
+class Dog:
+    name = "Fido"
+    hungry = False
+
+    def eat(self):
+        self.hungry = True
+~~~
+
+On regroupe dans le même objet :
+
+~~~text
+Dog
+├── données
+│   ├── name
+│   └── hungry
+│
+└── comportement
+    └── eat()
+~~~
+
+Mais tu as raison concernant Java.
+
+En Java, on insiste beaucoup sur **le masquage de l'état interne et le contrôle de son accès** :
+
+~~~java
+public class Dog {
+
+    private boolean hungry;
+
+    public void eat() {
+        hungry = true;
+    }
+
+    public boolean isHungry() {
+        return hungry;
+    }
+}
+~~~
+
+Ici :
+
+~~~java
+private boolean hungry;
+~~~
+
+empêche le code extérieur d'accéder directement au champ.
+
+On expose à la place une interface contrôlée :
+
+~~~java
+dog.eat();
+dog.isHungry();
+~~~
+
+On peut donc retenir :
+
+| Encapsulation | Rôle |
+|---|---|
+| Regrouper | Regrouper données + comportements dans une même classe/objet |
+| Protéger | Masquer l'état interne |
+| Contrôler | Contrôler la manière dont l'extérieur accède ou modifie cet état |
+
+Mimo insiste surtout sur le premier aspect. Java insiste énormément sur le second.
+
+Et c'est particulièrement important en Python parce que Python est beaucoup moins strict que Java concernant la visibilité.
+
+Python n'a pas l'équivalent strict de :
+
+~~~java
+private
+protected
+public
+~~~
+
+On utilise notamment les conventions `_variable` et les mécanismes de `__variable`, mais ce n'est pas le même système de contrôle d'accès que Java.
+
+Donc :
+
+> La définition de Mimo est correcte, mais elle n'est pas exhaustive.
+
+---
+
+## 4. `super()` en Python : même chose qu'en Java ?
+
+**Même idée générale, mais pas exactement le même mécanisme.**
+
+En Python :
+
+~~~python
+class Parent:
+    def __init__(self):
+        self.eyes = "green"
+
+
+class Child(Parent):
+    def __init__(self):
+        super().__init__()
+        self.age = 7
+~~~
+
+Ici :
+
+~~~python
+super().__init__()
+~~~
+
+permet d'appeler l'initialiseur de la classe parente.
+
+C'est donc très proche de :
+
+~~~java
+class Child extends Parent {
+
+    public Child() {
+        super();
+    }
+}
+~~~
+
+Mais `super()` en Python **ne sert pas uniquement au constructeur**.
+
+Par exemple :
+
+~~~python
+class Parent:
+
+    def greet(self):
+        print("Bonjour depuis Parent")
+
+
+class Child(Parent):
+
+    def greet(self):
+        super().greet()
+        print("Bonjour depuis Child")
+~~~
+
+Ici :
+
+~~~python
+super().greet()
+~~~
+
+appelle la méthode `greet()` héritée.
+
+En Java, on peut également faire :
+
+~~~java
+super.greet();
+~~~
+
+Donc sur ce point, les deux langages sont assez proches.
+
+---
+
+## Une subtilité importante sur `super()`
+
+En Python :
+
+~~~python
+super()
+~~~
+
+ne signifie pas exactement :
+
+> « la classe mère »
+
+C'est plutôt un mécanisme permettant d'accéder à **la classe suivante dans l'ordre de résolution des méthodes (MRO)**.
+
+C'est particulièrement important avec l'héritage multiple en Python.
+
+Pour l'instant, tu peux néanmoins garder le modèle mental suivant :
+
+~~~text
+super()
+   ↓
+permet d'accéder à la classe suivante dans la MRO
+   ↓
+.__init__(...)
+ou
+.methode(...)
+~~~
+
+Par exemple :
+
+~~~python
+super().__init__(name, age)
+~~~
+
+Ce n'est **pas `super()` qui est le constructeur**.
+
+Plus précisément :
+
+~~~text
+super()
+   ↓
+obtient un objet permettant d'accéder à la classe suivante dans la MRO
+   ↓
+.__init__(name, age)
+   ↓
+appelle son initialiseur
+~~~
+
+---
+
+# Petite fiche mentale Java → Python
+
+| Java | Python |
+|---|---|
+| `class MyClass {}` | `class MyClass:` + `pass` si elle est vide |
+| `new MyClass()` | `MyClass()` |
+| `this` | `self` |
+| `super()` | `super()` |
+| `super.method()` | `super().method()` |
+| `private` | `_convention` / mécanisme `__` |
+| `extends Parent` | `class Child(Parent)` |
+| constructeur | `__init__()` |
+| `this.name = name` | `self.name = name` |
+| `System.out.println(...)` | `print(...)` |
+
+Pour ton apprentissage, la comparaison Java → Python est donc particulièrement utile :
+
+- `self` ≈ `this`
+- `__init__()` ≈ constructeur
+- `super()` permet notamment d'appeler le constructeur/les méthodes héritées
+- `class Child(Parent)` ≈ `class Child extends Parent`
+- `print()` est beaucoup plus souple que `System.out.println()`
+
+La grosse différence à garder en tête est que **Python est beaucoup moins restrictif que Java** : indentation au lieu de `{}`, typage dynamique, visibilité moins stricte, fonctions directement au niveau du module, etc.
+
+Et justement, comme tu connais déjà Java, tu peux utiliser Java comme **garde-fou de rigueur** tout en apprenant les idiomes Python spécifiques.
 
