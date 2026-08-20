@@ -3069,5 +3069,68 @@ List<Integer> newList = values.stream()
     .filter(value -> value > 0)
     .toList();
 
+# Index négatifs en Python
+
+Les listes Python acceptent les **index négatifs**.
+
+| Index | Signification pour une liste de 6 éléments |
+|---:|---|
+| `0` | Premier élément |
+| `1` | Deuxième élément |
+| `...` | ... |
+| `5` | Dernier élément |
+| `-1` | Dernier élément |
+| `-2` | Avant-dernier élément |
+| `-3` | Troisième élément en partant de la fin |
+| `-6` | Premier élément |
+
+On peut donc voir les index ainsi :
+
+~~~text
+Valeur :   4    5    3    1    2    3
+Index :    0    1    2    3    4    5
+Index :   -6   -5   -4   -3   -2   -1
+~~~
+
+## Que se passe-t-il si on dépasse la taille de la liste ?
+
+Oui, **l'accès à un index inexistant provoque une erreur `IndexError`**.
+
+Pour une liste de 6 éléments :
+
+~~~python
+ratings = [4, 5, 3, 1, 2, 3]
+
+print(ratings[-6])  # 4 → premier élément
+print(ratings[-7])  # IndexError
+~~~
+
+Même chose avec les index positifs :
+
+~~~python
+print(ratings[5])   # 3 → dernier élément
+print(ratings[6])   # IndexError
+~~~
+
+### Règle à retenir
+
+Pour une liste de longueur `n` :
+
+~~~text
+Index positifs valides : 0 à n-1
+Index négatifs valides : -1 à -n
+~~~
+
+Donc pour une liste de 6 éléments :
+
+~~~text
+[-6 ... -1]  → valides
+[ 0 ...  5]  → valides
+
+-7 → IndexError
+ 6 → IndexError
+~~~
+
+> **Attention :** cette règle concerne l'accès direct à un élément avec `liste[index]`. Le comportement des **slices** (`liste[start:stop]`) est différent : un indice de slice qui dépasse les limites ne provoque généralement pas d'`IndexError`.
 
 
