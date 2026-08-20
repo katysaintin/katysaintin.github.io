@@ -2915,4 +2915,64 @@ Les codes à connaître en priorité :
 >
 > Par exemple, une réponse `404` est une réponse HTTP parfaitement reçue par Python. C'est `raise_for_status()` qui peut ensuite transformer cette situation en `HTTPError`. [oai_citation:4‡Requests](https://requests.readthedocs.io/en/stable/api/?utm_source=chatgpt.com)
 
+| Notion | Java | Python | Commentaire |
+|---|---|---|---|
+| Découper une chaîne | `myString.split(",")` | `my_string.split(",")` | Retourne respectivement un tableau Java (`String[]`) ou une liste Python (`list`) |
+| Séparateur simple | `myString.split(",")` | `my_string.split(",")` | Pour un séparateur simple comme `,`, la syntaxe est équivalente |
+| Séparateur `.` | `myString.split("\\.")` | `my_string.split("\\.")` | En Java, `String.split()` utilise une **expression régulière (regex)** : `.` signifie « n'importe quel caractère », donc il faut l'échapper avec `\\.` |
+| Séparateur `.` en Python | — | `my_string.split(".")` | En Python, `str.split()` prend une chaîne littérale comme séparateur : le `.` n'a donc pas besoin d'être échappé |
+| Créer une liste transformée | `List<Integer> newList = list.stream().map(value -> value * 2).toList();` *(Java 16+)* | `new_list = [value * 2 for value in my_list]` | Les deux permettent de transformer chaque élément sans écrire explicitement une boucle classique |
+| Version compatible Java 8 | `List<Integer> newList = list.stream().map(value -> value * 2).collect(Collectors.toList());` | `new_list = [value * 2 for value in my_list]` | En Java 8, on utilise les **Streams** et `Collectors.toList()` |
+| Filtrer + transformer | `list.stream().filter(value -> value > 10).map(value -> value * 2).toList()` | `[value * 2 for value in my_list if value > 10]` | Les deux langages permettent de combiner filtrage et transformation |
+| Boucle classique | `for (int value : list) { ... }` | `for value in my_list: ...` | La compréhension de liste Python est une forme compacte d'une boucle avec construction d'une nouvelle liste |
+
+## Exemple Python
+
+~~~python
+prices = [10, 38, 40, 58, 62]
+
+halved = [price / 2 for price in prices]
+~~~
+
+Ce qui revient conceptuellement à :
+
+~~~python
+halved = []
+
+for price in prices:
+    half_price = price / 2
+    halved.append(half_price)
+~~~
+
+## Équivalent Java
+
+### Java 8
+
+~~~java
+List<Integer> prices = Arrays.asList(10, 38, 40, 58, 62);
+
+List<Integer> halved = prices.stream()
+        .map(price -> price / 2)
+        .collect(Collectors.toList());
+~~~
+
+### À retenir
+
+La **list comprehension Python** :
+
+~~~python
+new_list = [expression for value in old_list]
+~~~
+
+a une bonne correspondance conceptuelle avec :
+
+~~~java
+oldList.stream()
+       .map(value -> expression)
+       .collect(Collectors.toList());
+~~~
+
+Ce n'est donc pas exactement la même syntaxe, mais **Java possède bien un mécanisme équivalent avec les Streams**.
+
+> **Point important pour ton contexte Java 8 :** `Stream.map()` existe depuis Java 8, mais `Stream.toList()` n'est arrivé que beaucoup plus tard. Pour du code Java 8, il faut utiliser `collect(Collectors.toList())`.
 
