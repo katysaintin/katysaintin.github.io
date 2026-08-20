@@ -2976,3 +2976,54 @@ Ce n'est donc pas exactement la même syntaxe, mais **Java possède bien un méc
 
 > **Point important pour ton contexte Java 8 :** `Stream.map()` existe depuis Java 8, mais `Stream.toList()` n'est arrivé que beaucoup plus tard. Pour du code Java 8, il faut utiliser `collect(Collectors.toList())`.
 
+| Notion | Java | Python | Commentaire |
+|---|---|---|---|
+| Remplacer une chaîne | `string.replace(".", "#")` | `string.replace(".", "#")` | Remplacement littéral : pas de regex |
+| Remplacer toutes les occurrences avec une regex | `string.replaceAll("\\.", "#")` | `re.sub(r"\.", "#", string)` | En Java, `replaceAll()` utilise une regex. En Python, on utilise généralement `re.sub()` |
+| Remplacer la première occurrence avec une regex | `string.replaceFirst("\\.", "#")` | `re.sub(r"\.", "#", string, count=1)` | Remplace uniquement la première occurrence |
+| Échapper `.` avec `replace()` | `string.replace(".", "#")` | `string.replace(".", "#")` | Pas besoin d'échapper `.` car ce n'est pas une regex |
+| Échapper `.` avec une regex | `string.replaceAll("\\.", "#")` | `re.sub(r"\.", "#", string)` | `.` signifie « n'importe quel caractère » dans une regex, donc il faut l'échapper |
+
+## Exemple Java
+
+~~~java
+String tags = ".code .today";
+
+String result = tags.replace(".", "#");
+// "#code #today"
+~~~
+
+Avec une expression régulière :
+
+~~~java
+String result = tags.replaceAll("\\.", "#");
+// "#code #today"
+~~~
+
+### À retenir en Java
+
+~~~text
+replace()       → remplacement littéral
+replaceAll()    → remplacement avec une regex
+replaceFirst()  → première occurrence avec une regex
+~~~
+
+### Exemple Python
+
+~~~python
+tags = ".code .today"
+
+result = tags.replace(".", "#")
+# "#code #today"
+~~~
+
+Pour utiliser une regex en Python :
+
+~~~python
+import re
+
+result = re.sub(r"\.", "#", tags)
+# "#code #today"
+~~~
+
+> **Piège classique :** en Java, `replace()` et `replaceAll()` ne sont pas équivalents. `replaceAll()` interprète son premier argument comme une expression régulière.
