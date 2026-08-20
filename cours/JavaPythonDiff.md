@@ -3322,4 +3322,311 @@ subList()
 
 pour les bornes, et une **boucle ou un Stream** pour gérer un `step`.
 
+# POO Python : premiers repères par rapport à Java
+
+## 1. `self` en Python = l'équivalent de `this` en Java
+
+En Python :
+
+```python
+class Computer:
+
+    def __init__(self, size, storage):
+        self.size = size
+        self.storage = storage
+
+    def print_specs(self):
+        print(self.size)
+        print(self.storage)
+```
+
+`self` désigne **l'instance courante**.
+
+C'est l'équivalent conceptuel de `this` en Java :
+
+```java
+class Computer {
+
+    private String size;
+    private String storage;
+
+    public void printSpecs() {
+        System.out.println(this.size);
+        System.out.println(this.storage);
+    }
+}
+```
+
+### Que se passe-t-il lors de l'appel ?
+
+```python
+computer = Computer("15", "512GB")
+
+computer.print_specs()
+```
+
+On peut conceptuellement voir l'appel comme :
+
+```python
+Computer.print_specs(computer)
+```
+
+Python transmet automatiquement l'instance comme premier argument de la méthode.
+
+Donc :
+
+```python
+def print_specs(self):
+```
+
+signifie en quelque sorte :
+
+> « cette méthode reçoit l'instance sur laquelle elle est appelée ».
+
+Et :
+
+```python
+self.size
+```
+
+signifie :
+
+> « l'attribut `size` de cette instance ».
+
+---
+
+## 2. Pourquoi écrire `self` alors que Java utilise `this` ?
+
+En Java :
+
+```java
+public void printSpecs() {
+    System.out.println(this.size);
+}
+```
+
+`this` est implicite dans la déclaration de la méthode.
+
+En Python, la référence à l'instance apparaît explicitement dans la signature :
+
+```python
+def print_specs(self):
+```
+
+`self` est une **convention Python**.
+
+Techniquement, on pourrait écrire :
+
+```python
+def print_specs(machine):
+    print(machine.size)
+```
+
+Cela fonctionnerait.
+
+Mais on utilise toujours `self` par convention :
+
+```python
+def print_specs(self):
+```
+
+---
+
+# 3. Une instruction directement dans une classe : oui !
+
+Python permet d'avoir du code directement dans le corps d'une classe :
+
+```python
+class Flower:
+    color = "red"
+
+    print(color)
+```
+
+C'est parfaitement valide.
+
+Le `print()` est exécuté **lorsque la définition de la classe est exécutée**.
+
+Par exemple :
+
+```python
+class Flower:
+    color = "red"
+
+    print(color)
+
+print("Après la classe")
+```
+
+produit :
+
+```text
+red
+Après la classe
+```
+
+---
+
+## 4. Différence avec Java
+
+En Java, on ne peut pas simplement écrire :
+
+```java
+class Flower {
+    System.out.println("red");   // ❌
+}
+```
+
+Les instructions doivent être dans une méthode, un constructeur, un bloc d'initialisation, etc.
+
+Par exemple :
+
+```java
+class Flower {
+
+    static {
+        System.out.println("red");
+    }
+}
+```
+
+Python est beaucoup plus permissif : le corps d'une classe est lui-même du **code exécutable**.
+
+---
+
+# 5. Attribut de classe vs attribut d'instance
+
+Dans :
+
+```python
+class Flower:
+    color = "red"
+```
+
+`color` est un **attribut de classe**.
+
+Il appartient à la classe :
+
+```python
+Flower.color
+```
+
+On peut ensuite également y accéder depuis une instance :
+
+```python
+flower = Flower()
+
+print(flower.color)
+```
+
+---
+
+À l'inverse :
+
+```python
+class Flower:
+
+    def __init__(self, color):
+        self.color = color
+```
+
+crée un **attribut d'instance**.
+
+Chaque instance peut alors avoir sa propre valeur :
+
+```python
+red_flower = Flower("red")
+blue_flower = Flower("blue")
+
+print(red_flower.color)   # red
+print(blue_flower.color)  # blue
+```
+
+On peut rapprocher cela de :
+
+```java
+class Flower {
+
+    static String color = "red";   // attribut de classe
+
+    String instanceColor;          // attribut d'instance
+}
+```
+
+Même si les mécanismes Python et Java ne sont pas exactement identiques.
+
+---
+
+# 6. Pas de `new` en Python
+
+En Java :
+
+```java
+Computer computer = new Computer("15", "512GB");
+```
+
+En Python :
+
+```python
+computer = Computer("15", "512GB")
+```
+
+L'appel de la classe crée directement l'instance.
+
+Le constructeur Python est généralement :
+
+```python
+def __init__(self, ...):
+```
+
+Par exemple :
+
+```python
+class Computer:
+
+    def __init__(self, size, storage):
+        self.size = size
+        self.storage = storage
+
+
+computer = Computer("15", "512GB")
+```
+
+---
+
+# Résumé Java → Python
+
+| Java | Python |
+|---|---|
+| `this` | `self` |
+| `new Computer(...)` | `Computer(...)` |
+| `this.size` | `self.size` |
+| constructeur `Computer(...)` | `__init__(self, ...)` |
+| attribut `static` | attribut de classe |
+| attribut d'instance | attribut d'instance avec `self` |
+| code directement dans la classe | possible en Python |
+| `static { ... }` | pas nécessaire pour simplement exécuter du code lors de la définition de la classe |
+
+### Réflexe à retenir
+
+```python
+class Computer:
+
+    def __init__(self, size):
+        self.size = size
+
+    def display(self):
+        print(self.size)
+```
+
+Mentalement, pour quelqu'un venant de Java :
+
+```text
+self ≈ this
+Computer(...) ≈ new Computer(...)
+self.size ≈ this.size
+```
+
+La grosse différence est que Python rend `self` **explicite dans la signature des méthodes**.
+
 
