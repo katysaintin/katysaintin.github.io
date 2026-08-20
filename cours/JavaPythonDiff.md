@@ -4034,3 +4034,242 @@ La grosse différence à garder en tête est que **Python est beaucoup moins res
 
 Et justement, comme tu connais déjà Java, tu peux utiliser Java comme **garde-fou de rigueur** tout en apprenant les idiomes Python spécifiques.
 
+## 1. Oui, il y a une différence de niveau entre la définition de Mimo et Java
+
+Ce que Mimo montre ici :
+
+~~~python
+def startUp(self):
+    self.on = True
+    while self.on:
+        self.injectFuel()
+        self.igniteFuel()
+~~~
+
+est bien une forme **d'abstraction**, au sens général de la POO.
+
+L'utilisateur de la classe n'a pas besoin de connaître :
+
+- comment le carburant est injecté ;
+- comment l'allumage fonctionne ;
+- dans quel ordre les opérations sont effectuées.
+
+Il fait simplement :
+
+~~~python
+car.startUp()
+~~~
+
+et les détails sont cachés derrière cette méthode.
+
+### En Java, « abstraction » a deux sens qu'il faut distinguer
+
+Tu as raison que, lorsqu'on parle des **mécanismes du langage Java**, on pense immédiatement à :
+
+~~~java
+abstract class Animal {
+    abstract void makeSound();
+}
+~~~
+
+Ici, `abstract` est un **mot-clé du langage** permettant de définir une classe abstraite ou une méthode abstraite.
+
+Mais le concept d'**abstraction en POO** est plus large :
+
+> **Abstraire = exposer ce qui est nécessaire à l'utilisateur et cacher les détails d'implémentation.**
+
+Une méthode Java parfaitement normale peut donc participer à l'abstraction :
+
+~~~java
+public void startUp() {
+    injectFuel();
+    igniteFuel();
+}
+~~~
+
+L'utilisateur fait :
+
+~~~java
+car.startUp();
+~~~
+
+sans avoir besoin de connaître le détail de `injectFuel()` et `igniteFuel()`.
+
+Donc :
+
+| Concept | Signification |
+|---|---|
+| **Abstraction (concept POO)** | Cacher les détails inutiles et exposer une interface simplifiée |
+| **Classe abstraite Java** | Mécanisme du langage Java permettant notamment de définir une abstraction |
+| **Méthode abstraite Java** | Méthode déclarée sans implémentation, que les sous-classes doivent généralement implémenter |
+| **`abstract`** | Mot-clé Java utilisé pour ces mécanismes |
+
+Donc **Mimo n'est pas faux**. Il utilise le terme *abstraction* au sens conceptuel de la POO, et non au sens du mot-clé `abstract` de Java.
+
+### Et c'est justement une distinction intéressante avec l'encapsulation
+
+On peut résumer :
+
+~~~text
+ENCAPSULATION
+    ↓
+Regrouper l'état + les comportements
+et contrôler leur accès
+
+ABSTRACTION
+    ↓
+Montrer ce qui est utile
+et cacher les détails d'implémentation
+~~~
+
+Les deux concepts sont liés, mais ce n'est pas la même chose.
+
+---
+
+# 2. La convention de nommage Python
+
+Là, **tu as repéré une vraie incohérence dans l'exemple Mimo**.
+
+La convention Python standard est effectivement **snake_case** pour les fonctions, méthodes et variables.
+
+Elle est notamment définie par **PEP 8**, le guide de style Python.
+
+### Variables
+
+~~~python
+first_name = "Katy"
+age_difference = 12
+storage_size = 256
+~~~
+
+et non :
+
+~~~python
+firstName = "Katy"
+ageDifference = 12
+storageSize = 256
+~~~
+
+### Méthodes
+
+Même règle :
+
+~~~python
+def inject_fuel(self):
+    ...
+
+def ignite_fuel(self):
+    ...
+
+def start_up(self):
+    ...
+~~~
+
+et non :
+
+~~~python
+def injectFuel(self):
+    ...
+
+def igniteFuel(self):
+    ...
+
+def startUp(self):
+    ...
+~~~
+
+Donc dans ta capture, Mimo utilise :
+
+~~~python
+def injectFuel(self):
+def igniteFuel(self):
+def startUp(self):
+~~~
+
+qui ressemble effectivement à du **camelCase Java**.
+
+En Python idiomatique, on écrirait plutôt :
+
+~~~python
+def inject_fuel(self):
+    print("Spraying fuel")
+
+def ignite_fuel(self):
+    print("Boom!")
+
+def start_up(self):
+    self.on = True
+
+    while self.on:
+        self.inject_fuel()
+        self.ignite_fuel()
+~~~
+
+---
+
+## Mais les noms de classes sont différents
+
+Pour les **classes**, Python utilise généralement le style **CapWords / PascalCase** :
+
+~~~python
+class Car:
+    ...
+
+class VirtualPet:
+    ...
+
+class ScientificInstrument:
+    ...
+~~~
+
+Donc :
+
+| Élément | Convention Python |
+|---|---|
+| Variable | `snake_case` |
+| Fonction | `snake_case` |
+| Méthode | `snake_case` |
+| Classe | `PascalCase` / `CapWords` |
+| Constante | `UPPER_CASE` |
+| Module | `snake_case` |
+
+Exemple complet :
+
+~~~python
+MAX_SPEED = 250
+
+
+class ElectricCar:
+
+    def __init__(self, battery_capacity):
+        self.battery_capacity = battery_capacity
+
+    def charge_battery(self):
+        print("Charging...")
+
+    def start_engine(self):
+        print("Starting...")
+~~~
+
+---
+
+## Donc pour ton apprentissage
+
+Puisque tu veux justement prendre de bonnes habitudes Python, **je te conseille de suivre la convention Python plutôt que les exemples camelCase de Mimo**.
+
+Tu peux garder très facilement le parallèle :
+
+~~~text
+Java                         Python
+
+MyClass                      MyClass
+myVariable                   my_variable
+myMethod()                   my_method()
+MAX_VALUE                    MAX_VALUE
+~~~
+
+Le seul endroit où les deux conventions se ressemblent beaucoup est donc **le nom des classes**.
+
+Et oui : dans la capture, `injectFuel`, `igniteFuel` et `startUp` sont des exemples qui correspondent davantage aux conventions Java qu'aux conventions Python.
+
+**Ton réflexe était donc bon : Mimo t'enseigne ici le concept correctement, mais son exemple de nommage n'est pas idiomatique Python.**
