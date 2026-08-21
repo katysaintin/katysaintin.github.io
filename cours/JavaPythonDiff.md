@@ -4273,3 +4273,106 @@ Le seul endroit où les deux conventions se ressemblent beaucoup est donc **le n
 Et oui : dans la capture, `injectFuel`, `igniteFuel` et `startUp` sont des exemples qui correspondent davantage aux conventions Java qu'aux conventions Python.
 
 **Ton réflexe était donc bon : Mimo t'enseigne ici le concept correctement, mais son exemple de nommage n'est pas idiomatique Python.**
+
+# Récupération des variables d'environnement
+
+Les deux langages permettent de récupérer une variable d'environnement avec une méthode très similaire.
+
+| Besoin | Python — `os` | Java — `System` |
+|---|---|---|
+| Récupérer une variable précise | `os.getenv("ENV_VAR")` | `System.getenv("ENV_VAR")` |
+| Récupérer toutes les variables | `os.environ` | `System.getenv()` |
+| Récupérer avec une valeur par défaut | `os.getenv("ENV_VAR", "default")` | Pas d'argument de valeur par défaut directement |
+| Modifier une variable d'environnement du processus | `os.environ["ENV_VAR"] = "value"` | Pas possible directement avec `System` |
+| Tester si une variable existe | `"ENV_VAR" in os.environ` | `System.getenv("ENV_VAR") != null` |
+
+## Exemples
+
+### Python
+
+~~~python
+import os
+
+env_var = os.getenv("ENV_VAR")
+
+print(env_var)
+~~~
+
+Avec une valeur par défaut :
+
+~~~python
+env_var = os.getenv("ENV_VAR", "default_value")
+~~~
+
+On peut également accéder directement au dictionnaire `os.environ` :
+
+~~~python
+import os
+
+env_var = os.environ["ENV_VAR"]
+~~~
+
+Attention : si `ENV_VAR` n'existe pas, cette forme provoque une `KeyError`.
+
+Alors que :
+
+~~~python
+env_var = os.getenv("ENV_VAR")
+~~~
+
+retourne `None` si la variable n'existe pas.
+
+---
+
+### Java
+
+~~~java
+String envVar = System.getenv("ENV_VAR");
+
+System.out.println(envVar);
+~~~
+
+Pour récupérer toutes les variables :
+
+~~~java
+Map<String, String> env = System.getenv();
+~~~
+
+Il faut alors importer :
+
+~~~java
+import java.util.Map;
+~~~
+
+## À retenir
+
+| Python | Java |
+|---|---|
+| `os.getenv("ENV_VAR")` | `System.getenv("ENV_VAR")` |
+| `os.environ` | `System.getenv()` |
+| `os.environ["ENV_VAR"]` | Pas d'équivalent direct permettant une modification |
+| `os.getenv("ENV_VAR", "default")` | Il faut gérer la valeur par défaut soi-même |
+
+### Point important
+
+`System.getenv()` concerne les **variables d'environnement du système**.
+
+À ne pas confondre avec :
+
+~~~java
+System.getProperty("property.name");
+~~~
+
+qui concerne les **propriétés système Java** (`System Properties`).
+
+En Python, l'équivalent conceptuel le plus proche pour les variables d'environnement reste donc :
+
+~~~python
+os.getenv("ENV_VAR")
+~~~
+
+et en Java :
+
+~~~java
+System.getenv("ENV_VAR");
+~~~
