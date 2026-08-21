@@ -4592,3 +4592,290 @@ mais ils ne sont **pas strictement le même format** et leurs règles de parsing
 L'analogie utile pour apprendre est surtout :
 
 > **`.env` + `load_dotenv()` en Python joue un rôle comparable à un fichier `.properties` + `Properties.load()` en Java pour externaliser la configuration.**
+
+# API `requests` — envoyer des headers et du JSON dans le body
+
+En Python avec `requests`, on peut envoyer :
+
+- des **headers HTTP** avec `headers=...`
+- un objet Python converti en **JSON** avec `json=...`
+
+Exemple Python :
+
+~~~python
+import requests
+
+headers = {"api-key": "MY_SECRET_KEY"}
+body = {"my-message": "I was here!"}
+
+response = requests.post(
+    "http://mimo.org/api/exclusive_guest_book",
+    headers=headers,
+    json=body
+)
+
+print(response.content)
+~~~
+
+---
+
+# Équivalent Java 8
+
+En Java 8, il n'existe pas encore de client HTTP moderne intégré à la JDK comparable à `HttpClient` de Java 11.
+
+On peut utiliser `HttpURLConnection`.
+
+> Pour construire le JSON, Java 8 ne possède pas non plus de support JSON natif. En pratique, on utilise généralement une bibliothèque comme Jackson ou Gson.
+
+Exemple avec un JSON construit manuellement :
+
+~~~java
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+
+        URL url = new URL(
+            "http://mimo.org/api/exclusive_guest_book"
+        );
+
+        HttpURLConnection connection =
+            (HttpURLConnection) url.openConnection();
+
+        connection.setRequestMethod("POST");
+
+        // Headers HTTP
+        connection.setRequestProperty(
+            "api-key",
+            "MY_SECRET_KEY"
+        );
+
+        connection.setRequestProperty(
+            "Content-Type",
+            "application/json"
+        );
+
+        // On indique que l'on va envoyer un body
+        connection.setDoOutput(true);
+
+        // Body JSON
+        String body =
+            "{\"my-message\":\"I was here!\"}";
+
+        // Envoi du body
+        try (OutputStream output =
+                 connection.getOutputStream()) {
+
+            output.write(
+                body.getBytes(StandardCharsets.UTF_8)
+            );
+        }
+
+        // Lecture de la réponse
+        try (InputStream input =
+                 connection.getInputStream();
+             BufferedReader reader =
+                 new BufferedReader(
+                     new InputStreamReader(input)
+                 )) {
+
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        }
+
+        connection.disconnect();
+    }
+}
+~~~
+
+## Correspondance Python / Java 8
+
+| Python `requests` | Java 8 `HttpURLConnection` |
+|---|---|
+| `requests.post(url, ...)` | `connection = (HttpURLConnection) url.openConnection()` |
+| `headers={"api-key": "MY_SECRET_KEY"}` | `connection.setRequestProperty("api-key", "MY_SECRET_KEY")` |
+| `json=body` | construction d'une `String` JSON puis écriture dans `OutputStream` |
+| `Content-Type: application/json` | `connection.setRequestProperty("Content-Type", "application/json")` |
+| `response.content` | lecture de `connection.getInputStream()` |
+| `POST` | `connection.setRequestMethod("POST")` |
+| body HTTP | `connection.getOutputStream()` |
+
+### Avec une bibliothèque JSON
+
+Avec Jackson, par exemple, on pourrait éviter de construire le JSON à la main :
+
+~~~java
+ObjectMapper mapper = new ObjectMapper();
+
+Map<String, String> body = new HashMap<>();
+body.put("my-message", "I was here!");
+
+String json = mapper.writeValueAsString(body);
+~~~
+
+On obtient alors :
+
+~~~json
+{"my-message":"I was here!"}
+~~~
+
+---
+
+# Équivalent Java 11+
+
+À partir de **Java 11**, la JDK fournit `java.net.http.HttpClient`.
+
+C'est beaucoup plus proche conceptuellement de `requests`.
+
+~~~java
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+
+        String body =
+            "{\"my-message\":\"I was here!\"}";
+
+        HttpRequest request =
+            HttpRequest.newBuilder()
+                .uri(
+                    URI.create(
+                        "http://mimo.org/api/exclusive_guest_book"
+                    )
+                )
+                .header(
+                    "api-key",
+                    "MY_SECRET_KEY"
+                )
+                .header(
+                    "Content-Type",
+                    "application/json"
+                )
+                .POST(
+                    HttpRequest.BodyPublishers.ofString(body)
+                )
+                .build();
+
+        HttpClient client =
+            HttpClient.newHttpClient();
+
+        HttpResponse<String> response =
+            client.send(
+                request,
+                HttpResponse.BodyHandlers.ofString()
+            );
+
+        System.out.println(response.body());
+    }
+}
+~~~
+
+## Correspondance Python / Java 11
+
+| Python `requests` | Java 11 `HttpClient` |
+|---|---|
+| `requests.post(...)` | `client.send(request, ...)` |
+| URL | `URI.create(...)` |
+| `headers={"api-key": "..."}` | `.header("api-key", "...")` |
+| `json=body` | `.POST(BodyPublishers.ofString(json))` |
+| `Content-Type` | `.header("Content-Type", "application/json")` |
+| `response.content` | `response.body()` |
+| `POST` | `.POST(...)` |
+| création de la requête | `HttpRequest.newBuilder()` |
+| client HTTP | `HttpClient.newHttpClient()` |
+
+---
+
+# Le parallèle conceptuel
+
+La version Python est extrêmement compacte :
+
+~~~python
+response = requests.post(
+    url,
+    headers=headers,
+    json=body
+)
+~~~
+
+En Java 11, on décompose davantage :
+
+~~~java
+HttpRequest request = HttpRequest.newBuilder()
+    .uri(...)
+    .header(...)
+    .header(...)
+    .POST(...)
+    .build();
+
+HttpResponse<String> response =
+    client.send(request, ...);
+~~~
+
+Le fonctionnement reste pourtant exactement le même :
+
+```text
+                  REQUÊTE HTTP POST
+
+┌────────────────────────────────────────────┐
+│ Headers                                    │
+│                                            │
+│ api-key: MY_SECRET_KEY                     │
+│ Content-Type: application/json             │
+├────────────────────────────────────────────┤
+│ Body                                       │
+│                                            │
+│ {"my-message":"I was here!"}               │
+└────────────────────────────────────────────┘
+                         │
+                         ▼
+                       Serveur
+                         │
+                         ▼
+                     Response
+```
+
+## À retenir
+
+| Élément | Python | Java 8 | Java 11+ |
+|---|---|---|---|
+| Client HTTP | `requests` | `HttpURLConnection` | `HttpClient` |
+| Header | `headers=...` | `setRequestProperty()` | `.header()` |
+| JSON body | `json=body` | `OutputStream` | `BodyPublishers.ofString()` |
+| Réponse | `response.content` | `InputStream` | `response.body()` |
+| JSON natif dans la JDK | Oui via `requests` | Non | Non |
+| Client HTTP moderne dans la JDK | Non | Non | **Oui** |
+
+### Point important
+
+`HttpClient` de Java 11 est donc une évolution importante par rapport à `HttpURLConnection`.
+
+Pour du développement moderne en Java 11+, on privilégiera généralement :
+
+~~~java
+HttpClient
+HttpRequest
+HttpResponse
+~~~
+
+plutôt que :
+
+~~~java
+HttpURLConnection
+~~~
+
+Le principe reste néanmoins le même dans les deux cas :
+
+**headers + body JSON → requête HTTP → response.**
+
