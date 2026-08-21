@@ -4376,3 +4376,219 @@ et en Java :
 ~~~java
 System.getenv("ENV_VAR");
 ~~~
+
+# Variables de configuration : `.env` en Python et `.properties` en Java
+
+Les deux langages permettent de sortir les paramètres de configuration du code source et de les charger au démarrage de l'application.
+
+Le principe est similaire, mais les mécanismes ne sont pas exactement les mêmes.
+
+## Python : fichier `.env`
+
+Un fichier `.env` peut contenir les variables sous la forme :
+
+~~~text
+API_KEY="ma-cle-secrete"
+DATABASE_URL="jdbc://..."
+DEBUG="true"
+~~~
+
+On utilise généralement la bibliothèque `python-dotenv`.
+
+~~~python
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+api_key = os.getenv("API_KEY")
+debug = os.getenv("DEBUG")
+
+print(api_key)
+print(debug)
+~~~
+
+### Principe
+
+~~~text
+.env
+  ↓
+load_dotenv()
+  ↓
+variables chargées dans l'environnement du processus
+  ↓
+os.getenv("API_KEY")
+~~~
+
+`load_dotenv()` charge les valeurs du fichier `.env` dans l'environnement accessible via `os`.
+
+Une fois le fichier chargé, on utilise donc les mécanismes habituels :
+
+~~~python
+os.getenv("API_KEY")
+~~~
+
+---
+
+# Java : fichier `.properties`
+
+En Java, on peut utiliser un fichier `.properties` :
+
+~~~text
+API_KEY=ma-cle-secrete
+DATABASE_URL=jdbc://...
+DEBUG=true
+~~~
+
+Puis le charger avec `Properties.load()` :
+
+~~~java
+Properties properties = new Properties();
+
+try (FileInputStream input = new FileInputStream("config.properties")) {
+    properties.load(input);
+}
+
+String apiKey = properties.getProperty("API_KEY");
+String debug = properties.getProperty("DEBUG");
+~~~
+
+Le principe est alors :
+
+~~~text
+config.properties
+  ↓
+Properties.load()
+  ↓
+objet Properties
+  ↓
+properties.getProperty("API_KEY")
+~~~
+
+## Différence importante avec Python
+
+En Python :
+
+~~~python
+load_dotenv()
+os.getenv("API_KEY")
+~~~
+
+la variable est chargée dans l'environnement du processus et devient accessible via `os.getenv()`.
+
+En Java :
+
+~~~java
+properties.load(input);
+properties.getProperty("API_KEY");
+~~~
+
+la valeur est chargée dans un objet `Properties`.
+
+Elle n'est pas automatiquement ajoutée aux variables d'environnement du système.
+
+---
+
+# Java : valeurs passées avec `-D`
+
+Java possède également un mécanisme très pratique pour fournir des paramètres au lancement de l'application :
+
+~~~bash
+java -DAPI_KEY="ma-cle-secrete" -jar application.jar
+~~~
+
+Le `-D` définit une **System Property Java**.
+
+On la récupère ensuite avec :
+
+~~~java
+String apiKey = System.getProperty("API_KEY");
+~~~
+
+Le principe est :
+
+~~~text
+commande java
+  ↓
+-DAPI_KEY="..."
+  ↓
+System Properties
+  ↓
+System.getProperty("API_KEY")
+~~~
+
+## À ne pas confondre
+
+`-D` ne définit **pas** une variable d'environnement.
+
+| Type | Définition | Récupération |
+|---|---|---|
+| Variable d'environnement | Système / processus | `System.getenv("API_KEY")` |
+| System Property Java | `java -DAPI_KEY="..."` | `System.getProperty("API_KEY")` |
+| Fichier `.properties` | `Properties.load()` | `properties.getProperty("API_KEY")` |
+| Fichier `.env` Python | `load_dotenv()` | `os.getenv("API_KEY")` |
+
+---
+
+# Parallèle Python / Java
+
+| Besoin | Python | Java |
+|---|---|---|
+| Fichier de configuration | `.env` | `.properties` |
+| Charger le fichier | `load_dotenv()` | `Properties.load()` |
+| Récupérer une valeur | `os.getenv("KEY")` | `properties.getProperty("KEY")` |
+| Variable d'environnement réelle | `os.getenv("KEY")` | `System.getenv("KEY")` |
+| Paramètre fourni au lancement | — | `java -DKEY="value"` |
+| Récupérer un `-D` | — | `System.getProperty("KEY")` |
+
+## À retenir
+
+Le parallèle pratique est donc :
+
+~~~text
+PYTHON
+
+.env
+  ↓
+load_dotenv()
+  ↓
+os.getenv("KEY")
+~~~
+
+et :
+
+~~~text
+JAVA
+
+config.properties
+  ↓
+Properties.load()
+  ↓
+properties.getProperty("KEY")
+~~~
+
+Java possède en plus les **System Properties**, notamment avec :
+
+~~~bash
+java -DKEY="value" -jar application.jar
+~~~
+
+puis :
+
+~~~java
+System.getProperty("KEY");
+~~~
+
+### Petite nuance sur le format
+
+`.env` et `.properties` peuvent tous les deux utiliser une syntaxe très simple de type :
+
+~~~text
+KEY=value
+~~~
+
+mais ils ne sont **pas strictement le même format** et leurs règles de parsing peuvent différer.
+
+L'analogie utile pour apprendre est surtout :
+
+> **`.env` + `load_dotenv()` en Python joue un rôle comparable à un fichier `.properties` + `Properties.load()` en Java pour externaliser la configuration.**
