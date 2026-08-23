@@ -554,4 +554,408 @@ L'objectif n'est donc pas simplement de « faire joli » ou de modifier l'affich
 ~~~
 
 > **HTML sémantique = décrire ce qu'est le contenu, pas seulement comment il doit être affiché.**
+# HTML5 — Accessibilité, ARIA et `role`
+
+## 1. Pourquoi l'accessibilité en HTML ?
+
+Une page HTML n'est pas seulement destinée à être affichée visuellement.
+
+Elle peut être interprétée par :
+
+- le navigateur ;
+- les moteurs de recherche ;
+- les lecteurs d'écran ;
+- les technologies d'assistance ;
+- les outils de navigation au clavier.
+
+Un lecteur d'écran ne « voit » pas la page comme un utilisateur voyant. Il s'appuie notamment sur la structure et la sémantique du HTML.
+
+L'objectif du HTML sémantique est donc de donner du **sens** au contenu.
+
+---
+
+## 2. Privilégier le HTML natif
+
+Lorsqu'un élément HTML sémantique existe, il faut généralement l'utiliser plutôt que de reproduire son comportement avec un `div`.
+
+### Préférer
+
+~~~html
+<button>Envoyer</button>
+~~~
+
+à :
+
+~~~html
+<div role="button">Envoyer</div>
+~~~
+
+Le `<button>` fournit nativement :
+
+- la bonne sémantique ;
+- le comportement attendu ;
+- la gestion appropriée du focus ;
+- le comportement clavier.
+
+À l'inverse, `role="button"` indique seulement aux technologies d'assistance que le `div` doit être considéré comme un bouton.
+
+Il faut encore implémenter correctement son comportement.
+
+> **Règle pratique : utiliser l'élément HTML natif lorsqu'il existe.**
+
+---
+
+# 3. Qu'est-ce que ARIA ?
+
+**ARIA** signifie :
+
+> Accessible Rich Internet Applications
+
+ARIA permet de fournir des informations supplémentaires aux technologies d'assistance lorsque le HTML natif ne suffit pas.
+
+On rencontre notamment :
+
+- `role`
+- `aria-hidden`
+- `aria-expanded`
+- `aria-label`
+- `aria-describedby`
+- etc.
+
+ARIA concerne principalement la représentation de l'interface dans **l'arbre d'accessibilité**.
+
+---
+
+# 4. `role`
+
+L'attribut `role` indique la nature ou la fonction d'un élément pour les technologies d'assistance.
+
+Exemple :
+
+~~~html
+<div role="button">Envoyer</div>
+~~~
+
+Cela indique :
+
+> « Considère cet élément comme ayant le rôle de bouton. »
+
+Mais `role` ne transforme pas réellement le `div` en bouton.
+
+Il ne fournit pas automatiquement tout le comportement d'un `<button>`.
+
+---
+
+## Exemple avec `role="alert"`
+
+~~~html
+<div role="alert">
+    Votre session va expirer dans 60 secondes.
+</div>
+~~~
+
+Ce rôle est utile lorsqu'une information importante apparaît dynamiquement.
+
+Exemple typique :
+
+~~~text
+Utilisateur
+    ↓
+clique sur "Enregistrer"
+    ↓
+requête HTTP
+    ↓
+serveur
+    ↓
+message d'erreur affiché dynamiquement
+    ↓
+technologie d'assistance informée
+~~~
+
+`role="alert"` permet notamment d'indiquer aux technologies d'assistance qu'une information importante vient d'apparaître.
+
+---
+
+# 5. `aria-hidden`
+
+`aria-hidden="true"` indique qu'un élément ne doit pas être présenté aux technologies d'assistance.
+
+Exemple :
+
+~~~html
+<div aria-hidden="true">
+    ★ ★ ★
+</div>
+~~~
+
+Le contenu reste visible à l'écran.
+
+Mais il est masqué de l'arbre d'accessibilité.
+
+### Important
+
+`aria-hidden="true"` ne signifie **pas** :
+
+> « cacher l'élément à l'utilisateur »
+
+Il signifie plutôt :
+
+> « ne pas présenter cet élément aux technologies d'assistance ».
+
+---
+
+## Exemple : contenu décoratif
+
+Pour une décoration purement visuelle :
+
+~~~html
+<div aria-hidden="true">
+    ★ ★ ★
+</div>
+~~~
+
+L'utilisateur voyant voit :
+
+~~~text
+★ ★ ★
+~~~
+
+Mais un lecteur d'écran n'a pas nécessairement besoin d'annoncer ces étoiles.
+
+---
+
+# 6. Attention à ne pas cacher une information utile
+
+`aria-hidden` doit être utilisé avec discernement.
+
+Si une information est importante pour comprendre ou utiliser un formulaire, la cacher au lecteur d'écran peut créer un problème d'accessibilité.
+
+Par exemple :
+
+~~~html
+<div aria-hidden="true">
+    Votre prénom intermédiaire est facultatif.
+</div>
+~~~
+
+Si cette information est réellement nécessaire pour comprendre le formulaire, il serait préférable qu'elle soit accessible à tous les utilisateurs.
+
+> **ARIA doit améliorer l'accessibilité, pas supprimer des informations importantes.**
+
+---
+
+# 7. ARIA et HTML sémantique
+
+On peut voir la progression ainsi :
+
+~~~text
+HTML générique
+    ↓
+HTML sémantique
+    ↓
+accessibilité native
+    ↓
+ARIA lorsque nécessaire
+~~~
+
+### Exemple
+
+Plutôt que :
+
+~~~html
+<div role="navigation">
+    ...
+</div>
+~~~
+
+on préférera généralement :
+
+~~~html
+<nav>
+    ...
+</nav>
+~~~
+
+Plutôt que :
+
+~~~html
+<div role="button">
+    Envoyer
+</div>
+~~~
+
+on préférera :
+
+~~~html
+<button>
+    Envoyer
+</button>
+~~~
+
+Le HTML sémantique fournit déjà beaucoup d'informations aux technologies d'assistance.
+
+---
+
+# 8. ARIA n'est pas un commentaire
+
+Il est possible de faire une analogie avec les commentaires de code, mais il faut distinguer leurs destinataires.
+
+| Mécanisme | Destinataire | Objectif |
+|---|---|---|
+| `<!-- commentaire -->` | Développeur | Expliquer le code |
+| HTML sémantique | Navigateur + technologies d'assistance | Donner du sens au contenu |
+| `role` | Technologies d'assistance | Décrire le rôle d'un élément |
+| `aria-*` | Technologies d'assistance | Décrire état, propriété ou comportement |
+
+### Commentaire
+
+~~~html
+<!-- Ce bouton sauvegarde le formulaire -->
+<button>Enregistrer</button>
+~~~
+
+Le commentaire transmet une information au développeur.
+
+### ARIA
+
+~~~html
+<button aria-expanded="false">
+    Options
+</button>
+~~~
+
+L'attribut transmet une information sur l'état du composant aux technologies d'assistance.
+
+---
+
+# 9. Pourquoi ARIA est intéressant pour le debugging ?
+
+Lorsqu'on découvre un existant, les attributs ARIA peuvent fournir des informations précieuses sur l'intention et le fonctionnement d'un composant.
+
+Par exemple :
+
+~~~html
+<div role="button" aria-expanded="false">
+    Menu
+</div>
+~~~
+
+En inspectant cet élément, on peut comprendre qu'il s'agit probablement :
+
+- d'un composant interactif ;
+- d'un composant personnalisé ;
+- d'un élément dont l'état peut changer ;
+- d'un composant probablement piloté par JavaScript.
+
+On peut ensuite rechercher dans le code :
+
+- quel JavaScript modifie `aria-expanded` ;
+- quand sa valeur passe à `true` ;
+- quel élément est affiché ou masqué ;
+- comment le focus est géré ;
+- comment le clavier est pris en charge.
+
+ARIA devient donc une **métadonnée utile pour comprendre un existant**.
+
+---
+
+# 10. Modèle mental pour lire une application web
+
+On peut retenir cette représentation :
+
+~~~text
+                HTML
+                 │
+       ┌─────────┴─────────┐
+       │                   │
+   structure           sémantique
+       │                   │
+       └─────────┬─────────┘
+                 ↓
+             navigateur
+                 │
+       ┌─────────┴─────────┐
+       │                   │
+    affichage       arbre d'accessibilité
+                           │
+                           ↓
+                 technologies d'assistance
+~~~
+
+ARIA intervient principalement pour enrichir ou préciser les informations destinées à l'arbre d'accessibilité.
+
+---
+
+# 11. À retenir
+
+### HTML sémantique
+
+Donner directement du sens au contenu :
+
+~~~html
+<header>
+<nav>
+<main>
+<section>
+<article>
+<footer>
+<button>
+<ul>
+<li>
+~~~
+
+### `role`
+
+Décrire le rôle d'un élément pour les technologies d'assistance :
+
+~~~html
+<div role="button">...</div>
+~~~
+
+Mais si un élément natif existe, il est généralement préférable de l'utiliser.
+
+### `aria-hidden`
+
+Retirer un élément de l'arbre d'accessibilité sans nécessairement le cacher visuellement :
+
+~~~html
+<div aria-hidden="true">...</div>
+~~~
+
+### `role="alert"`
+
+Signaler une information importante apparaissant dynamiquement :
+
+~~~html
+<div role="alert">
+    Une erreur est survenue.
+</div>
+~~~
+
+---
+
+# 12. La règle essentielle
+
+> **ARIA ne sert pas à rendre un mauvais HTML bon.**
+
+Il sert principalement à communiquer correctement la sémantique, l'état ou certaines propriétés d'une interface aux technologies d'assistance lorsque le HTML natif ne suffit pas.
+
+Pour un développeur qui découvre un existant :
+
+~~~text
+HTML sémantique
+    ↓
+Je comprends la structure
+    ↓
+ARIA / role
+    ↓
+Je comprends aussi l'intention d'accessibilité
+    ↓
+JavaScript
+    ↓
+Je peux suivre le comportement dynamique
+~~~
+
+Ainsi, ARIA n'est pas seulement une notion d'accessibilité à apprendre : **dans un existant web, c'est également une information utile pour comprendre et debugger les composants d'interface.**
+
 
