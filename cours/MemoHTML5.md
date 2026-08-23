@@ -958,4 +958,217 @@ Je peux suivre le comportement dynamique
 
 Ainsi, ARIA n'est pas seulement une notion d'accessibilité à apprendre : **dans un existant web, c'est également une information utile pour comprendre et debugger les composants d'interface.**
 
+# Mémo HTML5 — Formulaires : fieldset, textarea et types d’input
+
+## 1. `<fieldset>` : regrouper des champs
+
+`<fieldset>` permet de regrouper plusieurs champs liés à l’intérieur d’un formulaire.
+
+~~~html
+<form>
+  <fieldset>
+    <legend>Personal Info</legend>
+    Name: <input type="text"><br>
+    Email: <input type="email"><br>
+    Phone: <input type="tel"><br>
+  </fieldset>
+
+  <fieldset>
+    <legend>Login Info</legend>
+    Username: <input type="text"><br>
+    Password: <input type="password"><br>
+  </fieldset>
+
+  <button>Register</button>
+</form>
+~~~
+
+- `<fieldset>` = groupe logique de champs
+- `<legend>` = titre / légende du groupe
+- Cette structuration améliore la lisibilité et l’accessibilité du formulaire.
+
+## 2. `<legend>` : donner un titre au groupe
+
+`<legend>` fournit le titre associé à un `<fieldset>`.
+
+~~~html
+<fieldset>
+  <legend>Personal Info</legend>
+  ...
+</fieldset>
+~~~
+
+## 3. `<textarea>` : saisir du texte long
+
+`<textarea>` permet une saisie **multiligne**, contrairement à un `<input>` classique.
+
+~~~html
+<textarea
+  placeholder="What's on your mind?"
+  rows="3"
+  cols="18">
+</textarea>
+~~~
+
+| Attribut | Rôle |
+|---|---|
+| `placeholder` | Texte indicatif affiché lorsque la zone est vide |
+| `rows` | Nombre de lignes visibles |
+| `cols` | Largeur approximative de la zone |
+
+## 4. Les types d’`<input>`
+
+L’attribut `type` précise le type de donnée attendu.
+
+### `text`
+
+~~~html
+<input type="text">
+~~~
+
+Texte court : nom, prénom, identifiant, etc.
+
+### `email`
+
+~~~html
+<input type="email">
+~~~
+
+Destiné à une adresse e-mail. Le navigateur peut adapter son comportement et effectuer certaines vérifications de format.
+
+### `tel`
+
+~~~html
+<input type="tel">
+~~~
+
+Destiné à un numéro de téléphone.
+
+### `password`
+
+~~~html
+<input type="password">
+~~~
+
+Destiné à un mot de passe ; la saisie est généralement masquée à l’écran.
+
+## 5. `<label>` et `for` / `id`
+
+Un `<label>` fournit le libellé d’un champ.
+
+~~~html
+<label for="name">Name:</label>
+<input id="name" type="text">
+~~~
+
+La valeur de `for` doit correspondre à la valeur de `id` du champ.
+
+~~~html
+<label for="email">Email:</label>
+<input id="email" type="email">
+~~~
+
+**Réflexe :** dans un formulaire, penser à relier les `<label>` aux champs avec `for` ↔ `id`.
+
+## 6. `placeholder` ≠ `label`
+
+Un `placeholder` donne une indication temporaire **dans le champ** :
+
+~~~html
+<textarea placeholder="What's on your mind?"></textarea>
+~~~
+
+Un `<label>` identifie réellement le champ :
+
+~~~html
+<label for="email">Email:</label>
+<input id="email" type="email">
+~~~
+
+Le placeholder ne remplace donc pas le label.
+
+## 7. Exemple complet
+
+~~~html
+<form>
+  <h3>Register Account</h3>
+
+  <fieldset>
+    <legend>Personal Info</legend>
+
+    <label for="name">Name:</label>
+    <input id="name" type="text"><br>
+
+    <label for="email">Email:</label>
+    <input id="email" type="email"><br>
+
+    <label for="phone">Phone:</label>
+    <input id="phone" type="tel"><br>
+  </fieldset>
+
+  <fieldset>
+    <legend>Login Info</legend>
+
+    <label for="username">Username:</label>
+    <input id="username" type="text"><br>
+
+    <label for="password">Password:</label>
+    <input id="password" type="password"><br>
+  </fieldset>
+
+  <button>Register</button>
+</form>
+~~~
+
+## 8. Les nouveaux éléments à retenir
+
+~~~text
+<form>       → formulaire
+<fieldset>   → groupe de champs liés
+<legend>     → titre du groupe
+<label>      → libellé d’un champ
+<input>      → champ de saisie
+<textarea>   → saisie de texte multiligne
+~~~
+
+Types d’`input` rencontrés :
+
+~~~text
+text       → texte
+email      → adresse e-mail
+tel        → téléphone
+password   → mot de passe
+~~~
+
+## 9. Structure mentale
+
+~~~text
+<form>
+  ├── <fieldset>
+  │     ├── <legend>
+  │     ├── <label> + <input>
+  │     ├── <label> + <input>
+  │     └── <label> + <input>
+  │
+  ├── <fieldset>
+  │     ├── <legend>
+  │     ├── <label> + <input>
+  │     └── <label> + <input>
+  │
+  └── <button>
+</form>
+~~~
+
+Le but est de construire des formulaires structurés, lisibles et accessibles.
+
+## 10. Mini-réflexe de développeuse
+
+Quand tu rencontres un formulaire, demande-toi :
+
+1. Quels sont les **groupes logiques** de champs ? → `<fieldset>`
+2. Comment s’appelle chaque groupe ? → `<legend>`
+3. Quel est le **libellé** de chaque champ ? → `<label>`
+4. Quel type de donnée est attendu ? → `type="text"`, `email`, `tel`, `password`, etc.
+5. S’agit-il d’une saisie courte ou longue ? → `<input>` ou `<textarea>`
+6. Le `<label>` est-il correctement relié à l’`input` ? → `for` ↔ `id`
 
