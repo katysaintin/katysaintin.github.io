@@ -1172,3 +1172,211 @@ Quand tu rencontres un formulaire, demande-toi :
 5. S’agit-il d’une saisie courte ou longue ? → `<input>` ou `<textarea>`
 6. Le `<label>` est-il correctement relié à l’`input` ? → `for` ↔ `id`
 
+# Mémo CSS — Sélecteurs
+
+## 1. Sélectionner une classe
+
+En HTML, une classe est déclarée avec `class` :
+
+~~~html
+<p class="first">First</p>
+<p class="second">Second</p>
+<p class="third">Third</p>
+<p class="fourth">Fourth</p>
+~~~
+
+En CSS, une classe est sélectionnée avec `.` :
+
+~~~css
+.first {
+    color: coral;
+}
+~~~
+
+### Plusieurs classes : grouping selector
+
+Pour appliquer la même règle à plusieurs classes, on les sépare par des virgules :
+
+~~~css
+.first, .second, .fourth {
+    color: coral;
+}
+~~~
+
+Ici, `.third` n'est pas sélectionné.
+
+---
+
+## 2. Sélectionner un ID
+
+En HTML, un élément peut avoir un `id` :
+
+~~~html
+<input id="email" placeholder="email">
+<input id="password" placeholder="password">
+~~~
+
+En CSS, un ID est sélectionné avec `#` :
+
+~~~css
+#email {
+    border: 2px solid violet;
+}
+~~~
+
+---
+
+## 3. Regrouper plusieurs IDs
+
+Si plusieurs éléments doivent recevoir exactement la même règle CSS, on peut utiliser un **grouping selector** :
+
+~~~css
+#email, #password {
+    border: 2px solid violet;
+}
+~~~
+
+Cela signifie :
+
+> appliquer cette règle à `#email` ET à `#password`.
+
+---
+
+## 4. Les trois réflexes à retenir
+
+| HTML | Sélecteur CSS | Signification |
+|---|---|---|
+| `<p>` | `p` | tous les éléments `<p>` |
+| `class="first"` | `.first` | tous les éléments de cette classe |
+| `id="email"` | `#email` | l'élément portant cet ID |
+
+### Mémo rapide
+
+~~~text
+HTML                     CSS
+
+class="nom"       →      .nom
+id="nom"          →      #nom
+plusieurs         →      , 
+~~~
+
+Exemple :
+
+~~~css
+.first, .second {
+    color: coral;
+}
+
+#email, #password {
+    border: 2px solid violet;
+}
+~~~
+
+---
+
+## 5. Différence importante entre `class` et `id`
+
+### `class`
+
+Une même classe peut être utilisée sur plusieurs éléments :
+
+~~~html
+<p class="important">Texte 1</p>
+<p class="important">Texte 2</p>
+~~~
+
+On la sélectionne avec :
+
+~~~css
+.important {
+    color: red;
+}
+~~~
+
+### `id`
+
+Un `id` est destiné à identifier un élément particulier dans la page :
+
+~~~html
+<input id="email">
+~~~
+
+On le sélectionne avec :
+
+~~~css
+#email {
+    border: 2px solid violet;
+}
+~~~
+
+---
+
+## 6. Réflexe de résolution d'un exercice CSS
+
+Avant d'écrire le CSS :
+
+1. **Regarder le HTML.**
+2. Identifier comment les éléments sont désignés :
+   - balise → `p`, `input`, `h1`, etc.
+   - classe → `.nom`
+   - ID → `#nom`
+3. Vérifier si plusieurs éléments doivent recevoir la même règle.
+4. Si oui, les regrouper avec une virgule `,`.
+
+### Exemple
+
+Énoncé :
+
+> Make elements of class `first`, `second`, and `fourth` have their color set to `coral`.
+
+HTML :
+
+~~~html
+<p class="first">First</p>
+<p class="second">Second</p>
+<p class="third">Third</p>
+<p class="fourth">Fourth</p>
+~~~
+
+CSS :
+
+~~~css
+.first, .second, .fourth {
+    color: coral;
+}
+~~~
+
+---
+
+Énoncé :
+
+> Add a grouping selector for `email` and `password` IDs so that they have a border.
+
+HTML :
+
+~~~html
+<input id="email">
+<input id="password">
+~~~
+
+CSS :
+
+~~~css
+#email, #password {
+    border: 2px solid violet;
+}
+~~~
+
+---
+
+## À retenir
+
+> **HTML indique l'identité de l'élément ; CSS utilise cette identité pour le sélectionner.**
+
+~~~text
+class="xxx"  →  .xxx
+id="xxx"     →  #xxx
+A + B        →  A, B
+~~~
+
+Le point `.` et le `#` sont donc essentiels : sans eux, CSS interprète `first` ou `email` comme un autre type de sélecteur.
