@@ -1380,3 +1380,527 @@ A + B        →  A, B
 ~~~
 
 Le point `.` et le `#` sont donc essentiels : sans eux, CSS interprète `first` ou `email` comme un autre type de sélecteur.
+
+# Mémo CSS — Mise en page et positionnement
+
+## 1. `display`
+
+| Valeur | Comportement | À retenir |
+|---|---|---|
+| `block` | Occupe toute la largeur disponible et commence sur une nouvelle ligne | Bloc |
+| `inline` | Reste dans le flux du texte, largeur/hauteur difficiles à imposer | Ligne |
+| `inline-block` | Reste en ligne mais accepte `width`, `height`, `margin`, `padding` | Entre les deux |
+| `none` | L'élément n'est pas affiché et ne prend plus de place | Masqué |
+| `flex` | Active une mise en page Flexbox | Disposition en ligne/colonne |
+| `inline-flex` | Comme `flex`, mais le conteneur reste inline | Flex dans une ligne |
+| `grid` | Active CSS Grid | Grille |
+| `inline-grid` | Comme `grid`, mais le conteneur reste inline | Grille inline |
+
+### Exemple
+
+~~~css
+div {
+    display: block;
+}
+
+span {
+    display: inline;
+}
+
+button {
+    display: inline-block;
+}
+~~~
+
+---
+
+# 2. `float`
+
+`float` permet de faire « flotter » un élément vers la gauche ou la droite.
+
+| Valeur | Effet |
+|---|---|
+| `left` | Flotte à gauche |
+| `right` | Flotte à droite |
+| `none` | Pas de flottement |
+| `inherit` | Hérite de la valeur du parent |
+
+### Exemple
+
+~~~css
+img {
+    float: left;
+}
+~~~
+
+Le texte peut alors s'écouler autour de l'image.
+
+### `clear`
+
+`clear` permet d'empêcher un élément de se placer à côté d'un élément flottant.
+
+| Valeur | Effet |
+|---|---|
+| `none` | Comportement normal |
+| `left` | Ne peut pas être à côté d'un float gauche |
+| `right` | Ne peut pas être à côté d'un float droit |
+| `both` | Ne peut être à côté d'aucun float |
+
+~~~css
+footer {
+    clear: both;
+}
+~~~
+
+> `float` est historique et reste utile pour certains cas, notamment l'habillage du texte autour d'une image. Pour les mises en page modernes, `flex` et `grid` sont généralement préférables.
+
+---
+
+# 3. `position`
+
+`position` détermine comment un élément est positionné dans la page.
+
+| Valeur | Comportement | À retenir |
+|---|---|---|
+| `static` | Positionnement normal du document | Valeur par défaut |
+| `relative` | Reste dans le flux mais peut être décalé | Point de référence |
+| `absolute` | Retiré du flux normal | Positionné par rapport à un ancêtre positionné |
+| `fixed` | Retiré du flux et attaché à la fenêtre | Reste visible pendant le scroll |
+| `sticky` | Se comporte normalement puis « colle » lors du scroll | Entre `relative` et `fixed` |
+
+---
+
+## `static`
+
+Valeur par défaut.
+
+~~~css
+.element {
+    position: static;
+}
+~~~
+
+Les propriétés `top`, `right`, `bottom` et `left` n'ont pas d'effet sur un élément `static`.
+
+---
+
+## `relative`
+
+L'élément conserve sa place dans le flux.
+
+~~~css
+.element {
+    position: relative;
+    top: 10px;
+    left: 20px;
+}
+~~~
+
+Il est visuellement déplacé, mais son emplacement initial reste réservé.
+
+### Utilisation importante
+
+`relative` sert souvent de **référence pour un enfant en `absolute`**.
+
+~~~css
+.parent {
+    position: relative;
+}
+
+.child {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+~~~
+
+---
+
+## `absolute`
+
+L'élément est retiré du flux normal.
+
+~~~css
+.child {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+~~~
+
+Il est généralement positionné par rapport à son ancêtre le plus proche dont `position` n'est pas `static`.
+
+---
+
+## `fixed`
+
+L'élément est positionné par rapport à la fenêtre.
+
+~~~css
+.menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+~~~
+
+Il reste à cette position lorsque la page défile.
+
+Utilisations fréquentes :
+
+- barre de navigation fixe
+- bouton « retour en haut »
+- élément flottant
+- menu toujours visible
+
+---
+
+## `sticky`
+
+L'élément commence dans le flux normal puis reste « collé » lorsque le seuil défini est atteint.
+
+~~~css
+header {
+    position: sticky;
+    top: 0;
+}
+~~~
+
+Très utilisé pour les en-têtes qui restent visibles pendant le défilement.
+
+---
+
+# 4. `top`, `right`, `bottom`, `left`
+
+Ces propriétés permettent de définir le décalage d'un élément positionné.
+
+| Propriété | Déplacement |
+|---|---|
+| `top` | Depuis le haut |
+| `right` | Depuis la droite |
+| `bottom` | Depuis le bas |
+| `left` | Depuis la gauche |
+
+Exemple :
+
+~~~css
+.element {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+}
+~~~
+
+> Ces propriétés sont principalement utilisées avec `relative`, `absolute`, `fixed` et `sticky`.
+
+---
+
+# 5. `z-index`
+
+Contrôle l'ordre d'empilement des éléments.
+
+~~~css
+.menu {
+    position: fixed;
+    z-index: 100;
+}
+~~~
+
+Plus le `z-index` est élevé, plus l'élément est placé au-dessus des autres dans le même contexte d'empilement.
+
+| Valeur | Exemple |
+|---|---|
+| entier positif | `z-index: 10` |
+| `0` | `z-index: 0` |
+| entier négatif | `z-index: -1` |
+| `auto` | Valeur par défaut |
+
+---
+
+# 6. `overflow`
+
+Détermine ce qui arrive lorsque le contenu dépasse les dimensions de son conteneur.
+
+| Valeur | Comportement |
+|---|---|
+| `visible` | Le contenu dépasse du conteneur |
+| `hidden` | Le contenu qui dépasse est masqué |
+| `scroll` | Affiche des barres de défilement |
+| `auto` | Ajoute des barres de défilement si nécessaire |
+
+~~~css
+.box {
+    width: 200px;
+    height: 100px;
+    overflow: auto;
+}
+~~~
+
+---
+
+# 7. `width` et `height`
+
+| Propriété | Fonction |
+|---|---|
+| `width` | Largeur |
+| `height` | Hauteur |
+| `min-width` | Largeur minimale |
+| `max-width` | Largeur maximale |
+| `min-height` | Hauteur minimale |
+| `max-height` | Hauteur maximale |
+
+Exemple :
+
+~~~css
+.box {
+    width: 80%;
+    max-width: 1000px;
+    min-height: 200px;
+}
+~~~
+
+---
+
+# 8. `margin` et `padding`
+
+Le modèle de boîte CSS :
+
+~~~text
+┌───────────────────────────────┐
+│            margin             │
+│  ┌─────────────────────────┐  │
+│  │         border          │  │
+│  │  ┌───────────────────┐  │  │
+│  │  │      padding      │  │  │
+│  │  │  ┌─────────────┐  │  │  │
+│  │  │  │   contenu   │  │  │  │
+│  │  │  └─────────────┘  │  │  │
+│  │  └───────────────────┘  │  │
+│  └─────────────────────────┘  │
+└───────────────────────────────┘
+~~~
+
+| Propriété | Position |
+|---|---|
+| `margin` | extérieur |
+| `border` | bordure |
+| `padding` | intérieur |
+| contenu | texte/image/etc. |
+
+### Raccourci
+
+~~~css
+margin: 10px;
+~~~
+
+→ 10 px sur les quatre côtés.
+
+~~~css
+margin: 10px 20px;
+~~~
+
+→ 10 px verticalement, 20 px horizontalement.
+
+~~~css
+margin: 10px 20px 30px 40px;
+~~~
+
+→ ordre : **haut → droite → bas → gauche**
+
+Même logique pour `padding`.
+
+---
+
+# 9. `box-sizing`
+
+Détermine comment `width` et `height` prennent en compte le contenu, le padding et la bordure.
+
+| Valeur | Signification |
+|---|---|
+| `content-box` | largeur/hauteur concernent le contenu uniquement |
+| `border-box` | largeur/hauteur incluent contenu + padding + bordure |
+
+Très courant :
+
+~~~css
+* {
+    box-sizing: border-box;
+}
+~~~
+
+Avec `border-box`, si on écrit :
+
+~~~css
+.box {
+    width: 200px;
+    padding: 20px;
+    border: 2px solid black;
+}
+~~~
+
+la largeur totale reste **200 px**.
+
+---
+
+# 10. Flexbox — `display: flex`
+
+Pour les mises en page modernes en une dimension :
+
+~~~css
+.container {
+    display: flex;
+}
+~~~
+
+### `flex-direction`
+
+| Valeur | Direction |
+|---|---|
+| `row` | horizontal, gauche → droite |
+| `row-reverse` | horizontal, droite → gauche |
+| `column` | vertical |
+| `column-reverse` | vertical inversé |
+
+~~~css
+.container {
+    display: flex;
+    flex-direction: row;
+}
+~~~
+
+### `justify-content`
+
+Aligne les éléments sur l'axe principal.
+
+| Valeur | Effet |
+|---|---|
+| `flex-start` | début |
+| `flex-end` | fin |
+| `center` | centre |
+| `space-between` | espace entre les éléments |
+| `space-around` | espace autour |
+| `space-evenly` | espaces égaux |
+
+### `align-items`
+
+Aligne les éléments sur l'axe secondaire.
+
+| Valeur | Effet |
+|---|---|
+| `stretch` | étire |
+| `flex-start` | début |
+| `flex-end` | fin |
+| `center` | centre |
+| `baseline` | ligne de base du texte |
+
+### `gap`
+
+Définit l'espace entre les éléments.
+
+~~~css
+.container {
+    display: flex;
+    gap: 20px;
+}
+~~~
+
+---
+
+# 11. Grid — `display: grid`
+
+Pour les mises en page en deux dimensions :
+
+~~~css
+.container {
+    display: grid;
+}
+~~~
+
+### Colonnes
+
+~~~css
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+~~~
+
+→ trois colonnes de même largeur.
+
+### Espacement
+
+~~~css
+.container {
+    display: grid;
+    gap: 20px;
+}
+~~~
+
+---
+
+# Tableau récapitulatif
+
+| Propriété | Valeurs importantes | Rôle |
+|---|---|---|
+| `display` | `block`, `inline`, `inline-block`, `none`, `flex`, `grid` | Type d'affichage |
+| `float` | `left`, `right`, `none` | Faire flotter un élément |
+| `clear` | `left`, `right`, `both`, `none` | Stopper l'effet des floats |
+| `position` | `static`, `relative`, `absolute`, `fixed`, `sticky` | Positionnement |
+| `top/right/bottom/left` | longueurs, `%`, `auto` | Décalage |
+| `z-index` | entier, `auto` | Empilement |
+| `overflow` | `visible`, `hidden`, `scroll`, `auto` | Débordement |
+| `width` | longueur, `%`, `auto` | Largeur |
+| `height` | longueur, `%`, `auto` | Hauteur |
+| `margin` | longueurs, `%`, `auto` | Espace extérieur |
+| `padding` | longueurs, `%` | Espace intérieur |
+| `box-sizing` | `content-box`, `border-box` | Calcul des dimensions |
+| `flex-direction` | `row`, `column`, etc. | Direction Flexbox |
+| `justify-content` | `center`, `space-between`, etc. | Alignement principal |
+| `align-items` | `center`, `stretch`, etc. | Alignement secondaire |
+| `gap` | longueur | Espacement |
+| `grid-template-columns` | `px`, `%`, `fr`, etc. | Définition des colonnes |
+
+---
+
+# Mémo mental
+
+~~~text
+DISPLAY
+│
+├── block        → bloc / nouvelle ligne
+├── inline       → dans la ligne
+├── inline-block → ligne + dimensions
+├── flex         → disposition flexible
+├── grid         → grille
+└── none         → caché
+
+POSITION
+│
+├── static       → normal
+├── relative     → normal + déplacement
+├── absolute     → retiré du flux
+├── fixed        → attaché à la fenêtre
+└── sticky       → normal puis "collant"
+
+BOX MODEL
+│
+├── margin        → dehors
+├── border        → bordure
+├── padding       → dedans
+└── content       → contenu
+
+LAYOUT
+│
+├── float         → ancien système de flottement
+├── flex          → 1 dimension
+└── grid          → 2 dimensions
+~~~
+
+> **À retenir en priorité pour débuter :**
+>
+> `display` → comment l'élément se comporte  
+> `position` → où l'élément est positionné  
+> `margin` → espace extérieur  
+> `padding` → espace intérieur  
+> `flex` → organiser des éléments sur un axe  
+> `grid` → organiser des éléments en lignes et colonnes
