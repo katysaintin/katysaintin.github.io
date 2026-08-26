@@ -2730,3 +2730,672 @@ ENFANT
 > `justify-content` → travaille sur cet axe  
 > `align-items` → travaille sur l'autre axe
 
+# Mémo CSS — Grid
+
+CSS Grid sert à créer des mises en page **en lignes et colonnes**.
+
+---
+
+## 1. Activer Grid
+
+```css
+.container {
+    display: grid;
+}
+```
+
+Une fois `display: grid` activé, on peut définir les colonnes et les lignes.
+
+---
+
+## 2. `grid-template-columns`
+
+Définit les **colonnes** de la grille.
+
+```css
+.container {
+    display: grid;
+    grid-template-columns: 200px 200px;
+}
+```
+
+→ 2 colonnes de `200px`.
+
+### Avec différentes tailles
+
+```css
+grid-template-columns: 200px 1fr 2fr;
+```
+
+→ 3 colonnes :
+
+| Colonne | Taille |
+|---|---:|
+| 1 | 200px |
+| 2 | 1 fraction |
+| 3 | 2 fractions |
+
+`fr` signifie **fraction de l'espace disponible**.
+
+---
+
+# 3. L'unité `fr`
+
+`fr` = fraction de l'espace disponible.
+
+```css
+grid-template-columns: 1fr 1fr;
+```
+
+→ deux colonnes de même largeur.
+
+```css
+grid-template-columns: 1fr 2fr;
+```
+
+→ la deuxième colonne fait deux fois la largeur de la première.
+
+```css
+grid-template-columns: 1fr 1fr 1fr;
+```
+
+→ trois colonnes identiques.
+
+---
+
+# 4. La fonction `repeat()`
+
+`repeat()` permet de répéter une définition.
+
+### Exemple
+
+```css
+grid-template-columns: repeat(2, 2fr);
+```
+
+Signifie :
+
+```css
+grid-template-columns: 2fr 2fr;
+```
+
+Donc :
+
+> `repeat(nombre, valeur)`
+
+| Syntaxe | Équivalent |
+|---|---|
+| `repeat(2, 1fr)` | `1fr 1fr` |
+| `repeat(3, 1fr)` | `1fr 1fr 1fr` |
+| `repeat(4, 100px)` | `100px 100px 100px 100px` |
+| `repeat(2, 2fr)` | `2fr 2fr` |
+
+### Exemple courant
+
+```css
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+```
+
+→ grille de **3 colonnes égales**.
+
+---
+
+# 5. `repeat()` peut contenir plusieurs valeurs
+
+```css
+grid-template-columns: repeat(2, 100px 1fr);
+```
+
+équivaut à :
+
+```css
+grid-template-columns:
+    100px 1fr
+    100px 1fr;
+```
+
+Donc `repeat()` ne répète pas forcément une seule valeur.
+
+---
+
+# 6. `grid-template-rows`
+
+Définit les **lignes**.
+
+```css
+.container {
+    display: grid;
+    grid-template-rows: 100px 200px;
+}
+```
+
+→ première ligne : `100px`
+
+→ deuxième ligne : `200px`
+
+On peut également utiliser `fr` :
+
+```css
+grid-template-rows: 1fr 2fr;
+```
+
+---
+
+# 7. Colonnes + lignes
+
+```css
+.container {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 100px);
+}
+```
+
+On obtient :
+
+```text
+┌────────┬────────┬────────┐
+│        │        │        │ 100px
+├────────┼────────┼────────┤
+│        │        │        │ 100px
+└────────┴────────┴────────┘
+```
+
+→ 3 colonnes × 2 lignes.
+
+---
+
+# 8. `gap`
+
+Permet de créer un espace entre les éléments.
+
+```css
+.container {
+    display: grid;
+    gap: 10px;
+}
+```
+
+Même espace entre :
+
+- les colonnes
+- les lignes
+
+### `column-gap`
+
+```css
+column-gap: 20px;
+```
+
+Espace entre les colonnes.
+
+### `row-gap`
+
+```css
+row-gap: 10px;
+```
+
+Espace entre les lignes.
+
+### Les deux
+
+```css
+gap: 10px 20px;
+```
+
+Signifie :
+
+```text
+ligne :    10px
+colonne :  20px
+```
+
+---
+
+# 9. `grid-auto-columns` et `grid-auto-rows`
+
+Permettent de définir la taille des lignes/colonnes **créées automatiquement**.
+
+```css
+grid-auto-rows: 100px;
+```
+
+Toutes les lignes automatiques font `100px`.
+
+---
+
+# 10. `grid-auto-flow`
+
+Définit comment les éléments sont placés automatiquement.
+
+```css
+grid-auto-flow: row;
+```
+
+Placement ligne par ligne.
+
+```css
+grid-auto-flow: column;
+```
+
+Placement colonne par colonne.
+
+```css
+grid-auto-flow: dense;
+```
+
+Le navigateur essaie de combler les espaces disponibles.
+
+---
+
+# 11. Positionner un élément dans la grille
+
+On peut indiquer les lignes de début et de fin.
+
+```css
+.item {
+    grid-column: 1 / 3;
+}
+```
+
+L'élément occupe les colonnes 1 et 2.
+
+```css
+.item {
+    grid-row: 1 / 3;
+}
+```
+
+L'élément occupe les lignes 1 et 2.
+
+---
+
+# 12. `span`
+
+Permet de dire combien de colonnes/lignes un élément doit occuper.
+
+```css
+.item {
+    grid-column: span 2;
+}
+```
+
+→ occupe 2 colonnes.
+
+```css
+.item {
+    grid-row: span 3;
+}
+```
+
+→ occupe 3 lignes.
+
+Très pratique pour les layouts complexes.
+
+---
+
+# 13. `grid-template-areas`
+
+Permet de nommer les zones de la grille.
+
+```css
+.container {
+    display: grid;
+
+    grid-template-areas:
+        "header header"
+        "menu   main"
+        "footer footer";
+}
+```
+
+Puis :
+
+```css
+.header {
+    grid-area: header;
+}
+
+.menu {
+    grid-area: menu;
+}
+
+.main {
+    grid-area: main;
+}
+
+.footer {
+    grid-area: footer;
+}
+```
+
+Cela permet de construire une structure très lisible.
+
+---
+
+# 14. Alignement des éléments
+
+## `justify-items`
+
+Alignement **horizontal** des éléments dans leurs cellules.
+
+```css
+justify-items: start;
+justify-items: center;
+justify-items: end;
+justify-items: stretch;
+```
+
+| Valeur | Effet |
+|---|---|
+| `start` | début |
+| `center` | centre |
+| `end` | fin |
+| `stretch` | étire l'élément |
+
+---
+
+## `align-items`
+
+Alignement **vertical** des éléments dans leurs cellules.
+
+```css
+align-items: start;
+align-items: center;
+align-items: end;
+align-items: stretch;
+```
+
+---
+
+## `place-items`
+
+Raccourci pour les deux :
+
+```css
+place-items: center;
+```
+
+équivaut à :
+
+```css
+align-items: center;
+justify-items: center;
+```
+
+---
+
+# 15. Alignement de toute la grille
+
+## `justify-content`
+
+Positionne **l'ensemble de la grille** horizontalement dans son conteneur.
+
+```css
+justify-content: start;
+justify-content: center;
+justify-content: end;
+justify-content: space-between;
+justify-content: space-around;
+justify-content: space-evenly;
+```
+
+## `align-content`
+
+Même principe verticalement.
+
+```css
+align-content: start;
+align-content: center;
+align-content: end;
+align-content: space-between;
+align-content: space-around;
+align-content: space-evenly;
+```
+
+### À retenir
+
+```text
+justify-items  → contenu des cellules horizontalement
+align-items    → contenu des cellules verticalement
+
+justify-content → grille entière horizontalement
+align-content   → grille entière verticalement
+```
+
+---
+
+# 16. `place-content`
+
+Raccourci :
+
+```css
+place-content: center;
+```
+
+équivaut à :
+
+```css
+align-content: center;
+justify-content: center;
+```
+
+---
+
+# 17. `minmax()`
+
+Permet de définir une taille minimale et maximale.
+
+```css
+grid-template-columns: repeat(3, minmax(100px, 1fr));
+```
+
+Chaque colonne :
+
+- minimum : `100px`
+- maximum : `1fr`
+
+Très utile pour créer des grilles adaptatives.
+
+---
+
+# 18. `auto-fit` et `auto-fill`
+
+Très utiles pour les layouts responsives.
+
+### `auto-fit`
+
+```css
+grid-template-columns:
+    repeat(auto-fit, minmax(200px, 1fr));
+```
+
+Le navigateur crée automatiquement autant de colonnes que possible.
+
+Exemple :
+
+```text
+Grand écran
+
+┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐
+│      │ │      │ │      │ │      │
+└──────┘ └──────┘ └──────┘ └──────┘
+
+
+Petit écran
+
+┌──────┐ ┌──────┐
+│      │ │      │
+└──────┘ └──────┘
+```
+
+Très pratique pour éviter de gérer manuellement plusieurs tailles d'écran.
+
+---
+
+# 19. `auto-fill` vs `auto-fit`
+
+```css
+repeat(auto-fill, minmax(200px, 1fr))
+```
+
+et
+
+```css
+repeat(auto-fit, minmax(200px, 1fr))
+```
+
+sont proches.
+
+La différence concerne principalement la façon dont les **colonnes vides** sont gérées lorsque l'espace disponible permettrait d'en créer davantage.
+
+Dans la majorité des layouts classiques :
+
+```css
+auto-fit
+```
+
+est souvent le choix intuitif pour obtenir une grille responsive.
+
+---
+
+# 20. Exemple complet
+
+```css
+.container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    grid-template-rows:
+        repeat(2, 150px);
+
+    gap: 20px;
+
+    justify-items: center;
+    align-items: center;
+}
+```
+
+Cela signifie :
+
+```text
+display: grid
+        ↓
+3 colonnes égales
+        ↓
+2 lignes de 150px
+        ↓
+20px entre les cellules
+        ↓
+éléments centrés dans leurs cellules
+```
+
+---
+
+# 21. Le mémo mental
+
+Pour une grille, penser dans cet ordre :
+
+```text
+1. display
+      ↓
+   display: grid
+
+2. STRUCTURE
+      ↓
+   grid-template-columns
+   grid-template-rows
+
+3. RÉPÉTITION
+      ↓
+   repeat()
+
+4. ESPACEMENT
+      ↓
+   gap
+   row-gap
+   column-gap
+
+5. ALIGNEMENT DES ÉLÉMENTS
+      ↓
+   justify-items
+   align-items
+
+6. ALIGNEMENT DE LA GRILLE
+      ↓
+   justify-content
+   align-content
+
+7. POSITIONNEMENT
+      ↓
+   grid-column
+   grid-row
+   span
+
+8. RESPONSIVE
+      ↓
+   minmax()
+   auto-fit
+   auto-fill
+```
+
+---
+
+# 22. Les valeurs à connaître en priorité
+
+| Propriété | Valeurs importantes |
+|---|---|
+| `display` | `grid` |
+| `grid-template-columns` | `px`, `%`, `fr`, `auto`, `repeat()` |
+| `grid-template-rows` | `px`, `%`, `fr`, `auto`, `repeat()` |
+| `gap` | longueur |
+| `justify-items` | `start`, `center`, `end`, `stretch` |
+| `align-items` | `start`, `center`, `end`, `stretch` |
+| `justify-content` | `start`, `center`, `end`, `space-between`, `space-around`, `space-evenly` |
+| `align-content` | `start`, `center`, `end`, `space-between`, `space-around`, `space-evenly` |
+| `grid-column` | lignes / `span` |
+| `grid-row` | lignes / `span` |
+| `grid-auto-flow` | `row`, `column`, `dense` |
+| `minmax()` | minimum + maximum |
+| `repeat()` | nombre + motif |
+| `auto-fit` | grille responsive |
+| `auto-fill` | grille responsive |
+
+---
+
+## ⭐ À retenir absolument
+
+```css
+grid-template-columns: repeat(3, 1fr);
+```
+
+= **3 colonnes de même largeur**
+
+```css
+grid-template-columns: repeat(2, 2fr);
+```
+
+= **2 colonnes de 2 fractions**
+
+```css
+grid-template-columns: repeat(3, minmax(200px, 1fr));
+```
+
+= **3 colonnes, minimum 200px, pouvant grandir**
+
+```css
+grid-template-columns:
+    repeat(auto-fit, minmax(200px, 1fr));
+```
+
+= **grille responsive automatique**
+
+Et surtout :
+
+> `repeat()` ne fait rien de magique : il évite simplement d'écrire plusieurs fois la même définition de colonne ou de ligne.
