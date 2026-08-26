@@ -1904,3 +1904,829 @@ LAYOUT
 > `padding` → espace intérieur  
 > `flex` → organiser des éléments sur un axe  
 > `grid` → organiser des éléments en lignes et colonnes
+
+# CSS — Flexbox — Mémo
+
+Flexbox permet de disposer des éléments dans un conteneur selon un axe principal et un axe secondaire.
+
+La plupart des propriétés Flexbox se placent sur le **conteneur parent**.
+
+---
+
+## 1. Activer Flexbox
+
+~~~css
+.container {
+    display: flex;
+}
+~~~
+
+Les éléments enfants directs deviennent des **flex items**.
+
+---
+
+# 2. Les deux axes
+
+Tout dépend de `flex-direction`.
+
+| `flex-direction` | Axe principal | Axe secondaire |
+|---|---|---|
+| `row` | horizontal → | vertical ↓ |
+| `row-reverse` | horizontal ← | vertical ↓ |
+| `column` | vertical ↓ | horizontal → |
+| `column-reverse` | vertical ↑ | horizontal → |
+
+### Schéma
+
+~~~text
+flex-direction: row
+
+main axis
+──────────────────────→
+[ A ] [ B ] [ C ]
+
+cross axis
+      ↓
+~~~
+
+~~~text
+flex-direction: column
+
+cross axis
+    →
+    →
+main axis
+    ↓
+[ A ]
+[ B ]
+[ C ]
+~~~
+
+> **Important :** `justify-content` agit sur l'axe principal.  
+> `align-items` agit sur l'axe secondaire.
+
+---
+
+# 3. `flex-direction`
+
+Détermine la direction de l'axe principal.
+
+~~~css
+.container {
+    display: flex;
+    flex-direction: row;
+}
+~~~
+
+| Valeur | Effet |
+|---|---|
+| `row` | gauche → droite |
+| `row-reverse` | droite → gauche |
+| `column` | haut → bas |
+| `column-reverse` | bas → haut |
+
+---
+
+# 4. `flex-wrap`
+
+Détermine si les éléments doivent rester sur une seule ligne ou passer sur plusieurs lignes/colonnes lorsqu'ils ne tiennent plus.
+
+~~~css
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+~~~
+
+| Valeur | Effet |
+|---|---|
+| `nowrap` | une seule ligne/colonne |
+| `wrap` | retour à la ligne/colonne |
+| `wrap-reverse` | retour avec inversion de l'axe secondaire |
+
+### Exemple
+
+~~~css
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+~~~
+
+Sans `wrap` :
+
+~~~text
+[A] [B] [C] [D] [E] [F] ...
+─────────────────────────────
+        dépassement
+~~~
+
+Avec `wrap` :
+
+~~~text
+[A] [B] [C]
+[D] [E] [F]
+~~~
+
+---
+
+# 5. `flex-flow`
+
+Raccourci pour :
+
+- `flex-direction`
+- `flex-wrap`
+
+~~~css
+.container {
+    flex-flow: row wrap;
+}
+~~~
+
+Équivaut à :
+
+~~~css
+.container {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+~~~
+
+### Exemples
+
+~~~css
+flex-flow: row nowrap;
+flex-flow: row wrap;
+flex-flow: column wrap;
+flex-flow: column-reverse wrap;
+~~~
+
+---
+
+# 6. `justify-content`
+
+Répartit les éléments **sur l'axe principal**.
+
+~~~css
+.container {
+    display: flex;
+    justify-content: center;
+}
+~~~
+
+## Valeurs principales
+
+| Valeur | Effet |
+|---|---|
+| `flex-start` | éléments au début |
+| `flex-end` | éléments à la fin |
+| `center` | éléments centrés |
+| `space-between` | espace entre les éléments |
+| `space-around` | espace autour des éléments |
+| `space-evenly` | espaces parfaitement égaux |
+
+---
+
+## `flex-start`
+
+~~~css
+justify-content: flex-start;
+~~~
+
+~~~text
+[A][B][C]────────────
+^
+début
+~~~
+
+---
+
+## `flex-end`
+
+~~~css
+justify-content: flex-end;
+~~~
+
+~~~text
+────────────[A][B][C]
+             ^
+            fin
+~~~
+
+---
+
+## `center`
+
+~~~css
+justify-content: center;
+~~~
+
+~~~text
+──────[A][B][C]──────
+~~~
+
+---
+
+## `space-between`
+
+~~~css
+justify-content: space-between;
+~~~
+
+~~~text
+[A]────────[B]────────[C]
+^                       ^
+début                   fin
+~~~
+
+Pas d'espace supplémentaire aux extrémités.
+
+---
+
+## `space-around`
+
+~~~css
+justify-content: space-around;
+~~~
+
+~~~text
+──[A]────[B]────[C]──
+  ↑       ↑       ↑
+ espace autour
+~~~
+
+Chaque élément possède un espace autour de lui.
+
+L'espace entre deux éléments est donc **deux fois l'espace situé au bord**.
+
+---
+
+## `space-evenly`
+
+~~~css
+justify-content: space-evenly;
+~~~
+
+~~~text
+───[A]───[B]───[C]───
+   ↑     ↑     ↑
+ espaces identiques
+~~~
+
+Les espaces sont identiques :
+
+- avant le premier ;
+- entre les éléments ;
+- après le dernier.
+
+---
+
+# 7. `align-items`
+
+Aligne les éléments **sur l'axe secondaire**.
+
+~~~css
+.container {
+    align-items: center;
+}
+~~~
+
+| Valeur | Effet |
+|---|---|
+| `stretch` | étire les éléments |
+| `flex-start` | début de l'axe secondaire |
+| `flex-end` | fin de l'axe secondaire |
+| `center` | centre |
+| `baseline` | aligne les lignes de base du texte |
+
+### Exemple avec `row`
+
+~~~text
+cross axis
+    ↓
+
+┌─────────────────────────┐
+│                         │
+│    [A] [B] [C]          │ ← center
+│                         │
+└─────────────────────────┘
+```
+
+Avec :
+
+~~~css
+align-items: flex-start;
+~~~
+
+les éléments vont en haut.
+
+Avec :
+
+~~~css
+align-items: flex-end;
+~~~
+
+ils vont en bas.
+
+---
+
+# 8. `align-content`
+
+`align-content` concerne **l'ensemble des lignes/colonnes générées par `flex-wrap`**.
+
+C'est une distinction importante :
+
+- `align-items` → position des **items à l'intérieur d'une ligne**
+- `align-content` → position des **lignes/colonnes elles-mêmes**
+
+`align-content` n'a généralement d'effet que lorsqu'il y a plusieurs lignes/colonnes.
+
+---
+
+## Valeurs
+
+| Valeur | Effet |
+|---|---|
+| `stretch` | étire les lignes/colonnes |
+| `flex-start` | regroupe au début |
+| `flex-end` | regroupe à la fin |
+| `center` | centre le groupe |
+| `space-between` | espace entre les lignes |
+| `space-around` | espace autour des lignes |
+| `space-evenly` | espaces égaux |
+
+---
+
+# 9. L'exercice Mimo
+
+Énoncé :
+
+> Make the flex items that don't fit go to the top of the container instead of the bottom.
+
+Dans ton exercice :
+
+~~~css
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+~~~
+
+Comme la direction est `column`, les éléments se remplissent **verticalement**.
+
+Lorsqu'ils ne tiennent plus, `wrap` crée une nouvelle colonne.
+
+Pour demander que ces nouvelles colonnes soient regroupées **en haut** :
+
+~~~css
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+~~~
+
+### Pourquoi `align-content` ?
+
+Parce que `wrap` crée plusieurs colonnes.
+
+On ne cherche donc pas à déplacer individuellement les éléments :
+
+~~~text
+colonne 1       colonne 2
+
+[A]             [D]
+[B]             [E]
+[C]             [F]
+```
+
+On cherche à positionner **les colonnes résultantes** dans le conteneur.
+
+Avec :
+
+~~~css
+align-content: flex-start;
+~~~
+
+elles sont regroupées au début de l'axe secondaire.
+
+Dans ce cas, cela correspond au **haut** du conteneur.
+
+---
+
+# 10. `align-self`
+
+Permet de modifier l'alignement d'un **seul flex item**.
+
+~~~css
+.item {
+    align-self: center;
+}
+~~~
+
+Valeurs principales :
+
+| Valeur | Effet |
+|---|---|
+| `auto` | utilise `align-items` du parent |
+| `stretch` | étire |
+| `flex-start` | début |
+| `flex-end` | fin |
+| `center` | centre |
+| `baseline` | ligne de base |
+
+Exemple :
+
+~~~css
+.container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.special {
+    align-self: flex-end;
+}
+~~~
+
+Tous les éléments sont en haut sauf `.special`.
+
+---
+
+# 11. `gap`
+
+Permet de définir un espace entre les flex items.
+
+~~~css
+.container {
+    display: flex;
+    gap: 20px;
+}
+~~~
+
+### Horizontal et vertical identiques
+
+~~~css
+gap: 20px;
+~~~
+
+### Valeurs différentes
+
+~~~css
+gap: 10px 20px;
+~~~
+
+Signifie :
+
+~~~text
+10px → espace entre les lignes
+20px → espace entre les colonnes
+~~~
+
+On peut aussi utiliser :
+
+~~~css
+row-gap: 10px;
+column-gap: 20px;
+~~~
+
+---
+
+# 12. `order`
+
+Permet de modifier l'ordre visuel des flex items.
+
+~~~css
+.item1 {
+    order: 3;
+}
+
+.item2 {
+    order: 1;
+}
+
+.item3 {
+    order: 2;
+}
+~~~
+
+Résultat :
+
+~~~text
+item2 → item3 → item1
+~~~
+
+Par défaut :
+
+~~~css
+order: 0;
+~~~
+
+> `order` modifie l'ordre visuel, pas nécessairement l'ordre logique du document HTML. Il faut donc l'utiliser avec précaution pour l'accessibilité.
+
+---
+
+# 13. Propriétés des flex items
+
+Les propriétés suivantes s'appliquent aux **enfants** du conteneur Flexbox :
+
+| Propriété | Rôle |
+|---|---|
+| `order` | ordre visuel |
+| `flex-grow` | capacité à grandir |
+| `flex-shrink` | capacité à rétrécir |
+| `flex-basis` | taille de base |
+| `flex` | raccourci des trois précédentes |
+| `align-self` | alignement individuel |
+
+---
+
+# 14. `flex-grow`
+
+Détermine la capacité d'un élément à prendre l'espace disponible.
+
+~~~css
+.item {
+    flex-grow: 1;
+}
+~~~
+
+Exemple :
+
+~~~css
+.item1 {
+    flex-grow: 1;
+}
+
+.item2 {
+    flex-grow: 2;
+}
+~~~
+
+`item2` recevra deux fois plus d'espace supplémentaire que `item1`.
+
+---
+
+# 15. `flex-shrink`
+
+Détermine la capacité d'un élément à rétrécir lorsque l'espace manque.
+
+~~~css
+.item {
+    flex-shrink: 1;
+}
+~~~
+
+Valeur par défaut :
+
+~~~css
+flex-shrink: 1;
+~~~
+
+Pour empêcher un élément de rétrécir :
+
+~~~css
+flex-shrink: 0;
+~~~
+
+---
+
+# 16. `flex-basis`
+
+Définit la taille de base d'un flex item avant la distribution de l'espace disponible.
+
+~~~css
+.item {
+    flex-basis: 200px;
+}
+~~~
+
+Avec `flex-direction: row`, cela correspond généralement à une largeur de base.
+
+Avec `flex-direction: column`, cela correspond généralement à une hauteur de base.
+
+---
+
+# 17. `flex`
+
+Raccourci pour :
+
+~~~text
+flex-grow
+flex-shrink
+flex-basis
+~~~
+
+Exemple :
+
+~~~css
+.item {
+    flex: 1 1 200px;
+}
+~~~
+
+Signifie :
+
+~~~text
+grow   = 1
+shrink = 1
+basis  = 200px
+~~~
+
+Cas très fréquent :
+
+~~~css
+.item {
+    flex: 1;
+}
+~~~
+
+Les éléments peuvent alors se partager l'espace disponible.
+
+---
+
+# 18. Mémo `justify-content` vs `align-items`
+
+C'est probablement la distinction la plus importante à retenir.
+
+~~~text
+                 AXE SECONDAIRE
+                       ↓
+             align-items
+                       ↓
+
+        ┌───────────────────────────┐
+        │                           │
+        │      [A] [B] [C]          │
+        │                           │
+        └───────────────────────────┘
+          ─────────────────────────→
+                 AXE PRINCIPAL
+                 justify-content
+~~~
+
+Avec :
+
+~~~css
+flex-direction: row;
+~~~
+
+~~~text
+justify-content → horizontal
+align-items     → vertical
+~~~
+
+Avec :
+
+~~~css
+flex-direction: column;
+~~~
+
+~~~text
+justify-content → vertical
+align-items     → horizontal
+~~~
+
+> **Ne pas mémoriser "justify = horizontal".**
+>
+> Il faut mémoriser :
+>
+> **`justify-content` = axe principal**  
+> **`align-items` = axe secondaire**
+
+---
+
+# 19. Mémo `align-items` vs `align-content`
+
+| Propriété | Agit sur |
+|---|---|
+| `align-items` | les éléments dans une ligne/colonne |
+| `align-self` | un élément particulier |
+| `align-content` | les lignes/colonnes lorsqu'il y en a plusieurs |
+
+`align-content` devient particulièrement important avec :
+
+~~~css
+flex-wrap: wrap;
+~~~
+
+---
+
+# 20. Mémo général du conteneur Flexbox
+
+~~~css
+.container {
+
+    /* Activation */
+    display: flex;
+
+    /* Axe principal */
+    flex-direction: row;
+
+    /* Retour à la ligne/colonne */
+    flex-wrap: nowrap;
+
+    /* Raccourci direction + wrap */
+    flex-flow: row nowrap;
+
+    /* Répartition sur l'axe principal */
+    justify-content: flex-start;
+
+    /* Alignement sur l'axe secondaire */
+    align-items: stretch;
+
+    /* Alignement des lignes/colonnes */
+    align-content: stretch;
+
+    /* Espacement */
+    gap: 20px;
+}
+~~~
+
+---
+
+# 21. Tableau récapitulatif
+
+| Propriété | S'applique à | Fonction | Valeurs importantes |
+|---|---|---|---|
+| `display` | parent | active Flexbox | `flex` |
+| `flex-direction` | parent | définit l'axe principal | `row`, `column`, `row-reverse`, `column-reverse` |
+| `flex-wrap` | parent | autorise plusieurs lignes/colonnes | `nowrap`, `wrap`, `wrap-reverse` |
+| `flex-flow` | parent | raccourci | direction + wrap |
+| `justify-content` | parent | répartit sur l'axe principal | `flex-start`, `center`, `flex-end`, `space-between`, `space-around`, `space-evenly` |
+| `align-items` | parent | aligne les items sur l'axe secondaire | `stretch`, `flex-start`, `center`, `flex-end`, `baseline` |
+| `align-content` | parent | positionne les lignes/colonnes | `stretch`, `flex-start`, `center`, `flex-end`, `space-between`, `space-around`, `space-evenly` |
+| `gap` | parent | espace entre les items | longueur |
+| `align-self` | enfant | surcharge `align-items` | `auto`, `stretch`, `flex-start`, `center`, `flex-end`, `baseline` |
+| `order` | enfant | change l'ordre visuel | entier |
+| `flex-grow` | enfant | permet de grandir | nombre |
+| `flex-shrink` | enfant | permet de rétrécir | nombre |
+| `flex-basis` | enfant | taille de base | longueur, `auto` |
+| `flex` | enfant | raccourci grow/shrink/basis | ex. `1 1 200px` |
+
+---
+
+# 22. Les trois propriétés à retenir en priorité
+
+Si tu dois retenir seulement trois propriétés pour commencer :
+
+~~~css
+.container {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+~~~
+
+Cela permet déjà de faire énormément de mises en page.
+
+Et dès que plusieurs lignes/colonnes apparaissent :
+
+~~~css
+.container {
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+~~~
+
+---
+
+# 23. Mini-mémo mental
+
+~~~text
+DISPLAY
+  ↓
+  flex
+  │
+  ├── flex-direction → direction de l'axe principal
+  │
+  ├── flex-wrap → autoriser plusieurs lignes/colonnes
+  │
+  ├── justify-content → répartir sur l'axe principal
+  │
+  ├── align-items → aligner les items sur l'axe secondaire
+  │
+  ├── align-content → aligner les lignes/colonnes
+  │
+  └── gap → espace entre les items
+
+
+ENFANT
+  │
+  ├── order
+  ├── flex-grow
+  ├── flex-shrink
+  ├── flex-basis
+  ├── flex
+  └── align-self
+~~~
+
+> **La clé de Flexbox : toujours commencer par identifier l'axe principal.**
+>
+> `flex-direction` → détermine l'axe  
+> `justify-content` → travaille sur cet axe  
+> `align-items` → travaille sur l'autre axe
+
