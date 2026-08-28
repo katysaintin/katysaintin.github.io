@@ -73,8 +73,9 @@
     {
       "year": 2026,
       "name": "RS7424 Gérer et transformer les processus de travail des équipes avec l'aide de l'IA",
-      "url": "https://katysaintin.github.io/certifications/2026_05_18_CertificationIA-RS7424-KatySAINTIN.pdf",
-      "status": "in_progress"
+      "url": "https://katysaintin.github.io/diplomes/2026_08_28_CertificationRS7424.pdf",
+      "status": "obtained",
+      "quote": "97% au test écrit final"
     },
     {
       "year": 2021,
@@ -156,7 +157,11 @@
       "items": [
         "Java",
         "C++",
-        "Python — pratique (scripts, prototypage, encadrement technique)",
+        "Python",
+        "HTML 5",
+        "CSS",
+        "SQL MySQL",
+        "Php",
         "Eclipse RCP",
         "Swing",
         "SWT",
