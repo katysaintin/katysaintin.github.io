@@ -1300,3 +1300,213 @@ Et surtout :
 - Penser à la maintenance dès la conception.
 
 > **Une bonne architecture ne cherche pas seulement à faire fonctionner le logiciel aujourd'hui. Elle prépare le logiciel à changer demain.**
+
+# Bonnes pratiques de développement — Gestion des retours de fonction
+
+## Règle
+
+Pour les fonctions contenant une logique métier, privilégier **un point de sortie unique**.
+
+La valeur de retour est initialisée avec une valeur par défaut en début de fonction, puis modifiée selon les conditions rencontrées. Le `return` est placé en fin de fonction.
+
+## Exemple recommandé
+
+~~~javascript
+function getDiscount(age) {
+    let discount = "Full price";
+
+    if (age <= 18) {
+        discount = "50% OFF";
+    } else if (age >= 65) {
+        discount = "30%";
+    }
+
+    return discount;
+}
+~~~
+
+## Raisons
+
+### 1. Faciliter le débogage
+
+Un point de sortie unique permet de suivre facilement la valeur de résultat dans un débogueur.
+
+Lors d'une session de debug, la variable de retour peut être observée dans l'inspecteur et suivie pas à pas au fur et à mesure de l'exécution.
+
+~~~javascript
+let status = DEFAULT_STATUS;
+
+// breakpoint ici
+
+if (conditionA) {
+    status = STATUS_A;
+}
+
+// observation de status
+
+if (conditionB) {
+    status = STATUS_B;
+}
+
+// observation de status
+
+return status;
+~~~
+
+Cette approche est particulièrement utile lorsque la fonction contient plusieurs règles métier.
+
+### 2. Faciliter la maintenance
+
+Éviter de disperser des valeurs de retour littérales dans différentes branches :
+
+~~~javascript
+function calculateStatus(data) {
+    if (conditionA) {
+        return "ERROR_A";
+    }
+
+    if (conditionB) {
+        return "ERROR_B";
+    }
+
+    return "OK";
+}
+~~~
+
+Préférer :
+
+~~~javascript
+function calculateStatus(data) {
+    let status = "OK";
+
+    if (conditionA) {
+        status = "ERROR_A";
+    } else if (conditionB) {
+        status = "ERROR_B";
+    }
+
+    return status;
+}
+~~~
+
+Cette organisation permet de localiser clairement la valeur résultante et
+facilite son évolution.
+
+Lorsque les valeurs correspondent à des constantes métier, il est préférable
+de les nommer explicitement :
+
+~~~javascript
+const STATUS_OK = "OK";
+const STATUS_ERROR_A = "ERROR_A";
+const STATUS_ERROR_B = "ERROR_B";
+
+function calculateStatus(data) {
+    let status = STATUS_OK;
+
+    if (conditionA) {
+        status = STATUS_ERROR_A;
+    } else if (conditionB) {
+        status = STATUS_ERROR_B;
+    }
+
+    return status;
+}
+~~~
+
+La logique de décision et les valeurs métier sont alors clairement séparées.
+
+### 3. Faciliter la lecture du flux de traitement
+
+Un `return` placé au milieu d'une fonction interrompt immédiatement son
+exécution.
+
+Lorsque plusieurs retours sont dispersés dans une fonction métier complexe,
+il peut devenir plus difficile de suivre le chemin d'exécution et de
+comprendre dans quelles circonstances la fonction quitte son traitement.
+
+Un point de sortie unique permet de visualiser plus facilement :
+
+1. l'état initial du résultat ;
+2. les règles qui peuvent modifier ce résultat ;
+3. la valeur finalement retournée.
+
+## Tests unitaires et couverture
+
+Un point de sortie unique ne signifie pas qu'il suffit de tester le `return`
+final.
+
+Chaque branche métier doit être couverte par les tests.
+
+Par exemple :
+
+~~~javascript
+test("minor gets 50% discount", () => {
+    expect(getDiscount(18)).toBe("50% OFF");
+});
+
+test("senior gets 30% discount", () => {
+    expect(getDiscount(65)).toBe("30%");
+});
+
+test("adult pays full price", () => {
+    expect(getDiscount(30)).toBe("Full price");
+});
+~~~
+
+La couverture des tests dépend des chemins d'exécution réellement testés,
+et non simplement du nombre de `return` présents dans la fonction.
+
+## Exception : retours anticipés (*guard clauses*)
+
+La règle ne doit pas être appliquée de manière dogmatique.
+
+Un retour anticipé peut être pertinent lorsqu'il permet de traiter
+immédiatement un cas invalide, exceptionnel ou non pertinent et d'éviter une
+imbrication excessive.
+
+~~~javascript
+function processUser(user) {
+    if (!user) {
+        return;
+    }
+
+    if (!user.isActive) {
+        return;
+    }
+
+    // Traitement principal
+}
+~~~
+
+Dans ce contexte, les retours anticipés peuvent améliorer la lisibilité.
+
+## Principe retenu
+
+> **Privilégier un point de sortie unique pour la logique métier et éviter les
+> valeurs de retour littérales dispersées dans les différentes branches.**
+
+Cette convention est motivée principalement par :
+
+- la facilité de débogage ;
+- la possibilité de suivre la valeur du résultat dans un inspecteur ;
+- la maintenabilité ;
+- la lisibilité du flux de traitement ;
+- la centralisation des valeurs de sortie ;
+- la facilité d'évolution des règles métier.
+
+Les retours anticipés restent acceptables lorsqu'ils constituent de véritables
+*guard clauses* et améliorent clairement la lisibilité du code.
+
+## Retour d'expérience
+
+Cette règle est issue d'une expérience concrète de maintenance de code.
+
+Des valeurs retournées directement et dispersées dans différentes branches
+peuvent sembler simples au moment du développement, mais deviennent plus
+difficiles à analyser et à faire évoluer lorsque la logique métier se
+complexifie.
+
+La capacité à reprendre un code plusieurs mois plus tard, à le déboguer et à
+le modifier sans introduire de régression doit être considérée comme un
+critère de qualité au même titre que la fonctionnalité initiale.
+
