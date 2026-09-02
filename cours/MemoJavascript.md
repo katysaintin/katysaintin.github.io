@@ -221,4 +221,245 @@ Le cycle complet est donc :
 
 **Objet JS → `stringify()` → JSON → `parse()` → Objet JS**
 
+# Arrow functions en JavaScript
+
+Les **arrow functions** (`=>`) ont été introduites avec **ES6**.
+
+Elles permettent d'écrire des fonctions de manière plus concise et sont
+particulièrement utilisées lorsqu'une petite fonction est passée en paramètre
+à une autre fonction.
+
+Elles ressemblent beaucoup aux **expressions lambda de Java**.
+
+---
+
+## 1. Syntaxe classique
+
+Une fonction classique :
+
+~~~javascript
+function getGreeting() {
+    return "Hello";
+}
+~~~
+
+Peut être écrite sous forme d'arrow function :
+
+~~~javascript
+const getGreeting = () => "Hello";
+~~~
+
+On peut la lire comme :
+
+~~~
+getGreeting
+    ↓
+une fonction
+    ↓
+aucun paramètre
+    ↓
+retourne "Hello"
+~~~
+
+---
+
+## 2. Avec un paramètre
+
+Fonction classique :
+
+~~~javascript
+function double(x) {
+    return x * 2;
+}
+~~~
+
+Arrow function :
+
+~~~javascript
+const double = (x) => x * 2;
+~~~
+
+Avec **un seul paramètre**, les parenthèses sont facultatives :
+
+~~~javascript
+const double = x => x * 2;
+~~~
+
+Pour la lisibilité, conserver les parenthèses peut néanmoins être préférable
+selon le contexte et les conventions du projet.
+
+---
+
+## 3. Avec plusieurs paramètres
+
+~~~javascript
+const add = (a, b) => a + b;
+~~~
+
+Les parenthèses sont obligatoires avec plusieurs paramètres.
+
+---
+
+## 4. Avec plusieurs instructions
+
+Lorsque le corps contient plusieurs instructions, on utilise des accolades.
+
+~~~javascript
+const calculate = (a, b) => {
+    const result = a + b;
+    return result;
+};
+~~~
+
+Dans ce cas, le `return` est nécessaire.
+
+### Attention
+
+Il existe donc deux syntaxes :
+
+~~~javascript
+// Retour implicite
+const double = x => x * 2;
+~~~
+
+~~~javascript
+// Retour explicite
+const double = x => {
+    return x * 2;
+};
+~~~
+
+Avec un corps sans accolades, l'expression est **retournée implicitement**.
+
+---
+
+## 5. Pourquoi les utilise-t-on souvent ?
+
+Les arrow functions sont particulièrement pratiques lorsqu'une petite fonction
+est utilisée localement, par exemple avec :
+
+- `map()`
+- `filter()`
+- `reduce()`
+- `forEach()`
+- `sort()`
+
+Exemple :
+
+~~~javascript
+const numbers = [1, 2, 3, 4];
+
+const doubled = numbers.map(x => x * 2);
+~~~
+
+Ici :
+
+~~~javascript
+x => x * 2
+~~~
+
+est une petite fonction passée à `map()`.
+
+Dans ce contexte, l'écriture compacte est particulièrement adaptée.
+
+---
+
+## 6. Ce n'est pas uniquement une question de nombre de lignes
+
+Il serait réducteur de considérer une arrow function comme simplement une
+fonction « écrite plus court ».
+
+Elle possède également une particularité importante concernant `this`.
+
+Une arrow function **ne possède pas son propre `this`**.
+Elle utilise le `this` du contexte dans lequel elle a été créée.
+
+C'est notamment utile dans certains callbacks et dans les méthodes de classes.
+
+---
+
+## 7. Arrow function et performance
+
+Il ne faut pas choisir une arrow function dans le but d'obtenir un code
+plus performant.
+
+Le principal intérêt est :
+
+- une syntaxe concise ;
+- une expression naturelle pour les petites fonctions ;
+- un comportement particulier de `this`.
+
+Le choix entre `function` et `=>` est donc principalement une question de
+**sémantique, de contexte et de lisibilité**, pas d'optimisation des
+performances.
+
+---
+
+## 8. Analogie avec Java
+
+Pour un développeur Java, on peut faire le rapprochement avec une lambda.
+
+Java :
+
+~~~java
+x -> x * 2
+~~~
+
+JavaScript :
+
+~~~javascript
+x => x * 2
+~~~
+
+L'idée est similaire : représenter un petit comportement que l'on peut
+notamment transmettre à une autre fonction.
+
+---
+
+## 9. Ne pas utiliser une arrow function partout
+
+Une arrow function n'est pas systématiquement plus lisible.
+
+Pour une fonction métier importante ou complexe, une fonction classique peut
+être beaucoup plus explicite :
+
+~~~javascript
+function calculateDifference(startDate, endDate) {
+    // plusieurs traitements métier...
+    const result = ...;
+    return result;
+}
+~~~
+
+Plutôt que de chercher systématiquement à réduire le nombre de lignes,
+il faut conserver comme objectif principal :
+
+> **Le code doit rester facile à comprendre et à maintenir.**
+
+Les arrow functions sont particulièrement intéressantes pour les fonctions
+courtes et locales.
+
+---
+
+## À retenir
+
+| Écriture | Usage typique |
+|---|---|
+| `function name() { ... }` | Fonction nommée, logique métier, fonction complexe |
+| `const f = () => ...` | Fonction stockée dans une variable |
+| `x => x * 2` | Petite fonction / callback |
+| `(a, b) => a + b` | Petite fonction avec plusieurs paramètres |
+
+### Idée essentielle
+
+**Arrow function ≈ lambda Java**, avec une syntaxe propre à JavaScript et
+un comportement particulier de `this`.
+
+Ce n'est donc pas simplement :
+
+> « une fonction classique en moins de lignes ».
+
+Et si une écriture plus courte rend le code moins lisible, **la version
+plus explicite reste parfaitement légitime**.
+
 
