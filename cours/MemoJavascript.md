@@ -115,3 +115,110 @@ Ne pas confondre :
 5 === "5"   // false
 5 == "5"    // true
 
+# JavaScript — JSON : conversion et parsing
+
+JavaScript fournit l'objet natif `JSON` pour convertir des objets JavaScript en chaînes JSON et inversement.
+
+## 1. Objet JavaScript → chaîne JSON
+
+Utiliser :
+
+`JSON.stringify()`
+
+~~~javascript
+const concert = {
+    band: "Super Carrots",
+    music: "Indie"
+};
+
+const jsonString = JSON.stringify(concert);
+
+console.log(jsonString);
+~~~
+
+Résultat :
+
+~~~text
+{"band":"Super Carrots","music":"Indie"}
+~~~
+
+⚠️ `JSON.stringify()` produit une **chaîne de caractères** contenant du JSON.
+
+C'est notamment utile pour :
+- envoyer des données via une API ;
+- stocker des données ;
+- sérialiser un objet JavaScript.
+
+---
+
+## 2. Chaîne JSON → objet JavaScript
+
+Utiliser :
+
+`JSON.parse()`
+
+~~~javascript
+const dog = '{"name":"Rocko","age":3}';
+
+const dogObject = JSON.parse(dog);
+
+console.log(dogObject);
+~~~
+
+On obtient alors un **objet JavaScript** que l'on peut manipuler normalement :
+
+~~~javascript
+console.log(dogObject.name);
+console.log(dogObject.age);
+~~~
+
+---
+
+## À retenir
+
+| Conversion | Méthode | Résultat |
+|---|---|---|
+| Objet JS → JSON | `JSON.stringify(obj)` | chaîne JSON |
+| JSON → Objet JS | `JSON.parse(json)` | objet JavaScript |
+
+### Mémo
+
+**stringify = transformer en string**
+
+~~~text
+JS Object
+   ↓
+JSON.stringify()
+   ↓
+JSON string
+~~~
+
+**parse = interpréter/analyser**
+
+~~~text
+JSON string
+   ↓
+JSON.parse()
+   ↓
+JS Object
+~~~
+
+### Point important
+
+JSON n'est pas exactement un objet JavaScript : c'est un **format texte d'échange de données**.
+
+Par exemple :
+
+~~~javascript
+const obj = { name: "Rocko", age: 3 };   // objet JS
+
+const json = JSON.stringify(obj);        // chaîne JSON
+
+const obj2 = JSON.parse(json);            // objet JS
+~~~
+
+Le cycle complet est donc :
+
+**Objet JS → `stringify()` → JSON → `parse()` → Objet JS**
+
+
