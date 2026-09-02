@@ -111,10 +111,10 @@ Ne pas confondre :
 
 ### À retenir
 
-```js
+~~~javascript
 5 === "5"   // false
 5 == "5"    // true
-´´´
+~~~
 # JavaScript — JSON : conversion et parsing
 
 JavaScript fournit l'objet natif `JSON` pour convertir des objets JavaScript en chaînes JSON et inversement.
