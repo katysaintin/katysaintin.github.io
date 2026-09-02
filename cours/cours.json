@@ -8,6 +8,13 @@
     "pdf": "Full-Stack-Web-Comprendre-larchitecture-moderne.pdf"
   },
 
+  "bonnes-pratiques": {
+    "title": "Les bonnes pratiques de programmation",
+    "description": "Un cours transversal — Java, Python, JavaScript et autres langages — pour apprendre à bien programmer, pas seulement à faire fonctionner un programme.",
+    "icon": "💡",
+    "pdf": "Bonnes-Pratiques-Programmation.pdf"
+  },
+
   "_exemple-a-dupliquer": {
     "title": "Titre du cours",
     "description": "Une phrase claire qui résume le contenu et le public visé.",
