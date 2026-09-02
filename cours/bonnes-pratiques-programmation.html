@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les bonnes pratiques de programmation — Principes de génie logiciel | Katy Saintin</title>
+<meta name="description" content="Cours transversal (Java, Python, JavaScript) sur les bonnes pratiques de programmation : lisibilité, debugging, responsabilités, testabilité, abstraction et architecture.">
+<link rel="icon" type="image/png" href="../favicon.png">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CLGVGY5YNH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CLGVGY5YNH', { 'anonymize_ip': true });
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #0c1220;
+    --bg-panel: #121a2b;
+    --bg-card: #16203350;
+    --line: #26324a;
+    --text: #e7ecf6;
+    --text-muted: #90a0bd;
+    --accent: #5b9bd5;
+    --accent-soft: #8ecae6;
+    --accent-2: #4fd1c5;
+    --code-bg: #0a0f1a;
+    --radius: 10px;
+    --maxw: 920px;
+    --bad: #d98a92;
+    --good: #6cc9a0;
+    --warn: #e0a458;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 85% -10%, #16233f 0%, transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter', system-ui, sans-serif;
+    line-height:1.65;
+  }
+
+  a{ color:var(--accent-soft); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+
+  h1,h2,h3{
+    font-family:'Space Grotesk', 'Inter', sans-serif;
+    letter-spacing:-0.01em;
+    color:#f4f7fc;
+  }
+
+  code, pre, .mono{
+    font-family:'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  /* ---------- barre de navigation unique, avec menu déroulant ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,15,26,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px;
+    padding: 13px 16px;
+    max-width:1240px;
+    margin:0 auto;
+  }
+  .nav .brand{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:0.92rem;
+    color:var(--text);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    min-width:0;
+    flex-shrink:1;
+  }
+  .nav .brand span{ color:var(--accent-soft); }
+
+  .nav-toggle{
+    flex-shrink:0;
+    display:flex; align-items:center; gap:6px;
+    background:transparent;
+    border:1px solid var(--line);
+    border-radius:8px;
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    font-size:0.82rem;
+    padding:8px 12px;
+    cursor:pointer;
+    min-height:40px;
+  }
+  .nav-toggle:hover{ border-color:var(--accent); }
+  .nav-toggle .bars{ display:inline-block; font-size:1rem; line-height:1; }
+
+  .nav-menu{
+    max-height:0;
+    overflow:hidden;
+    border-top:0 solid var(--line);
+    background:#0d1526;
+    transition: max-height .22s ease;
+  }
+  .nav-menu.is-open{
+    max-height:70vh;
+    overflow-y:auto;
+    border-top-width:1px;
+  }
+  .nav-menu-inner{ max-width:1240px; margin:0 auto; padding:10px 16px 18px; }
+  .nav-menu a{
+    display:flex; align-items:center; gap:10px;
+    padding:11px 6px;
+    font-size:0.9rem;
+    color:var(--text);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-menu a:last-child{ border-bottom:none; }
+  .nav-menu a:hover, .nav-menu a.is-active{
+    color:var(--accent-soft);
+    text-decoration:none;
+  }
+  .nav-menu-label{
+    display:block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--text-muted);
+    padding:14px 6px 6px;
+  }
+  .nav-menu-label:first-child{ padding-top:4px; }
+
+  /* ---------- layout ---------- */
+  .layout{
+    display:grid;
+    grid-template-columns: 250px 1fr;
+    gap:48px;
+    max-width:1240px;
+    margin:0 auto;
+    padding: 36px 24px 100px;
+  }
+  @media (max-width: 880px){
+    .layout{ grid-template-columns: 1fr; }
+    .toc{ position:static; order:2; }
+    main{ order:1; }
+  }
+
+  /* ---------- sommaire ---------- */
+  .toc{
+    position:sticky; top:70px; align-self:start;
+    scroll-margin-top:90px;
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px 16px;
+    max-height: calc(100vh - 100px);
+    overflow-y:auto;
+  }
+  .toc h2{
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--text-muted);
+    margin:0 0 12px;
+  }
+  .toc ol{
+    list-style:none; margin:0; padding:0;
+    counter-reset: toc-counter;
+  }
+  .toc li{ counter-increment: toc-counter; margin:0; }
+  .toc a{
+    display:flex; gap:10px;
+    padding:8px 8px;
+    border-radius:6px;
+    font-size:0.87rem;
+    color:var(--text-muted);
+  }
+  .toc a::before{
+    content: counter(toc-counter, decimal-leading-zero);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.75rem;
+    color:var(--accent);
+    flex-shrink:0;
+  }
+  .toc a:hover, .toc a.is-active{
+    background:#1b2740;
+    color:var(--text);
+    text-decoration:none;
+  }
+  .toc a.is-active::before{ color:var(--accent-soft); }
+
+  /* ---------- hero ---------- */
+  .hero{
+    max-width:var(--maxw);
+    padding: 8px 0 28px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:12px;
+  }
+  .hero .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    color:var(--accent-2);
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-size:clamp(1.8rem, 3.6vw, 2.6rem);
+    line-height:1.15;
+    margin:0 0 16px;
+  }
+  .hero p{
+    color:var(--text-muted);
+    font-size:1.05rem;
+    max-width: 62ch;
+  }
+
+  /* ---------- sections ---------- */
+  main{ max-width:var(--maxw); }
+  section{
+    padding: 52px 0;
+    border-bottom:1px solid var(--line);
+    scroll-margin-top: 84px;
+  }
+  section:last-of-type{ border-bottom:none; }
+
+  .section-num{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--accent);
+    font-size:0.85rem;
+    margin-bottom:8px;
+  }
+  section h2{
+    font-size:clamp(1.35rem, 2.4vw, 1.7rem);
+    margin:0 0 18px;
+  }
+  section h3.sub{
+    font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--text-muted); font-weight:500; margin:28px 0 12px;
+  }
+  section > p.lede{
+    color:var(--text-muted);
+    font-size:1.02rem;
+    max-width:65ch;
+    margin-bottom:26px;
+  }
+  section p{ margin:0 0 14px; }
+
+  /* callouts */
+  .callout{
+    background:linear-gradient(135deg, #16345a 0%, #142138 100%);
+    border:1px solid #2c4870;
+    border-radius:var(--radius);
+    padding:16px 18px;
+    font-size:0.95rem;
+    color:#dce8f7;
+    margin:16px 0;
+  }
+  .callout b{ color:#fff; }
+  .callout-label{
+    display:block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    margin-bottom:8px;
+    color:var(--accent-soft);
+  }
+  .callout--why{ border-color:#1f5a52; background:linear-gradient(135deg,#123a35 0%,#0f1f28 100%); }
+  .callout--why .callout-label{ color:var(--accent-2); }
+  .callout--attention{ border-color:#5a4420; background:linear-gradient(135deg,#3a2b16 0%,#241a10 100%); color:#f1e3cf; }
+  .callout--attention b{ color:#ffdca8; }
+  .callout--attention .callout-label{ color:var(--warn); }
+  .callout--exception{ background:var(--bg-panel); border:1px dashed var(--line); color:var(--text-muted); }
+  .callout--exception .callout-label{ color:var(--text-muted); }
+  .callout--retain{ }
+
+  /* code block */
+  .code-block{
+    background:var(--code-bg);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px 20px;
+    overflow-x:auto;
+    margin:18px 0;
+  }
+  .code-block pre{ margin:0; font-size:0.86rem; color:#c9d6ea; white-space:pre-wrap; }
+  .code-block .cm{ color:#6f819e; }
+  .code-block .kw{ color:var(--accent-soft); }
+  .code-block .str{ color:#ffd479; }
+  .code-block .num{ color:var(--accent-2); }
+
+  /* comparaison mauvais / bon exemple */
+  .code-compare{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; }
+  @media (max-width:700px){ .code-compare{ grid-template-columns:1fr; } }
+  .code-compare .code-block{ margin:0; }
+  .code-compare .bad{ border-color:#4a2c30; }
+  .code-compare .good{ border-color:#1f4536; }
+  .code-label{ display:block; font-family:'JetBrains Mono', monospace; font-size:0.78rem; margin-bottom:10px; }
+  .code-label.bad{ color:var(--bad); }
+  .code-label.good{ color:var(--good); }
+  .code-note{ font-size:0.88rem; color:var(--text-muted); margin-top:10px; }
+
+  ul.key-points{ margin:0; padding-left:0; list-style:none; }
+  ul.key-points li{
+    padding:10px 0 10px 26px;
+    position:relative;
+    border-bottom:1px dashed var(--line);
+    font-size:0.95rem;
+  }
+  ul.key-points li:last-child{ border-bottom:none; }
+  ul.key-points li::before{
+    content:"▸";
+    position:absolute; left:0; top:10px;
+    color:var(--accent);
+  }
+  ul.key-points b{ color:#f4f7fc; }
+
+  ul.plain, section ol{ margin:0 0 14px; padding-left:22px; }
+  ul.plain li, section ol li{ margin-bottom:6px; font-size:0.95rem; }
+
+  /* tech grid réutilisé pour cartes génériques (langages, lecteurs du code…) */
+  .tech-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:12px;
+    margin-bottom:16px;
+  }
+  @media (max-width:700px){ .tech-grid{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width:480px){ .tech-grid{ grid-template-columns: 1fr; } }
+  .tech-card{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px;
+  }
+  .tech-card h4{
+    margin:0 0 6px;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1rem;
+    color:#f4f7fc;
+  }
+  .tech-card p{ margin:0; color:var(--text-muted); font-size:0.88rem; }
+
+  /* comparison table */
+  .table-wrap{ overflow-x:auto; margin:18px 0; border-radius:10px; border:1px solid var(--line); }
+  table{ width:100%; border-collapse:collapse; font-size:0.92rem; min-width:480px; }
+  thead th{
+    background:#132038;
+    text-align:left;
+    padding:12px 16px;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    color:var(--accent-soft);
+    border-bottom:1px solid var(--line);
+  }
+  tbody td{
+    padding:12px 16px;
+    border-bottom:1px solid var(--line);
+    color:var(--text);
+  }
+  tbody td:first-child{ color:var(--text-muted); font-weight:500; }
+  tbody tr:last-child td{ border-bottom:none; }
+  tbody tr:hover td{ background:#101a2e; }
+
+  /* flux / diagrammes simples en texte */
+  .flow{ display:flex; flex-direction:column; gap:0; margin:20px 0; }
+  .flow .step{
+    font-family:'JetBrains Mono', monospace; font-size:0.85rem;
+    background:var(--bg-panel); border:1px solid var(--line);
+    border-left:3px solid var(--accent); border-radius:8px;
+    padding:10px 14px; color:var(--text);
+  }
+  .flow .arrow{ color:var(--accent); font-size:0.9rem; padding:2px 0 2px 22px; }
+  .flow.flow--bad .step{ border-left-color:var(--bad); }
+  .flow.flow--bad .arrow{ color:var(--bad); }
+
+  .quote{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.1rem;
+    line-height:1.5;
+    color:#f4f7fc;
+    border-left:3px solid var(--accent);
+    padding:6px 0 6px 20px;
+    margin:22px 0;
+  }
+  .quote span{ color:var(--text-muted); font-size:0.9rem; display:block; margin-top:8px; font-family:'Inter',sans-serif; }
+
+  .keyword-grid{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  .keyword-grid span{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.82rem;
+    background:#101a2e;
+    border:1px solid var(--line);
+    color:var(--accent-soft);
+    padding:6px 12px;
+    border-radius:999px;
+  }
+
+  .checklist{ margin:18px 0; padding:0; list-style:none; }
+  .checklist li{
+    display:flex; gap:10px; align-items:flex-start;
+    padding:9px 0; border-bottom:1px dashed var(--line); font-size:0.95rem;
+  }
+  .checklist li:last-child{ border-bottom:none; }
+  .checklist li::before{ content:"☐"; color:var(--accent-2); flex-shrink:0; }
+
+  footer{
+    max-width:var(--maxw);
+    margin: 20px auto 0;
+    padding: 28px 24px 60px;
+    color:var(--text-muted);
+    font-size:0.85rem;
+    text-align:center;
+  }
+  footer a{ color:var(--text-muted); }
+
+  ::-webkit-scrollbar{ width:10px; height:10px; }
+  ::-webkit-scrollbar-track{ background:var(--bg); }
+  ::-webkit-scrollbar-thumb{ background:#243250; border-radius:8px; }
+
+  /* liens "en savoir plus" */
+  a.more-link{
+    display:inline-flex; align-items:center; gap:4px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.74rem;
+    color:var(--accent-2);
+    margin-top:6px;
+  }
+  a.more-link:hover{ color:var(--accent-soft); }
+
+  /* lexique */
+  .glossary{ display:grid; grid-template-columns: 1fr 1fr; gap:0 32px; }
+  @media (max-width:600px){ .glossary{ grid-template-columns:1fr; } }
+  .glossary dt{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:600;
+    color:var(--accent-soft);
+    font-size:0.92rem;
+    padding-top:14px;
+    border-top:1px solid var(--line);
+    margin-top:14px;
+  }
+  .glossary dt:nth-of-type(1), .glossary dt:nth-of-type(2){ margin-top:0; }
+  .glossary dd{ margin:6px 0 0; color:var(--text-muted); font-size:0.88rem; }
+
+  /* bouton retour en haut */
+  #backToTop{
+    position:fixed; right:20px; bottom:20px;
+    width:42px; height:42px; border-radius:50%;
+    background:var(--bg-panel); border:1px solid var(--line);
+    color:var(--text); font-size:1.1rem;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; opacity:0; pointer-events:none;
+    transition:opacity .2s ease; z-index:40;
+  }
+  #backToTop.is-visible{ opacity:1; pointer-events:auto; }
+  #backToTop:hover{ border-color:var(--accent); }
+</style>
+</head>
+<body>
+
+<!-- barre de navigation unique, avec menu déroulant -->
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">Katy Saintin <span>/ cours</span></div>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+      <span class="bars">☰</span> Menu
+    </button>
+  </div>
+  <div class="nav-menu" id="navMenu">
+    <div class="nav-menu-inner">
+      <span class="nav-menu-label">Navigation</span>
+      <a href="cours.html">← Retour au catalogue</a>
+      <a href="../index.html">🏠 Accueil du site</a>
+      <a href="BonnesPratiquesProgrammation.md" target="_blank" rel="noopener">📄 Source Markdown</a>
+
+      <span class="nav-menu-label">Sections du cours</span>
+      <a href="#intro" class="jump-link" data-target="intro">Introduction</a>
+      <a href="#lisibilite" class="jump-link" data-target="lisibilite">Lisibilité</a>
+      <a href="#conditions" class="jump-link" data-target="conditions">Conditions</a>
+      <a href="#retours" class="jump-link" data-target="retours">Retours de fonction</a>
+      <a href="#abstraction" class="jump-link" data-target="abstraction">Abstraction</a>
+      <a href="#synthese" class="jump-link" data-target="synthese">Synthèse</a>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- sommaire -->
+  <nav class="toc" id="toc" aria-label="Sommaire">
+    <h2>Sommaire</h2>
+    <ol>
+      <li><a href="#intro">Introduction</a></li>
+      <li><a href="#philosophie">Philosophie du cours</a></li>
+      <li><a href="#lisibilite">Lisibilité du code</a></li>
+      <li><a href="#debugging">Faciliter le debugging</a></li>
+      <li><a href="#responsabilites">Responsabilités et découpage</a></li>
+      <li><a href="#conditions">Conditions et structures de contrôle</a></li>
+      <li><a href="#retours">Gestion des retours de fonction</a></li>
+      <li><a href="#duplication">Éviter la duplication</a></li>
+      <li><a href="#donnees">Valeurs, structures de données et mémoire</a></li>
+      <li><a href="#commentaires">Commentaires et documentation</a></li>
+      <li><a href="#testabilite">Testabilité et maintenabilité</a></li>
+      <li><a href="#abstraction">Abstraction, interfaces et architecture</a></li>
+      <li><a href="#transversal">Bonnes pratiques transversales</a></li>
+      <li><a href="#synthese">Synthèse</a></li>
+      <li><a href="#lexique">Lexique</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <div class="eyebrow">Cours · Génie logiciel</div>
+      <h1>Les bonnes pratiques de programmation</h1>
+      <p>Un cours transversal — Java, Python, JavaScript et autres langages — pour apprendre à <b style="color:#f4f7fc;">bien programmer</b>, pas seulement à faire fonctionner un programme.</p>
+    </div>
+
+    <!-- 1. Introduction -->
+    <section id="intro">
+      <div class="section-num">01</div>
+      <h2>Introduction</h2>
+      <p class="lede">Un langage permet de faire fonctionner un programme. Le génie logiciel permet de construire un programme que l'on peut <b style="color:#f4f7fc;">comprendre, tester, debugger, maintenir et faire évoluer</b>.</p>
+
+      <p>Python est facile à prendre en main. Mais écrire rapidement du code qui fonctionne n'est pas la même chose qu'écrire du logiciel maintenable. Plus le langage laisse de liberté au développeur, plus les conventions, la lisibilité, le typage explicite, les tests et l'architecture deviennent importants.</p>
+
+      <div class="tech-grid">
+        <div class="tech-card"><h4>🏸 Python</h4><p>Prise en main rapide → on s'amuse rapidement → beaucoup de liberté → les contraintes arrivent progressivement</p></div>
+        <div class="tech-card"><h4>🎾 Java</h4><p>Plus de technique dès le départ → typage, compilation, POO, interfaces, exceptions, JVM → cadre plus contraignant</p></div>
+        <div class="tech-card"><h4>🏓 C++</h4><p>On entre directement dans le technique → compilation, typage fort, pointeurs, références, mémoire, POO, templates…</p></div>
+      </div>
+    </section>
+
+    <!-- 2. Philosophie -->
+    <section id="philosophie">
+      <div class="section-num">02</div>
+      <h2>Philosophie du cours</h2>
+
+      <div class="callout">
+        <span class="callout-label">Principe</span>
+        Le compilateur/interpréteur doit comprendre notre code. Mais surtout, <b>un autre développeur doit pouvoir le comprendre</b>.
+      </div>
+
+      <p>Un code peut compiler, s'exécuter correctement et produire le bon résultat… et pourtant être mauvais. Les bonnes pratiques servent notamment à améliorer :</p>
+      <ul class="plain">
+        <li>la lisibilité</li>
+        <li>la maintenabilité</li>
+        <li>le débogage</li>
+        <li>la testabilité</li>
+        <li>la réutilisabilité</li>
+        <li>l'évolutivité</li>
+        <li>la collaboration entre développeurs</li>
+      </ul>
+
+      <div class="callout callout--retain">
+        <span class="callout-label">À retenir</span>
+        Une bonne pratique doit toujours être accompagnée de son « pourquoi ». Éviter de présenter les règles comme des interdictions arbitraires.
+      </div>
+    </section>
+
+    <!-- 3. Lisibilité -->
+    <section id="lisibilite">
+      <div class="section-num">03</div>
+      <h2>Lisibilité du code</h2>
+      <p class="lede">Une instruction par ligne, des noms explicites, les conventions du langage : autant de choix qui déterminent si le code se lit d'un coup d'œil ou se déchiffre.</p>
+
+      <h3 class="sub">Une instruction par ligne</h3>
+      <div class="code-compare">
+        <div class="code-block bad"><span class="code-label bad">❌ À éviter</span><pre>int result = Integer.parseInt(getVariable())
+    + getIncrement() / magicNumber.doubleValue();</pre></div>
+        <div class="code-block good"><span class="code-label good">✓ À privilégier</span><pre>double variable = getVariable();
+int increment = getIncrement();
+double magicValue = magicNumber.doubleValue();
+
+int value = Integer.parseInt(variable);
+int result = value + increment;</pre></div>
+      </div>
+      <div class="callout callout--why">
+        <span class="callout-label">Pourquoi ?</span>
+        Une instruction par ligne permet de lire le code étape par étape, de poser un breakpoint, d'inspecter les variables, d'identifier précisément l'instruction qui échoue et de comprendre plus facilement une stacktrace.
+      </div>
+      <p class="code-note">Le compilateur comprend une grosse ligne. Le développeur qui doit la debugger vous remerciera si vous l'avez découpée.</p>
+
+      <h3 class="sub">Éviter les chaînes d'appels inutiles</h3>
+      <div class="code-compare">
+        <div class="code-block bad"><span class="code-label bad">❌ À éviter</span><pre>result = calculate(getValue().trim()
+    .toLowerCase().replace(...));</pre></div>
+        <div class="code-block good"><span class="code-label good">✓ À privilégier</span><pre>String value = getValue();
+String trimmedValue = value.trim();
+String normalizedValue = trimmedValue.toLowerCase();
+
+result = calculate(normalizedValue);</pre></div>
+      </div>
+      <p class="code-note">Cela augmente légèrement le nombre de lignes, mais améliore fortement la compréhension et le debugging — chaque étape peut être inspectée séparément.</p>
+
+      <h3 class="sub">Donner des noms explicites aux variables</h3>
+      <div class="code-compare">
+        <div class="code-block bad"><span class="code-label bad">❌ À éviter</span><pre>int x;
+int n;
+int v;</pre></div>
+        <div class="code-block good"><span class="code-label good">✓ À privilégier</span><pre>int numberOfAttempts;
+int numberOfUsers;
+int currentValue;</pre></div>
+      </div>
+      <p class="code-note"><code>x</code> est rapide à écrire. <code>numberOfAttempts</code> est rapide à comprendre. Le nom d'une variable doit permettre de comprendre ce qu'elle représente sans devoir lire tout le code autour.</p>
+
+      <h3 class="sub">Respecter les conventions de nommage du langage</h3>
+      <div class="code-compare">
+        <div class="code-block"><span class="code-label" style="color:var(--accent-soft);">Java</span><pre>class UserManager
+
+private int numberOfUsers;
+
+public void calculateStatus()</pre></div>
+        <div class="code-block"><span class="code-label" style="color:var(--accent-soft);">Python</span><pre>class UserManager:
+
+    number_of_users = 0
+
+    def calculate_status():
+        ...</pre></div>
+      </div>
+      <p class="code-note">Utiliser les conventions de l'écosystème : <code>camelCase</code>, <code>PascalCase</code>, <code>snake_case</code>, pour les constantes, attributs, variables locales, méthodes, classes. Le code doit avoir le dialecte du langage dans lequel il est écrit.</p>
+
+      <h3 class="sub">Utiliser l'anglais dans le code</h3>
+      <p>Privilégier l'anglais pour les noms de classes, méthodes, variables, constantes, commentaires techniques et la documentation du code — et éviter les accents dans les identifiants. Le code est souvent partagé entre des personnes de nationalités différentes et avec des outils, frameworks et bibliothèques utilisant majoritairement l'anglais.</p>
+      <div class="code-compare">
+        <div class="code-block bad"><span class="code-label bad">❌ À éviter</span><pre>int nombreDeTentatives;</pre></div>
+        <div class="code-block good"><span class="code-label good">✓ À privilégier</span><pre>int numberOfAttempts;</pre></div>
+      </div>
+      <div class="callout callout--retain"><span class="callout-label">À retenir</span>Le code parle anglais. Les explications peuvent parler français.</div>
+    </section>
+
+    <!-- 4. Debugging -->
+    <section id="debugging">
+      <div class="section-num">04</div>
+      <h2>Faciliter le debugging</h2>
+      <p class="lede">Une stacktrace vous donne une ligne. Donnez-lui une chance de vous donner une information utile.</p>
+
+      <p>Si une exception indique <code>NullPointerException — MyClass.java:40</code> et que la ligne 40 contient dix opérations imbriquées, il faut déterminer quelle opération est responsable. Avec des variables intermédiaires, chaque étape peut être inspectée :</p>
+      <div class="code-block"><pre>String value = getValue();
+int increment = getIncrement();
+double result = calculate(value, increment);</pre></div>
+
+      <h3 class="sub">Réutiliser une valeur calculée</h3>
+      <div class="code-compare">
+        <div class="code-block bad"><span class="code-label bad">❌ À éviter</span><pre>while (calculateStatus()) {
+    ...
+}</pre></div>
+        <div class="code-block good"><span class="code-label good">✓ À privilégier</span><pre>boolean status = calculateStatus();
+
+while (status) {
+    ...
+}</pre></div>
+      </div>
+      <p class="code-note"><code>calculateStatus()</code> appelée à chaque itération peut être volontaire — mais il faut se poser la question : la valeur doit-elle réellement être recalculée à chaque tour ? Réutiliser la valeur gagne en lisibilité et en possibilité d'inspection.</p>
+    </section>
+
+    <!-- 5. Responsabilités -->
+    <section id="responsabilites">
+      <div class="section-num">05</div>
+      <h2>Responsabilités et découpage</h2>
+      <p class="lede">Une fonction ou méthode devrait avoir une responsabilité clairement identifiable.</p>
+
+      <div class="code-compare">
+        <div class="code-block bad"><span class="code-label bad">❌ À éviter</span><pre>testIfOkAndDestroy();</pre></div>
+        <div class="code-block good"><span class="code-label good">✓ À privilégier</span><pre>boolean isValid();
+destroy();</pre></div>
+      </div>
+      <p class="code-note">Le nom <code>testIfOkAndDestroy()</code> révèle déjà un problème : la méthode semble faire au moins deux choses. Une méthode doit idéalement pouvoir être décrite par « Cette méthode fait X. » — et non « Cette méthode vérifie X, modifie Y, sauvegarde Z et détruit W. »</p>
+
+      <h3 class="sub">Éviter les fonctions trop longues</h3>
+      <p>Une fonction longue est souvent le signal qu'elle contient plusieurs responsabilités. Découper permet de mieux lire, de mieux tester, de réutiliser certaines parties, de localiser les erreurs et de faire évoluer une partie sans modifier tout le reste.</p>
+    </section>
+
+    <!-- 6. Conditions -->
+    <section id="conditions">
+      <div class="section-num">06</div>
+      <h2>Conditions et structures de contrôle</h2>
+
+      <h3 class="sub">Décomposer les conditions complexes</h3>
+      <div class="code-compare">
+        <div class="code-block bad"><span class="code-label bad">❌ À éviter</span><pre>if (value > 10 && status == ACTIVE
+    && user != null && user.isAuthorized()) {
+    ...
+}</pre></div>
+        <div class="code-block good"><span class="code-label good">✓ À privilégier</span><pre>boolean validValue = value > 10;
+boolean active = status == ACTIVE;
+boolean validUser = user != null;
+boolean authorized = user.isAuthorized();
+
+if (validValue && active && validUser && authorized) {
+    ...
+}</pre></div>
+      </div>
+      <p class="code-note">Les variables intermédiaires permettent de comprendre chaque condition, de debugger et de tester chaque élément séparément — lorsque cela améliore réellement la compréhension.</p>
+      <div class="callout callout--retain"><span class="callout-label">À retenir</span>Une condition doit être lisible avant d'être compacte. Si une condition nécessite plusieurs secondes pour être comprise, elle mérite probablement d'être décomposée.</div>
+
+      <h3 class="sub">if : privilégier la simplicité</h3>
+      <div class="code-compare">
+        <div class="code-block bad"><span class="code-label bad">❌ À éviter</span><pre>if (isActive == true) { ... }
+// Python
+if is_active == True: ...</pre></div>
+        <div class="code-block good"><span class="code-label good">✓ À privilégier</span><pre>if (isActive) { ... }
+# Python
+if is_active: ...</pre></div>
+      </div>
+      <p class="code-note">Lorsque la variable est déjà un booléen, la comparaison à <code>true</code> est redondante.</p>
+
+      <h3 class="sub">Choisir la bonne structure de contrôle</h3>
+      <p>Une longue succession de conditions n'est pas toujours la meilleure solution. Pour plusieurs égalités sur une même valeur, préférer une structure de sélection lorsque le langage en fournit une :</p>
+      <div class="code-compare">
+        <div class="code-block bad"><span class="code-label bad">❌ À éviter</span><pre>if (value == 1 || value == 2 || value == 3) {
+    doSomething();
+} else if (value == 4) {
+    doSomethingElse();
+}</pre></div>
+        <div class="code-block good"><span class="code-label good">✓ À privilégier</span><pre>switch (value) {
+    case 1: case 2: case 3:
+        doSomething();
+        break;
+    case 4:
+        doSomethingElse();
+        break;
+}
+// Python moderne
+match value:
+    case 1 | 2 | 3:
+        do_something()
+    case 4:
+        do_something_else()</pre></div>
+      </div>
+      <div class="callout callout--retain"><span class="callout-label">À retenir</span>Choisir la structure qui exprime le mieux l'intention.</div>
+    </section>
+
+    <!-- 7. Retours de fonction -->
+    <section id="retours">
+      <div class="section-num">07</div>
+      <h2>Gestion des retours de fonction</h2>
+      <p class="lede">Pour les fonctions contenant une logique métier, privilégier un point de sortie unique.</p>
+
+      <p>La valeur de retour est initialisée avec une valeur par défaut en début de fonction, puis modifiée selon les conditions rencontrées ; le <code>return</code> est placé en fin de fonction.</p>
+
+      <div class="code-block"><span class="code-label good">✓ Exemple recommandé</span><pre>function getDiscount(age) {
+    let discount = "Full price";
+
+    if (age <= 18) {
+        discount = "50% OFF";
+    } else if (age >= 65) {
+        discount = "30%";
+    }
+
+    return discount;
+}</pre></div>
+
+      <h3 class="sub">Pourquoi ce choix ?</h3>
+      <ul class="key-points">
+        <li><b>Faciliter le débogage</b> — la variable de résultat peut être observée dans l'inspecteur et suivie pas à pas au fur et à mesure de l'exécution.</li>
+        <li><b>Faciliter la maintenance</b> — éviter de disperser des valeurs de retour littérales dans différentes branches ; nommer les constantes métier.</li>
+        <li><b>Faciliter la lecture du flux</b> — un point de sortie unique permet de visualiser l'état initial du résultat, les règles qui peuvent le modifier, et la valeur finalement retournée.</li>
+      </ul>
+
+      <div class="code-compare">
+        <div class="code-block bad"><span class="code-label bad">❌ Valeurs dispersées</span><pre>function calculateStatus(data) {
+    if (conditionA) { return "ERROR_A"; }
+    if (conditionB) { return "ERROR_B"; }
+    return "OK";
+}</pre></div>
+        <div class="code-block good"><span class="code-label good">✓ Sortie unique + constantes</span><pre>const STATUS_OK = "OK";
+const STATUS_ERROR_A = "ERROR_A";
+const STATUS_ERROR_B = "ERROR_B";
+
+function calculateStatus(data) {
+    let status = STATUS_OK;
+    if (conditionA) { status = STATUS_ERROR_A; }
+    else if (conditionB) { status = STATUS_ERROR_B; }
+    return status;
+}</pre></div>
+      </div>
+
+      <h3 class="sub">Tests unitaires et couverture</h3>
+      <p>Un point de sortie unique ne signifie pas qu'il suffit de tester le <code>return</code> final : chaque branche métier doit être couverte.</p>
+      <div class="code-block"><pre>test("minor gets 50% discount", () => {
+    expect(getDiscount(18)).toBe("50% OFF");
+});
+test("senior gets 30% discount", () => {
+    expect(getDiscount(65)).toBe("30%");
+});
+test("adult pays full price", () => {
+    expect(getDiscount(30)).toBe("Full price");
+});</pre></div>
+
+      <div class="callout callout--exception">
+        <span class="callout-label">Exception — retours anticipés (guard clauses)</span>
+        La règle ne doit pas être appliquée de manière dogmatique. Un retour anticipé peut être pertinent lorsqu'il permet de traiter immédiatement un cas invalide, exceptionnel ou non pertinent, et d'éviter une imbrication excessive.
+        <div class="code-block" style="margin-top:12px;"><pre>function processUser(user) {
+    if (!user) { return; }
+    if (!user.isActive) { return; }
+    // Traitement principal
+}</pre></div>
+      </div>
+
+      <div class="callout callout--retain">
+        <span class="callout-label">Retour d'expérience</span>
+        Cette règle est issue d'une expérience concrète de maintenance de code. Des valeurs retournées directement et dispersées peuvent sembler simples au moment du développement, mais deviennent plus difficiles à analyser et à faire évoluer lorsque la logique métier se complexifie. Reprendre un code plusieurs mois plus tard, le déboguer et le modifier sans régression est un critère de qualité au même titre que la fonctionnalité initiale.
+      </div>
+    </section>
+
+    <!-- 8. Duplication -->
+    <section id="duplication">
+      <div class="section-num">08</div>
+      <h2>Éviter la duplication</h2>
+      <p class="lede">Si le même code apparaît plusieurs fois, se demander : pourquoi cette logique existe-t-elle à plusieurs endroits ?</p>
+      <p>La duplication augmente le risque d'incohérence. Si une règle métier change, il faudra modifier plusieurs endroits. Chercher à centraliser les comportements communs.</p>
+    </section>
+
+    <!-- 9. Données -->
+    <section id="donnees">
+      <div class="section-num">09</div>
+      <h2>Valeurs, structures de données et mémoire</h2>
+
+      <h3 class="sub">Éviter les valeurs magiques</h3>
+      <div class="code-compare">
+        <div class="code-block bad"><span class="code-label bad">❌ À éviter</span><pre>if (temperature > 75) { ... }</pre></div>
+        <div class="code-block good"><span class="code-label good">✓ À privilégier</span><pre>final double MAX_TEMPERATURE = 75;
+
+if (temperature > MAX_TEMPERATURE) { ... }</pre></div>
+      </div>
+      <p class="code-note">Que représente <code>75</code> ? Le nom donne immédiatement du sens à la valeur — même principe pour les seuils, durées, tailles, codes, états, nombres utilisés plusieurs fois. Un nombre sans nom est souvent une information sans contexte.</p>
+
+      <h3 class="sub">Liste Python vs tableau Java</h3>
+      <p><code>values = [70]</code> crée une liste contenant <b style="color:#f4f7fc;">un seul élément</b> de valeur 70. Pour créer 70 éléments initialisés à 0 : <code>values = [0] * 70</code>. La liste reste cependant dynamique (<code>values.append(42)</code> → 71 éléments).</p>
+      <p>En Java, <code>int[] values = new int[70];</code> crée un tableau de <b style="color:#f4f7fc;">70 éléments à taille fixe</b>, chaque élément primitif recevant sa valeur par défaut (<code>0</code>, <code>0.0</code>, <code>false</code>, <code>null</code> pour les objets).</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th></th><th>Python <code>list</code></th><th>Java <code>array</code></th></tr></thead>
+          <tbody>
+            <tr><td>Taille initiale</td><td>définie par le nombre d'éléments</td><td>définie à la création</td></tr>
+            <tr><td>Taille modifiable</td><td>Oui</td><td>Non</td></tr>
+            <tr><td>Ajouter un élément</td><td><code>append()</code></td><td>Impossible directement</td></tr>
+            <tr><td>Valeur par défaut (entier)</td><td>aucune création implicite</td><td><code>0</code></td></tr>
+            <tr><td>Absence de valeur</td><td><code>None</code></td><td><code>null</code> pour les références</td></tr>
+            <tr><td>Taille</td><td><code>len(list)</code></td><td><code>array.length</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout callout--attention"><span class="callout-label">Attention</span>Une liste Python n'a pas une taille fixe. <code>values = [None] * 70</code> crée bien 70 éléments, mais <code>append()</code> peut ensuite agrandir la liste. Une liste Python n'est pas non plus l'équivalent exact d'un tableau Java : elle peut contenir des objets de types différents. Pour des données numériques homogènes et volumineuses, <code>numpy.ndarray</code> est souvent plus adapté.</div>
+
+      <h3 class="sub">Types primitifs, wrappers et génériques</h3>
+      <p>Une abstraction plus générique n'est pas toujours la meilleure solution. Utiliser des wrappers (<code>Integer</code>, <code>Double</code>, <code>Number</code>…) simplifie souvent le développement, mais peut avoir un coût mémoire important sur de très grandes quantités de données :</p>
+      <div class="code-compare">
+        <div class="code-block"><span class="code-label" style="color:var(--text-muted);">Représentation objet</span><pre>List<Double> values = new ArrayList<>();</pre></div>
+        <div class="code-block"><span class="code-label" style="color:var(--text-muted);">Représentation primitive</span><pre>double[] values = new double[size];</pre></div>
+      </div>
+      <p>Dans le premier cas, les éléments sont des objets accessibles via des références ; dans le second, les valeurs sont stockées directement. Pour des volumes importants — par exemple des données scientifiques issues de longs scans — la différence peut devenir considérable : consommation mémoire, allocations, pression sur le Garbage Collector, performances, fluidité d'une IHM, risque d'<code>OutOfMemoryError</code>.</p>
+
+      <div class="flow">
+        <div class="step">Architecture claire</div>
+        <div class="arrow">↓</div>
+        <div class="step">Choix des structures de données</div>
+        <div class="arrow">↓</div>
+        <div class="step">Mesure / profiling</div>
+        <div class="arrow">↓</div>
+        <div class="step">Identification du goulot d'étranglement</div>
+        <div class="arrow">↓</div>
+        <div class="step">Optimisation ciblée</div>
+        <div class="arrow">↓</div>
+        <div class="step">Nouvelle mesure</div>
+      </div>
+
+      <div class="callout callout--retain">
+        <span class="callout-label">À retenir</span>
+        La généricité est un outil, pas une fin en soi. La simplicité d'utilisation d'un wrapper doit être mise en balance avec son coût réel lorsque les volumes deviennent importants. Ne pas optimiser prématurément, mais ne pas ignorer les caractéristiques mémoire des structures de données. Mesurer avec un profiler (par exemple Java VisualVM) avant et après l'optimisation permet de vérifier que l'amélioration est réelle.
+      </div>
+    </section>
+
+    <!-- 10. Commentaires -->
+    <section id="commentaires">
+      <div class="section-num">10</div>
+      <h2>Commentaires et documentation</h2>
+      <p class="lede">Un commentaire ne doit pas simplement répéter le code — il doit expliquer le pourquoi.</p>
+
+      <div class="code-compare">
+        <div class="code-block bad"><span class="code-label bad">❌ Peu utile</span><pre>// Increment i
+i++;</pre></div>
+        <div class="code-block good"><span class="code-label good">✓ Plus utile</span><pre>// Retry three times because the PLC may need
+// a few milliseconds to update its state
+// after the command.
+retryCount++;</pre></div>
+      </div>
+
+      <h3 class="sub">Commenter les algorithmes complexes</h3>
+      <p>Pour un algorithme difficile à comprendre : expliquer le principe, les hypothèses, les choix particuliers, et éventuellement donner une référence. Privilégier l'anglais dans les commentaires techniques.</p>
+    </section>
+
+    <!-- 11. Testabilité -->
+    <section id="testabilite">
+      <div class="section-num">11</div>
+      <h2>Testabilité et maintenabilité</h2>
+
+      <p>Une bonne architecture facilite les tests. Se demander : puis-je tester cette méthode indépendamment ? Fait-elle trop de choses ? Puis-je contrôler ses entrées, vérifier sa sortie, reproduire facilement un cas d'erreur ?</p>
+      <div class="callout callout--why"><span class="callout-label">Pourquoi ?</span>Si une fonction est difficile à tester, elle est parfois difficile à comprendre parce qu'elle fait trop de choses.</div>
+
+      <p>Le vrai test d'un programme n'est pas seulement « Est-ce qu'il fonctionne aujourd'hui ? » mais aussi « Est-ce qu'une autre personne pourra le modifier dans six mois sans avoir peur de casser quelque chose ? »</p>
+
+      <h3 class="sub">Penser au développeur de demain</h3>
+      <p>Quand on écrit du code, trois personnes peuvent avoir besoin de le comprendre :</p>
+      <div class="tech-grid">
+        <div class="tech-card"><h4>1. Celui qui l'écrit</h4></div>
+        <div class="tech-card"><h4>2. Celui qui le maintient</h4></div>
+        <div class="tech-card"><h4>3. Celui qui le débogue à 17h30 un vendredi soir</h4></div>
+      </div>
+      <p class="code-note">La troisième personne est souvent celle qu'il faut garder en tête.</p>
+    </section>
+
+    <!-- 12. Abstraction -->
+    <section id="abstraction">
+      <div class="section-num">12</div>
+      <h2>Abstraction, interfaces et architecture</h2>
+      <p class="lede">Programmer contre une abstraction, pas contre une implémentation.</p>
+
+      <div class="callout"><span class="callout-label">Principe</span>Le code métier doit dépendre de ce dont il a besoin, pas de ce qu'il n'a pas besoin de connaître.</div>
+
+      <div class="code-compare">
+        <div class="code-block bad"><span class="code-label bad">❌ À éviter</span><pre>ArrayList<MyObject> list = new ArrayList<>();</pre></div>
+        <div class="code-block good"><span class="code-label good">✓ À privilégier</span><pre>List<MyObject> list = new ArrayList<>();
+// L'implémentation peut être remplacée :
+List<MyObject> list = new LinkedList<>();
+// sans modifier le code qui manipule la liste.</pre></div>
+      </div>
+      <div class="callout callout--why"><span class="callout-label">Pourquoi ?</span>Si l'architecture impose plus tard une autre implémentation, il faudra rechercher et modifier toutes les dépendances à <code>ArrayList</code>. Plus une dépendance à une implémentation est localisée, plus le logiciel est facile à faire évoluer.</div>
+
+      <h3 class="sub">Attention aux casts</h3>
+      <div class="code-compare">
+        <div class="code-block bad"><span class="code-label bad">❌ À éviter</span><pre>List<Object> list = new LinkedList<>();
+Object item = ((LinkedList<Object>) list).poll();</pre></div>
+        <div class="code-block good"><span class="code-label good">✓ À privilégier</span><pre>Deque<Object> list = new LinkedList<>();
+Object item = list.pollFirst();
+// L'implémentation peut ensuite changer :
+Deque<Object> list = new ArrayDeque<>();</pre></div>
+      </div>
+      <div class="callout callout--attention"><span class="callout-label">Attention</span>Si vous devez caster systématiquement vers une implémentation concrète, demandez-vous si vous n'avez pas choisi la mauvaise abstraction.</div>
+
+      <h3 class="sub">Choisir l'interface correspondant au besoin</h3>
+      <p>L'objectif n'est pas de choisir « l'interface la plus générique possible », mais l'abstraction la plus générique qui exprime réellement les opérations nécessaires. Si le code a uniquement besoin d'ajouter, supprimer, accéder, parcourir : <code>List</code> peut suffire. S'il a besoin d'opérations de file (<code>pollFirst()</code>, <code>addLast()</code>…) : <code>Deque</code> est plus adaptée.</p>
+
+      <h3 class="sub">Factory : centraliser le choix de l'implémentation</h3>
+      <div class="code-block"><pre>public static List<MyObject> createList() {
+    return new ArrayList<>();
+}
+// Le code métier utilise alors :
+List<MyObject> list = createList();</pre></div>
+      <p class="code-note">Si l'implémentation doit évoluer, le changement est centralisé dans la factory : elle sépare « quelle implémentation créer ? » de « comment utiliser l'objet ? »</p>
+
+      <h3 class="sub">Concevoir avant de coder</h3>
+      <p>Une architecture bien pensée peut demander davantage de travail au début, mais réduit considérablement le coût des évolutions futures.</p>
+      <div class="code-compare">
+        <div class="code-block good"><span class="code-label good">✓ Architecture pensée</span>
+          <div class="flow">
+            <div class="step">Conception / architecture</div><div class="arrow">↓</div>
+            <div class="step">Abstractions</div><div class="arrow">↓</div>
+            <div class="step">Découplage</div><div class="arrow">↓</div>
+            <div class="step">Points d'extension</div><div class="arrow">↓</div>
+            <div class="step">Nouvelles fonctionnalités</div><div class="arrow">↓</div>
+            <div class="step">Modification localisée</div>
+          </div>
+        </div>
+        <div class="code-block bad"><span class="code-label bad">❌ Architecture subie</span>
+          <div class="flow flow--bad">
+            <div class="step">Nouvelle fonctionnalité</div><div class="arrow">↓</div>
+            <div class="step">Modification du code existant</div><div class="arrow">↓</div>
+            <div class="step">Régression</div><div class="arrow">↓</div>
+            <div class="step">Nouveaux tests, nouveaux effets de bord</div><div class="arrow">↓</div>
+            <div class="step">Coût croissant</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote">
+        « Prévoir les points d'extension permet de modifier une partie du système sans devoir reconstruire tout le système. »
+        <span>Comme une maison avec des murs porteurs bien positionnés : on peut déplacer une cloison plus tard sans tout reconstruire.</span>
+      </div>
+
+      <h3 class="sub">À retenir</h3>
+      <ul class="checklist">
+        <li>Dépendre d'une interface plutôt que d'une implémentation lorsque c'est pertinent</li>
+        <li>Déclarer les variables avec le type abstrait adapté</li>
+        <li>Réserver le choix de l'implémentation à l'instanciation</li>
+        <li>Éviter les casts vers des classes concrètes</li>
+        <li>Utiliser une factory lorsque la création doit être centralisée</li>
+        <li>Concevoir des points d'extension lorsque le logiciel est amené à évoluer</li>
+        <li>Penser à la maintenance dès la conception</li>
+      </ul>
+    </section>
+
+    <!-- 13. Transversal -->
+    <section id="transversal">
+      <div class="section-num">13</div>
+      <h2>Bonnes pratiques transversales aux langages</h2>
+      <p class="lede">Les syntaxes changent — les principes restent.</p>
+
+      <div class="code-compare">
+        <div class="code-block"><pre>if (condition) {
+}</pre></div>
+        <div class="code-block"><pre>if condition:
+    ...</pre></div>
+      </div>
+      <ul class="key-points">
+        <li>lisibilité</li>
+        <li>découpage</li>
+        <li>responsabilité unique</li>
+        <li>nommage</li>
+        <li>testabilité</li>
+        <li>maintenabilité</li>
+        <li>gestion des erreurs</li>
+        <li>réduction de la duplication</li>
+        <li>documentation</li>
+        <li>architecture</li>
+      </ul>
+      <div class="callout callout--retain"><span class="callout-label">À retenir</span>Changer de langage ne signifie pas repartir de zéro en génie logiciel.</div>
+
+      <h3 class="sub">Une bonne pratique doit avoir une raison</h3>
+      <p>Ne pas apprendre « Il faut faire comme ça parce que c'est la règle. » Apprendre « Voici le problème que cette pratique permet d'éviter. »</p>
+      <div class="flow">
+        <div class="step">Règle — une instruction par ligne</div>
+        <div class="arrow">↓ Pourquoi ?</div>
+        <div class="step">Debug + breakpoint + stacktrace + lisibilité</div>
+        <div class="arrow">↓</div>
+        <div class="step">Compréhension</div>
+      </div>
+    </section>
+
+    <!-- 14. Synthèse -->
+    <section id="synthese">
+      <div class="section-num">14</div>
+      <h2>Synthèse</h2>
+
+      <div class="quote">
+        « Le code est écrit une fois, mais il est lu et maintenu beaucoup plus souvent. »
+        <span>Écrire du code compréhensible est une compétence technique. La qualité d'un programme ne se mesure pas uniquement à son résultat, mais aussi à la facilité avec laquelle il peut être compris, testé, corrigé et faire évoluer.</span>
+      </div>
+
+      <h3 class="sub">Checklist du développeur</h3>
+      <ul class="checklist">
+        <li>Une instruction par ligne, des noms explicites, les conventions du langage</li>
+        <li>Des variables intermédiaires pour faciliter le debugging</li>
+        <li>Une fonction = une responsabilité</li>
+        <li>Des conditions décomposées quand elles gagnent en lisibilité</li>
+        <li>Un point de sortie unique pour la logique métier (sauf guard clauses)</li>
+        <li>Pas de duplication non justifiée</li>
+        <li>Pas de valeurs magiques, une structure de données adaptée au besoin</li>
+        <li>Des commentaires qui expliquent le pourquoi, pas le quoi</li>
+        <li>Du code pensé pour être testé et maintenu</li>
+        <li>Une dépendance aux abstractions plutôt qu'aux implémentations</li>
+      </ul>
+
+      <div class="quote" style="margin-top:26px;">
+        « Bien programmer, ce n'est pas seulement apprendre à faire fonctionner une machine. C'est apprendre à écrire du code que des humains peuvent comprendre, maintenir et faire évoluer. »
+      </div>
+
+      <h3 class="sub">Les mots-clés à retenir</h3>
+      <div class="keyword-grid">
+        <span>Lisibilité</span><span>Debugging</span><span>SRP</span><span>Guard clause</span>
+        <span>Duplication</span><span>Magic number</span><span>Testabilité</span><span>Maintenabilité</span>
+        <span>Abstraction</span><span>Factory</span><span>Découplage</span><span>Architecture</span>
+      </div>
+    </section>
+
+    <!-- 15. Lexique -->
+    <section id="lexique">
+      <div class="section-num">15</div>
+      <h2>Lexique</h2>
+      <p class="lede">Les termes techniques employés dans ce cours, en un coup d'œil.</p>
+
+      <dl class="glossary">
+        <dt>SRP</dt>
+        <dd>Single Responsibility Principle — une fonction, une classe ou un module ne devrait avoir qu'une seule responsabilité clairement identifiable.</dd>
+
+        <dt>Guard clause</dt>
+        <dd>Retour anticipé placé en début de fonction pour écarter immédiatement un cas invalide ou non pertinent, et éviter une imbrication excessive.</dd>
+
+        <dt>Magic number</dt>
+        <dd>Valeur numérique (ou littérale) utilisée directement dans le code sans nom explicite, rendant sa signification difficile à deviner.</dd>
+
+        <dt>Stacktrace</dt>
+        <dd>Trace d'exécution affichée lors d'une exception, indiquant la chaîne d'appels ayant mené à l'erreur.</dd>
+
+        <dt>Refactoring</dt>
+        <dd>Réorganisation du code existant pour en améliorer la structure, sans changer son comportement observable.</dd>
+
+        <dt>Profiling</dt>
+        <dd>Mesure des performances et de la consommation de ressources (mémoire, CPU) d'un programme en cours d'exécution, pour identifier les vrais goulots d'étranglement.</dd>
+
+        <dt>Garbage Collector (GC)</dt>
+        <dd>Mécanisme automatique de certains langages (Java, Python…) qui libère la mémoire occupée par les objets qui ne sont plus utilisés.</dd>
+
+        <dt>Factory</dt>
+        <dd>Design pattern qui centralise la création d'objets, séparant la décision de l'implémentation du reste du code métier.</dd>
+
+        <dt>Couplage / découplage</dt>
+        <dd>Degré de dépendance entre deux composants. Un découplage fort permet de faire évoluer une partie du système sans impacter les autres.</dd>
+
+        <dt>POO</dt>
+        <dd>Programmation Orientée Objet — paradigme basé sur les classes, objets, interfaces et héritage.</dd>
+      </dl>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  Cours généré à partir du support Bonnes pratiques de programmation — Katy Saintin · <a href="https://katysaintin.github.io">katysaintin.github.io</a>
+</footer>
+
+<button id="backToTop" aria-label="Retour en haut">↑</button>
+
+<script>
+  // Menu déroulant
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  function closeMenu(){
+    navMenu.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+  function toggleMenu(){
+    const open = navMenu.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  }
+  navToggle.addEventListener('click', toggleMenu);
+  navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('click', (e) => {
+    if(!navMenu.contains(e.target) && !navToggle.contains(e.target)){ closeMenu(); }
+  });
+
+  // Scrollspy : sommaire + menu
+  const sections = Array.from(document.querySelectorAll('main section[id]'));
+  const tocLinks = Array.from(document.querySelectorAll('.toc a'));
+  const jumpLinks = Array.from(document.querySelectorAll('.jump-link'));
+
+  const jumpMap = {
+    'intro':'intro', 'philosophie':'intro',
+    'lisibilite':'lisibilite', 'debugging':'lisibilite', 'responsabilites':'lisibilite',
+    'conditions':'conditions',
+    'retours':'retours', 'duplication':'retours',
+    'donnees':'abstraction', 'commentaires':'abstraction', 'testabilite':'abstraction', 'abstraction':'abstraction', 'transversal':'abstraction',
+    'synthese':'synthese', 'lexique':'synthese'
+  };
+
+  function onScroll(){
+    let current = sections[0]?.id;
+    const offset = 100;
+    for(const sec of sections){
+      const rect = sec.getBoundingClientRect();
+      if(rect.top - offset <= 0) current = sec.id;
+    }
+    tocLinks.forEach(a => {
+      a.classList.toggle('is-active', a.getAttribute('href') === '#' + current);
+    });
+    const jumpTarget = jumpMap[current] || 'intro';
+    jumpLinks.forEach(a => a.classList.toggle('is-active', a.dataset.target === jumpTarget));
+
+    const backBtn = document.getElementById('backToTop');
+    backBtn.classList.toggle('is-visible', window.scrollY > 600);
+  }
+
+  document.addEventListener('scroll', onScroll, { passive:true });
+  window.addEventListener('load', onScroll);
+
+  document.getElementById('backToTop').addEventListener('click', () => {
+    window.scrollTo({ top:0, behavior:'smooth' });
+  });
+</script>
+
+</body>
+</html>
