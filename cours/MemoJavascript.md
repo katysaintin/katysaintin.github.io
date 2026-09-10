@@ -1140,4 +1140,404 @@ Et lorsque la chaîne devient trop complexe, `async` / `await` avec `try` /
 `catch` peut fournir une structure plus explicite et plus proche du raisonnement
 séquentiel classique.
 
+# JavaScript — Modules, NPM, CDN et introduction à TypeScript
+
+## 1. Modules JavaScript
+
+Un module permet de séparer le code en plusieurs fichiers et de partager
+explicitement certaines fonctions, classes ou variables.
+
+### Export nommé
+
+**math.js**
+
+~~~javascript
+export function add(a, b) {
+    return a + b;
+}
+
+export const PI = 3.14159;
+~~~
+
+### Import nommé
+
+**main.js**
+
+~~~javascript
+import { add, PI } from "./math.js";
+
+console.log(add(2, 3));
+console.log(PI);
+~~~
+
+Le nom importé doit correspondre au nom exporté.
+
+---
+
+### Export par défaut
+
+Un module peut également avoir un export par défaut.
+
+**calculator.js**
+
+~~~javascript
+export default class Calculator {
+    add(a, b) {
+        return a + b;
+    }
+}
+~~~
+
+Import :
+
+~~~javascript
+import Calculator from "./calculator.js";
+
+const calculator = new Calculator();
+~~~
+
+Avec un export `default`, le nom utilisé à l'import peut être choisi librement.
+
+---
+
+### Plusieurs exports
+
+~~~javascript
+// tools.js
+
+export function add(a, b) {
+    return a + b;
+}
+
+export function multiply(a, b) {
+    return a * b;
+}
+~~~
+
+~~~javascript
+// main.js
+
+import { add, multiply } from "./tools.js";
+~~~
+
+Les modules permettent donc notamment :
+
+- de découper un projet ;
+- de limiter les dépendances implicites ;
+- de réutiliser du code ;
+- de mieux organiser une application.
+
+---
+
+# 2. NPM
+
+**NPM (Node Package Manager)** est le gestionnaire de paquets de l'écosystème
+JavaScript/Node.js.
+
+Il permet notamment d'installer et de gérer des bibliothèques externes.
+
+## Installer un package
+
+~~~bash
+npm install nom-du-package
+~~~
+
+ou, forme abrégée :
+
+~~~bash
+npm i nom-du-package
+~~~
+
+Exemple :
+
+~~~bash
+npm install lodash
+~~~
+
+Le package est installé dans le projet et ajouté aux dépendances du
+`package.json`.
+
+### Dépendance de développement
+
+Pour une dépendance utilisée uniquement pendant le développement :
+
+~~~bash
+npm install --save-dev nom-du-package
+~~~
+
+ou :
+
+~~~bash
+npm i -D nom-du-package
+~~~
+
+---
+
+# 3. Initialiser un projet NPM
+
+La commande :
+
+~~~bash
+npm init
+~~~
+
+permet de créer un fichier :
+
+~~~text
+package.json
+~~~
+
+NPM pose plusieurs questions concernant le projet.
+
+Pour accepter directement les valeurs par défaut :
+
+~~~bash
+npm init -y
+~~~
+
+Le `package.json` contient notamment :
+
+~~~json
+{
+    "name": "my-project",
+    "version": "1.0.0",
+    "dependencies": {}
+}
+~~~
+
+Après installation d'un package, ses dépendances apparaissent dans
+`dependencies` ou `devDependencies`.
+
+Le fichier `package-lock.json` permet également de conserver les versions
+exactes des dépendances installées.
+
+---
+
+# 4. CDN
+
+**CDN = Content Delivery Network**
+
+Un CDN permet de distribuer des fichiers depuis des serveurs répartis
+géographiquement.
+
+En développement web, on peut notamment utiliser un CDN pour charger
+directement une bibliothèque JavaScript depuis une URL.
+
+Exemple :
+
+~~~html
+<script src="https://cdn.example.com/library.js"></script>
+~~~
+
+Le navigateur télécharge alors la bibliothèque depuis le CDN.
+
+### NPM ou CDN ?
+
+**NPM :**
+
+~~~bash
+npm install library
+~~~
+
+La bibliothèque fait partie du projet et peut être gérée comme une
+dépendance.
+
+**CDN :**
+
+~~~html
+<script src="https://cdn.example.com/library.js"></script>
+~~~
+
+La bibliothèque est chargée depuis une ressource externe.
+
+### À retenir
+
+NPM est particulièrement adapté à la gestion des dépendances d'un projet.
+
+Un CDN est particulièrement pratique pour charger rapidement des ressources
+web depuis un serveur externe.
+
+---
+
+# 5. TypeScript
+
+TypeScript est un langage basé sur JavaScript qui ajoute notamment un
+**système de typage statique**.
+
+Le code TypeScript doit généralement être transformé (transpilé) en JavaScript
+avant d'être exécuté par le navigateur ou Node.js.
+
+L'intérêt principal est de détecter certaines erreurs **avant l'exécution**.
+
+---
+
+## 6. Typage des variables
+
+### Chaîne de caractères
+
+~~~typescript
+let name: string = "Katy";
+~~~
+
+### Nombre
+
+En TypeScript, les nombres utilisent le type `number`.
+
+~~~typescript
+let age: number = 25;
+let temperature: number = 21.5;
+~~~
+
+Il n'existe pas de distinction `int` / `float` comme en Java.
+
+### Booléen
+
+~~~typescript
+let active: boolean = true;
+~~~
+
+### Tableau
+
+~~~typescript
+let names: string[] = ["Katy", "Paul", "John"];
+
+let scores: number[] = [10, 15, 20];
+~~~
+
+Autre syntaxe possible :
+
+~~~typescript
+let scores: Array<number> = [10, 15, 20];
+~~~
+
+---
+
+# 7. Typage des fonctions
+
+On peut typer les paramètres et le résultat d'une fonction.
+
+~~~typescript
+function add(a: number, b: number): number {
+    return a + b;
+}
+~~~
+
+Ici :
+
+~~~text
+a       → number
+b       → number
+résultat → number
+~~~
+
+TypeScript peut alors détecter une utilisation incorrecte :
+
+~~~typescript
+add(10, "20");
+~~~
+
+Le deuxième argument est une chaîne alors qu'un `number` est attendu.
+
+---
+
+# 8. Typage d'un objet
+
+On peut également décrire la structure attendue d'un objet.
+
+~~~typescript
+let person: {
+    name: string;
+    age: number;
+} = {
+    name: "Katy",
+    age: 25
+};
+~~~
+
+Pour des structures réutilisables, on peut utiliser une interface :
+
+~~~typescript
+interface Person {
+    name: string;
+    age: number;
+}
+
+const person: Person = {
+    name: "Katy",
+    age: 25
+};
+~~~
+
+---
+
+# 9. JavaScript → TypeScript
+
+JavaScript :
+
+~~~javascript
+function add(a, b) {
+    return a + b;
+}
+~~~
+
+TypeScript :
+
+~~~typescript
+function add(a: number, b: number): number {
+    return a + b;
+}
+~~~
+
+Le principe est donc très proche de Java :
+
+~~~text
+Java       : int add(int a, int b)
+TypeScript : function add(a: number, b: number): number
+~~~
+
+Mais TypeScript reste compatible avec l'écosystème JavaScript et ajoute son
+système de types au langage.
+
+---
+
+# À retenir
+
+| Technologie | Rôle |
+|---|---|
+| ES Modules | Organiser et partager du code entre fichiers |
+| NPM | Installer et gérer les packages JavaScript |
+| package.json | Décrire le projet et ses dépendances |
+| npm init | Initialiser un projet NPM |
+| CDN | Distribuer des ressources depuis des serveurs externes |
+| TypeScript | Ajouter notamment le typage statique à JavaScript |
+
+### Commandes essentielles
+
+~~~bash
+npm init
+npm init -y
+npm install package
+npm install -D package
+~~~
+
+### Idée générale
+
+~~~text
+JavaScript
+    ↓
+Modules
+    ↓
+NPM → gestion des dépendances
+    ↓
+Node.js → exécution hors navigateur
+
+TypeScript
+    ↓
+JavaScript + typage statique
+    ↓
+transpilation
+    ↓
+JavaScript exécutable
+~~~
+
 
