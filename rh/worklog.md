@@ -31,7 +31,7 @@ Journal factuel de mon activité professionnelle.
 * [x] Mettre à jour Microsoft Office.
 * [x] Contacter le support informatique.
 * [x] Tester le VPN.
-* [ ] Vérifier la possibilité de télétravailler avec le VPN.
+* [X] Vérifier la possibilité de télétravailler avec le VPN.
 
 ### Réunion de reprise
 
