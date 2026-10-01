@@ -39,110 +39,208 @@ Journal factuel de mon activité professionnelle.
 
 #### Participants
 
-À renseigner.
+# Note de synthèse – Échange de reprise
 
-#### Points abordés
+**Date :** 1er octobre 2026  
+**Objet :** Modalités de reprise progressive, organisation de l'activité et clarification des missions  
+**Participants :** Paul Lotrus, Tom Joannem, Nicolas Le Tonquer, Katy Saintin
 
-À renseigner après la réunion.
+## 1. Objet de l'échange
 
-#### Décisions / informations
+L'entretien avait pour objectifs :
 
-À renseigner.
-
-#### Actions identifiées
-
-| Action | Responsable | Échéance | État |
-| ------ | ----------- | -------- | ---- |
-|        |             |          |      |
-
-#### Points à clarifier
-
-*
-
-#### Arbitrages nécessaires
-
-*
-
-### Activité réalisée
-
-* Participation à la réunion de reprise.
-* Récupération du PC.
-* Mise à jour de Microsoft Office.
-* Appel au support informatique.
-* Test du VPN en vue de permettre le télétravail.
-
-### Projets / sujets
-
-| Sujet                    | Activité                            | État        |
-| ------------------------ | ----------------------------------- | ----------- |
-| Environnement de travail | Récupération et configuration du PC | Terminé     |
-| Environnement de travail | Mise à jour Microsoft Office        | Terminé     |
-| Support informatique     | Appel au support                    | Terminé     |
-| Télétravail              | Test du VPN                         | À confirmer |
-
-### Décisions / informations
-
-*
-
-### Points à clarifier
-
-*
-
-### Arbitrages nécessaires
-
-*
-
-### Blocages / problèmes
-
-*
-
-### Nouvelles demandes
-
-*
-
-### Charge
-
-**Niveau :** 🟢 Normale
-
-**Commentaire factuel :**
-
-Journée principalement consacrée à la reprise de poste, à la réunion de reprise et à la remise en état de l'environnement de travail.
-
-### Fin de journée
-
-**Réalisé :**
-
-* Réunion de reprise.
-* Récupération et préparation du PC.
-* Mise à jour de Microsoft Office.
-* Contact avec le support.
-* Test du VPN.
-
-**Reporté :**
-
-* Finalisation et transmission de la synthèse de la réunion.
-* Confirmation du fonctionnement du VPN pour le télétravail.
-
-**À reprendre :**
-
-* Finaliser la synthèse de la réunion de reprise.
-* Transmettre la synthèse aux interlocuteurs concernés.
-* Vérifier les conditions techniques du télétravail.
-* Identifier les premières priorités opérationnelles.
+- de définir les modalités de la reprise progressive ;
+- de revenir sur certains éléments ayant contribué aux difficultés rencontrées avant l'arrêt ;
+- de clarifier le périmètre des missions, notamment autour de Muscade et Java ;
+- d'identifier les points nécessitant un arbitrage ou une clarification managériale.
 
 ---
 
-# Semaine 40 — Synthèse
+## 2. Horaires et organisation du temps de travail
 
-## Réalisations
+J'ai indiqué que les rappels réguliers concernant les horaires, notamment concernant les modalités de récupération de la pause méridienne lors d'activités sportives ou musicales, ainsi que les rappels relatifs aux règles de télétravail, avaient été vécus comme contraignants dans le contexte de la charge de travail réalisée précédemment.
 
-* Reprise de poste le 01/10/2026.
-* Réunion de reprise.
-* Remise en état de l'environnement informatique.
-* Mise à jour de Microsoft Office.
-* Vérification du VPN.
+J'ai notamment rappelé que ces rappels intervenaient alors que des dépassements horaires importants avaient également été réalisés dans le cadre professionnel.
 
-## Avancement des projets
+**Position de Paul :**
+- les règles relatives aux horaires sont appliquées à l'ensemble des agents ;
+- Tom a également déjà fait l'objet de remarques sur ce sujet ;
+- le contrôle des horaires relève de ses responsabilités.
 
-| Projet | Avancement | Prochaine étape |
-|
+J'ai précisé que les demandes visant à me faire respecter mes horaires et à quitter le site plus tôt étaient, pour ma part, bien accueillies. La difficulté portait davantage sur le contexte général et sur le décalage perçu entre le contrôle des horaires et la charge de travail précédemment assumée.
+
+**Position rappelée par Nicolas :**
+- les horaires définis dans le cadre de la reprise doivent désormais être respectés ;
+- les horaires indiqués par le médecin du travail sont de **9h30 à 18h30**, avec **1h30 de pause méridienne**.
+
+J'ai indiqué que je comprenais cette règle et que je la respecterai, tout en précisant que ce cadrage horaire pouvait constituer pour moi une contrainte psychologique supplémentaire, notamment concernant l'utilisation du télétravail ou le respect strict des horaires.
+
+**Engagement de ma part :**
+- respecter les horaires définis ;
+- ne plus effectuer de dépassements horaires ;
+- appliquer les recommandations médicales, sur site comme en télétravail ;
+- utiliser désormais le télétravail dans le cadre des règles qui me sont applicables.
+
+---
+
+# 3. Mission Muscade / Java et stratégie du LDISC
+
+### Charge historique
+
+J'ai rappelé que la prise en charge de Muscade, notamment après le remplacement de deux experts Muscade en 2022, avait conduit à une charge correspondant de fait à plusieurs activités.
+
+J'ai indiqué que **Muscade constitue à lui seul une activité à temps plein**, indépendamment des autres activités qui m'ont été confiées.
+
+### Stratégie à moyen terme
+
+J'ai demandé une clarification concernant l'avenir de Muscade et de Java au sein du LDISC.
+
+La question porte notamment sur la cohérence entre :
+
+- les annonces relatives à une fin de Muscade à l'horizon 2032 ;
+- les développements Java réalisés depuis ma feuille de route 2022 ;
+- la pérennité des compétences Java au sein du laboratoire ;
+- le soutien hiérarchique apporté à ces activités.
+
+**Éléments indiqués par Paul :**
+
+- la feuille de route 2022 prévoyait effectivement une fin de Muscade à l'horizon 2032 ;
+- l'objectif annoncé était alors d'arrêter les développements sur ce SCADA et de conserver une activité de support ;
+- une feuille de route 2024 aurait depuis été présentée en CSTD ;
+- cette évolution prévoirait une conservation d'une partie serveur Muscade, avec remplacement de la partie cliente par des logiciels de la suite EPICS, notamment Phoebus ;
+- cette feuille de route 2024 n'est toutefois pas, à ce stade, identifiée comme formellement signée/validée dans le cadre de l'échange.
+
+### Positionnement de l'activité Java
+
+Paul a également rappelé que mon recrutement initial portait sur une activité Java et non spécifiquement sur Muscade, et considère ces deux activités comme distinctes.
+
+Il a indiqué que :
+
+- les développements Java dans le cadre d'EPICS, notamment les IOC EPICS, ne sont pas retenus comme activité du laboratoire ;
+- la compétence Java ne constitue pas actuellement une activité portée collectivement par le laboratoire, mais une compétence portée principalement par mon activité.
+
+**Point restant à clarifier :**
+
+Le positionnement stratégique de Java et de Muscade au sein du LDISC, ainsi que le niveau de soutien et de validation hiérarchique attendu pour ces activités, doivent être précisés.
+
+Cette clarification est nécessaire pour que les développements et orientations techniques soient cohérents avec la stratégie du laboratoire et validés par la hiérarchie.
+
+---
+
+# 4. Arbitrage et responsabilité sur les choix techniques
+
+J'ai indiqué que je ne souhaitais plus prendre seule les décisions relatives aux développements ou aux orientations techniques lorsque celles-ci peuvent engager la stratégie du laboratoire.
+
+**Principe acté de mon côté :**
+
+- formuler les analyses, recommandations et préconisations techniques ;
+- demander l'arbitrage de la hiérarchie lorsque plusieurs orientations sont possibles ;
+- ne pas engager seule un développement faisant l'objet d'un désaccord ou d'un arbitrage hiérarchique ;
+- lorsque la hiérarchie décide de ne pas suivre une recommandation technique, cet arbitrage doit être explicité aux utilisateurs concernés.
+
+Dans ce dernier cas, je pourrai ensuite appliquer la décision prise et orienter les utilisateurs conformément à cet arbitrage.
+
+---
+
+# 5. Rôle de chef de projet / relation avec les utilisateurs
+
+J'ai également indiqué que je souhaitais ne plus avoir à assurer une fonction de « vente » ou de promotion de la solution technique auprès des utilisateurs.
+
+Mon positionnement souhaité est de :
+
+- fournir les analyses ;
+- établir les recommandations ;
+- réaliser les études de faisabilité ;
+- proposer les architectures et solutions techniques ;
+- assurer la coordination nécessaire au projet ;
+- puis mettre en œuvre les décisions arbitrées.
+
+Paul considère qu'un chef de projet Muscade doit également assurer cette dimension de présentation et de conviction auprès des utilisateurs.
+
+J'ai indiqué que je ne souhaitais pas assumer cette fonction commerciale en complément des responsabilités techniques, de développement, d'architecture et de coordination déjà associées à l'activité.
+
+**Arbitrage / suite :**
+
+Nicolas a indiqué qu'une **fiche de poste claire devra être rédigée lors d'un prochain échange**, afin de préciser le périmètre et les responsabilités associées à la mission.
+
+---
+
+# 6. Communication entre Paul et moi
+
+Un désaccord a été constaté concernant la perception de la communication passée.
+
+**Ma position :**
+
+- j'ai indiqué avoir signalé les difficultés lorsqu'elles apparaissaient ;
+- j'ai rappelé avoir régulièrement transmis des informations et alertes ;
+- j'ai expliqué que j'avais besoin d'un cadre de communication explicite ;
+- l'écrit me permet notamment de structurer les informations, de vérifier ma compréhension et de conserver une trace des décisions.
+
+**Position de Paul :**
+
+Paul estime que certaines difficultés n'ont pas été suffisamment exprimées de mon côté et que j'ai pu conserver certaines difficultés pour moi.
+
+J'ai également expliqué que j'avais parfois des difficultés à identifier précisément les attentes de Paul et à interpréter certains signaux ou ressentis lorsqu'ils ne sont pas explicitement formulés.
+
+Nicolas a indiqué que l'écrit ne devait pas constituer l'unique mode de communication.
+
+**Suite envisagée :**
+
+Un accompagnement / coaching relatif à la communication pourrait être proposé par Manon Bacquet.
+
+Le mode de communication entre Paul et moi reste donc à définir et à expérimenter.
+
+---
+
+# 7. Organisation immédiate de la reprise
+
+Les premiers objectifs opérationnels identifiés étaient :
+
+- récupérer le PC ;
+- effectuer les mises à jour nécessaires ;
+- réactiver / mettre à jour les accès et mots de passe EXTRA, INTRA, I2I, etc. ;
+- reprendre progressivement connaissance des messages reçus pendant l'absence ;
+- prendre connaissance des éléments CSTD pertinents.
+
+### État au 1er octobre
+
+**Réalisé :**
+- récupération du PC ;
+- mise en fonctionnement du poste ;
+- mise à jour des accès et mots de passe nécessaires ;
+- préparation du poste pour le VPN et le télétravail.
+
+**À faire :**
+- dépiler les mails reçus pendant l'absence.
+
+**CSTD :**
+- la lecture des éléments stratégiques est à mettre en perspective avec la clarification préalable de la fiche de poste et du périmètre de mission.
+
+---
+
+# 8. Points restant à clarifier
+
+Les principaux sujets identifiés à l'issue de l'échange sont :
+
+1. **Fiche de poste et périmètre exact de la mission**, notamment concernant Muscade, Java, développement, architecture, coordination et relation utilisateurs.
+2. **Stratégie à moyen terme de Muscade et Java** au sein du LDISC.
+3. **Statut et validation de la feuille de route 2024** évoquée en CSTD.
+4. **Niveau de soutien hiérarchique attendu** concernant les choix et développements techniques.
+5. **Modalités d'arbitrage** lorsqu'une recommandation technique n'est pas retenue.
+6. **Mode de communication opérationnel entre Paul et moi.**
+7. **Accompagnement éventuel sur la communication**, évoqué avec Manon Bacquet.
+
+---
+
+# 9. Engagements réciproques / principe de reprise
+
+De mon côté, j'ai confirmé :
+
+- le respect strict des horaires définis ;
+- l'absence de dépassement horaire ;
+- le respect des recommandations médicales ;
+- l'utilisation du télétravail conformément aux règles applicables ;
+- le fait de ne plus engager seule des développements ou orientations nécessitant un arbitrage hiérarchique ;
+- la formulation de recommandations techniques, avec mise en œuvre des décisions arbitrées.
+
+La clarification du **périmètre de mission, des responsabilités et des priorités** doit permettre de disposer d'un cadre de travail partagé pour la suite de la reprise.
