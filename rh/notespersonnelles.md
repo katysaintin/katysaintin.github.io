@@ -57,10 +57,10 @@ S'il propose un nouveau poste :
 S'il insiste :
 « Je préfère que nous restions sur les aspects professionnels de ma reprise. »
 
-##12. S'il dit « c'est pour ton bien »
+## 12. S'il dit « c'est pour ton bien »
 « Je comprends l'intention. Ce qui m'aide concrètement aujourd'hui, c'est d'avoir un cadre professionnel clair, un nombre limité de sujets et un interlocuteur de proximité identifié. »
 
-##13. S'il insiste encore et encore
+## 13. S'il insiste encore et encore
 Disque rayé :
 « Oui, je comprends. Mais je préfère rester sur ce fonctionnement pour le moment. »
 
