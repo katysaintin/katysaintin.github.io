@@ -1,20 +1,22 @@
 # Memo Question Réponse
 
-Objectif : rester cordiale, professionnelle et ferme. Ne pas argumenter inutilement. Recentrer systématiquement sur la reprise, Paul comme manager de proximité et le cadrage du poste.
-##1. « Comment s'est passée ta reprise ? »
+## Objectif :
+Rester cordiale, professionnelle et ferme. Ne pas argumenter inutilement. Recentrer systématiquement sur la reprise, Paul comme manager de proximité et le cadrage du poste.
+
+## 1. « Comment s'est passée ta reprise ? »
 « Très bien finalement. J'ai été bien accueillie par les collègues, j'ai récupéré mon matériel et j'ai pu avoir un premier échange avec Paul. On est en train de remettre progressivement le cadre de travail en place. »
 
 Puis éventuellement parler du tendon, vacances, musique, etc.
-##2. « J'aimerais faire le point avec toi sur ton poste. »
+## 2. « J'aimerais faire le point avec toi sur ton poste. »
 « Pour le moment, je préfère que les sujets concernant mon activité passent par Paul. Nous sommes justement en train de clarifier mon périmètre, mes priorités et notre mode de fonctionnement. »
 
 S'il insiste :
 « J'ai besoin de reprendre avec un circuit de communication simple et identifié. Pour le moment, c'est avec Paul que je souhaite travailler sur ces sujets. »
 
-##3. « Pourquoi tu ne veux pas qu'on en parle ensemble ? »
+## 3. « Pourquoi tu ne veux pas qu'on en parle ensemble ? »
 « Ce n'est pas une question de ne pas vouloir échanger. C'est simplement que, pour ma reprise, j'ai besoin de limiter le nombre d'interlocuteurs et de travailler d'abord avec mon manager de proximité. »
 
-##4. « J'ai entendu que tu réfléchissais à partir / que tu avais un projet ailleurs… »
+## 4. « J'ai entendu que tu réfléchissais à partir / que tu avais un projet ailleurs… »
 Ne pas nier. Ne pas confirmer. Ne pas expliquer.
 Première réponse :
 « Ah… je ne pensais pas que ce sujet avait circulé. »
@@ -28,28 +30,28 @@ S'il insiste :
 S'il demande directement : « Tu veux quitter le DIS ? »
 « Je préfère ne pas aborder cette question aujourd'hui. Je suis en reprise et je souhaite me concentrer sur mon activité actuelle. »
 
-##5. « Je pourrais te proposer quelque chose autour de l'IA. »
+## 5. « Je pourrais te proposer quelque chose autour de l'IA. »
 « L'IA fait effectivement partie des compétences que j'ai développées récemment, et je vois des applications intéressantes dans mes activités actuelles. Mais pour ma reprise, je souhaite d'abord rester centrée sur mon périmètre et clarifier précisément ce que le laboratoire attend de moi. »
 
 S'il propose un nouveau poste :
 « Je préfère ne pas ouvrir un nouveau périmètre maintenant. J'ai besoin de me concentrer sur quelques sujets clairement définis. »
 
-##6. « Mais ce serait justement une évolution pour toi. »
+## 6. « Mais ce serait justement une évolution pour toi. »
 « Je comprends la proposition. Pour le moment, je souhaite d'abord stabiliser ma reprise et clarifier mon poste actuel avec Paul. Je ne souhaite pas multiplier les changements de périmètre. »
 
-##7. « Tu dois pourtant prendre de la hauteur / penser au DIS dans son ensemble. »
+## 7. « Tu dois pourtant prendre de la hauteur / penser au DIS dans son ensemble. »
 « Je comprends. Mais dans cette phase de reprise, j'ai besoin de revenir à un périmètre clairement défini et opérationnel. Les orientations globales relèvent ensuite des arbitrages du management. »
 
-##8. « Il faut qu'on puisse échanger directement. »
+## 8. « Il faut qu'on puisse échanger directement. »
 « Bien sûr, pour les sujets qui relèvent de ton périmètre. Mais pour mon activité quotidienne et mon organisation, je souhaite que Paul reste mon interlocuteur de proximité. »
 
-##9. « Tu ne peux pas tout faire passer par écrit. »
+## 9. « Tu ne peux pas tout faire passer par écrit. »
 « Je comprends que l'oral soit important. Pour les décisions et arbitrages concernant mon activité, j'ai néanmoins besoin qu'ils soient formalisés. Cela me permet de savoir précisément quelles sont les attentes et les priorités. »
 
-##10. « Pourquoi as-tu besoin de tout cadrer ? »
+## 10. « Pourquoi as-tu besoin de tout cadrer ? »
 « Parce que je veux justement pouvoir me concentrer sur mon travail. Plus le périmètre et les priorités sont clairs, plus je peux être autonome dans leur réalisation. »
 
-##11. S'il revient sur ton arrêt, ton handicap, le coaching, etc.
+## 11. S'il revient sur ton arrêt, ton handicap, le coaching, etc.
 « Ces sujets sont suivis dans les cadres prévus pour cela. Sur le plan professionnel, ce dont j'ai surtout besoin aujourd'hui, c'est d'un cadre de travail clair et de priorités définies. »
 
 S'il insiste :
