@@ -13,6 +13,33 @@ Journal factuel de mon activité professionnelle.
 
 ---
 
+## 2026-10-06 — Reprise / cadrage de l'activité
+
+### Administratif / reprise de poste
+- Entretien avec le service de Santé au Travail / Dr Fabre concernant les mesures d'aménagement du poste.
+- Réception, signature et transmission à la RH de la proposition de mesures individuelles d'aménagement du poste.
+
+### Organisation / management
+- Proposition d'un ordre du jour pour le prochain point de suivi hebdomadaire avec le management :
+  - clarification de la fiche de poste et du périmètre d'activité ;
+  - identification des activités à reprendre / à transmettre ;
+  - clarification des priorités et du cadre de reprise.
+- Premiers éléments de réflexion sur les activités et missions à intégrer dans le cadrage de la fiche de poste.
+
+### Collaboration EPICS / CS-Studio / Phoebus
+- Reprise de contact avec Kunal Shroff (BNL) concernant la collaboration CS-Studio / EPICS.
+- Réponse concernant mon absence depuis décembre 2025 et ma reprise progressive.
+- Clarification de la nécessité de recadrer mon niveau d'implication dans la collaboration EPICS / CS-Studio avant de reprendre de nouveaux engagements.
+- Identification des activités CS-Studio / Phoebus à maintenir potentiellement dans mon périmètre et de celles nécessitant un arbitrage / une transmission.
+
+### MUSCADE / CSTD
+- Relecture et première analyse du rapport CSTD afin de reprendre connaissance des orientations et des sujets en cours.
+- Début de réflexion sur les conséquences de ces orientations pour l'activité MUSCADE / Java et sur les éléments à intégrer dans la future feuille de route.
+- Analyse à poursuivre.
+
+### RH / organisation
+- Clarification avec Pierre du cadre de ma reprise et du circuit de communication concernant mon activité, en lien avec mon manager de proximité.
+
 # 2026-10-01 — Jeudi
 
 ## Reprise de poste
