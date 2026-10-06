@@ -1,3 +1,84 @@
+# Memo Question Réponse
+
+Objectif : rester cordiale, professionnelle et ferme. Ne pas argumenter inutilement. Recentrer systématiquement sur la reprise, Paul comme manager de proximité et le cadrage du poste.
+##1. « Comment s'est passée ta reprise ? »
+« Très bien finalement. J'ai été bien accueillie par les collègues, j'ai récupéré mon matériel et j'ai pu avoir un premier échange avec Paul. On est en train de remettre progressivement le cadre de travail en place. »
+
+Puis éventuellement parler du tendon, vacances, musique, etc.
+##2. « J'aimerais faire le point avec toi sur ton poste. »
+« Pour le moment, je préfère que les sujets concernant mon activité passent par Paul. Nous sommes justement en train de clarifier mon périmètre, mes priorités et notre mode de fonctionnement. »
+
+S'il insiste :
+« J'ai besoin de reprendre avec un circuit de communication simple et identifié. Pour le moment, c'est avec Paul que je souhaite travailler sur ces sujets. »
+
+##3. « Pourquoi tu ne veux pas qu'on en parle ensemble ? »
+« Ce n'est pas une question de ne pas vouloir échanger. C'est simplement que, pour ma reprise, j'ai besoin de limiter le nombre d'interlocuteurs et de travailler d'abord avec mon manager de proximité. »
+
+##4. « J'ai entendu que tu réfléchissais à partir / que tu avais un projet ailleurs… »
+Ne pas nier. Ne pas confirmer. Ne pas expliquer.
+Première réponse :
+« Ah… je ne pensais pas que ce sujet avait circulé. »
+
+Puis :
+« Pour le moment, je préfère ne pas développer ce sujet. Ma priorité est ma reprise et la remise en place de mon activité avec Paul. »
+
+S'il insiste :
+« J'ai eu des réflexions professionnelles pendant mon arrêt, mais je ne souhaite pas en parler pour le moment. »
+
+S'il demande directement : « Tu veux quitter le DIS ? »
+« Je préfère ne pas aborder cette question aujourd'hui. Je suis en reprise et je souhaite me concentrer sur mon activité actuelle. »
+
+##5. « Je pourrais te proposer quelque chose autour de l'IA. »
+« L'IA fait effectivement partie des compétences que j'ai développées récemment, et je vois des applications intéressantes dans mes activités actuelles. Mais pour ma reprise, je souhaite d'abord rester centrée sur mon périmètre et clarifier précisément ce que le laboratoire attend de moi. »
+
+S'il propose un nouveau poste :
+« Je préfère ne pas ouvrir un nouveau périmètre maintenant. J'ai besoin de me concentrer sur quelques sujets clairement définis. »
+
+##6. « Mais ce serait justement une évolution pour toi. »
+« Je comprends la proposition. Pour le moment, je souhaite d'abord stabiliser ma reprise et clarifier mon poste actuel avec Paul. Je ne souhaite pas multiplier les changements de périmètre. »
+
+##7. « Tu dois pourtant prendre de la hauteur / penser au DIS dans son ensemble. »
+« Je comprends. Mais dans cette phase de reprise, j'ai besoin de revenir à un périmètre clairement défini et opérationnel. Les orientations globales relèvent ensuite des arbitrages du management. »
+
+##8. « Il faut qu'on puisse échanger directement. »
+« Bien sûr, pour les sujets qui relèvent de ton périmètre. Mais pour mon activité quotidienne et mon organisation, je souhaite que Paul reste mon interlocuteur de proximité. »
+
+##9. « Tu ne peux pas tout faire passer par écrit. »
+« Je comprends que l'oral soit important. Pour les décisions et arbitrages concernant mon activité, j'ai néanmoins besoin qu'ils soient formalisés. Cela me permet de savoir précisément quelles sont les attentes et les priorités. »
+
+##10. « Pourquoi as-tu besoin de tout cadrer ? »
+« Parce que je veux justement pouvoir me concentrer sur mon travail. Plus le périmètre et les priorités sont clairs, plus je peux être autonome dans leur réalisation. »
+
+##11. S'il revient sur ton arrêt, ton handicap, le coaching, etc.
+« Ces sujets sont suivis dans les cadres prévus pour cela. Sur le plan professionnel, ce dont j'ai surtout besoin aujourd'hui, c'est d'un cadre de travail clair et de priorités définies. »
+
+S'il insiste :
+« Je préfère que nous restions sur les aspects professionnels de ma reprise. »
+
+##12. S'il dit « c'est pour ton bien »
+« Je comprends l'intention. Ce qui m'aide concrètement aujourd'hui, c'est d'avoir un cadre professionnel clair, un nombre limité de sujets et un interlocuteur de proximité identifié. »
+
+##13. S'il insiste encore et encore
+Disque rayé :
+« Oui, je comprends. Mais je préfère rester sur ce fonctionnement pour le moment. »
+
+Puis, si nécessaire :
+« Je pense qu'on a fait le tour de ce sujet. »
+
+Les 4 phrases à retenir absolument
+Si tu ne veux pas apprendre tout le mémo, retiens celles-ci :
+« Pour ma reprise, j'ai besoin d'un circuit de communication simple et identifié. »
+
+« Pour mon activité, je souhaite que Paul reste mon interlocuteur de proximité. »
+
+« Je souhaite d'abord clarifier mon périmètre et mes priorités avant d'ouvrir de nouveaux sujets. »
+
+« Je préfère ne pas parler de mon projet professionnel pour le moment. »
+
+Et surtout : tu n'as pas besoin de remplir les silences.
+Pierre peut poser une question. Tu réponds en une ou deux phrases. S'il reformule ou insiste, tu répètes calmement ta position.
+Tu n'as pas à le convaincre qu'elle est légitime.
+
 # Point d'étape personnel – avant l'entretien avec Jean et Gauthier
 **Juillet 2026**
 
