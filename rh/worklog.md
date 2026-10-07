@@ -12,6 +12,29 @@ Journal factuel de mon activité professionnelle.
 * **Objet :** suivi de l'activité, de l'avancement des projets, de la charge, des blocages, des arbitrages et des besoins de clarification.
 
 ---
+## 2026-10-07 — Reprise / cadrage des projets MUSCADE
+
+### Suivi des projets et activités MUSCADE
+- Reprise et clarification des sujets en cours ou à arbitrer concernant :
+  - ISEULT ;
+  - DESI ;
+  - suivi des températures des bâtiments 123 et 472 ;
+  - PIP II / LIQUE4012 ;
+  - LIQUE4008.
+- Identification, pour chacun de ces projets, des développements existants, des évolutions envisagées et des points nécessitant un arbitrage du management avant poursuite.
+
+### CSTD / stratégie MUSCADE
+- Relecture approfondie du rapport CSTD 2026.
+- Analyse de la cohérence entre les orientations CSTD, la feuille de route MUSCADE 2024/2025 et les développements actuellement engagés.
+- Identification des principaux points à clarifier concernant :
+  - la stratégie MUSCADE / EPICS ;
+  - l'horizon 2032 et l'éventuelle poursuite de MUSCADE au-delà ;
+  - la compétence Java et sa pérennisation ;
+  - la transmission des compétences et la réduction de la dépendance à une expertise unique ;
+  - le périmètre des développements et responsabilités.
+- Préparation du point de suivi avec Paul et Tom prévu demain.
+
+---
 
 ## 2026-10-06 — Reprise / cadrage de l'activité
 
