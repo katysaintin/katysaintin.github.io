@@ -12,6 +12,72 @@ Journal factuel de mon activité professionnelle.
 * **Objet :** suivi de l'activité, de l'avancement des projets, de la charge, des blocages, des arbitrages et des besoins de clarification.
 
 ---
+## Worklog — 08/10/2026 — Point de suivi Paul / Tom
+
+### Reprise matérielle
+- Reprise matérielle sans difficulté.
+- Récupération du PC, test VPN, mise à jour Office.
+- Réactivation des accès GitLab et mise à jour des mots de passe.
+- Point restant concernant le réseau nécessaire aux tests avec automates : utilisation d’un PC INTRA connecté au réseau EXTRA à clarifier.
+- Pour les futurs tests de développement validés, besoin d’un accompagnement pour mettre en place un environnement réseau local adapté entre PC Linux, automate et PC INTRA.
+- Sujet à revoir ultérieurement avec Antoine Choquet, après clarification de la fiche de poste et du périmètre d’activité.
+
+### Stratégie MUSCADE / feuille de route
+- Confirmation par Paul que la feuille de route 2024 a été présentée et soutenue en CSTD et que le LDISC s’est engagé sur les développements qui y sont décrits.
+- Rappel de mon positionnement : je peux assurer les analyses, recommandations et études de faisabilité, mais la présentation, la promotion et le portage de la stratégie MUSCADE ne peuvent plus représenter une part majeure de mon activité.
+- Confirmation que les arbitrages techniques et stratégiques doivent être portés par le management.
+- Accord pour réécrire la feuille de route MUSCADE afin de :
+  - clarifier la stratégie à plus long terme ;
+  - préciser les conditions permettant de réaliser de nouveaux développements ou d'intégrer de nouvelles manips MUSCADE ;
+  - expliciter les arbitrages possibles avec EPICS ;
+  - faire apparaître les enjeux de compétences, de transmission et de ressources/recrutement ;
+  - présenter ces éléments dans un langage davantage adapté au management.
+- La nouvelle feuille de route sera relue par Paul et Pierre, puis fera l’objet d’une nouvelle réunion.
+- Demande de formalisation et de validation écrite de la nouvelle feuille de route, sur le modèle de celle de 2022.
+
+### Périmètre d'activité / charge
+- Confirmation de la nécessité de clarifier la fiche de poste et les activités prioritaires.
+- Positionnement souhaité : responsabilité de l’écosystème MUSCADE et des développements Java associés.
+- Les activités sans lien direct avec MUSCADE, notamment certains développements EPICS, PLCParserTool ou Phoebus pour EPICS, ne peuvent pas être assumées en plus du périmètre MUSCADE dans le cadre actuel.
+- Nécessité de disposer de priorités explicites sur les projets afin d’adapter la charge au temps de travail disponible.
+
+### Transmission des compétences
+- Objectif confirmé : réduire la dépendance à une expertise unique sur MUSCADE.
+- Mise en place d’un effort de documentation et de transmission des compétences auprès des utilisateurs et collègues.
+- Nécessité d’identifier également une ressource dédiée permettant d’assurer à terme le développement expert MUSCADE en complément de la transmission.
+
+### Gouvernance des développements
+- Principe confirmé : les demandes de développement ou d’évolution doivent être soumises à Paul lorsqu’un arbitrage est nécessaire.
+- Les nouvelles manips MUSCADE ou nouveaux développements doivent être validés avant engagement.
+- Pour les développements techniques : analyse, recommandation et étude de faisabilité ; arbitrage et validation par le management.
+- Les demandes utilisateurs devront être formalisées et redirigées vers Paul en cas de doute sur leur périmètre ou leur validation.
+
+### Communication avec les utilisateurs
+- Retour de Paul concernant les mails récents envoyés sur plusieurs projets : certains utilisateurs ont été inquiétés par les formulations relatives aux évolutions ou à l’arrêt potentiel de solutions existantes.
+- Accord pour que les prochains mails soient :
+  - plus factuels et moins techniques ;
+  - validés avec Paul lorsque le sujet concerne un arbitrage ou une évolution stratégique ;
+  - centrés sur les éléments effectivement validés.
+
+### PLCParserTool
+- Loïc a des questions concernant les développements Java / EPICS de PLCParserTool.
+- Point à faire avec lui afin d’identifier les éventuelles ambiguïtés et, si nécessaire, demander un arbitrage à Paul.
+
+### Accompagnement de la reprise
+- Mise en place envisagée d’un accompagnement individuel par un prestataire afin de faciliter le suivi de la reprise et la communication avec le management.
+- Une éventuelle intervention avec le manager pourra être envisagée après stabilisation de la reprise à temps plein.
+- Évaluation prévue dans environ trois mois.
+
+### TODO
+- Réécrire la nouvelle feuille de route MUSCADE.
+- Faire relire la feuille de route par Paul et Pierre.
+- Préparer une nouvelle réunion de validation.
+- Formaliser la feuille de route après validation.
+- Faire le point avec Loïc sur PLCParserTool / Java EPICS.
+- Clarifier la fiche de poste et le périmètre d’activité.
+- Définir les priorités sur les projets.
+- Préparer, après validation, une communication à l’équipe MUSCADE sur la nouvelle feuille de route, les objectifs à plus long terme et les conditions d’engagement des nouveaux développements.
+-----
 ## 2026-10-07 — Reprise / cadrage des projets MUSCADE
 
 ### Suivi des projets et activités MUSCADE
