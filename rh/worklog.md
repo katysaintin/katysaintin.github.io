@@ -12,6 +12,82 @@ Journal factuel de mon activité professionnelle.
 * **Objet :** suivi de l'activité, de l'avancement des projets, de la charge, des blocages, des arbitrages et des besoins de clarification.
 
 ---
+# Worklog — Réunion de suivi avec Paul et Tom
+**Date :** Mardi 20 octobre 2026
+
+## 1. Feuille de route MUSCADE et ressources
+
+- Les feuilles de route sont en cours de lecture par Paul, Tom et Pierre. Leur validation est prévue.
+- Un remaniement pourra être nécessaire concernant les ressources humaines : Loïc ne souhaite pas reprendre les développements du core MUSCADE.
+- La possibilité de recourir à un stagiaire ou à un apprenti a été évoquée, mais pas dans l’immédiat, compte tenu du temps de travail actuel à mi-temps et de la nécessité de stabiliser la reprise.
+- Paul a indiqué qu’un recrutement d’administrateur système était prévu, afin de décharger les développeurs Java potentiellement mobilisables au sein du groupe.
+- Rappel des exigences méthodologiques applicables aux développements Java : gestion du code, intégration continue (CI) et cycle de développement continu. Les développeurs amenés à contribuer devront adhérer à cette méthodologie.
+
+## 2. Organisation transverse et coordination des activités
+
+- Retour sur la candidature à la DRT : refus reçu.
+- Explication de la recherche d’un environnement professionnel moins isolé, disposant d’une méthodologie transverse et structurée pour la gestion des demandes (JIRA, GitLab ou outils équivalents).
+- Le manque de coordination globale au sein du laboratoire constitue une difficulté pour la priorisation et le cadrage des activités.
+- Tom a indiqué que les automaticiens travaillent à la standardisation de leurs répertoires et de leurs travaux, dans le cadre d’une stratégie propre à cette communauté.
+- Proposition d’une directive commune à l’échelle du laboratoire, permettant d’inclure l’ensemble des personnels et des activités.
+- Précision : je ne souhaite pas prendre en charge ce chantier transverse. Je peux néanmoins présenter l’organisation mise en place autour de MUSCADE à titre d’exemple.
+
+## 3. Participation aux journées du GDR SCIPAC
+
+- Accord donné pour participer aux journées du GDR SCIPAC, consacrées notamment au contrôle-commande (EPICS, TANGO), dans le cadre de mes attributions d’experte senior.
+- Événement : https://indico.ijclab.in2p3.fr/event/14171/
+- Une journée de préparation est estimée nécessaire pour adapter les contenus existants.
+- L’équipe MUSCADE a exprimé une vigilance concernant l’impact de ces interventions sur les activités prioritaires, notamment si un départ du laboratoire devait intervenir.
+- Rappel de l’objectif : produire des développements et une documentation transmissibles, utilisables par d’autres développeurs Java, experts ou non, afin de réduire progressivement la dépendance à une expertise unique.
+- Principe retenu pour les autres sollicitations : toute intervention supplémentaire de présentation de solutions devra être compatible avec le plan de charge et fera l’objet d’un arbitrage préalable.
+
+## 4. Orientations stratégiques MUSCADE
+
+- La feuille de route doit être validée après examen par Paul, Tom et Pierre.
+- Il a été rappelé que les engagements présentés dans le cadre du CSTD portent sur la poursuite et la modernisation de MUSCADE.
+- Les développements suivants ont été présentés comme validés dans le cadre de la stratégie à formaliser :
+  - OPC UA ;
+  - passerelles IOC Java ;
+  - plugin Phoebus pour MUSCADE ;
+  - migration du serveur MUSCADE sous Linux.
+- La stratégie vise à répondre aux besoins des expériences du DACM et des nouveaux projets, notamment DESI2, tout en réduisant la dépendance à des solutions propriétaires.
+- Demande formulée : une fois la stratégie validée, la faire porter par la hiérarchie au même titre qu’EPICS, notamment lors des assemblées générales et réunions de groupe.
+
+## 5. Priorisation des développements
+
+### DESI2
+- La priorité semble s’orienter vers DESI2 ; confirmation attendue lors de la réunion de travail du 21 octobre avec Jean-Christophe Barrière et Paul.
+- Préparation demandée : établir la liste des développements nécessaires et évaluer la charge/planning associé.
+
+### LIQUE4008
+- Report envisagé des développements, une solution temporaire étant actuellement opérationnelle.
+- Travail à prévoir : extraire la passerelle IOC Java MUSCADE de PLCParserTool pour en faire un projet indépendant au sein d’Instrumentation.
+- Le projet indépendant doit pouvoir accueillir les IOC Java liés à différentes interfaces : MQTT, communication série, MUSCADE Java et OPC UA.
+
+### OPC UA — PIP2 et LIQUE4012
+- Prendre des nouvelles sur le fonctionnement actuel des installations avec la version patchée fournie.
+- Préparer une nouvelle version propre du serveur MUSCADE.
+
+## 6. Actions à suivre
+
+- [ ] Poursuivre la consolidation des feuilles de route et intégrer les éventuels ajustements liés aux ressources disponibles.
+- [ ] Attendre la validation formelle de la stratégie MUSCADE par Paul, Tom et Pierre.
+- [ ] Préparer la réunion DESI2 du 21 octobre : liste des développements et estimation de charge.
+- [ ] Confirmer la priorité entre DESI2 et LIQUE4008.
+- [ ] Vérifier le fonctionnement d’OPC UA sur PIP2 et LIQUE4012 avec la version patchée.
+- [ ] Générer une nouvelle version propre du serveur MUSCADE.
+- [ ] Préparer l’extraction de la passerelle IOC Java MUSCADE vers un projet indépendant Instrumentation.
+- [ ] Préparer la présentation pour les journées du GDR SCIPAC, dans la limite d’une journée de préparation.
+- [ ] Veiller à ce que toute nouvelle sollicitation externe soit arbitrée au regard du plan de charge.
+
+## 7. Points restant à confirmer
+
+- Validation définitive des feuilles de route et formalisation de la stratégie MUSCADE.
+- Disponibilité effective de développeurs Java et adhésion à la méthodologie de développement existante.
+- Arbitrage définitif des priorités DESI2 / LIQUE4008.
+- Confirmation de la charge disponible pour les développements et les activités de transmission.
+
+---
 ## Worklog — 08/10/2026 — Point de suivi Paul / Tom
 
 ### Reprise matérielle
