@@ -12,6 +12,57 @@ Journal factuel de mon activité professionnelle.
 * **Objet :** suivi de l'activité, de l'avancement des projets, de la charge, des blocages, des arbitrages et des besoins de clarification.
 
 ---
+
+# Worklog — Préparation DESI et participation au GDR SCIPAC
+
+**Date :** 20 octobre 2026
+
+## 1. DESI — Estimation des développements et propositions d’architecture
+
+### Travaux réalisés
+- Consolidation de l’estimation de la charge de développement pour l’upgrade de MUSCADE sur DESI.
+- Préparation du tableau de charge prévisionnelle, avec identification des ressources nécessaires et des points restant à clarifier.
+- Formalisation de cinq propositions d’architecture, élaborées avec Cédric Péron.
+- Confirmation de la solution 1 comme scénario de référence, en raison de sa charge de travail et de son niveau de risque plus faibles.
+- Documentation des solutions 2 à 5 comme alternatives en cas d’échec de la solution 1, classées selon leur faisabilité, leurs risques et leurs coûts.
+
+### Estimation et planning prévisionnel
+- Charge estimée : environ 79 jours de développement, avec des inconnues restant à lever.
+- Échéance prévisionnelle : fin mars 2027, compte tenu de mon mi-temps thérapeutique jusqu’à fin décembre.
+- Cette échéance est conditionnée à l’obtention de ressources complémentaires pour :
+  - le développement des vues Phoebus ;
+  - le déploiement d’une machine Linux et sa configuration réseau en LAN avec l’automate.
+
+### Prochaine étape
+- Présenter les propositions et l’estimation à Jean-Christophe Barrière, Paul et Cédric Péron lors de la réunion du 21 octobre.
+- Confirmer le scénario retenu, les ressources mobilisables et les points techniques restant à résoudre.
+
+## 2. GDR SCIPAC — Confirmation de participation et préparation de la présentation
+
+### Participation
+- Confirmation de ma participation aux journées du GDR SCIPAC, après validation de mon responsable.
+- Participation inscrite dans le cadre de mes attributions d’experte senior de la DRF.
+- Contribution proposée : **« Contrôle-commande (EPICS, TANGO) »**, programmée le mercredi 2 décembre 2026 à 16 h 55.
+
+### Échanges avec Freddy
+- Clarification du profil du public attendu : communauté mixte de scientifiques, physiciens et ingénieurs spécialisés dans différents domaines des accélérateurs, avec quelques spécialistes de l’instrumentation faisceau.
+- Identification du besoin d’adapter le niveau de détail technique et de limiter les explications approfondies sur l’implémentation des SCADA et des processus associés.
+- Échange sur l’intérêt d’aborder les systèmes de contrôle-commande actuels, leurs perspectives d’évolution et leur utilisation dans les installations françaises.
+
+### Orientation retenue pour la présentation
+- Reprendre et simplifier le support existant sur TANGO et EPICS, issu des journées en ligne d’IJCLab.
+- Réduire les développements historiques et les détails d’implémentation pour privilégier une présentation accessible à un public mixte.
+- Présenter une cartographie des systèmes utilisés dans les installations françaises, dans la mesure des informations disponibles.
+- Expliquer les facteurs historiques ayant conduit aux choix de TANGO ou d’EPICS.
+- Présenter les critères importants pour choisir un SCADA et les enjeux actuels de ces systèmes.
+- Illustrer les propos par des exemples concrets issus de mon expérience avec TANGO à SOLEIL et EPICS au LDISC.
+
+### Prochaine étape
+- Remanier le support pour l’adapter au public du GDR SCIPAC.
+- Prévoir une préparation compatible avec les activités prioritaires et une charge estimée à une journée.
+- Ajouter KatyInControl comme référence complémentaire en fin de présentation.
+---
+
 # Worklog — Réunion de suivi avec Paul et Tom
 **Date :** Mardi 20 octobre 2026
 
