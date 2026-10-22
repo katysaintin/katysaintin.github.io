@@ -12,6 +12,51 @@ Journal factuel de mon activité professionnelle.
 * **Objet :** suivi de l'activité, de l'avancement des projets, de la charge, des blocages, des arbitrages et des besoins de clarification.
 
 ---
+# Worklog — Développements et tests de MUSCADE sous Linux pour DESI
+
+## Travaux réalisés
+
+- **IHM d’administration du serveur MUSCADE**
+  - Développement d’une interface d’administration compatible Windows et Linux.
+  - Gestion des paramètres de l’application, sélection de l’application de démarrage, arrêt et redémarrage du serveur.
+
+- **Packaging de PhoebusMuscade pour Linux**
+  - Adaptation du packaging pour l’environnement Linux.
+  - Ajout d’un script shell de démarrage permettant de lancer PhoebusMuscade sous Linux.
+
+- **Gestion des connexions aux variables MUSCADE**
+  - Correction du code source pour interrompre les tentatives de connexion aux variables MUSCADE inaccessibles après cinq tentatives infructueuses.
+
+- **Traçabilité des écritures dans les logs du serveur MUSCADE**
+  - Ajout de traces pour les opérations d’écriture.
+  - Journalisation du résultat de chaque opération : succès ou erreur.
+
+## Tests réalisés
+
+- Tests de la chaîne MUSCADE sous **Rocky Linux** :
+  - Serveur MUSCADE sous Linux.
+  - IHM d’administration du serveur.
+  - Client Phoebus sur le même réseau, exécuté sur la machine hébergeant le serveur.
+- **Protocole Siemens S7CEA en mode simulé : tests concluants.**
+
+Ces essais valident une première configuration fonctionnelle de la chaîne MUSCADE sous Linux. La validation complète reste à effectuer avec un automate réel.
+
+## Prochaines étapes
+
+- **Packaging du serveur MUSCADE**
+  - Préparer un packaging propre.
+  - Ajouter les scripts d’installation et de lancement en tant que service, sous Linux et Windows.
+
+- **Packaging de PhoebusMuscade**
+  - Préparer un packaging propre pour Windows et Linux.
+
+- **Validation sur automate réel**
+  - Tester la chaîne complète avec un automate utilisant le protocole S7CEA.
+
+## État d’avancement
+
+Les premiers tests de la chaîne complète en environnement Linux simulé sont concluants. Les prochaines étapes portent sur la finalisation des packages, l’intégration en tant que service et la validation avec un automate réel.
+---
 
 # Worklog — Préparation DESI et participation au GDR SCIPAC
 
