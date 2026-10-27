@@ -12,6 +12,16 @@ Journal factuel de mon activité professionnelle.
 * **Objet :** suivi de l'activité, de l'avancement des projets, de la charge, des blocages, des arbitrages et des besoins de clarification.
 
 ---
+### Packaging MUSCADE Server et Phoebus sous Linux
+
+- Poursuite du packaging de MUSCADE Server et de Phoebus pour une distribution Linux autonome.
+- Tests réalisés sur Raspberry Pi 4 avec **Debian 13 (Trixie), architecture ARM64 (aarch64)** : le lancement fonctionne également sur cette plateforme.
+- Amélioration du packaging pour sélectionner automatiquement les versions adaptées du **JDK et de JavaFX intégrés au paquet**, selon la distribution Linux, afin de conserver une installation autonome et de limiter les dépendances externes.
+- Réussite du lancement local du client **Anibus de Christian**. Son fonctionnement en accès distant n'est pas garanti à ce stade ; pour cet usage, **Phoebus reste nécessaire**.
+- Premières observations sur les performances : malgré les ressources limitées de la Raspberry Pi 4, l'affichage est plus fluide qu'avec une session X distante. Les performances restent toutefois perfectibles.
+
+**Prochaine étape :** tester directement sur la machine Rocky Linux afin d'évaluer les performances dans l'environnement cible et de distinguer les éventuelles limitations liées à la machine de celles liées à la session graphique distante.
+---
 # Worklog — Développements et tests de MUSCADE sous Linux pour DESI
 
 ## Travaux réalisés
