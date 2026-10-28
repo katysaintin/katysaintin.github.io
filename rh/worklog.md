@@ -12,6 +12,22 @@ Journal factuel de mon activité professionnelle.
 * **Objet :** suivi de l'activité, de l'avancement des projets, de la charge, des blocages, des arbitrages et des besoins de clarification.
 
 ---
+### MUSCADE – Tests et packaging Linux
+
+- Correction de plusieurs bugs spécifiques à Linux dans MUSCADE.
+- Tests réalisés directement sur la machine Rocky Linux : **les résultats sont très satisfaisants**.
+  - MUSCADE Server fonctionne correctement.
+  - Phoebus se connecte rapidement au serveur.
+  - L'affichage est fluide, sans lenteur notable.
+- Impossible de commiter les modifications sur GitLab, qui semble actuellement indisponible. La cause reste à confirmer ; elle pourrait être liée aux problèmes PHP évoqués.
+  
+### Prochaines étapes
+
+Reprise le **mardi 3 novembre 2026**, sur site :
+- Poursuivre les tests et finaliser le packaging Linux.
+- Continuer les corrections et améliorations du code.
+- Commencer la rédaction de la documentation utilisateur.
+---
 ### Packaging MUSCADE Server et Phoebus sous Linux
 
 - Poursuite du packaging de MUSCADE Server et de Phoebus pour une distribution Linux autonome.
